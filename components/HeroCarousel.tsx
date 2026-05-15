@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 
 export interface HeroSlide {
   id: number;
@@ -64,13 +65,15 @@ export default function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
           }}
         >
           {slide.imgUrl
-            ? <img
+            ? <Image
                 src={slide.imgUrl}
                 alt={slide.title.replace(/<[^>]+>/g, '')}
                 className="hero-carousel-img"
-                loading={i === 0 ? 'eager' : 'lazy'}
-                fetchPriority={i === 0 ? 'high' : 'auto'}
+                width={900}
+                height={506}
+                priority={i === 0}
                 sizes="(max-width: 768px) 100vw, 800px"
+                style={{objectFit:'cover', objectPosition:'center top'}}
               />
             : <div className="hero-carousel-img" style={{ background: 'linear-gradient(135deg,#0000A2,#0a73ce)' }} />
           }

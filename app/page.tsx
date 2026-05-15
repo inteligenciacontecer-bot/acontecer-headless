@@ -121,7 +121,7 @@ export default async function Home() {
                 title={pt(post.title.rendered)}
               >
                 {getFeaturedImg(post)
-                  ? <img src={getFeaturedImg(post)!} alt={pt(post.title.rendered)} className="news-card-img" loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 380px" />
+                  ? <Image src={getFeaturedImg(post)!} alt={pt(post.title.rendered)} className="news-card-img" width={380} height={200} sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 380px" />
                   : <div className="news-card-placeholder">📰</div>
                 }
                 <div className="news-card-body">
@@ -173,7 +173,7 @@ export default async function Home() {
                   {deportes[0] && (
                     <a href={'/deportes/' + deportes[0].slug} className="cat-editorial-main" title={pt(deportes[0].title.rendered)}>
                       {getFeaturedImg(deportes[0])
-                        ? <img src={getFeaturedImg(deportes[0])!} alt={pt(deportes[0].title.rendered)} className="cat-editorial-main-img" loading="lazy" sizes="(max-width: 1024px) 100vw, 713px" />
+                        ? <Image src={getFeaturedImg(deportes[0])!} alt={pt(deportes[0].title.rendered)} className="cat-editorial-main-img" width={713} height={220} sizes="(max-width: 1024px) 100vw, 713px" />
                         : <div className="cat-editorial-main-img" style={{background:'linear-gradient(135deg,#0a73ce,#0000A2)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'60px'}}>⚽</div>
                       }
                       <div className="cat-editorial-main-overlay">
@@ -187,7 +187,7 @@ export default async function Home() {
                     {deportes.slice(1).map((post: any) => (
                       <a key={post.id} href={'/deportes/' + post.slug} className="cat-editorial-item" title={pt(post.title.rendered)}>
                         {getFeaturedImg(post)
-                          ? <img src={getFeaturedImg(post)!} alt={pt(post.title.rendered)} className="cat-editorial-item-img" loading="lazy" sizes="(max-width: 640px) 80px, 100px" />
+                          ? <Image src={getFeaturedImg(post)!} alt={pt(post.title.rendered)} className="cat-editorial-item-img" width={100} height={72} sizes="(max-width: 640px) 80px, 100px" />
                           : <div className="cat-editorial-item-placeholder">⚽</div>
                         }
                         <div>
@@ -213,7 +213,7 @@ export default async function Home() {
                   {economia[0] && (
                     <a href={'/economia/' + economia[0].slug} className="cat-editorial-main" title={pt(economia[0].title.rendered)}>
                       {getFeaturedImg(economia[0])
-                        ? <img src={getFeaturedImg(economia[0])!} alt={pt(economia[0].title.rendered)} className="cat-editorial-main-img" loading="lazy" sizes="(max-width: 1024px) 100vw, 713px" />
+                        ? <Image src={getFeaturedImg(economia[0])!} alt={pt(economia[0].title.rendered)} className="cat-editorial-main-img" width={713} height={220} sizes="(max-width: 1024px) 100vw, 713px" />
                         : <div className="cat-editorial-main-img" style={{background:'linear-gradient(135deg,#00007a,#0000A2)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'60px'}}>💰</div>
                       }
                       <div className="cat-editorial-main-overlay">
@@ -227,7 +227,7 @@ export default async function Home() {
                     {economia.slice(1).map((post: any) => (
                       <a key={post.id} href={'/economia/' + post.slug} className="cat-editorial-item" title={pt(post.title.rendered)}>
                         {getFeaturedImg(post)
-                          ? <img src={getFeaturedImg(post)!} alt={pt(post.title.rendered)} className="cat-editorial-item-img" loading="lazy" sizes="(max-width: 640px) 80px, 100px" />
+                          ? <Image src={getFeaturedImg(post)!} alt={pt(post.title.rendered)} className="cat-editorial-item-img" width={100} height={72} sizes="(max-width: 640px) 80px, 100px" />
                           : <div className="cat-editorial-item-placeholder">💰</div>
                         }
                         <div>

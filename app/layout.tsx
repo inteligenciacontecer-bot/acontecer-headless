@@ -118,6 +118,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             el navegador reutiliza estas conexiones en lugar de ignorarlas. */}
         <link rel="preconnect" href="https://cms.acontecer.co.cr" />
         <link rel="dns-prefetch" href="https://cms.acontecer.co.cr" />
+        <link rel="preconnect" href="https://cdn.webpushr.com" />
         <link rel="preconnect" href="https://analytics.webpushr.com" />
         <link rel="preconnect" href="https://bot.webpushr.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
