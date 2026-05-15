@@ -1,0 +1,4 @@
+# No subir credenciales al repositorio
+config_asamblea.py
+*.session
+*.session-journal
