@@ -7,7 +7,49 @@
   --azul-claro: #0a73ce;
   --acento: #0a73ce;
   --gris-claro: #f4f6fa;
+
+  /* ── V1 Design Tokens ─────────────────────────────────────────── */
+  --ink-900: #0a0e1a;
+  --ink-700: #1f2937;
+  --ink-500: #4b5563;
+  --ink-400: #6b7280;
+  --ink-300: #9ca3af;
+  --ink-200: #d1d5db;
+  --ink-100: #e5e7eb;
+  --ink-50:  #f3f4f6;
+  --paper:   #fafafa;
+  --paper-warm: #f7f5f0;
+  --blue-900: #00006e;
+  --blue-800: #000086;
+  --blue-700: #00009e;
+  --blue-600: #0a73ce;
+  --blue-50:  #e6f1fa;
+  --accent-red:     #e63946;
+  --accent-amber:   #f59e0b;
+  --accent-emerald: #10b981;
+  --serif: var(--font-lora), Georgia, 'Times New Roman', serif;
+  --sans:  var(--font-inter), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --mono:  'JetBrains Mono', ui-monospace, monospace;
 }
+
+/* ── V1 Utility classes ───────────────────────────────────────────── */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.chip-solid   { background: var(--blue-600); color: #fff; }
+.chip-outline { background: #fff; color: var(--blue-600); border: 1px solid var(--blue-200); }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
