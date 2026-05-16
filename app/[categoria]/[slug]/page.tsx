@@ -146,7 +146,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const rawExcerpt = post.excerpt?.rendered?.replace(/<[^>]+>/g, '').trim().slice(0, 160) || '';
   const seoTitle   = post.meta?._acontecer_seo_title || '';
   const seoDesc    = post.meta?._acontecer_seo_desc  || '';
-  const titulo     = (seoTitle || rawTitle) + ' | Acontecer.co.cr';
+  const titulo     = (seoTitle || rawTitle); // layout title.template '%s | Acontecer.co.cr' agrega el sufijo automáticamente
   const descripcion = seoDesc || rawExcerpt;
   const realCatSlug = post._embedded?.['wp:term']?.[0]?.[0]?.slug || categoria;
   const canonicalUrl = `https://acontecer.co.cr/${realCatSlug}/${slug}`;
