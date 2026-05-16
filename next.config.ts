@@ -4,16 +4,20 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        // Nota: s-maxage agresivo (60s) para news + SWR largo (600s)
+        // → Googlebot recibe HTML pre-renderizado al instante (TTFB <50ms)
+        //   mientras Next revalida en segundo plano
         source: '/:categoria/:slug',
         headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=300, stale-while-revalidate=3600' },
+          { key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=600' },
           { key: 'Vary', value: 'Accept-Encoding' },
         ],
       },
       {
+        // Categorías: idem nota para mantener archivo siempre fresco para crawlers
         source: '/categoria/:slug',
         headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=120, stale-while-revalidate=1800' },
+          { key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=600' },
         ],
       },
       {

@@ -164,18 +164,37 @@ const SEO_LABELS: Record<string, string> = {
   tecnologia: 'Tecnología', opinion: 'Opinión',
 };
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata(
+  { params, searchParams }: {
+    params:       Promise<{ slug: string }>;
+    searchParams: Promise<{ page?: string }>;
+  }
+) {
   const { slug } = await params;
+  const { page: pageParam } = await searchParams;
+  const page = Math.max(1, parseInt(pageParam ?? '1', 10));
   const category = await getCategory(slug);
   if (!category) return { title: 'Categoría no encontrada' };
   const meta  = CATEGORY_META[slug];
-  const title = (SEO_LABELS[slug] ?? category.name) + ' | Acontecer.co.cr';
+  const baseTitle = SEO_LABELS[slug] ?? category.name;
+  // SEO: en paginación >=2, agregar ' — Página N' al title para no duplicar
+  const title = page > 1
+    ? `${baseTitle} — Página ${page} | Acontecer.co.cr`
+    : `${baseTitle} | Acontecer.co.cr`;
   const desc  = category.description ? stripHtml(category.description) : meta?.lede ?? `Noticias de ${category.name} en Acontecer.co.cr`;
+  // SEO: canonical dinámica preserva ?page=N para que Google indexe el archivo
+  const canonicalUrl = page > 1
+    ? `https://acontecer.co.cr/categoria/${slug}?page=${page}`
+    : `https://acontecer.co.cr/categoria/${slug}`;
   return {
     title,
     description: desc,
-    alternates:  { canonical: `https://acontecer.co.cr/categoria/${slug}` },
-    openGraph:   { title, description: desc, url: `https://acontecer.co.cr/categoria/${slug}`, type: 'website' },
+    alternates: { canonical: canonicalUrl },
+    robots: {
+      index: true, follow: true,
+      googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
+    },
+    openGraph: { title, description: desc, url: canonicalUrl, type: 'website' },
   };
 }
 

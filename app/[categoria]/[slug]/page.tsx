@@ -54,8 +54,21 @@ function limpiarContenido(html: string, addHeadingIds = false) {
     // Elimina embeds de video/redes que no renderizamos
     .replace(/<figure[^>]*class="[^"]*wp-block-embed[^"]*"[^>]*>[\s\S]*?<\/figure>/gi, '')
     .replace(/<iframe[^>]*>[\s\S]*?<\/iframe>/gi, '')
-    // Canonicaliza links internos
+    // Canonicaliza links internos del CMS al dominio principal
     .replace(/href="https?:\/\/(www\.|cms\.)?acontecer\.co\.cr/gi, 'href="https://acontecer.co.cr')
+    // SEO+SEC: rel="noopener noreferrer" + target="_blank" en links externos
+    //   Detecta <a href="http..."> que NO apunte a acontecer.co.cr
+    .replace(/<a([^>]*?)href="(https?:\/\/(?!(?:www\.|cms\.)?acontecer\.co\.cr)[^"]+)"([^>]*)>/gi,
+      (m: string, pre: string, url: string, post: string) => {
+        const all = pre + post;
+        // Si ya tiene rel, mergear; si no, agregar
+        const hasRel    = /\brel\s*=/i.test(all);
+        const hasTarget = /\btarget\s*=/i.test(all);
+        const extras: string[] = [];
+        if (!hasRel)    extras.push('rel="noopener noreferrer nofollow"');
+        if (!hasTarget) extras.push('target="_blank"');
+        return `<a${pre}href="${url}"${post}${extras.length ? ' ' + extras.join(' ') : ''}>`;
+      })
     // Agrega IDs a H2/H3 que no los tengan (para TOC)
     .replace(/<h([23])([^>]*)>/gi, (_: string, level: string, attrs: string) => {
       if (!addHeadingIds) return `<h${level}${attrs}>`;
@@ -77,16 +90,29 @@ function limpiarContenido(html: string, addHeadingIds = false) {
         a = a.replace(/\bdata-srcset=/, 'srcset=');
         a = a.replace(/\bsizes="[^"]*"/, '');
       }
-      return `<img${a} loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:8px;margin:16px 0;display:block;">`;
+      // B6/CLS: si la img no tiene width+height numéricos, reservar espacio con aspect-ratio
+      const wMatch = a.match(/\bwidth=["']?(\d+)["']?/);
+      const hMatch = a.match(/\bheight=["']?(\d+)["']?/);
+      const ar = (wMatch && hMatch) ? '' : 'aspect-ratio:16/9;';
+      return `<img${a} loading="lazy" decoding="async" style="max-width:100%;height:auto;${ar}border-radius:8px;margin:16px 0;display:block;">`;
     });
 }
 
 /* ── API fetches ────────────────────────────────────────────────────────── */
 
 async function getPost(slug: string) {
-  const res = await fetch(API + '/posts?slug=' + slug + '&_embed', { next: { revalidate: 60 } });
-  const posts = await res.json();
-  return posts[0];
+  // Soft 404 protection: si la API falla o devuelve vacío, retornamos null
+  // y NotaPage llamará notFound() para emitir HTTP 404 real (no 200 vacío)
+  try {
+    const res = await fetch(API + '/posts?slug=' + slug + '&_embed', { next: { revalidate: 60 } });
+    if (!res.ok) return null;
+    const posts = await res.json();
+    if (!Array.isArray(posts) || posts.length === 0) return null;
+    return posts[0] ?? null;
+  } catch (err) {
+    console.error('[getPost]', slug, err);
+    return null;
+  }
 }
 
 async function getRelated(categoryIds: number[], currentId: number) {
