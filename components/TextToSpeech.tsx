@@ -1,5 +1,5 @@
 'use client';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 interface Props {
   slug: string;
@@ -10,7 +10,16 @@ export default function TextToSpeech({ slug, readingTime }: Props) {
   const [state, setState] = useState<'idle' | 'loading' | 'playing' | 'paused' | 'error'>('idle');
   const [progress, setProgress] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  // Sin verificación previa — el botón siempre se muestra
+
+  // ── Dark mode detection (sincroniza con el toggle global) ────────────────
+  const [isDark, setIsDark] = useState(false);
+  useEffect(() => {
+    const check = () => setIsDark(document.documentElement.getAttribute('data-theme') === 'dark');
+    check();
+    const observer = new MutationObserver(check);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => observer.disconnect();
+  }, []);
 
   const handlePlay = async () => {
     if (state === 'playing') {
@@ -56,15 +65,36 @@ export default function TextToSpeech({ slug, readingTime }: Props) {
 
   const isActive = state === 'playing' || state === 'paused' || state === 'loading';
 
+  // ── Color tokens (light / dark) ───────────────────────────────────────────
+  const colors = isDark
+    ? {
+        containerBg:       isActive ? '#1e3a8a' : '#1f2937',
+        containerBorder:   isActive ? '#3b82f6' : '#374151',
+        textPrimary:       isActive ? '#93c5fd' : '#d1d5db',
+        textSecondary:     '#9ca3af',
+        progressBg:        '#374151',
+        stopBg:            '#374151',
+        stopFg:            '#d1d5db',
+      }
+    : {
+        containerBg:       isActive ? '#f0f4ff' : '#f8f9fa',
+        containerBorder:   isActive ? '#c7d5ff' : '#e9ecef',
+        textPrimary:       isActive ? '#0000A2' : '#555',
+        textSecondary:     '#888',
+        progressBg:        '#dde3f0',
+        stopBg:            '#e9ecef',
+        stopFg:            '#555',
+      };
+
   return (
     <div style={{
       display: 'flex', alignItems: 'center', gap: 10,
-      background: isActive ? '#f0f4ff' : '#f8f9fa',
-      border: `1px solid ${isActive ? '#c7d5ff' : '#e9ecef'}`,
+      background: colors.containerBg,
+      border: `1px solid ${colors.containerBorder}`,
       borderRadius: 10, padding: '10px 14px',
       marginBottom: 20, transition: 'all 0.2s',
     }}>
-      {/* Botón play/pause */}
+      {/* Botón play/pause — sigue siempre en azul brand (identidad) */}
       <button
         onClick={handlePlay}
         disabled={state === 'loading'}
@@ -92,7 +122,7 @@ export default function TextToSpeech({ slug, readingTime }: Props) {
 
       {/* Info + barra de progreso */}
       <div style={{flex:1, minWidth:0}}>
-        <div style={{fontSize:12, fontWeight:600, color: isActive ? '#0000A2' : '#555', marginBottom: isActive ? 4 : 0}}>
+        <div style={{fontSize:12, fontWeight:600, color: colors.textPrimary, marginBottom: isActive ? 4 : 0}}>
           {state === 'loading' ? 'Generando audio…' :
            state === 'error'   ? 'Error al generar audio' :
            state === 'playing' ? 'Reproduciendo' :
@@ -100,10 +130,10 @@ export default function TextToSpeech({ slug, readingTime }: Props) {
            'Escuchar esta nota'}
         </div>
         {readingTime && state === 'idle' && (
-          <div style={{fontSize:11, color:'#888'}}>{readingTime} min de lectura</div>
+          <div style={{fontSize:11, color: colors.textSecondary}}>{readingTime} min de lectura</div>
         )}
         {isActive && (
-          <div style={{height:3, background:'#dde3f0', borderRadius:2, overflow:'hidden'}}>
+          <div style={{height:3, background: colors.progressBg, borderRadius:2, overflow:'hidden'}}>
             <div style={{height:'100%', width:`${progress}%`, background:'#0000A2', borderRadius:2, transition:'width 0.5s'}}/>
           </div>
         )}
@@ -113,7 +143,7 @@ export default function TextToSpeech({ slug, readingTime }: Props) {
       {isActive && (
         <button
           onClick={handleStop}
-          style={{width:30,height:30,borderRadius:'50%',border:'none',cursor:'pointer',background:'#e9ecef',color:'#555',display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}}
+          style={{width:30,height:30,borderRadius:'50%',border:'none',cursor:'pointer',background: colors.stopBg, color: colors.stopFg, display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}}
           aria-label="Detener"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" style={{width:10,height:10}}>
