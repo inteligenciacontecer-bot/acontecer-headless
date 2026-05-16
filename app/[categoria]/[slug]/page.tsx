@@ -4,6 +4,7 @@ import TextToSpeech from '@/components/TextToSpeech';
 import Sidebar, { type Heading } from '@/components/Sidebar';
 import ArticleScrollTracker from '@/components/ArticleScrollTracker';
 import NotaInteractive from '@/components/NotaInteractive';
+import ThemeToggle from '@/components/ThemeToggle';
 import AuthorAvatar from '@/components/AuthorAvatar';
 import { linkDiputados, type DiputadoMinimo } from '@/lib/diputados-linker';
 
@@ -380,6 +381,7 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
                   </div>
                 </div>
                 <div className="nv2-meta-share">
+                  <ThemeToggle />
                   <a href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`} target="_blank" rel="noopener" className="nv2-share-btn nv2-share-fb" aria-label="Facebook">
                     <IcFb /> <span>Facebook</span>
                   </a>

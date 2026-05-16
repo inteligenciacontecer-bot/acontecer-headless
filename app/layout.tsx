@@ -110,7 +110,7 @@ const schemaWebSite = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" dir="ltr" className={`${inter.variable} ${lora.variable}`}>
+    <html lang="es" suppressHydrationWarning dir="ltr" className={`${inter.variable} ${lora.variable}`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta httpEquiv="content-language" content="es-cr" />
@@ -122,6 +122,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://cdn.webpushr.com" />
         <link rel="dns-prefetch" href="https://analytics.webpushr.com" />
+        {/* Dark mode anti-FOUC: aplica data-theme ANTES del primer paint
+            para evitar flash light → dark en usuarios que lo tenían activado */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();` }} />
         {/* Iconos multi-resolución — favicon, PWA (192/512), Apple */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="48x48" href="/favs.png" />

@@ -391,3 +391,132 @@ a { text-decoration: none; color: inherit; }
   outline-offset: 2px;
   box-shadow: 0 6px 16px rgba(0,0,107,.35);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DARK MODE — Opción C (solo cuerpo del artículo / "Reader Mode")
+   ─────────────────────────────────────────────────────────────────────────
+   El toggle aplica data-theme="dark" al <html>. Solo afecta a las clases
+   del cuerpo del artículo (.nv2-article, .nv2-article-body, etc.).
+   Header, Footer, Ticker, Carousel, Sidebar permanecen light.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Botón toggle */
+.nv2-theme-toggle,
+.nv2-theme-toggle-placeholder {
+  background: var(--ink-50, #f3f4f6);
+  border: 1px solid var(--ink-100, #e5e7eb);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--ink-700, #1f2937);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  letter-spacing: .02em;
+  transition: background .15s, color .15s, border-color .15s;
+  white-space: nowrap;
+  height: 32px;
+}
+.nv2-theme-toggle-placeholder {
+  visibility: hidden;
+  width: 88px;
+}
+.nv2-theme-toggle:hover {
+  background: var(--ink-100, #e5e7eb);
+  color: var(--ink-900, #0a0e1a);
+}
+.nv2-theme-toggle:focus-visible {
+  outline: 2px solid var(--azul, #0000A2);
+  outline-offset: 2px;
+}
+
+/* ── Dark mode: overrides del cuerpo del artículo ─────────────────────── */
+html[data-theme="dark"] .nv2-article {
+  background: #0e1117;
+  box-shadow: 0 1px 0 #1f2937, 0 2px 16px rgba(0,0,0,.3);
+}
+html[data-theme="dark"] .nv2-article-head {
+  background: transparent;
+}
+html[data-theme="dark"] .nv2-article-title {
+  color: #f3f4f6 !important;
+}
+html[data-theme="dark"] .nv2-article-subhead {
+  color: #9ca3af !important;
+  border-left-color: #5a8bf7 !important;
+}
+html[data-theme="dark"] .nv2-article-body {
+  background: #0e1117;
+}
+html[data-theme="dark"] .nv2-article-body p,
+html[data-theme="dark"] .nv2-article-body li {
+  color: #d1d5db !important;
+}
+html[data-theme="dark"] .nv2-article-body h2,
+html[data-theme="dark"] .nv2-article-body h3 {
+  color: #f3f4f6 !important;
+}
+html[data-theme="dark"] .nv2-article-body strong {
+  color: #ffffff !important;
+}
+html[data-theme="dark"] .nv2-article-body a {
+  color: #5a8bf7 !important;
+  border-bottom-color: #5a8bf7 !important;
+}
+html[data-theme="dark"] .nv2-article-body a:hover {
+  color: #93c5fd !important;
+}
+html[data-theme="dark"] .nv2-article-body blockquote {
+  background: #1e293b !important;
+  border-left-color: #5a8bf7 !important;
+  color: #93c5fd !important;
+}
+html[data-theme="dark"] .nv2-article-body > .nv2-measure > p:first-of-type::first-letter {
+  color: #5a8bf7;
+}
+html[data-theme="dark"] .nv2-meta-block {
+  border-color: #1f2937;
+}
+html[data-theme="dark"] .nv2-meta-name {
+  color: #f3f4f6 !important;
+}
+html[data-theme="dark"] .nv2-meta-info,
+html[data-theme="dark"] .nv2-meta-info span {
+  color: #9ca3af !important;
+}
+html[data-theme="dark"] .nv2-meta-author {
+  color: #f3f4f6;
+}
+html[data-theme="dark"] .nv2-share-btn {
+  background: #1f2937 !important;
+  color: #d1d5db !important;
+  border-color: #374151 !important;
+}
+html[data-theme="dark"] .nv2-bottom-share {
+  background: #0e1117;
+  border-color: #1f2937;
+}
+html[data-theme="dark"] .nv2-article-tags a {
+  background: #1f2937 !important;
+  color: #d1d5db !important;
+  border-color: #374151 !important;
+}
+html[data-theme="dark"] .nv2-age-notice {
+  background: #1e3a8a !important;
+  color: #93c5fd !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Botón en dark mode */
+html[data-theme="dark"] .nv2-theme-toggle {
+  background: #1f2937;
+  border-color: #374151;
+  color: #d1d5db;
+}
+html[data-theme="dark"] .nv2-theme-toggle:hover {
+  background: #374151;
+  color: #f3f4f6;
+}
