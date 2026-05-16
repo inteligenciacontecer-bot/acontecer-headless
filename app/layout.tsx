@@ -116,7 +116,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta httpEquiv="content-language" content="es-cr" />
         {/* Preconnects — solo los orígenes críticos en el camino de carga inicial.
             webpushr se carga tarde (lazyOnload) → no necesita preconnect. */}
-        <link rel="preconnect" href="https://cms.acontecer.co.cr" />
+        {/* preconnect a cms removido — imágenes ahora se sirven via rewrite del dominio principal */}
         <link rel="dns-prefetch" href="https://cms.acontecer.co.cr" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />

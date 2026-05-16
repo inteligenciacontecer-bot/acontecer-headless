@@ -160,7 +160,7 @@ export default function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
             <div className="p-hero-divider" />
             <div className="p-hero-time">
               <div className="p-hero-time-l">PUBLICADO</div>
-              <div className="p-hero-time-v">{timeAgo(slide.dateIso)}</div>
+              <div className="p-hero-time-v" suppressHydrationWarning>{timeAgo(slide.dateIso)}</div>
             </div>
           </div>
 
