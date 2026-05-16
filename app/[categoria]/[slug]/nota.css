@@ -233,6 +233,21 @@
 }
 
 /* META BLOCK (después del hero) */
+/* Aviso nota vieja */
+.nv2-age-notice {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 500;
+  margin: 20px 48px 0;
+}
+
 .nv2-article-meta-block { padding: 22px 48px 0; }
 .nv2-meta-row {
   display: flex;
@@ -786,6 +801,7 @@
   .nv2-article-title { font-size: 26px !important; line-height: 1.12; }
   .nv2-article-subhead { font-size: 16px !important; padding-left: 12px; }
 
+  .nv2-age-notice { margin: 16px 20px 0; font-size: 13px; }
   .nv2-article-meta-block { padding: 16px 20px 0; }
   .nv2-meta-share { width: 100%; justify-content: flex-end; }
 

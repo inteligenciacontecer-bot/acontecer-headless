@@ -153,6 +153,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 /* ── Page component ─────────────────────────────────────────────────────── */
 
+/* ── Edad relativa de la nota ───────────────────────────────────────────── */
+function edadNota(fechaISO: string): string | null {
+  const diffMs  = Date.now() - new Date(fechaISO).getTime();
+  const diffDias = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  if (diffDias < 14) return null;                       // menos de 2 semanas: no mostrar
+  if (diffDias < 60)  return `hace ${Math.floor(diffDias / 7)} semana${Math.floor(diffDias / 7) === 1 ? "" : "s"}`;
+  const meses = Math.floor(diffDias / 30);
+  if (meses < 24)     return `hace ${meses} mes${meses === 1 ? "" : "es"}`;
+  const anios = Math.floor(diffDias / 365);
+  return `hace ${anios} año${anios === 1 ? "" : "s"}`;
+}
+
 export default async function NotaPage({ params }: { params: Promise<{ slug: string; categoria: string }> }) {
   const { slug, categoria } = await params;
   const post = await getPost(slug);
@@ -188,6 +200,7 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
 
   const palabras      = post.content.rendered.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
   const tiempoLectura = Math.max(1, Math.ceil(palabras / 200));
+  const edadStr       = edadNota(post.date);
 
   const { subtitulo, resto } = extraerPrimerH2(post.content.rendered);
   const conIDs         = limpiarContenido(resto, true);        // con IDs para TOC
@@ -306,6 +319,14 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
                 decoding="async"
               />
             </div>
+
+            {/* AVISO NOTA VIEJA */}
+            {edadStr && (
+              <div className="nv2-age-notice">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Esta noticia es de {edadStr}
+              </div>
+            )}
 
             {/* META: autor + compartir */}
             <div className="nv2-article-meta-block">
