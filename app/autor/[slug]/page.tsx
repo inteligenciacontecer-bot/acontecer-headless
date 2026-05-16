@@ -400,22 +400,25 @@ export default async function AutorPage({
                 <h4 className="ap-side-title">Más autores</h4>
                 <a href="/autores" className="ap-side-link">Ver todos →</a>
               </div>
-              {relatedAuthors.map((ra: any) => {
-                const raAvatar = ra.avatar_urls?.['96'] as string | null || null;
-                const raInitials = getInitials(ra.name || '');
-                return (
-                  <a key={ra.id} href={`/autor/${ra.slug}`} className="ap-author-row">
-                    {raAvatar
-                      ? <img src={raAvatar} alt={ra.name} className="ap-author-avatar ap-author-avatar-img" />
-                      : <div className="ap-author-avatar ap-author-avatar-init" aria-label={ra.name}>{raInitials}</div>
-                    }
-                    <div className="ap-author-row-body">
-                      <div className="ap-author-row-name">{ra.name}</div>
-                      <div className="ap-author-row-role">Redacción Acontecer</div>
-                    </div>
-                  </a>
-                );
-              })}
+              <div className="ap-author-grid">
+                {relatedAuthors.map((ra: any) => {
+                  const raAvatar = ra.avatar_urls?.['96']
+                    ? (ra.avatar_urls['96'] as string).replace('s=96', 's=160').replace('s%3D96', 's%3D160')
+                    : null;
+                  const raInitials = getInitials(ra.name || '');
+                  return (
+                    <a key={ra.id} href={`/autor/${ra.slug}`} className="ap-author-card">
+                      <div className="ap-author-card-photo" style={raAvatar ? { backgroundImage: `url("${raAvatar}")` } : undefined}>
+                        {!raAvatar && <span className="ap-author-card-init">{raInitials}</span>}
+                      </div>
+                      <div className="ap-author-card-info">
+                        <div className="ap-author-card-name">{ra.name}</div>
+                        <div className="ap-author-card-role">Redacción</div>
+                      </div>
+                    </a>
+                  );
+                })}
+              </div>
             </div>
           )}
 

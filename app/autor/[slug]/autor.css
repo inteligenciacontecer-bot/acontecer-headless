@@ -626,6 +626,8 @@
   border: 1px solid var(--ink-100, #e5e7eb);
   padding: 22px;
   border-radius: 16px;
+  overflow: hidden;
+  min-width: 0;
 }
 .ap-side-head {
   display: flex; justify-content: space-between; align-items: center;
@@ -648,38 +650,60 @@
 }
 .ap-side-link:hover { text-decoration: underline; }
 
-/* Related authors */
-.ap-author-row {
-  display: flex; align-items: center; gap: 12px;
-  padding: 12px 0;
-  border-top: 1px solid var(--ink-100, #e5e7eb);
+/* Related authors — grid de cards con foto */
+.ap-author-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.ap-author-card {
+  background: #fff;
+  border: 1px solid var(--ink-100, #e5e7eb);
+  border-radius: 12px;
+  overflow: hidden;
   text-decoration: none;
   color: inherit;
-  transition: background .15s;
+  display: block;
+  transition: transform .18s, box-shadow .18s;
 }
-.ap-author-row:hover { background: var(--ink-50, #f3f4f6); margin: 0 -6px; padding: 12px 6px; border-radius: 8px; }
-.ap-author-avatar {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  overflow: hidden;
+.ap-author-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0,0,158,.09);
+  border-color: var(--azul-claro, #0a73ce);
 }
-.ap-author-avatar-img { width: 100%; height: 100%; object-fit: cover; }
-.ap-author-avatar-init {
-  background: linear-gradient(135deg, var(--azul-claro, #0a73ce), var(--azul, #0000A2));
-  display: grid; place-items: center;
-  color: #fff;
+.ap-author-card-photo {
+  height: 96px;
+  background-size: cover;
+  background-position: center top;
+  background-color: var(--azul, #0000A2);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.ap-author-card-init {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 500;
+  color: rgba(255,255,255,.8);
+}
+.ap-author-card-info {
+  padding: 10px 12px 13px;
+}
+.ap-author-card-name {
+  font-size: 13px;
   font-weight: 600;
-  font-size: 14px;
-}
-.ap-author-row-name {
-  font-size: 14px; font-weight: 600;
   color: var(--ink-900, #0a0e1a);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.ap-author-row-role {
-  font-size: 12px;
+.ap-author-card-role {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
   color: var(--ink-400, #6b7280);
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 /* WhatsApp CTA */
