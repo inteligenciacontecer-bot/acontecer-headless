@@ -122,15 +122,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://cdn.webpushr.com" />
         <link rel="dns-prefetch" href="https://analytics.webpushr.com" />
-        {/* Iconos multi-resolución — 512×512 para plataformas de noticias */}
-        <link rel="icon" href="/favicon.ico" />
+        {/* Iconos multi-resolución — favicon, PWA (192/512), Apple */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="48x48" href="/favs.png" />
-        <link rel="apple-touch-icon" sizes="48x48" href="/favs.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        {/* PWA — Web App Manifest (installable on mobile/desktop) */}
+        <link rel="manifest" href="/manifest.webmanifest" />
         {/* Metadatos de plataforma — Windows, Microsoft News, navegadores */}
         <meta name="application-name" content="Acontecer.co.cr" />
+        <meta name="apple-mobile-web-app-title" content="Acontecer" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#0000A2" />
         <meta name="msapplication-TileColor" content="#0000A2" />
-        <meta name="msapplication-TileImage" content="/favs.png" />
+        <meta name="msapplication-TileImage" content="/icon-192.png" />
         <meta name="msapplication-config" content="none" />
         {/* RSS autodiscovery — requerido por Apple News y agregadores */}
         <link rel="alternate" type="application/rss+xml" title="Acontecer.co.cr — Feed RSS" href="https://acontecer.co.cr/feed" />
@@ -138,9 +146,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(schemaWebSite)}} />
       </head>
       <body>
+        {/* A11y: skip-link para usuarios de teclado / lectores de pantalla */}
+        <a href="#main-content" className="skip-link">Saltar al contenido principal</a>
         <Header />
         <Ticker />
-        {children}
+        <div id="main-content" tabIndex={-1} style={{outline: 'none'}}>{children}</div>
         <Footer />
         {/* Google Analytics 4 + Consent Mode v2
             Orden correcto según docs de Google:

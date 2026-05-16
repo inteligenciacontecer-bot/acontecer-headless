@@ -362,3 +362,32 @@ a { text-decoration: none; color: inherit; }
     will-change: transform;
   }
 }
+
+/* ─── A11y: skip-link ─────────────────────────────────────────────────
+   Invisible por default, aparece arriba a la izquierda al recibir focus
+   (Tab desde el top de la página). Vital para usuarios solo-teclado y
+   lectores de pantalla.
+   ─────────────────────────────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 9999;
+  background: #0000A2;
+  color: #fff;
+  padding: 12px 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 0 0 8px 0;
+  transition: none;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  left: 1rem;
+  top: 1rem;
+  border-radius: 8px;
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+  box-shadow: 0 6px 16px rgba(0,0,107,.35);
+}
