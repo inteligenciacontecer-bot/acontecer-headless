@@ -14,21 +14,34 @@ export async function GET() {
 
     let xml = await res.text();
 
-    // Reemplazar dominio del CMS por el dominio público en todos los URLs
+    // ─── Sanitización RSS para Google Publisher Center ──────────────────
+    // Reescribir TODAS las URLs del CMS al dominio principal, incluyendo:
+    //   • Permalinks de categorías (cualquier slug)
+    //   • Imágenes embebidas en content:encoded (/wp-content/uploads/...)
+    //   • Channel <link>, <image><url>, <image><link>
+    //   • Atom self-link
+    // Excepción: <guid isPermaLink="false"> mantiene URL del CMS porque
+    // funciona como identificador único, no como URL navegable.
+
     xml = xml
-      .replace(/https:\/\/cms\.acontecer\.co\.cr\/nacionales\//g, 'https://acontecer.co.cr/nacionales/')
-      .replace(/https:\/\/cms\.acontecer\.co\.cr\/internacionales\//g, 'https://acontecer.co.cr/internacionales/')
-      .replace(/https:\/\/cms\.acontecer\.co\.cr\/deportes\//g, 'https://acontecer.co.cr/deportes/')
-      .replace(/https:\/\/cms\.acontecer\.co\.cr\/economia\//g, 'https://acontecer.co.cr/economia/')
-      .replace(/https:\/\/cms\.acontecer\.co\.cr\/entretenimiento\//g, 'https://acontecer.co.cr/entretenimiento/')
-      .replace(/https:\/\/cms\.acontecer\.co\.cr\/salud\//g, 'https://acontecer.co.cr/salud/')
-      .replace(/https:\/\/cms\.acontecer\.co\.cr\/tecnologia\//g, 'https://acontecer.co.cr/tecnologia/')
-      .replace(/https:\/\/cms\.acontecer\.co\.cr\/opinion\//g, 'https://acontecer.co.cr/opinion/')
-      // Canal principal del feed y self-link
-      .replace(/<link>https:\/\/cms\.acontecer\.co\.cr<\/link>/, '<link>https://acontecer.co.cr</link>')
-      .replace(/href="https:\/\/cms\.acontecer\.co\.cr\/feed\/"/, 'href="https://acontecer.co.cr/feed"')
-      // Comentarios y guids secundarios — mantener CMS para no romper WP internals
-      ;
+      // 1. Permalinks de cualquier categoría (regex genérica)
+      .replace(/https?:\/\/cms\.acontecer\.co\.cr\/([a-z0-9-]+)\//gi,
+               'https://acontecer.co.cr/$1/')
+      // 2. Imágenes en wp-content/uploads (rewrite transparente)
+      .replace(/https?:\/\/cms\.acontecer\.co\.cr\/wp-content\//gi,
+               'https://acontecer.co.cr/wp-content/')
+      // 3. Channel root link
+      .replace(/<link>https?:\/\/cms\.acontecer\.co\.cr<\/link>/g,
+               '<link>https://acontecer.co.cr</link>')
+      // 4. Channel <image><link>
+      .replace(/<link>https?:\/\/cms\.acontecer\.co\.cr\/?<\/link>/g,
+               '<link>https://acontecer.co.cr</link>')
+      // 5. Atom self-link del feed
+      .replace(/href="https?:\/\/cms\.acontecer\.co\.cr\/feed\/?"/g,
+               'href="https://acontecer.co.cr/feed"')
+      // 6. Channel image logo (image><url) — apunta al CMS, redirigir al dominio
+      .replace(/<url>https?:\/\/cms\.acontecer\.co\.cr\/wp-content\/uploads\/2026\/03\/FAVS\.png<\/url>/g,
+               '<url>https://acontecer.co.cr/logo.png</url>');
 
     return new NextResponse(xml, {
       status: 200,

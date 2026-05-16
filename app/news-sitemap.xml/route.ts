@@ -4,6 +4,11 @@ export const dynamic = 'force-dynamic';
 const API  = 'https://cms.acontecer.co.cr/wp-json/wp/v2';
 const BASE = 'https://acontecer.co.cr';
 
+// SEO: reescribir URLs del CMS al dominio principal
+const cmsToLocal = (u: string): string =>
+  u.replace(/^https?:\/\/cms\.acontecer\.co\.cr\//i, 'https://acontecer.co.cr/');
+
+
 
 function stripHtml(html: string): string {
   return html
@@ -56,7 +61,7 @@ export async function GET() {
 
           // Imagen destacada
           const media       = p._embedded?.['wp:featuredmedia']?.[0];
-          const imgUrl      = media?.source_url ?? '';
+          const imgUrl      = media?.source_url ? cmsToLocal(media.source_url) : '';
           const imgTitle    = esc(stripHtml(media?.title?.rendered || title));
           const imgCaption  = media?.caption?.rendered
             ? esc(stripHtml(media.caption.rendered)) : '';
