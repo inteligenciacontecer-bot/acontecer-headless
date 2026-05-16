@@ -67,14 +67,20 @@ async function getAuthorPosts(authorId: number, page: number) {
   };
 }
 
+const FIXED_AUTHORS = [1, 4, 27, 39]; // Redacción · Carlos Valencia · Glenn Hernández · Brandon Segura
+
 async function getRelatedAuthors(currentId: number) {
-  const res = await fetch(`${API}/users?per_page=10&has_published_posts=true`, {
+  const include = FIXED_AUTHORS.filter(id => id !== currentId).join(',');
+  if (!include) return [];
+  const res = await fetch(`${API}/users?include=${include}&per_page=4`, {
     next: { revalidate: 3600 },
   });
   const users = await res.json().catch(() => []);
-  return (Array.isArray(users) ? users : [])
-    .filter((u: any) => u.id !== currentId)
-    .slice(0, 4);
+  // Reordenar según el orden fijo original
+  const order = FIXED_AUTHORS.filter(id => id !== currentId);
+  return (Array.isArray(users) ? users : []).sort(
+    (a: any, b: any) => order.indexOf(a.id) - order.indexOf(b.id)
+  );
 }
 
 /* ── SVG Icons ───────────────────────────────────────────────────── */
