@@ -12,7 +12,7 @@ const GA_ID = 'G-GFS4JMZGLP';
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-inter',
   display: 'swap',
 });
@@ -114,15 +114,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta httpEquiv="content-language" content="es-cr" />
-        {/* Preconnects críticos — reducen latencia de LCP y Webpushr
-            Sin crossOrigin: las imgs y scripts no usan modo CORS, así que
-            el navegador reutiliza estas conexiones en lugar de ignorarlas. */}
+        {/* Preconnects — solo los orígenes críticos en el camino de carga inicial.
+            webpushr se carga tarde (lazyOnload) → no necesita preconnect. */}
         <link rel="preconnect" href="https://cms.acontecer.co.cr" />
         <link rel="dns-prefetch" href="https://cms.acontecer.co.cr" />
-        <link rel="preconnect" href="https://cdn.webpushr.com" />
-        <link rel="preconnect" href="https://analytics.webpushr.com" />
-        <link rel="preconnect" href="https://bot.webpushr.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://cdn.webpushr.com" />
+        <link rel="dns-prefetch" href="https://analytics.webpushr.com" />
         {/* Iconos multi-resolución — 512×512 para plataformas de noticias */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="512x512" href="https://cms.acontecer.co.cr/wp-content/uploads/2026/03/FAVS.png" />
@@ -196,7 +195,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             → no bloquea LCP ni TBT.
             El Service Worker debe estar en /public/webpushr-sw.js
             para que sea accesible en https://acontecer.co.cr/webpushr-sw.js  */}
-        <Script id="webpushr-init" strategy="afterInteractive">
+        <Script id="webpushr-init" strategy="lazyOnload">
           {`
             (function(w,d,s,id){
               if(typeof(w.webpushr)!=='undefined') return;

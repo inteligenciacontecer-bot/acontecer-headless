@@ -20,9 +20,7 @@
 }
 .p-hero-photo {
   position: absolute; inset: 0; z-index: 1;
-  background-size: cover;
-  background-position: 50% 28%; /* fallback — sobreescrito por inline style del focal point */
-  background-repeat: no-repeat;
+  overflow: hidden;
   transition: opacity .5s ease;
   will-change: opacity;
 }
