@@ -99,7 +99,7 @@ const nextConfig: NextConfig = {
               "base-uri 'self'",
               "form-action 'self'",
               "frame-ancestors 'self'",
-              "upgrade-insecure-requests",
+              // "upgrade-insecure-requests" — solo válido en CSP enforce, no en Report-Only
             ].join('; '),
           },
         ],

@@ -178,7 +178,6 @@ export default function Header() {
         aria-modal={menuOpen ? true : undefined}
         aria-label="Menú de navegación"
         aria-hidden={!menuOpen}
-        /* inert omitido: aria-hidden ya cubre lectores de pantalla */
         style={{
         position:'fixed', top:0, right:0, bottom:0,
         width:'min(480px, 92vw)',
