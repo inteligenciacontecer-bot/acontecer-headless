@@ -157,6 +157,7 @@
   border-radius: 18px;
   box-shadow: 0 1px 0 var(--ink-100), 0 2px 16px rgba(0,0,0,.04);
   overflow: hidden;
+  min-width: 0; /* CSS Grid 1fr: permite que el track se comprima correctamente */
   margin-top: 28px;
   margin-bottom: 48px;
 }
@@ -170,14 +171,14 @@
   font-weight: 600;
   letter-spacing: .16em;
   text-transform: uppercase;
-  background: var(--azul);
+  background: var(--azul-claro);
   color: #fff;
   padding: 5px 12px;
   border-radius: 4px;
   margin-bottom: 20px;
   text-decoration: none;
 }
-.nv2-cat-pill:hover { background: var(--azul-claro); }
+.nv2-cat-pill:hover { background: #0860b0; }
 .nv2-article-title {
   font-family: var(--font-lora), Georgia, serif;
   font-size: clamp(30px, 4vw, 52px);
@@ -297,7 +298,7 @@
 .nv2-share-copy:hover { opacity: 1; background: var(--ink-100); }
 
 /* ── CUERPO EDITORIAL ───────────────────────────────────────────────────── */
-.nv2-article-body { padding: 6px 48px 36px; }
+.nv2-article-body { padding: 6px 48px 36px; overflow-x: hidden; }
 .nv2-measure { max-width: var(--nv2-measure); margin: 0 auto; }
 
 /* Tipografía editorial */
@@ -554,7 +555,7 @@
 .nv2-side::-webkit-scrollbar { width: 4px; }
 .nv2-side::-webkit-scrollbar-thumb { background: var(--ink-100); border-radius: 2px; }
 
-.nv2-side-card {
+.nv2-side-card { box-sizing: border-box;
   background: #fff;
   border: 1px solid var(--ink-100);
   border-radius: 14px;
@@ -824,11 +825,15 @@
   .nv2-side-card.nv2-toc-card { display: none; }
   .nv2-side-card.nv2-related-card { width: 100%; }
   .nv2-side-card.nv2-clima-card { flex: 1; min-width: calc(50% - 6px); }
-  .nv2-side-card.nv2-cambio-card { flex: 1; min-width: calc(50% - 6px); }
+  .nv2-side-card.nv2-cambio-card { width: 100%; }
   .nv2-side-card.nv2-wa-card { width: 100%; }
 }
 
 @media (min-width: 1100px) {
   .nv2-minibar { top: 80px; }
   .nv2-side { top: 104px; }
+}
+
+@media (max-width: 768px) {
+  .nv2-minibar { display: none !important; }
 }

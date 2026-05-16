@@ -56,10 +56,22 @@ function limpiarContenido(html: string, addHeadingIds = false) {
       sectionCount++;
       return `<h${level}${attrs} id="nv2-s${sectionCount}">`;
     })
-    // Imágenes responsivas con estilo básico
-    .replace(/<img([^>]*)>/gi,
-      '<img$1 loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:8px;margin:16px 0;display:block;">'
-    );
+    // Posts 2021: eliminar <noscript> (lazyload plugin los inserta como fallback;
+    // con dangerouslySetInnerHTML se renderizan visibles duplicando imágenes)
+    .replace(/<noscript>[\s\S]*?<\/noscript>/gi, '')
+    // Imágenes: convertir data-src→src (lazyload viejo), aplicar max-width responsivo
+    .replace(/<img([^>]*)>/gi, (_: string, attrs: string) => {
+      let a = attrs;
+      // Posts 2021: src contiene placeholder gif, data-src contiene la URL real
+      if (/data-src=/.test(a)) {
+        a = a.replace(/\bsrc="data:[^"]*"/, '');
+        a = a.replace(/\bsrc='data:[^']*'/, '');
+        a = a.replace(/\bdata-src=/, 'src=');
+        a = a.replace(/\bdata-srcset=/, 'srcset=');
+        a = a.replace(/\bsizes="[^"]*"/, '');
+      }
+      return `<img${a} loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:8px;margin:16px 0;display:block;">`;
+    });
 }
 
 /* ── API fetches ────────────────────────────────────────────────────────── */
