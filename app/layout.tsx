@@ -122,6 +122,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://cdn.webpushr.com" />
         <link rel="dns-prefetch" href="https://analytics.webpushr.com" />
+        {/* APIs de datos en vivo (clima + tipo cambio) — preconnect ahorra ~950ms LCP mobile */}
+        <link rel="preconnect" href="https://api.open-meteo.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://tipodecambio.paginasweb.cr" />
         {/* Dark mode anti-FOUC: aplica data-theme ANTES del primer paint
             para evitar flash light → dark en usuarios que lo tenían activado */}
         <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();` }} />
