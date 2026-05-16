@@ -50,6 +50,60 @@ const nextConfig: NextConfig = {
           { key: 'Cache-Control', value: 'public, s-maxage=1800, stale-while-revalidate=3600' },
         ],
       },
+      {
+        // ── Security Headers globales ──────────────────────────────────────
+        // Aplican a TODAS las rutas. Cloudflare suele forzar HSTS=max-age=0
+        // hasta que se active en panel — al setearlo aquí desde origin lo overrideamos.
+        source: '/:path*',
+        headers: [
+          {
+            // HSTS: forza HTTPS por 1 año. Sin preload (compromiso permanente — opt-in manual)
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains',
+          },
+          {
+            // Envía Referer completo a propio dominio, solo origin a externos
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            // Deshabilita APIs del browser que el sitio NO usa
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()',
+          },
+          {
+            // Refuerzo: previene MIME sniffing
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            // Refuerzo: previene clickjacking en mismo origen
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
+          },
+          {
+            // CSP en modo REPORT-ONLY: loggea violaciones pero NO bloquea contenido.
+            // Estrategia: dejarlo así 1-2 semanas, revisar errores en consola, y
+            // recién entonces cambiar key a 'Content-Security-Policy' para enforce.
+            key: 'Content-Security-Policy-Report-Only',
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.googletagmanager.com https://*.google-analytics.com https://cdn.webpushr.com https://*.webpushr.com https://*.ads-twitter.com https://static.cloudflareinsights.com https://ajax.cloudflare.com",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+              "img-src 'self' data: blob: https: http:",
+              "font-src 'self' data: https://fonts.gstatic.com",
+              "connect-src 'self' https://*.google-analytics.com https://*.googletagmanager.com https://*.analytics.google.com https://*.webpushr.com https://cms.acontecer.co.cr https://acontecer.co.cr https://api.open-meteo.com https://tipodecambio.paginasweb.cr",
+              "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://*.facebook.com https://*.twitter.com https://platform.twitter.com",
+              "media-src 'self' https: blob:",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+              "frame-ancestors 'self'",
+              "upgrade-insecure-requests",
+            ].join('; '),
+          },
+        ],
+      },
     ];
   },
   async rewrites() {
