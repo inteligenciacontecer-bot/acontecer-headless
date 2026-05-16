@@ -53,11 +53,16 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+html {
+  /* overflow-x en html (no body):
+     - html ES el scroll container nativo — sticky funciona correctamente
+     - body con overflow-x: clip rompía position:sticky en hijos */
+  overflow-x: clip;
+}
 body {
   font-family: var(--font-inter), 'Helvetica Neue', sans-serif;
   background: var(--gris-claro);
   color: #333;
-  overflow-x: hidden;
 }
 
 a { text-decoration: none; color: inherit; }

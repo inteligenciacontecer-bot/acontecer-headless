@@ -137,7 +137,17 @@ function getInitials(name: string): string {
 }
 
 function getFeaturedImg(post: any): string | null {
-  return post._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? null;
+  if (!post) return null;
+  const media = post._embedded?.['wp:featuredmedia']?.[0];
+  // WP devuelve un objeto de error {code, message} cuando el media falla
+  if (!media || media.code) return null;
+  return (
+    media.source_url ??
+    media.media_details?.sizes?.large?.source_url ??
+    media.media_details?.sizes?.medium_large?.source_url ??
+    media.media_details?.sizes?.medium?.source_url ??
+    null
+  );
 }
 
 function truncate(str: string, max: number): string {
@@ -201,9 +211,10 @@ export default async function CategoriaPage({
   const gridPosts    = restPosts.slice(0, 6);
   const listPosts    = restPosts.slice(6, 11);
 
-  // Hero photo backgrounds from first 3 posts
-  const heroPhotos = [posts[0], posts[1], posts[2]].map((p: any, i: number) => ({
-    img: p ? getFeaturedImg(p) : null,
+  // Hero photos: toma los primeros 3 posts QUE TIENEN imagen (no necesariamente pos 0/1/2)
+  const postsWithImg = posts.filter((p: any) => getFeaturedImg(p) !== null);
+  const heroPhotos = [0, 1, 2].map((i) => ({
+    img: getFeaturedImg(postsWithImg[i] ?? null),
     tag: `FOTO 0${i + 1}`,
   }));
 
@@ -223,17 +234,17 @@ export default async function CategoriaPage({
       })}} />
 
       {/* ══════════════════════════════ HERO ══════════════════════════════ */}
-      <section className="v1-hero">
+      <section className={`v1-hero v1-hero-${slug}`}>
         <div className="v1-hero-bg" />
 
         {/* 3-photo grid */}
         <div className="v1-hero-photos">
           {heroPhotos.map((p, i) => (
-            <div
-              key={i}
-              className={`v1-hero-photo v1-photo-${i + 1}`}
-              style={p.img ? { backgroundImage: `url("${p.img}")` } : undefined}
-            >
+            <div key={i} className={`v1-hero-photo v1-photo-${i + 1}`}>
+              {/* Imagen en div hijo para poder ocultarla con CSS por categoría/breakpoint */}
+              {p.img && (
+                <div className="v1-photo-img" style={{ backgroundImage: `url("${p.img}")` }} />
+              )}
               <span className="v1-photo-tag">{p.tag}</span>
             </div>
           ))}
@@ -321,18 +332,20 @@ export default async function CategoriaPage({
 
           {/* ── Featured article (page 1 only) ── */}
           {featuredPost && (() => {
-            const img        = getFeaturedImg(featuredPost);
-            const authorName = (featuredPost._embedded?.author?.[0]?.name as string) ?? 'Redacción';
-            const catName    = (featuredPost._embedded?.['wp:term']?.[0]?.[0]?.name as string) ?? category.name;
-            const rawExcerpt = stripHtml(featuredPost.excerpt?.rendered ?? '');
-            const excerpt    = truncate(rawExcerpt, 180);
-            const url        = `/${slug}/${featuredPost.slug}`;
+            const img          = getFeaturedImg(featuredPost);
+            const authorData   = featuredPost._embedded?.author?.[0];
+            const authorName   = (authorData?.name as string) ?? 'Redacción';
+            const authorAvatar = (authorData?.avatar_urls?.['96'] as string | null) ?? null;
+            const catName      = (featuredPost._embedded?.['wp:term']?.[0]?.[0]?.name as string) ?? category.name;
+            const rawExcerpt   = stripHtml(featuredPost.excerpt?.rendered ?? '');
+            const excerpt      = truncate(rawExcerpt, 180);
+            const url          = `/${slug}/${featuredPost.slug}`;
 
             return (
               <a href={url} className="v1-feature" aria-label={stripHtml(featuredPost.title.rendered)}>
                 {/* Image */}
                 <div
-                  className="v1-feature-img"
+                  className={`v1-feature-img${!img ? ' v1-no-img' : ''}`}
                   style={img ? {
                     backgroundImage: `linear-gradient(135deg,rgba(0,0,158,.35),rgba(10,115,206,.15)),url("${img}")`,
                     backgroundSize: 'cover',
@@ -356,7 +369,13 @@ export default async function CategoriaPage({
 
                   <div className="v1-feature-foot">
                     <div className="v1-author">
-                      <div className="v1-avatar">{getInitials(authorName)}</div>
+                      <div className="v1-avatar">
+                        {authorAvatar
+                          // eslint-disable-next-line @next/next/no-img-element
+                          ? <img src={authorAvatar} alt={authorName} />
+                          : getInitials(authorName)
+                        }
+                      </div>
                       <div>
                         <div className="v1-author-name">{authorName}</div>
                         <div className="v1-author-meta">{timeAgo(featuredPost.date)}</div>
@@ -389,14 +408,16 @@ export default async function CategoriaPage({
           {gridPosts.length > 0 && (
             <div className="v1-grid">
               {gridPosts.map((post: any) => {
-                const img        = getFeaturedImg(post);
-                const authorName = (post._embedded?.author?.[0]?.name as string) ?? 'Redacción';
-                const catName    = (post._embedded?.['wp:term']?.[0]?.[0]?.name as string) ?? category.name;
+                const img          = getFeaturedImg(post);
+                const authorData   = post._embedded?.author?.[0];
+                const authorName   = (authorData?.name as string) ?? 'Redacción';
+                const authorAvatar = (authorData?.avatar_urls?.['96'] as string | null) ?? null;
+                const catName      = (post._embedded?.['wp:term']?.[0]?.[0]?.name as string) ?? category.name;
                 return (
                   <a key={post.id} href={`/${slug}/${post.slug}`} className="v1-card-link">
                     <article className="v1-card">
                       <div
-                        className="v1-card-img"
+                        className={`v1-card-img${!img ? ' v1-no-img' : ''}`}
                         style={img ? {
                           backgroundImage: `linear-gradient(135deg,rgba(0,0,158,.18),rgba(10,115,206,.05)),url("${img}")`,
                         } : undefined}
@@ -405,7 +426,14 @@ export default async function CategoriaPage({
                         <span className="v1-card-tag">{(catName as string).toUpperCase()}</span>
                         <h4 className="v1-card-title"
                           dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-                        <div className="v1-card-foot">
+                        <div className="v1-card-foot" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                          <div className="v1-avatar" style={{ width: 24, height: 24, fontSize: 9 }}>
+                            {authorAvatar
+                              // eslint-disable-next-line @next/next/no-img-element
+                              ? <img src={authorAvatar} alt={authorName} />
+                              : getInitials(authorName)
+                            }
+                          </div>
                           <span>{authorName}</span>
                           <span className="dot-sep">·</span>
                           <span>{timeAgo(post.date)}</span>
@@ -443,21 +471,30 @@ export default async function CategoriaPage({
 
               <div className="v1-list">
                 {listPosts.map((post: any, i: number) => {
-                  const img        = getFeaturedImg(post);
-                  const authorName = (post._embedded?.author?.[0]?.name as string) ?? 'Redacción';
-                  const catName    = (post._embedded?.['wp:term']?.[0]?.[0]?.name as string) ?? category.name;
+                  const img          = getFeaturedImg(post);
+                  const authorData   = post._embedded?.author?.[0];
+                  const authorName   = (authorData?.name as string) ?? 'Redacción';
+                  const authorAvatar = (authorData?.avatar_urls?.['96'] as string | null) ?? null;
+                  const catName      = (post._embedded?.['wp:term']?.[0]?.[0]?.name as string) ?? category.name;
                   return (
                     <a key={post.id} href={`/${slug}/${post.slug}`} className="v1-list-link">
                       <article className="v1-list-item">
                         <div className="v1-list-n">{String(i + 1).padStart(2, '0')}</div>
                         <div
-                          className="v1-list-thumb"
+                          className={`v1-list-thumb${!img ? ' v1-no-img' : ''}`}
                           style={img ? { backgroundImage: `url("${img}")` } : undefined}
                         />
                         <div className="v1-list-content">
                           <div className="v1-list-tag">{(catName as string).toUpperCase()}</div>
                           <h4 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-                          <div className="v1-list-byline">
+                          <div className="v1-list-byline" style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+                            <div className="v1-avatar" style={{ width: 22, height: 22, fontSize: 8 }}>
+                              {authorAvatar
+                                // eslint-disable-next-line @next/next/no-img-element
+                                ? <img src={authorAvatar} alt={authorName} />
+                                : getInitials(authorName)
+                              }
+                            </div>
                             <span>{authorName}</span>
                             <span className="v1-list-dot" />
                             <span>{timeAgo(post.date)}</span>

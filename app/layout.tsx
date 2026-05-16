@@ -85,7 +85,7 @@ const schemaOrganization = {
   "masthead": "https://acontecer.co.cr/nosotros",
   "logo": {
     "@type": "ImageObject",
-    "url": "https://cms.acontecer.co.cr/wp-content/uploads/2026/03/FAVS.png",
+    "url": "https://acontecer.co.cr/logo.png",
     "width": 512,
     "height": 512
   }
@@ -124,13 +124,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="dns-prefetch" href="https://analytics.webpushr.com" />
         {/* Iconos multi-resolución — 512×512 para plataformas de noticias */}
         <link rel="icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="512x512" href="https://cms.acontecer.co.cr/wp-content/uploads/2026/03/FAVS.png" />
-        <link rel="apple-touch-icon" sizes="512x512" href="https://cms.acontecer.co.cr/wp-content/uploads/2026/03/FAVS.png" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favs.png" />
+        <link rel="apple-touch-icon" sizes="48x48" href="/favs.png" />
         {/* Metadatos de plataforma — Windows, Microsoft News, navegadores */}
         <meta name="application-name" content="Acontecer.co.cr" />
         <meta name="theme-color" content="#0000A2" />
         <meta name="msapplication-TileColor" content="#0000A2" />
-        <meta name="msapplication-TileImage" content="https://cms.acontecer.co.cr/wp-content/uploads/2026/03/FAVS.png" />
+        <meta name="msapplication-TileImage" content="/favs.png" />
         <meta name="msapplication-config" content="none" />
         {/* RSS autodiscovery — requerido por Apple News y agregadores */}
         <link rel="alternate" type="application/rss+xml" title="Acontecer.co.cr — Feed RSS" href="https://acontecer.co.cr/feed" />

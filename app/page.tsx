@@ -3,6 +3,10 @@ import HeroCarousel from '@/components/HeroCarousel';
 import YoutubeEmbed from '@/components/YoutubeEmbed';
 import { getFocalPoint } from '@/lib/focalPoint';
 
+// SEO: reescribir URLs del CMS a relativas (next.config rewrite)
+const cmsToLocal = (u?: string | null) => u ? u.replace(/^https?:\/\/cms\.acontecer\.co\.cr\//i, 'https://acontecer.co.cr/') : u;
+
+
 const API = 'https://cms.acontecer.co.cr/wp-json/wp/v2';
 
 async function getPosts(n = 18) {
@@ -77,10 +81,12 @@ function heroDate(isoDate: string) {
 function getFeaturedImg(post: any): string | null {
   const media = post._embedded?.['wp:featuredmedia']?.[0];
   if (!media || media.code) return null;
-  return media.media_details?.sizes?.large?.source_url
+  const raw = media.media_details?.sizes?.large?.source_url
       || media.media_details?.sizes?.medium_large?.source_url
       || media.source_url
       || null;
+  // SEO: reescribir URLs del CMS al dominio principal (next.config rewrite)
+  return cmsToLocal(raw) ?? null;
 }
 function getCatInfo(post: any, categories: any[]): { name: string; slug: string } {
   const cat = categories.find((c: any) => post.categories?.includes(c.id) && c.name !== 'Uncategorized');

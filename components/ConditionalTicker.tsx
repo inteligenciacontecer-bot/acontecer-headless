@@ -1,6 +1,5 @@
-'use client';
-
-import { usePathname } from 'next/navigation';
+import { headers } from 'next/headers';
+import type { ReactNode } from 'react';
 
 /**
  * Oculta el ticker en páginas de notas individuales para evitar
@@ -8,6 +7,9 @@ import { usePathname } from 'next/navigation';
  *
  * Notas tienen la forma /[categoria]/[slug] donde categoria NO es
  * una ruta reservada del sitio.
+ *
+ * Server Component: lee la ruta desde el header x-pathname que
+ * inyecta el middleware (más confiable que usePathname en SSR).
  */
 const RESERVED_FIRST_SEGMENTS = new Set([
   'agencia',
@@ -31,10 +33,12 @@ const RESERVED_FIRST_SEGMENTS = new Set([
   'sitemap.xml',
   'stories',
   '_next',
+  'icon.png',
 ]);
 
-export default function ConditionalTicker({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname() || '/';
+export default async function ConditionalTicker({ children }: { children: ReactNode }) {
+  const h = await headers();
+  const pathname = h.get('x-pathname') || '/';
   const segments = pathname.split('/').filter(Boolean);
 
   // Página de nota: exactamente 2 segmentos y el primero NO es reservado

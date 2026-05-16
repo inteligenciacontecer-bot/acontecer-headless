@@ -7,6 +7,10 @@ import NotaInteractive from '@/components/NotaInteractive';
 import AuthorAvatar from '@/components/AuthorAvatar';
 import { linkDiputados, type DiputadoMinimo } from '@/lib/diputados-linker';
 
+// SEO: reescribir URLs del CMS a dominio principal
+const cmsToLocal = (u?: string | null) => u ? u.replace(/^https?:\/\/cms\.acontecer\.co\.cr\//i, 'https://acontecer.co.cr/') : u;
+
+
 const API          = 'https://cms.acontecer.co.cr/wp-json/wp/v2';
 const ASAMBLEA_API = 'https://cms.acontecer.co.cr/wp-json/acontecer/v1/asamblea';
 
@@ -44,6 +48,9 @@ function extraerEncabezados(html: string): Heading[] {
 function limpiarContenido(html: string, addHeadingIds = false) {
   let sectionCount = 0;
   return html
+    // SEO: reescribir URLs absolutas del CMS → dominio principal
+    //   (next.config tiene rewrite /wp-content/* → cms.acontecer.co.cr/wp-content/*)
+    .replace(/https?:\/\/cms\.acontecer\.co\.cr\/wp-content\//gi, 'https://acontecer.co.cr/wp-content/')
     // Elimina embeds de video/redes que no renderizamos
     .replace(/<figure[^>]*class="[^"]*wp-block-embed[^"]*"[^>]*>[\s\S]*?<\/figure>/gi, '')
     .replace(/<iframe[^>]*>[\s\S]*?<\/iframe>/gi, '')
@@ -107,7 +114,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug, categoria } = await params;
   const post = await getPost(slug);
   if (!post) return { title: 'Nota no encontrada' };
-  const featuredImg = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || 'https://acontecer.co.cr/opengraph-image';
+  const featuredImg = cmsToLocal(post._embedded?.['wp:featuredmedia']?.[0]?.source_url) || 'https://acontecer.co.cr/opengraph-image';
   const rawTitle   = post.title.rendered.replace(/<[^>]+>/g, '');
   const rawExcerpt = post.excerpt?.rendered?.replace(/<[^>]+>/g, '').trim().slice(0, 160) || '';
   const seoTitle   = post.meta?._acontecer_seo_title || '';
@@ -180,7 +187,7 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
   ]);
 
   const DEFAULT_IMG  = 'https://acontecer.co.cr/opengraph-image';
-  const featuredImg  = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || DEFAULT_IMG;
+  const featuredImg = cmsToLocal(post._embedded?.['wp:featuredmedia']?.[0]?.source_url) || DEFAULT_IMG;
   const authorName   = post._embedded?.author?.[0]?.name || 'Redaccion ACONTECER';
   const authorSlug   = post._embedded?.author?.[0]?.slug || 'editor';
   const authorAvatar = post._embedded?.author?.[0]?.avatar_urls?.['96'] || null;
@@ -239,7 +246,7 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
         author: { '@type':'Person', name:authorName, url:`https://acontecer.co.cr/autor/${authorSlug}` },
         publisher: {
           '@type':'Organization', name:'Acontecer.co.cr', url:'https://acontecer.co.cr',
-          logo: { '@type':'ImageObject', url:'https://cms.acontecer.co.cr/wp-content/uploads/2026/03/FAVS.png', width:512, height:512 },
+          logo: { '@type':'ImageObject', url:'https://acontecer.co.cr/logo.png', width:2251, height:353 },
         },
         image: featuredImg ? { '@type':'ImageObject', url:featuredImg, width:1200, height:630 } : undefined,
         mainEntityOfPage: { '@type':'WebPage', '@id':`https://acontecer.co.cr/${catSlug}/${slug}` },
@@ -419,7 +426,7 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
 
           {/* ──────────────────────── NOTAS SIGUIENTES ────────────────────── */}
           {related.map((p: any) => {
-            const pImg      = p._embedded?.['wp:featuredmedia']?.[0]?.source_url || DEFAULT_IMG;
+            const pImg      = cmsToLocal(p._embedded?.['wp:featuredmedia']?.[0]?.source_url) || DEFAULT_IMG;
             const pCat      = p._embedded?.['wp:term']?.[0]?.[0]?.slug || catSlug;
             const pCatName  = p._embedded?.['wp:term']?.[0]?.[0]?.name || catName;
             const pAuthor   = p._embedded?.author?.[0]?.name || 'Redaccion ACONTECER';
