@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Ticker from "@/components/Ticker";
+import ConditionalTicker from "@/components/ConditionalTicker";
 import CookieBanner from "@/components/CookieBanner";
 
 const GA_ID = 'G-GFS4JMZGLP';
@@ -138,8 +139,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(schemaWebSite)}} />
       </head>
       <body>
-        <Ticker />
         <Header />
+        <Ticker />
         {children}
         <Footer />
         {/* Google Analytics 4 + Consent Mode v2
