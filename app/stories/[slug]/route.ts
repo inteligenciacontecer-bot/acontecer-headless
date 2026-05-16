@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 const API = 'https://cms.acontecer.co.cr/wp-json/wp/v2';
-const LOGO = 'https://cms.acontecer.co.cr/wp-content/uploads/2026/03/FAVS.png';
+const LOGO = "https://acontecer.co.cr/icon-192.png";
 const FALLBACK_IMG = 'https://acontecer.co.cr/opengraph-image';
 
 function stripHtml(html: string): string {
@@ -47,7 +47,9 @@ export async function GET(
   const tituloCorto = titulo.length > 80 ? titulo.slice(0, 77) + '…' : titulo;
   const catName    = post._embedded?.['wp:term']?.[0]?.[0]?.name || 'Noticias';
   const catSlug    = post._embedded?.['wp:term']?.[0]?.[0]?.slug || 'nacionales';
-  const imagenUrl  = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || FALLBACK_IMG;
+  const imagenUrlRaw = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || FALLBACK_IMG;
+  // SEO: servir imagen via dominio principal (rewrite transparente en next.config)
+  const imagenUrl = imagenUrlRaw.replace(/^https?:\/\/cms\.acontecer\.co\.cr\//i, 'https://acontecer.co.cr/');
   const autorNombre = post._embedded?.author?.[0]?.name || 'Redacción ACONTECER';
   const excerptRaw = stripHtml(post.excerpt?.rendered || '');
   const datoTexto  = primerOracion(excerptRaw, 150);
@@ -56,6 +58,10 @@ export async function GET(
     day: 'numeric', month: 'long', year: 'numeric',
   });
   const articuloUrl = `https://acontecer.co.cr/${catSlug}/${slug}`;
+  // SEO: las stories son canónicas en sí mismas (no son AMP versions de notas)
+  // → Resuelve el error GSC "amp-story canónico" sin necesidad de
+  //   agregar <link rel=amphtml> en cada página de nota.
+  const storyUrl = `https://acontecer.co.cr/stories/${slug}`;
 
   const schema = JSON.stringify({
     '@context': 'https://schema.org',
@@ -70,7 +76,10 @@ export async function GET(
       name: 'Acontecer.co.cr',
       logo: { '@type': 'ImageObject', url: LOGO, width: 512, height: 512 },
     },
-    url: articuloUrl,
+    url: storyUrl,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': storyUrl },
+    // Referencia a la nota completa por si Google quiere relacionarlas
+    isPartOf: { '@type': 'Article', '@id': articuloUrl }
   });
 
   const html = `<!doctype html>
@@ -78,7 +87,7 @@ export async function GET(
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-  <link rel="canonical" href="${articuloUrl}">
+  <link rel="canonical" href="${storyUrl}">
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <script async custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js"></script>
   <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
