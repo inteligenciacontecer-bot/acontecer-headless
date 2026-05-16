@@ -142,6 +142,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="msapplication-config" content="none" />
         {/* RSS autodiscovery — requerido por Apple News y agregadores */}
         <link rel="alternate" type="application/rss+xml" title="Acontecer.co.cr — Feed RSS" href="https://acontecer.co.cr/feed" />
+        {/* OpenSearch — permite agregar Acontecer como motor de búsqueda del browser */}
+        <link rel="search" type="application/opensearchdescription+xml" title="Acontecer.co.cr" href="/opensearch.xml" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(schemaOrganization)}} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(schemaWebSite)}} />
       </head>

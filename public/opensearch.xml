@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"
+                       xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <ShortName>Acontecer</ShortName>
+  <LongName>Acontecer.co.cr — Noticias Costa Rica</LongName>
+  <Description>Buscar noticias en Acontecer.co.cr, el medio digital independiente de Costa Rica.</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Language>es-CR</Language>
+  <Image width="48" height="48" type="image/png">https://acontecer.co.cr/favs.png</Image>
+  <Image width="192" height="192" type="image/png">https://acontecer.co.cr/icon-192.png</Image>
+  <Url type="text/html"
+       method="get"
+       template="https://acontecer.co.cr/buscar?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml"
+       rel="self"
+       template="https://acontecer.co.cr/opensearch.xml"/>
+  <moz:SearchForm>https://acontecer.co.cr/buscar</moz:SearchForm>
+  <Developer>Acontecer.co.cr</Developer>
+  <Contact>prensa@acontecer.co.cr</Contact>
+  <Tags>noticias costa rica nacionales internacionales deportes economia</Tags>
+  <AdultContent>false</AdultContent>
+</OpenSearchDescription>

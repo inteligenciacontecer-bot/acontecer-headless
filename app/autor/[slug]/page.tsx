@@ -150,17 +150,32 @@ export default async function AutorPage({
   return (
     <div className="ap-wrap">
 
-      {/* SCHEMA — Person */}
+      {/* SCHEMA — Person enriquecido (E-E-A-T: autoridad del autor) */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{
         __html: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Person',
+          '@id': shareUrl + '#person',
           name: author.name,
           url: shareUrl,
-          image: avatarUrl || undefined,
+          mainEntityOfPage: shareUrl,
+          image: avatarUrl ? {
+            '@type': 'ImageObject',
+            url: avatarUrl,
+            caption: author.name,
+          } : undefined,
           description: author.description || undefined,
           jobTitle: 'Periodista',
-          worksFor: { '@type': 'Organization', name: 'Acontecer.co.cr', url: 'https://acontecer.co.cr' },
+          knowsAbout: topics.length > 0
+            ? topics.map(t => t.name)
+            : ['Noticias Costa Rica', 'Periodismo digital'],
+          worksFor: {
+            '@type': 'NewsMediaOrganization',
+            name: 'Acontecer.co.cr',
+            url: 'https://acontecer.co.cr',
+            logo: 'https://acontecer.co.cr/logo.png',
+          },
+          nationality: { '@type': 'Country', name: 'Costa Rica' },
         }),
       }} />
 

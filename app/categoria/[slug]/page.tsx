@@ -242,7 +242,7 @@ export default async function CategoriaPage({
 
   return (
     <>
-      {/* ── Schema ── */}
+      {/* ── Schema: BreadcrumbList ── */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
@@ -250,6 +250,24 @@ export default async function CategoriaPage({
           { '@type': 'ListItem', position: 1, name: 'Inicio',       item: 'https://acontecer.co.cr' },
           { '@type': 'ListItem', position: 2, name: category.name,  item: `https://acontecer.co.cr/categoria/${slug}` },
         ],
+      })}} />
+
+      {/* ── Schema: ItemList (notas del listado) ── */}
+      {/*   Le dice a Google que esta página es un archivo/listado de artículos.
+             Habilita rich snippets de lista en SERP para queries de categoría. */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: `${category.name} — Acontecer.co.cr`,
+        description: `Últimas noticias de ${category.name} publicadas por Acontecer.co.cr`,
+        numberOfItems: posts.length,
+        itemListOrder: 'https://schema.org/ItemListOrderDescending',
+        itemListElement: posts.slice(0, 20).map((p: any, i: number) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          url: `https://acontecer.co.cr/${slug}/${p.slug}`,
+          name: (p.title?.rendered ?? '').replace(/<[^>]+>/g, ''),
+        })),
       })}} />
 
       {/* ══════════════════════════════ HERO ══════════════════════════════ */}
