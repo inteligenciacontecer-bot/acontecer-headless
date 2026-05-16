@@ -185,7 +185,7 @@
 .p-mosaic-item:hover .p-mosaic-title { color: var(--blue-700); }
 .p-mosaic-meta {
   font-family: var(--mono); font-size: 10px;
-  letter-spacing: .12em; color: var(--ink-400); text-transform: uppercase;
+  letter-spacing: .12em; color: var(--ink-600, #374151); text-transform: uppercase;
 }
 
 /* ── SUBNAV ───────────────────────────────────────────────────────────────── */
@@ -274,7 +274,7 @@
 .p-card:hover .p-card-title { color: var(--blue-700); }
 .p-card-foot {
   font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
-  color: var(--ink-400); display: flex; gap: 8px; text-transform: uppercase;
+  color: var(--ink-600, #374151); display: flex; gap: 8px; text-transform: uppercase;
 }
 .p-card-foot .dot-sep { color: var(--ink-300); }
 
@@ -326,7 +326,7 @@
 .p-ce-item:hover .p-ce-item-title { color: var(--blue-700); }
 .p-ce-item-meta {
   font-family: var(--mono); font-size: 10px; letter-spacing: .12em;
-  color: var(--ink-400); text-transform: uppercase; margin-top: 8px;
+  color: var(--ink-600, #374151); text-transform: uppercase; margin-top: 8px;
 }
 
 /* ── SIDEBAR WIDGETS ─────────────────────────────────────────────────────── */

@@ -103,12 +103,15 @@ export default async function Ticker() {
               <span style={{ paddingRight: 48 }} />
             </a>
           ))}
-          {/* Segunda copia idéntica — cierra el loop sin salto */}
+          {/* Segunda copia idéntica — cierra el loop sin salto.
+              aria-hidden + tabIndex={-1} para que NO sean enfocables
+              (a11y: evita confusión en lectores de pantalla + Tab) */}
           {items.map((item) => (
             <a
               key={'b-' + item.id}
               href={'/' + item.catSlug + '/' + item.slug}
               aria-hidden="true"
+              tabIndex={-1}
               style={{ color: '#1f2937', textDecoration: 'none', fontSize: 13, fontWeight: 500 }}
             >
               <span style={{ color: '#0a73ce', paddingRight: 6 }}>›</span>

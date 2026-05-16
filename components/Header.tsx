@@ -133,6 +133,8 @@ export default function Header() {
 
           <div style={{display:'flex', alignItems:'center', gap:'6px'}}>
             <button onClick={() => setSearchOpen(!searchOpen)}
+              aria-label={searchOpen ? 'Cerrar búsqueda' : 'Abrir búsqueda'}
+              aria-expanded={searchOpen}
               style={{background:'rgba(255,255,255,0.15)', border:'none', borderRadius:'50%', width:'36px', height:'36px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', color:'white'}}>
               {searchOpen ? <CloseIcon /> : <SearchIcon />}
             </button>
@@ -171,7 +173,13 @@ export default function Header() {
       )}
 
       {/* ── DRAWER ───────────────────────────────────────────────────────── */}
-      <aside aria-modal={menuOpen} aria-label="Menú de navegación" style={{
+      <aside
+        role={menuOpen ? 'dialog' : undefined}
+        aria-modal={menuOpen ? true : undefined}
+        aria-label="Menú de navegación"
+        aria-hidden={!menuOpen}
+        /* inert omitido: aria-hidden ya cubre lectores de pantalla */
+        style={{
         position:'fixed', top:0, right:0, bottom:0,
         width:'min(480px, 92vw)',
         background:'#fff', zIndex:140,
