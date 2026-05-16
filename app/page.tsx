@@ -57,13 +57,14 @@ function pt(html: string): string {
 function truncate(str: string, max: number) {
   return str.length > max ? str.slice(0, max).trimEnd() + '…' : str;
 }
-function timeAgoDate(isoDate: string) {
+function timeAgoDate(isoDate: string): string | null {
   const diff = Date.now() - new Date(isoDate).getTime();
   const m = Math.floor(diff / 60000);
   if (m < 60) return `Hace ${m || 1} min`;
   const h = Math.floor(m / 60);
   if (h < 24) return `Hace ${h} h`;
   const d = Math.floor(h / 24);
+  if (d >= 14) return null; // notas viejas: no mostrar tiempo en portada
   return `Hace ${d} día${d > 1 ? 's' : ''}`;
 }
 function fmtDate(isoDate: string) {
@@ -185,7 +186,7 @@ export default async function Home() {
                 />
                 <div className="p-mosaic-eyebrow">{name}</div>
                 <h3 className="p-mosaic-title" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-                <div className="p-mosaic-meta">{timeAgoDate(post.date)}</div>
+                {timeAgoDate(post.date) && <div className="p-mosaic-meta">{timeAgoDate(post.date)}</div>}
               </a>
             );
           })}
@@ -237,7 +238,7 @@ export default async function Home() {
                   <span className="p-card-tag">{name}</span>
                   <h3 className="p-card-title" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
                   <div className="p-card-foot">
-                    <span>{timeAgoDate(post.date)}</span>
+                    {timeAgoDate(post.date) && <span>{timeAgoDate(post.date)}</span>}
                   </div>
                 </a>
               );
@@ -278,7 +279,7 @@ export default async function Home() {
                         <div>
                           <div className="p-ce-item-eyebrow">Deportes</div>
                           <h4 className="p-ce-item-title" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-                          <div className="p-ce-item-meta">{timeAgoDate(post.date)}</div>
+                          {timeAgoDate(post.date) && <div className="p-ce-item-meta">{timeAgoDate(post.date)}</div>}
                         </div>
                       </a>
                     );
@@ -322,7 +323,7 @@ export default async function Home() {
                         <div>
                           <div className="p-ce-item-eyebrow">Economía</div>
                           <h4 className="p-ce-item-title" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-                          <div className="p-ce-item-meta">{timeAgoDate(post.date)}</div>
+                          {timeAgoDate(post.date) && <div className="p-ce-item-meta">{timeAgoDate(post.date)}</div>}
                         </div>
                       </a>
                     );
