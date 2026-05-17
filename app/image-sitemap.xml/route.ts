@@ -38,6 +38,17 @@ function extractImagesFromHtml(html: string): string[] {
   return urls;
 }
 
+
+function isValidSlug(slug: string): boolean {
+  if (!slug) return false;
+  if (slug.startsWith('__')) return false;
+  if (slug.includes('fbclid')) return false;
+  if (slug.includes('utm_')) return false;
+  if (slug.includes('https-') || slug.includes('http-')) return false;
+  if (slug.length > 150) return false;
+  return true;
+}
+
 export async function GET() {
   try {
     // Trae TODOS los posts paginados (limit 1000 = ~10 páginas) con _embed para imágenes
@@ -65,6 +76,7 @@ export async function GET() {
     categories.forEach((c) => { catMap[c.id] = c.slug; });
 
     const items = all
+      .filter((p: any) => isValidSlug(p.slug))
       .map((p: any) => {
         const catSlug = catMap[p.categories?.[0]] || 'nacionales';
         const title   = stripHtml(p.title?.rendered ?? '');

@@ -3,6 +3,20 @@ import { MetadataRoute } from 'next';
 const API  = 'https://cms.acontecer.co.cr/wp-json/wp/v2';
 const BASE = 'https://acontecer.co.cr';
 
+
+// Filtra slugs corruptos que ensucian el sitemap (URLs de WP rotas con fbclid,
+// __trashed, etc.) — afectan presupuesto de rastreo y dan errores en Semrush.
+function isValidSlug(slug: string): boolean {
+  if (!slug) return false;
+  if (slug.startsWith('__')) return false;          // __trashed, __backup
+  if (slug.includes('fbclid')) return false;        // URLs con fbclid pegado
+  if (slug.includes('utm_')) return false;
+  if (slug.includes('https-') || slug.includes('http-')) return false;  // URLs pegadas como slug
+  if (slug.length > 150) return false;              // slugs absurdamente largos
+  if (/^\d{4}-\d{2}-\d{2}/.test(slug)) return false;  // fechas como slug
+  return true;
+}
+
 async function getAllPosts() {
   try {
     const all: any[] = [];
@@ -69,7 +83,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     }));
 
-  const postPages: MetadataRoute.Sitemap = posts.map((p: any) => ({
+  const postPages: MetadataRoute.Sitemap = posts.filter((p: any) => isValidSlug(p.slug)).map((p: any) => ({
     url: `${BASE}/${catMap[p.categories?.[0]] || 'nacionales'}/${p.slug}`,
     lastModified: new Date(p.modified),
     changeFrequency: 'weekly' as const,
@@ -78,7 +92,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Web Stories — una entry por cada artículo reciente (últimos 200)
   // Google Discover las descubre a través de este sitemap
-  const storyPages: MetadataRoute.Sitemap = posts.slice(0, 200).map((p: any) => ({
+  const storyPages: MetadataRoute.Sitemap = posts.filter((p: any) => isValidSlug(p.slug)).slice(0, 200).map((p: any) => ({
     url: `${BASE}/stories/${p.slug}`,
     lastModified: new Date(p.modified),
     changeFrequency: 'weekly' as const,

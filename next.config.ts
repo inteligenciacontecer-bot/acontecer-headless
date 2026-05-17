@@ -57,9 +57,10 @@ const nextConfig: NextConfig = {
         source: '/:path*',
         headers: [
           {
-            // HSTS: forza HTTPS por 1 año. Sin preload (compromiso permanente — opt-in manual)
+            // HSTS: 2 años + preload (requisito mínimo de hstspreload.org)
+            // Submit en https://hstspreload.org/ con el dominio acontecer.co.cr
             key: 'Strict-Transport-Security',
-            value: 'max-age=31536000; includeSubDomains',
+            value: 'max-age=63072000; includeSubDomains; preload',
           },
           {
             // Envía Referer completo a propio dominio, solo origin a externos

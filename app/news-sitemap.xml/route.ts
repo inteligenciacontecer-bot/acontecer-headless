@@ -24,6 +24,17 @@ function esc(str: string): string {
     .replace(/"/g, '&quot;').replace(/'/g, '&apos;');
 }
 
+
+function isValidSlug(slug: string): boolean {
+  if (!slug) return false;
+  if (slug.startsWith('__')) return false;
+  if (slug.includes('fbclid')) return false;
+  if (slug.includes('utm_')) return false;
+  if (slug.includes('https-') || slug.includes('http-')) return false;
+  if (slug.length > 150) return false;
+  return true;
+}
+
 export async function GET() {
   try {
     const twoDaysAgo = new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString();
@@ -49,7 +60,7 @@ export async function GET() {
     categories.forEach((c) => { catMap[c.id] = c.slug; });
 
     const items = Array.isArray(posts)
-      ? posts.map((p: any) => {
+      ? posts.filter((p: any) => isValidSlug(p.slug)).map((p: any) => {
           const catSlug    = catMap[p.categories?.[0]] || 'nacionales';
           const pubDate    = new Date(p.date).toISOString();
           const title      = stripHtml(p.title?.rendered ?? '');
