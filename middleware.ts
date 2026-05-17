@@ -30,8 +30,8 @@ export function middleware(req: NextRequest) {
   // Estas URLs aparecen en backlinks externos, Semrush, Google Search
   // o componentes viejos. Redirigimos a destino canónico para evitar 404.
   const redirects301: Record<string, string> = {
-    '/categoria/salud':     '/',  // Categoría no existe en WP, mandar a home
-    '/categoria/Salud':     '/',  // por si llega con capitalización antigua
+    '/categoria/salud':     '/categoria/nacionales',  // Categoria no existe en WP — redirigir a nacionales
+    '/categoria/Salud':     '/categoria/nacionales',  // por si llega con capitalizacion antigua
     '/autores/':            '/autores',  // sin slash final
     '/blog':                '/',  // legacy WordPress
     '/blog/':               '/',

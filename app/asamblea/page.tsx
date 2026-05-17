@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import HemicicloClient from '@/components/HemicicloClient';
 import UltimaHoraAsamblea from '@/components/UltimaHoraAsamblea';
+import { fotoDiputadoUrl } from '@/lib/diputado-foto';
 
 export const metadata: Metadata = {
   title: 'Monitor Legislativo — Asamblea de Costa Rica',
@@ -559,7 +560,7 @@ export default async function AsambleaPage() {
                               border: `2px solid ${color}55`, background: `${color}33`,
                             }}>
                               {d.foto_url
-                                ? <img src={d.foto_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="lazy" />
+                                ? <img src={fotoDiputadoUrl(d.foto_url)} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="lazy" />
                                 : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, color, fontWeight: 800 }}>
                                     {partes[0]?.[0]}{partes[1]?.[0]}
                                   </div>

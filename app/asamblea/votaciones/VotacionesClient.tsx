@@ -1,6 +1,7 @@
 ﻿'use client';
 
 import { useState, useEffect } from 'react';
+import { fotoDiputadoUrl } from '@/lib/diputado-foto';
 
 const API = 'https://cms.acontecer.co.cr/wp-json/acontecer/v1/asamblea';
 
@@ -169,7 +170,7 @@ function DiputadoCard({ d }: { d: any }) {
         overflow: 'hidden',
       }}>
         {d.foto_url
-          ? <img src={d.foto_url} alt={d.nombre_completo} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
+          ? <img src={fotoDiputadoUrl(d.foto_url)} alt={d.nombre_completo} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
           : <span style={{ fontSize: 12, fontWeight: 800, color: '#64748b' }}>{initials}</span>
         }
       </div>

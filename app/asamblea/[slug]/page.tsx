@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { fotoDiputadoUrl } from '@/lib/diputado-foto';
 
 const API    = 'https://cms.acontecer.co.cr/wp-json/acontecer/v1/asamblea';
 const WP_API = 'https://cms.acontecer.co.cr/wp-json/wp/v2';
@@ -415,7 +416,7 @@ export default async function DiputadoPerfil({ params }: { params: Promise<{ slu
               marginBottom: -20,
             }}>
               {d.foto_url
-                ? <img src={d.foto_url} alt={d.nombre_completo} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                ? <img src={fotoDiputadoUrl(d.foto_url)} alt={d.nombre_completo} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.4)' }}>
                     {Icon.Person}
                   </div>
