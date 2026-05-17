@@ -7,6 +7,7 @@ import NotaInteractive from '@/components/NotaInteractive';
 import ThemeToggle from '@/components/ThemeToggle';
 import AuthorAvatar from '@/components/AuthorAvatar';
 import { linkDiputados, type DiputadoMinimo } from '@/lib/diputados-linker';
+import { buildMentions, buildAbout, buildSpeakable, extractCitations, buildArticleBody } from '@/lib/schema-news';
 
 // SEO: reescribir URLs del CMS a dominio principal
 const cmsToLocal = (u?: string | null) => u ? u.replace(/^https?:\/\/cms\.acontecer\.co\.cr\//i, 'https://acontecer.co.cr/') : u;
@@ -40,6 +41,21 @@ function extraerEncabezados(html: string): Heading[] {
     if (text) headings.push({ id: match[2], text, level: parseInt(match[1]) });
   }
   return headings;
+}
+
+/**
+ * insertarBannerWA — inyecta el banner del canal de WhatsApp después
+ * del N-ésimo párrafo del contenido (default 3). Si el artículo tiene
+ * menos párrafos, devuelve el HTML sin cambios.
+ */
+function insertarBannerWA(html: string, despuesDelParrafo = 3): string {
+  const banner = `<aside class="nv2-wa-cta"><a href="https://whatsapp.com/channel/0029VaEbClvAzNbnwhu3Hp0S" target="_blank" rel="noopener noreferrer" aria-label="Unirse al canal oficial de WhatsApp de Acontecer.co.cr"><span class="nv2-wa-cta-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.88 11.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.84.98h.01a7.94 7.94 0 0 0 7.94-7.92 7.88 7.88 0 0 0-2.39-5.64zm-5.55 12.21h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.49.65.66-2.43-.16-.25a6.6 6.6 0 0 1-1.01-3.51 6.62 6.62 0 0 1 11.3-4.68 6.58 6.58 0 0 1 1.94 4.68 6.62 6.62 0 0 1-6.63 6.6zm3.62-4.94c-.2-.1-1.17-.58-1.35-.65-.18-.07-.31-.1-.45.1-.13.2-.51.65-.62.78-.12.13-.23.15-.42.05-.2-.1-.84-.31-1.6-.99-.6-.53-1-1.18-1.12-1.38-.12-.2-.01-.31.09-.4.09-.09.2-.23.3-.35.1-.12.13-.2.2-.33.07-.13.03-.25-.02-.35-.05-.1-.45-1.08-.62-1.48-.16-.39-.33-.34-.45-.34-.12-.01-.25-.01-.39-.01a.75.75 0 0 0-.54.25c-.18.2-.7.69-.7 1.67 0 .99.72 1.94.82 2.07.1.13 1.42 2.16 3.43 3.03.48.21.85.33 1.14.42.48.15.92.13 1.26.08.39-.06 1.17-.48 1.34-.94.16-.46.16-.86.12-.94-.05-.08-.18-.13-.38-.23z"/></svg></span><span class="nv2-wa-cta-body"><strong class="nv2-wa-cta-title">Únase al canal de WhatsApp</strong><span class="nv2-wa-cta-desc">Reciba las noticias al instante · canal oficial · sin grupos ni spam</span></span><span class="nv2-wa-cta-arrow" aria-hidden="true">→</span></a></aside>`;
+  // Separar por </p> conservando posibles atributos: usamos regex case-insensitive
+  const parts = html.split(/<\/p>/i);
+  if (parts.length <= despuesDelParrafo) return html;
+  const antes = parts.slice(0, despuesDelParrafo).join('</p>') + '</p>';
+  const despues = parts.slice(despuesDelParrafo).join('</p>');
+  return antes + banner + despues;
 }
 
 /**
@@ -238,7 +254,9 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
 
   const { subtitulo, resto } = extraerPrimerH2(post.content.rendered);
   const conIDs         = limpiarContenido(resto, true);        // con IDs para TOC
-  const contenidoLimpio = linkDiputados(conIDs, diputados);
+  // Inyectar banner WhatsApp después del 3er párrafo (solo artículo principal)
+  const conBanner       = insertarBannerWA(linkDiputados(conIDs, diputados), 3);
+  const contenidoLimpio = conBanner;
   const headings       = extraerEncabezados(conIDs);
 
   /* ── SVG icons ─────────────────────────────────────────────────────────── */
@@ -261,7 +279,7 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
         ],
       })}} />
 
-      {/* SCHEMA.ORG — NewsArticle */}
+      {/* SCHEMA.ORG — NewsArticle (reforzado: mentions, about, speakable, citation, articleBody) */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'NewsArticle',
@@ -272,18 +290,32 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
         dateModified:   post.modified,
         author: { '@type':'Person', name:authorName, url:`https://acontecer.co.cr/autor/${authorSlug}` },
         publisher: {
-          '@type':'Organization', name:'Acontecer.co.cr', url:'https://acontecer.co.cr',
+          '@type':'NewsMediaOrganization', name:'Acontecer.co.cr', url:'https://acontecer.co.cr',
           logo: { '@type':'ImageObject', url:'https://acontecer.co.cr/logo.png', width:2251, height:353 },
+          sameAs: [
+            'https://www.facebook.com/AcontecerCR',
+            'https://twitter.com/AcontecerCR',
+            'https://www.instagram.com/acontecer.co.cr/',
+          ],
         },
         image: featuredImg ? { '@type':'ImageObject', url:featuredImg, width:1200, height:630 } : undefined,
         mainEntityOfPage: { '@type':'WebPage', '@id':`https://acontecer.co.cr/${catSlug}/${slug}` },
         keywords:        tags.map((t: any) => t.name).join(', ') || undefined,
         articleSection:  catName,
         wordCount:       palabras,
+        articleBody:     buildArticleBody(post.content.rendered),
         inLanguage:      'es-CR',
         isAccessibleForFree: true,
         copyrightHolder: { '@type':'Organization', name:'Acontecer.co.cr' },
         copyrightYear:   new Date(post.date).getFullYear(),
+        // Refuerzo SEO/AI ↓
+        mentions: buildMentions({
+          plainText: buildArticleBody(post.content.rendered, 8000) + ' ' + tituloPlano,
+          tags: tags.map((t: any) => ({ name: t.name, slug: t.slug })),
+        }),
+        about: buildAbout(catSlug, catName),
+        speakable: buildSpeakable(),
+        citation: extractCitations(post.content.rendered, 5),
       })}} />
 
       {/* BARRA DE PROGRESO FIJA */}
