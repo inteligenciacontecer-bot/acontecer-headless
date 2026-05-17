@@ -126,9 +126,15 @@ export default async function EtiquetaPage({
             <h1 style={{ fontFamily: 'Fraunces, serif', fontSize: '32px', color: 'white', fontWeight: '900', marginBottom: '6px' }}>
               {tag.name}
             </h1>
-            {tag.description && (
+            {tag.description ? (
               <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '15px', margin: 0 }}
                 dangerouslySetInnerHTML={{ __html: tag.description }} />
+            ) : (
+              <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '15px', margin: 0, lineHeight: 1.5 }}>
+                Todas las noticias relacionadas con <strong style={{ color: 'white' }}>{tag.name}</strong> publicadas por Acontecer.co.cr.
+                Cobertura editorial de actualidad costarricense, contexto político, declaraciones de fuentes y análisis periodístico.
+                Encontrá aquí los {total} artículos más recientes sobre este tema, ordenados cronológicamente.
+              </p>
             )}
           </div>
           <div style={{ textAlign: 'right', color: 'rgba(255,255,255,0.6)', fontSize: '13px', flexShrink: 0 }}>

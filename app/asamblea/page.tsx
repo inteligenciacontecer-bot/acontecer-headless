@@ -280,6 +280,9 @@ export default async function AsambleaPage() {
                 <h1 style={{ fontFamily: 'var(--font-Lora), serif', fontSize: 'clamp(22px,5vw,36px)', fontWeight: 900, color: 'white', margin: 0 }}>
                   Monitor Legislativo
                 </h1>
+                <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '15px', lineHeight: 1.6, margin: '12px 0 0', maxWidth: 720 }}>
+                  Cobertura periodística independiente de la Asamblea Legislativa de Costa Rica: seguimiento de los <strong style={{ color: 'white' }}>57 diputados</strong> que conforman el Congreso costarricense durante el período <strong style={{ color: 'white' }}>2026-2030</strong>, votaciones plenarias, comisiones legislativas, expedientes y proyectos de ley en trámite. Plataforma de transparencia legislativa que reúne en tiempo real datos oficiales del Parlamento, análisis editorial de Acontecer.co.cr y verificación de votos por fracción política (Pueblo Soberano, Liberación Nacional, Frente Amplio, Unidad Social Cristiana, Agenda Ciudadana y otros partidos representados). Información actualizada con cada sesión del plenario.
+                </p>
               </div>
             </div>
             {/* Indicador de monitoreo activo */}

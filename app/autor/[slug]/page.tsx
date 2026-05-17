@@ -209,8 +209,16 @@ export default async function AutorPage({
 
               <h1 className="ap-name">{author.name}</h1>
 
-              {author.description && (
+              {author.description ? (
                 <p className="ap-bio">{author.description}</p>
+              ) : (
+                <p className="ap-bio">
+                  {author.name} es periodista de Acontecer.co.cr, medio digital
+                  independiente de Costa Rica. Cubre actualidad nacional, política,
+                  Asamblea Legislativa, economía, deportes y entretenimiento.
+                  Producción periodística enfocada en contexto, verificación de
+                  fuentes y compromiso editorial con los lectores costarricenses.
+                </p>
               )}
 
               {/* Stats */}
