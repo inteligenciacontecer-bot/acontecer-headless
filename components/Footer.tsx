@@ -49,7 +49,6 @@ export default function Footer() {
               {name:'Deportes', href:'/categoria/deportes'},
               {name:'Economía', href:'/categoria/economia'},
               {name:'Entretenimiento', href:'/categoria/entretenimiento'},
-              {name:'Salud', href:'/categoria/salud'},
               {name:'Tecnología', href:'/categoria/tecnologia'},
               {name:'Opinión', href:'/categoria/opinion'},
             ].map(s => (
