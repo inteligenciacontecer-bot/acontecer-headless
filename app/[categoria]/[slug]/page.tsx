@@ -7,7 +7,7 @@ import NotaInteractive from '@/components/NotaInteractive';
 import ThemeToggle from '@/components/ThemeToggle';
 import AuthorAvatar from '@/components/AuthorAvatar';
 import { linkDiputados, type DiputadoMinimo } from '@/lib/diputados-linker';
-import { buildMentions, buildAbout, buildSpeakable, extractCitations, buildArticleBody } from '@/lib/schema-news';
+import { buildMentions, buildAbout, buildSpeakable, extractCitations, buildArticleBody, buildFAQPage, buildSportsEvent, buildEvent } from '@/lib/schema-news';
 
 // SEO: reescribir URLs del CMS a dominio principal
 const cmsToLocal = (u?: string | null) => u ? u.replace(/^https?:\/\/cms\.acontecer\.co\.cr\//i, 'https://acontecer.co.cr/') : u;
@@ -317,6 +317,32 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
         speakable: buildSpeakable(),
         citation: extractCitations(post.content.rendered, 5),
       })}} />
+
+      {/* SCHEMA.ORG — FAQPage (auto-detectado desde H2/H3 con preguntas) */}
+      {(() => {
+        const faq = buildFAQPage(post.content.rendered);
+        return faq ? <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(faq)}} /> : null;
+      })()}
+
+      {/* SCHEMA.ORG — SportsEvent (auto-detectado en notas de deportes) */}
+      {(() => {
+        const ev = buildSportsEvent({
+          catSlug, title: tituloPlano, plainText: buildArticleBody(post.content.rendered, 8000),
+          datePublished: post.date, url: `https://acontecer.co.cr/${catSlug}/${slug}`,
+          image: featuredImg,
+        });
+        return ev ? <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(ev)}} /> : null;
+      })()}
+
+      {/* SCHEMA.ORG — Event (auto-detectado en entretenimiento: conciertos/festivales) */}
+      {(() => {
+        const ev = buildEvent({
+          catSlug, title: tituloPlano, plainText: buildArticleBody(post.content.rendered, 8000),
+          datePublished: post.date, url: `https://acontecer.co.cr/${catSlug}/${slug}`,
+          image: featuredImg,
+        });
+        return ev ? <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(ev)}} /> : null;
+      })()}
 
       {/* BARRA DE PROGRESO FIJA */}
       <div className="nv2-progress" aria-hidden="true">

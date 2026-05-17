@@ -212,3 +212,257 @@ export function buildArticleBody(htmlContent: string, maxChars = 5000): string {
     .trim()
     .slice(0, maxChars);
 }
+
+// ═══════════════════════════════════════════════════════════════════════════
+// FAQ PAGE — detecta H2/H3 que son preguntas y arma FAQPage
+// ═══════════════════════════════════════════════════════════════════════════
+
+/**
+ * Busca preguntas (H2/H3 terminados en ?) y extrae la respuesta del párrafo siguiente.
+ * Si encuentra >= 2 preguntas, devuelve un schema FAQPage. Si no, null.
+ *
+ * Google muestra FAQPage como featured snippet/AI Overview.
+ */
+export function buildFAQPage(htmlContent: string): any | null {
+  if (!htmlContent) return null;
+
+  // Match H2/H3 con texto que contiene un signo de pregunta
+  const headingRegex = /<h([23])[^>]*>([\s\S]*?)<\/h\1>/gi;
+  const faqs: Array<{ q: string; a: string }> = [];
+
+  let match: RegExpExecArray | null;
+  const headings: Array<{ end: number; text: string }> = [];
+  while ((match = headingRegex.exec(htmlContent)) !== null) {
+    const text = match[2].replace(/<[^>]+>/g, '').trim();
+    if (text.includes('?') || text.includes('¿')) {
+      headings.push({ end: match.index + match[0].length, text });
+    }
+  }
+
+  // Para cada heading-pregunta: extraer el contenido HASTA el siguiente heading
+  for (let i = 0; i < headings.length; i++) {
+    const startPos = headings[i].end;
+    const endPos = i + 1 < headings.length
+      ? htmlContent.indexOf('<h', startPos + 1)
+      : htmlContent.length;
+    const slice = htmlContent.slice(startPos, endPos > 0 ? endPos : htmlContent.length);
+
+    // Tomar el primer párrafo o los primeros 500 chars de texto plano
+    const pMatch = slice.match(/<p[^>]*>([\s\S]*?)<\/p>/i);
+    const answer = pMatch
+      ? pMatch[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
+      : slice.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 500);
+
+    if (answer.length >= 30) {
+      faqs.push({
+        q: headings[i].text,
+        a: answer.slice(0, 700),
+      });
+    }
+  }
+
+  if (faqs.length < 2) return null;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: f.a,
+      },
+    })),
+  };
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SPORTS EVENT — detecta partidos en notas de deportes
+// ═══════════════════════════════════════════════════════════════════════════
+
+const EQUIPOS_CR: Record<string, { name: string; sameAs?: string[] }> = {
+  'saprissa':         { name: 'Deportivo Saprissa',           sameAs: ['https://es.wikipedia.org/wiki/Deportivo_Saprissa'] },
+  'alajuelense':      { name: 'Liga Deportiva Alajuelense',    sameAs: ['https://es.wikipedia.org/wiki/Liga_Deportiva_Alajuelense'] },
+  'liga deportiva':   { name: 'Liga Deportiva Alajuelense',    sameAs: ['https://es.wikipedia.org/wiki/Liga_Deportiva_Alajuelense'] },
+  'lda':              { name: 'Liga Deportiva Alajuelense' },
+  'herediano':        { name: 'Club Sport Herediano',         sameAs: ['https://es.wikipedia.org/wiki/Club_Sport_Herediano'] },
+  'cartaginés':       { name: 'Club Sport Cartaginés',        sameAs: ['https://es.wikipedia.org/wiki/Club_Sport_Cartaginés'] },
+  'cartagines':       { name: 'Club Sport Cartaginés' },
+  'limón':            { name: 'Limón FC' },
+  'limon':            { name: 'Limón FC' },
+  'liberia':          { name: 'Municipal Liberia' },
+  'san carlos':       { name: 'Asociación Deportiva San Carlos' },
+  'pérez zeledón':    { name: 'Municipal Pérez Zeledón' },
+  'perez zeledon':    { name: 'Municipal Pérez Zeledón' },
+  'puntarenas':       { name: 'Puntarenas FC' },
+  'sporting':         { name: 'Sporting FC' },
+  'guadalupe':        { name: 'Guadalupe FC' },
+  'santos':           { name: 'Santos de Guápiles' },
+  'selección':        { name: 'Selección de Fútbol de Costa Rica',  sameAs: ['https://es.wikipedia.org/wiki/Selección_de_fútbol_de_Costa_Rica'] },
+  'seleccion':        { name: 'Selección de Fútbol de Costa Rica',  sameAs: ['https://es.wikipedia.org/wiki/Selección_de_fútbol_de_Costa_Rica'] },
+  'la sele':          { name: 'Selección de Fútbol de Costa Rica',  sameAs: ['https://es.wikipedia.org/wiki/Selección_de_fútbol_de_Costa_Rica'] },
+};
+
+const ESTADIOS_CR: Record<string, string> = {
+  'estadio nacional':        'Estadio Nacional de Costa Rica',
+  'ricardo saprissa':        'Estadio Ricardo Saprissa Aymá',
+  'morera soto':             'Estadio Alejandro Morera Soto',
+  'rosabal cordero':         'Estadio Rosabal Cordero',
+  'eladio rosabal cordero':  'Estadio Eladio Rosabal Cordero',
+  'jose rafael fello meza':  'Estadio José Rafael "Fello" Meza',
+  'fello meza':              'Estadio José Rafael "Fello" Meza',
+};
+
+/**
+ * Detecta si la nota es sobre un partido de fútbol y devuelve schema SportsEvent.
+ * Heurísticas:
+ *  - categoria === 'deportes'
+ *  - contiene "vs", "vence", "derrota", "marcador", "final", "campeón"
+ *  - menciona >= 2 equipos
+ */
+export function buildSportsEvent(opts: {
+  catSlug: string;
+  title: string;
+  plainText: string;
+  datePublished: string;
+  url: string;
+  image?: string;
+}): any | null {
+  if (opts.catSlug !== 'deportes') return null;
+
+  const lower = (opts.title + ' ' + opts.plainText).toLowerCase();
+  const matchKeywords = /\b(vs\.?|vence(?:n|s)?|derrot[aó]|march[aó]|final|campe[oó]n|gol(?:es)?|marcador|empat[oó]|gana(?:ron|n)?|pierd[ea])\b/i;
+  if (!matchKeywords.test(lower)) return null;
+
+  // Detectar equipos (necesitamos >= 2 para que sea un partido)
+  const detectados: Array<{ key: string; info: typeof EQUIPOS_CR['saprissa'] }> = [];
+  const seenName = new Set<string>();
+  for (const [key, info] of Object.entries(EQUIPOS_CR)) {
+    const re = new RegExp(`\\b${key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+    if (re.test(lower) && !seenName.has(info.name)) {
+      detectados.push({ key, info });
+      seenName.add(info.name);
+    }
+  }
+
+  if (detectados.length < 2) return null;
+
+  const [home, away] = detectados;
+
+  // Detectar estadio
+  let venueName: string | undefined;
+  for (const [key, name] of Object.entries(ESTADIOS_CR)) {
+    if (lower.includes(key)) { venueName = name; break; }
+  }
+
+  const event: any = {
+    '@context': 'https://schema.org',
+    '@type': 'SportsEvent',
+    name: opts.title.slice(0, 110),
+    description: opts.title,
+    sport: 'Fútbol',
+    startDate: opts.datePublished,
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    homeTeam: {
+      '@type': 'SportsTeam',
+      name: home.info.name,
+      sameAs: home.info.sameAs,
+    },
+    awayTeam: {
+      '@type': 'SportsTeam',
+      name: away.info.name,
+      sameAs: away.info.sameAs,
+    },
+    url: opts.url,
+  };
+  if (opts.image) event.image = opts.image;
+  if (venueName) {
+    event.location = {
+      '@type': 'Place',
+      name: venueName,
+      address: { '@type': 'PostalAddress', addressCountry: 'CR' },
+    };
+  }
+
+  return event;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// EVENT — detecta conciertos / festivales en entretenimiento
+// ═══════════════════════════════════════════════════════════════════════════
+
+/**
+ * Detecta si la nota anuncia un evento (concierto, festival) y devuelve schema Event.
+ * Heurísticas:
+ *  - categoria === 'entretenimiento'
+ *  - contiene "concierto", "festival", "presentación", "tour", "show"
+ *  - busca fecha futura en el contenido
+ */
+export function buildEvent(opts: {
+  catSlug: string;
+  title: string;
+  plainText: string;
+  datePublished: string;
+  url: string;
+  image?: string;
+}): any | null {
+  if (opts.catSlug !== 'entretenimiento') return null;
+
+  const lower = (opts.title + ' ' + opts.plainText).toLowerCase();
+  const matchKeywords = /\b(concierto|festival|presentaci[oó]n|tour|show|gira|evento|recital|cantante|cantar[áa]|llegar[áa]|fecha[s]?\s+de)\b/i;
+  if (!matchKeywords.test(lower)) return null;
+
+  // Intentar detectar fecha en el texto: "el 15 de mayo", "23 de junio", "15/03/2026"
+  let startDate: string | undefined;
+  const dateMatch = opts.plainText.match(/\b(\d{1,2})\s+de\s+(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre)(?:\s+de\s+(\d{4}))?/i);
+  if (dateMatch) {
+    const meses: Record<string, string> = {
+      enero: '01', febrero: '02', marzo: '03', abril: '04', mayo: '05', junio: '06',
+      julio: '07', agosto: '08', septiembre: '09', setiembre: '09', octubre: '10',
+      noviembre: '11', diciembre: '12',
+    };
+    const day = dateMatch[1].padStart(2, '0');
+    const month = meses[dateMatch[2].toLowerCase()];
+    const year = dateMatch[3] || new Date().getFullYear();
+    startDate = `${year}-${month}-${day}`;
+  }
+
+  // Si no encontró fecha, usar la de publicación
+  if (!startDate) startDate = opts.datePublished;
+
+  // Performer: heurístico — primera frase capitalizada antes de "presenta", "anuncia", "viene"
+  let performer: string | undefined;
+  const performerMatch = opts.title.match(/^([A-ZÁÉÍÓÚÑ][A-Za-zÁÉÍÓÚáéíóúñÑ\s]+?)(?:\s+(?:presenta|anuncia|llega|viene|cantará|cantar[áa]|en\s+concierto|en\s+Costa))/);
+  if (performerMatch) {
+    performer = performerMatch[1].trim();
+  }
+
+  const event: any = {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: opts.title.slice(0, 110),
+    description: opts.title,
+    startDate,
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    url: opts.url,
+    location: {
+      '@type': 'Place',
+      name: 'Costa Rica',
+      address: { '@type': 'PostalAddress', addressCountry: 'CR' },
+    },
+    organizer: {
+      '@type': 'Organization',
+      name: 'Acontecer.co.cr (cobertura)',
+      url: 'https://acontecer.co.cr',
+    },
+  };
+  if (opts.image) event.image = opts.image;
+  if (performer) {
+    event.performer = { '@type': 'PerformingGroup', name: performer };
+  }
+
+  return event;
+}
