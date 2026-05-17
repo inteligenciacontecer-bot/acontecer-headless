@@ -7,6 +7,7 @@ import NotaInteractive from '@/components/NotaInteractive';
 import ThemeToggle from '@/components/ThemeToggle';
 import AuthorAvatar from '@/components/AuthorAvatar';
 import { linkDiputados, type DiputadoMinimo } from '@/lib/diputados-linker';
+import { cleanSeoTitle, cleanSeoDesc } from '@/lib/sanitize-seo';
 import { buildMentions, buildAbout, buildSpeakable, extractCitations, buildArticleBody, buildFAQPage, buildSportsEvent, buildEvent } from '@/lib/schema-news';
 
 // SEO: reescribir URLs del CMS a dominio principal
@@ -160,8 +161,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const featuredImg = cmsToLocal(post._embedded?.['wp:featuredmedia']?.[0]?.source_url) || 'https://acontecer.co.cr/opengraph-image';
   const rawTitle   = post.title.rendered.replace(/<[^>]+>/g, '');
   const rawExcerpt = post.excerpt?.rendered?.replace(/<[^>]+>/g, '').trim().slice(0, 160) || '';
-  const seoTitle   = post.meta?._acontecer_seo_title || '';
-  const seoDesc    = post.meta?._acontecer_seo_desc  || '';
+  const seoTitle   = cleanSeoTitle(post.meta?._acontecer_seo_title) || '';
+  const seoDesc    = cleanSeoDesc(post.meta?._acontecer_seo_desc)   || '';
   const titulo     = (seoTitle || rawTitle); // layout title.template '%s | Acontecer.co.cr' agrega el sufijo automáticamente
   const descripcion = seoDesc || rawExcerpt;
   const realCatSlug = post._embedded?.['wp:term']?.[0]?.[0]?.slug || categoria;
