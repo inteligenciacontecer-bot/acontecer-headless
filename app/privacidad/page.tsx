@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Política de Privacidad | Acontecer.co.cr',
+  title: 'Política de Privacidad',
   description: 'Política de privacidad y tratamiento de datos personales de Acontecer.co.cr.',
   alternates: { canonical: 'https://acontecer.co.cr/privacidad' },
   openGraph: { url: 'https://acontecer.co.cr/privacidad' },

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Pauta Publicitaria | Acontecer.co.cr',
+  title: 'Pauta Publicitaria',
   description: 'Llegue a miles de lectores costarricenses con su pauta publicitaria en Acontecer.co.cr. Formatos digitales, boletines y redes sociales.',
   alternates: { canonical: 'https://acontecer.co.cr/pauta' },
   openGraph: { url: 'https://acontecer.co.cr/pauta' },

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contacto | Acontecer.co.cr',
+  title: 'Contacto',
   description: 'Contáctenos para consultas, colaboraciones, columnas de opinión o pauta publicitaria. Redacción Acontecer.co.cr.',
   alternates: { canonical: 'https://acontecer.co.cr/contacto' },
   openGraph: { url: 'https://acontecer.co.cr/contacto' },

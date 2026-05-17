@@ -4,7 +4,7 @@ import HemicicloClient from '@/components/HemicicloClient';
 import UltimaHoraAsamblea from '@/components/UltimaHoraAsamblea';
 
 export const metadata: Metadata = {
-  title: 'Monitor Legislativo — Asamblea de Costa Rica | Acontecer.co.cr',
+  title: 'Monitor Legislativo — Asamblea de Costa Rica',
   description: 'Seguimiento en tiempo real de proyectos de ley, votaciones y diputados de la Asamblea Legislativa de Costa Rica.',
   alternates: { canonical: 'https://acontecer.co.cr/asamblea' },
   openGraph: { url: 'https://acontecer.co.cr/asamblea' },

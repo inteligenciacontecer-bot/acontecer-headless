@@ -3,7 +3,7 @@ import Link from 'next/link';
 import DiputadosClient from '@/components/DiputadosClient';
 
 export const metadata: Metadata = {
-  title: 'Diputados de Costa Rica 2026-2030 | Acontecer.co.cr',
+  title: 'Diputados de Costa Rica 2026-2030',
   description: 'Directorio completo de los 57 diputados de la Asamblea Legislativa de Costa Rica 2026-2030. Perfiles, fracciones, asistencia y gastos.',
   alternates: { canonical: 'https://acontecer.co.cr/asamblea/diputados' },
   openGraph: { url: 'https://acontecer.co.cr/asamblea/diputados' },

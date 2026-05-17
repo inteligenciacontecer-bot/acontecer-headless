@@ -4,7 +4,7 @@ import './not-found.css';
 const API = 'https://cms.acontecer.co.cr/wp-json/wp/v2';
 
 export const metadata: Metadata = {
-  title: 'Página no encontrada — 404 | Acontecer.co.cr',
+  title: 'Página no encontrada — 404',
   description: 'La página que buscás no existe o fue movida. Acá tenés las últimas noticias de Costa Rica.',
   robots: { index: false, follow: true },
 };

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Agencia de Contenidos | Acontecer.co.cr',
+  title: 'Agencia de Contenidos',
   description: 'Servicios de agencia de contenidos digitales, redacción periodística y comunicación estratégica. Acontecer.co.cr.',
   alternates: { canonical: 'https://acontecer.co.cr/agencia' },
   openGraph: { url: 'https://acontecer.co.cr/agencia' },

@@ -2,7 +2,7 @@
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Comisiones Legislativas — Asamblea de Costa Rica | Acontecer.co.cr',
+  title: 'Comisiones Legislativas — Asamblea de Costa Rica',
   description: 'Composición de las comisiones permanentes y especiales de la Asamblea Legislativa de Costa Rica. Diputados miembros por comisión.',
   alternates: { canonical: 'https://acontecer.co.cr/asamblea/comisiones' },
   openGraph: { url: 'https://acontecer.co.cr/asamblea/comisiones' },

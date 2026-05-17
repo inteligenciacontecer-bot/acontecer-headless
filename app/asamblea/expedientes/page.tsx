@@ -2,7 +2,7 @@
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Expedientes Legislativos — Asamblea de Costa Rica | Acontecer.co.cr',
+  title: 'Expedientes Legislativos — Asamblea de Costa Rica',
   description: 'Consulta proyectos de ley, su estado en el proceso legislativo, comisión asignada y proponentes en la Asamblea Legislativa de Costa Rica.',
   alternates: { canonical: 'https://acontecer.co.cr/asamblea/expedientes' },
 };

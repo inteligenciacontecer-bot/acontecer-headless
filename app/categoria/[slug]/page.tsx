@@ -179,8 +179,8 @@ export async function generateMetadata(
   const baseTitle = SEO_LABELS[slug] ?? category.name;
   // SEO: en paginación >=2, agregar ' — Página N' al title para no duplicar
   const title = page > 1
-    ? `${baseTitle} — Página ${page} | Acontecer.co.cr`
-    : `${baseTitle} | Acontecer.co.cr`;
+    ? `${baseTitle} — Página ${page}`
+    : `${baseTitle}`;
   const desc  = category.description ? stripHtml(category.description) : meta?.lede ?? `Noticias de ${category.name} en Acontecer.co.cr`;
   // SEO: canonical dinámica preserva ?page=N para que Google indexe el archivo
   const canonicalUrl = page > 1

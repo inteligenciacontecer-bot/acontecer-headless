@@ -46,7 +46,7 @@ export async function generateMetadata({
   const tag = await getTag(slug);
   if (!tag) return { title: 'Etiqueta no encontrada' };
 
-  const titulo      = `${tag.name} — Noticias | Acontecer.co.cr`;
+  const titulo      = `${tag.name} — Noticias`;
   const descripcion = tag.description
     ? tag.description
     : `Todas las noticias etiquetadas con "${tag.name}" en Acontecer.co.cr`;

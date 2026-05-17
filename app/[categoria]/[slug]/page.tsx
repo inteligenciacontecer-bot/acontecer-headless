@@ -170,7 +170,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const autorNombre = post._embedded?.author?.[0]?.name || 'Redaccion ACONTECER';
 
   return {
-    title: titulo,
+    // Sin sufijo "| Acontecer.co.cr" — el title de notas ya es descriptivo
+    // y el sufijo solo consume chars en SERPs causando truncado a 60 chars
+    title: { absolute: titulo },
     description: descripcion,
     keywords: tags.join(', ') || undefined,
     authors: [{ name: autorNombre }],

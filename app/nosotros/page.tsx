@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Quiénes Somos | Acontecer.co.cr',
+  title: 'Quiénes Somos',
   description: 'Acontecer.co.cr es el medio digital independiente de Costa Rica. Conoce nuestra misión, equipo y compromiso con el periodismo de calidad.',
   alternates: { canonical: 'https://acontecer.co.cr/nosotros' },
   openGraph: { url: 'https://acontecer.co.cr/nosotros' },

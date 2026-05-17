@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 // La búsqueda siempre apunta a /buscar sin query string en el canonical
 // para evitar indexar miles de variantes del mismo template
 export const metadata: Metadata = {
-  title: 'Buscar noticias | Acontecer.co.cr',
+  title: 'Buscar noticias',
   description: 'Busque noticias de política, economía, deportes y más en el archivo de Acontecer.co.cr.',
   alternates: { canonical: 'https://acontecer.co.cr/buscar' },
   robots: { index: false, follow: true },

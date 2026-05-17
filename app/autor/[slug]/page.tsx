@@ -13,10 +13,10 @@ export async function generateMetadata(
   const res = await fetch(API + '/users?slug=' + slug, { next: { revalidate: 3600 } });
   const users = await res.json().catch(() => []);
   const author = Array.isArray(users) ? users[0] : null;
-  if (!author) return { title: 'Autor | Acontecer.co.cr' };
+  if (!author) return { title: 'Autor' };
   const avatarUrl = author.avatar_urls?.['96'] || null;
   return {
-    title: `${author.name} — Periodista | Acontecer.co.cr`,
+    title: `${author.name} — Periodista`,
     description: author.description
       ? author.description.slice(0, 155)
       : `Artículos escritos por ${author.name} en Acontecer.co.cr, el medio digital independiente de Costa Rica.`,
@@ -27,7 +27,7 @@ export async function generateMetadata(
     },
     twitter: {
       card: 'summary',
-      title: `${author.name} | Acontecer.co.cr`,
+      title: `${author.name}`,
     },
   };
 }
@@ -447,7 +447,7 @@ export default async function AutorPage({
             <div className="ap-wa-title">Recibí noticias por WhatsApp</div>
             <div className="ap-wa-desc">Canal oficial de Acontecer. Te llegan en cuanto se publican, sin spam ni grupos.</div>
             <a
-              href="https://whatsapp.com/channel/0029VatPp3wEfeyvk2DUSK3B"
+              href="https://whatsapp.com/channel/0029VaEbClvAzNbnwhu3Hp0S"
               target="_blank" rel="noopener noreferrer"
               className="ap-wa-btn"
             >
