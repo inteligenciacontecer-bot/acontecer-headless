@@ -182,15 +182,18 @@ export async function generateMetadata(
     ? `${baseTitle} — Página ${page}`
     : `${baseTitle}`;
   const desc  = category.description ? stripHtml(category.description) : meta?.lede ?? `Noticias de ${category.name} en Acontecer.co.cr`;
-  // SEO: canonical dinámica preserva ?page=N para que Google indexe el archivo
-  const canonicalUrl = page > 1
-    ? `https://acontecer.co.cr/categoria/${slug}?page=${page}`
-    : `https://acontecer.co.cr/categoria/${slug}`;
+  // SEO: canonical SIEMPRE apunta a page=1 base — consolida duplicate content
+  // (paginas paginadas usan robots noindex,follow desde page=2 en adelante)
+  const canonicalUrl = `https://acontecer.co.cr/categoria/${slug}`;
   return {
     title,
     description: desc,
     alternates: { canonical: canonicalUrl },
-    robots: {
+    robots: page > 1 ? {
+      // Paginas paginadas (page>=2): noindex,follow → no se indexan pero pasan link juice
+      index: false, follow: true,
+      googleBot: { index: false, follow: true },
+    } : {
       index: true, follow: true,
       googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
     },

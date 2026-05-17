@@ -122,6 +122,7 @@ function Badge({ resultado }: { resultado?: string }) {
   const [bg, color, label] = map[resultado] ?? map.VOTACION;
   return (
     <span style={{ background: bg, color, padding: '3px 10px', borderRadius: 20, fontSize: 11, fontWeight: 700 }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://acontecer.co.cr"},{"@type":"ListItem","position":2,"name":"Asamblea Legislativa","item":"https://acontecer.co.cr/asamblea"}]})}} />
       {label}
     </span>
   );

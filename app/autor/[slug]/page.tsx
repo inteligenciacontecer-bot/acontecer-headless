@@ -149,6 +149,7 @@ export default async function AutorPage({
   /* ── Render ────────────────────────────────────────────────────── */
   return (
     <div className="ap-wrap">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://acontecer.co.cr"},{"@type":"ListItem","position":2,"name":"Autores","item":"https://acontecer.co.cr/autores"},{"@type":"ListItem","position":3,"name":author.name,"item":`https://acontecer.co.cr/autor/${author.slug}`}]})}} />
 
       {/* SCHEMA — Person enriquecido (E-E-A-T: autoridad del autor) */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{
