@@ -1,7 +1,7 @@
 ﻿'use client';
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { fotoDiputadoUrl } from '@/lib/diputado-foto';
 
 interface Diputado {
   id: number;
@@ -196,13 +196,12 @@ export default function DiputadosClient({ diputados, promedioGasolina, promedioA
                       {/* Foto */}
                       <div style={{ height: 120, background: getColor(f) + '12', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         {d.foto_url
-                          ? <Image
-                              src={d.foto_url}
+                          ? <img
+                              src={fotoDiputadoUrl(d.foto_url)}
                               alt={d.nombre_completo}
-                              fill
-                              style={{ objectFit: 'cover' }}
-                              sizes="(max-width:480px) 50vw, (max-width:900px) 33vw, 180px"
+                              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
                               loading="lazy"
+                              decoding="async"
                             />
                           : <span style={{ fontSize: 48 }}>👤</span>
                         }
