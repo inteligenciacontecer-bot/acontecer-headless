@@ -1,4 +1,4 @@
-﻿import { MetadataRoute } from 'next';
+import { MetadataRoute } from 'next';
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -39,10 +39,21 @@ export default function robots(): MetadataRoute.Robots {
           '/2023/',
         ],
       },
+      // Permitir explícitamente a bots de IA (mejor visibilidad en LLMs/AI Overview)
+      { userAgent: 'GPTBot',           allow: '/' },
+      { userAgent: 'Google-Extended',  allow: '/' },
+      { userAgent: 'PerplexityBot',    allow: '/' },
+      { userAgent: 'ClaudeBot',        allow: '/' },
+      { userAgent: 'anthropic-ai',     allow: '/' },
+      { userAgent: 'CCBot',            allow: '/' },
+      // Image bots: explícitos
+      { userAgent: 'Googlebot-Image',  allow: ['/', '/wp-content/uploads/'] },
+      { userAgent: 'Bingbot-Image',    allow: ['/', '/wp-content/uploads/'] },
     ],
     sitemap: [
       'https://acontecer.co.cr/sitemap.xml',
       'https://acontecer.co.cr/news-sitemap.xml',
+      'https://acontecer.co.cr/image-sitemap.xml',
     ],
     host: 'https://acontecer.co.cr',
   };
