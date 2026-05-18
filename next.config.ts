@@ -117,32 +117,68 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // ── Legacy WordPress paths ────────────────────────────────────────
       { source: '/author/:slug', destination: '/autor/:slug', permanent: true },
+      { source: '/author/:slug/page/:num', destination: '/autor/:slug', permanent: true },
       { source: '/tag/:slug', destination: '/etiqueta/:slug', permanent: true },
+      { source: '/tag/:slug/page/:num', destination: '/etiqueta/:slug', permanent: true },
+      { source: '/uncategorized/:slug', destination: '/nacionales/:slug', permanent: true },
+
+      // ── RSS / Feeds ─────────────────────────────────────────────────────
       { source: '/rss', destination: '/feed', permanent: false },
-      { source: '/page/:num', destination: '/', permanent: true },
-      { source: '/wp-login.php', destination: '/', permanent: false },
-      { source: '/wp-admin/:path*', destination: '/', permanent: false },
-      { source: '/', has: [{ type: 'query', key: 'cat' }], destination: '/', permanent: true },
-      { source: '/page/:num', has: [{ type: 'query', key: 'cat' }], destination: '/', permanent: true },
-      { source: '/wp-json/:path*', destination: 'https://cms.acontecer.co.cr/wp-json/:path*', permanent: false },
-      { source: '/inicio/:rest*', destination: '/', permanent: true },
-      { source: '/blog-style-listing-example/:rest*', destination: '/', permanent: true },
-      { source: '/:path*', has: [{ type: 'query', key: 'utm_source' }], destination: '/:path*', permanent: true },
-      { source: '/:path*', has: [{ type: 'query', key: 'utm_medium' }], destination: '/:path*', permanent: true },
-      { source: '/:path*', has: [{ type: 'query', key: 'utm_campaign' }], destination: '/:path*', permanent: true },
+      // RSS individuales por nota → llevar a la nota (no a /feed general)
+      { source: '/:categoria/:slug/feed', destination: '/:categoria/:slug', permanent: true },
+      { source: '/:categoria/:slug/feed/', destination: '/:categoria/:slug', permanent: true },
+      // RSS de categoría/etiqueta → llevar a la página padre
+      { source: '/etiqueta/:slug/feed', destination: '/etiqueta/:slug', permanent: true },
+      { source: '/etiqueta/:slug/feed/', destination: '/etiqueta/:slug', permanent: true },
+      { source: '/categoria/:slug/feed', destination: '/categoria/:slug', permanent: true },
+      { source: '/categoria/:slug/feed/', destination: '/categoria/:slug', permanent: true },
+
+      // ── Paginación legacy /page/N ──────────────────────────────────────
       { source: '/categoria/:slug/page/:num', destination: '/categoria/:slug', permanent: true },
       { source: '/categoria/:slug/page/:num/', destination: '/categoria/:slug', permanent: true },
-      { source: '/:a/:b/feed', destination: '/feed', permanent: true },
-      { source: '/:a/:b/feed/', destination: '/feed', permanent: true },
-      { source: '/:a/feed', destination: '/feed', permanent: true },
-      { source: '/:a/feed/', destination: '/feed', permanent: true },
-      { source: '/uncategorized/:slug', destination: '/nacionales/:slug', permanent: true },
+      { source: '/etiqueta/:slug/page/:num', destination: '/etiqueta/:slug', permanent: true },
+      { source: '/etiqueta/:slug/page/:num/', destination: '/etiqueta/:slug', permanent: true },
+      // /CAT/page/N → /categoria/CAT (sin prefijo /categoria/)
+      { source: '/nacionales/page/:num', destination: '/categoria/nacionales', permanent: true },
+      { source: '/internacionales/page/:num', destination: '/categoria/internacionales', permanent: true },
+      { source: '/deportes/page/:num', destination: '/categoria/deportes', permanent: true },
+      { source: '/economia/page/:num', destination: '/categoria/economia', permanent: true },
+      { source: '/entretenimiento/page/:num', destination: '/categoria/entretenimiento', permanent: true },
+      { source: '/tecnologia/page/:num', destination: '/categoria/tecnologia', permanent: true },
+      { source: '/opinion/page/:num', destination: '/categoria/opinion', permanent: true },
+      { source: '/tendencias/page/:num', destination: '/categoria/tendencias', permanent: true },
+      { source: '/turismo/page/:num', destination: '/categoria/turismo', permanent: true },
+      // /page/N suelto → home
+      { source: '/page/:num', destination: '/', permanent: true },
+
+      // ── Permalinks legacy con fecha ────────────────────────────────────
+      { source: '/2019/:m/:d/:slug', destination: '/nacionales/:slug', permanent: true },
+      { source: '/2020/:m/:d/:slug', destination: '/nacionales/:slug', permanent: true },
+      { source: '/2021/:m/:d/:slug', destination: '/nacionales/:slug', permanent: true },
+      { source: '/2022/:m/:d/:slug', destination: '/nacionales/:slug', permanent: true },
+      { source: '/2023/:m/:d/:slug', destination: '/nacionales/:slug', permanent: true },
+      // Fallback: /YYYY/ sin slug → home
       { source: '/2019/:rest*', destination: '/', permanent: true },
       { source: '/2020/:rest*', destination: '/', permanent: true },
       { source: '/2021/:rest*', destination: '/', permanent: true },
       { source: '/2022/:rest*', destination: '/', permanent: true },
       { source: '/2023/:rest*', destination: '/', permanent: true },
+
+      // ── WordPress / WooCommerce / Elementor pages ─────────────────────
+      { source: '/wp-login.php', destination: '/', permanent: false },
+      { source: '/wp-admin/:path*', destination: '/', permanent: false },
+      { source: '/wp-json/:path*', destination: 'https://cms.acontecer.co.cr/wp-json/:path*', permanent: false },
+      { source: '/inicio/:rest*', destination: '/', permanent: true },
+      { source: '/blog-style-listing-example/:rest*', destination: '/', permanent: true },
+
+      // ── Query params: limpieza ─────────────────────────────────────────
+      { source: '/', has: [{ type: 'query', key: 'cat' }], destination: '/', permanent: true },
+      { source: '/page/:num', has: [{ type: 'query', key: 'cat' }], destination: '/', permanent: true },
+      { source: '/:path*', has: [{ type: 'query', key: 'utm_source' }], destination: '/:path*', permanent: true },
+      { source: '/:path*', has: [{ type: 'query', key: 'utm_medium' }], destination: '/:path*', permanent: true },
+      { source: '/:path*', has: [{ type: 'query', key: 'utm_campaign' }], destination: '/:path*', permanent: true },
       { source: '/:path*', has: [{ type: 'query', key: 'amp' }], destination: '/:path*', permanent: true },
     ];
   },
