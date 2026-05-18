@@ -1,5 +1,5 @@
 import './nota.css';
-import { redirect, notFound } from 'next/navigation';
+import { redirect, permanentRedirect, notFound } from 'next/navigation';
 import TextToSpeech from '@/components/TextToSpeech';
 import Sidebar, { type Heading } from '@/components/Sidebar';
 import ArticleScrollTracker from '@/components/ArticleScrollTracker';
@@ -225,7 +225,7 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
 
   // Redirect a la URL canónica si la categoría en la URL no coincide
   const realCat = post._embedded?.['wp:term']?.[0]?.[0]?.slug;
-  if (realCat && realCat !== categoria) redirect(`/${realCat}/${slug}`);
+  if (realCat && realCat !== categoria) permanentRedirect(`/${realCat}/${slug}`);
 
   const [related, diputados] = await Promise.all([
     getRelated(post.categories, post.id),
