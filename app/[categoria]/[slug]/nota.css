@@ -494,6 +494,15 @@ html[data-theme="dark"] .nv2-article-body p.nv2-cita-destacada {
 }
 .nv2-article-body a.diputado-link:hover { background: var(--azul); color: #fff !important; }
 
+/* ─── CONTENIDO QUE PUEDE DESBORDAR EN MÓVIL ────────────────────────────── */
+.nv2-article-body table { display: block; overflow-x: auto; max-width: 100%; border-collapse: collapse; }
+.nv2-article-body table td, .nv2-article-body table th { padding: 8px 10px; border: 1px solid var(--ink-200, #e5e7eb); }
+.nv2-article-body pre { overflow-x: auto; max-width: 100%; white-space: pre-wrap; word-break: break-word; }
+.nv2-article-body code { word-break: break-word; }
+.nv2-article-body .wp-block-embed, .nv2-article-body .wp-block-embed__wrapper { max-width: 100%; overflow: hidden; }
+.nv2-article-body iframe { max-width: 100% !important; }
+.nv2-article-body img { max-width: 100%; height: auto; }
+
 /* Tags */
 .nv2-article-tags {
   display: flex;

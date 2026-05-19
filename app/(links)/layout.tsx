@@ -1,5 +1,3 @@
-// Layout minimalista para páginas standalone tipo link-in-bio
-// Sin Ticker, Header ni Footer del sitio principal
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -7,5 +5,13 @@ export const metadata: Metadata = {
 };
 
 export default function LinksLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <style>{`
+        header, footer, .ticker-sticky, #cookie-banner { display: none !important; }
+        body { background: #050520 !important; overflow-x: hidden; }
+      `}</style>
+      {children}
+    </>
+  );
 }
