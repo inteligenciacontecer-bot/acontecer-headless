@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ═══════════════════════════════════════════════════════════════════════════
    NOTA V2 — Acontecer.co.cr
    Diseño moderno de página interior (DS6).
@@ -153,11 +154,11 @@
 
 /* ── ARTÍCULO (card principal) ─────────────────────────────────────────── */
 .nv2-article {
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 1px 0 var(--ink-100), 0 2px 16px rgba(0,0,0,.04);
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
   overflow: hidden;
-  min-width: 0; /* CSS Grid 1fr: permite que el track se comprima correctamente */
+  min-width: 0;
   margin-top: 28px;
   margin-bottom: 48px;
 }
@@ -183,7 +184,7 @@
   font-family: var(--font-lora), Georgia, serif;
   font-size: clamp(30px, 4vw, 52px);
   line-height: 1.08;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -.025em;
   color: var(--ink-900);
   margin: 0 0 18px;
@@ -354,36 +355,118 @@
   color: var(--ink-900) !important;
   margin: 32px 0 12px !important;
 }
+.nv2-article-body h4 {
+  font-family: var(--font-lora), Georgia, serif !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  color: var(--ink-900) !important;
+  margin: 26px 0 10px !important;
+}
+.nv2-article-body h5 {
+  font-family: var(--font-lora), Georgia, serif !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  color: var(--ink-700) !important;
+  margin: 22px 0 8px !important;
+}
+.nv2-article-body h6 {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: var(--ink-600) !important;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin: 18px 0 8px !important;
+}
 .nv2-article-body a { color: var(--azul); border-bottom: 1px solid currentColor; }
 .nv2-article-body a:hover { color: var(--azul-claro); }
 .nv2-article-body strong { font-weight: 700; color: var(--ink-900); }
 .nv2-article-body ul, .nv2-article-body ol { margin: 0 0 22px 22px; }
 .nv2-article-body li { font-size: 18px; line-height: 1.7; color: var(--ink-700); margin-bottom: 8px; }
 
-/* Pull quote */
+/* ─── PULL QUOTE (blockquote de WordPress) ──────────────────────────────── */
 .nv2-article-body blockquote {
-  margin: 36px 0 !important;
-  padding: 24px 28px 24px 32px !important;
-  border-left: 4px solid var(--azul) !important;
-  background: var(--blue-50) !important;
+  margin: 44px 0 !important;
+  padding: 36px 44px 36px 52px !important;
+  border-left: 6px solid var(--azul) !important;
+  background: linear-gradient(135deg, #ddeeff 0%, #eef5fd 55%, #fff 100%) !important;
   font-family: var(--font-lora), Georgia, serif !important;
   font-size: 21px !important;
-  line-height: 1.45 !important;
-  font-weight: 500 !important;
-  color: var(--azul) !important;
-  border-radius: 0 12px 12px 0 !important;
-  position: relative;
+  line-height: 1.55 !important;
+  font-weight: 400 !important;
+  font-style: italic !important;
+  color: var(--azul-oscuro, #00007a) !important;
+  border-radius: 0 20px 20px 0 !important;
+  position: relative !important;
+  box-shadow: 0 6px 28px rgba(0,0,162,.09), inset 0 0 0 1px rgba(0,0,162,.07) !important;
+  overflow: visible !important;
 }
 .nv2-article-body blockquote::before {
-  content: '"';
+  content: '\201C';
   position: absolute;
-  top: -14px; left: 18px;
-  font-size: 72px;
+  top: 0; left: 14px;
+  font-size: 96px;
+  line-height: 1;
+  font-family: var(--font-lora), Georgia, serif;
+  color: var(--azul-claro);
+  opacity: .28;
+  font-weight: 700;
+  font-style: normal;
+  pointer-events: none;
+}
+.nv2-article-body blockquote cite {
+  display: block;
+  margin-top: 14px;
+  font-size: 12.5px;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--azul-claro);
+  font-family: var(--font-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.nv2-article-body blockquote cite::before { content: '\2014\20'; }
+
+/* ─── CITA DESTACADA (auto-detectada desde parrafos con comillas) ─────────────── */
+.nv2-article-body p.nv2-cita-destacada {
+  position: relative !important;
+  margin: 40px 0 !important;
+  padding: 28px 36px 28px 56px !important;
+  background: linear-gradient(135deg, #e6f1fa 0%, #f0f7ff 60%, #fff 100%) !important;
+  border-left: 5px solid var(--azul-claro) !important;
+  border-radius: 0 16px 16px 0 !important;
+  font-family: var(--font-lora), Georgia, serif !important;
+  font-size: 19px !important;
+  line-height: 1.65 !important;
+  font-weight: 400 !important;
+  font-style: italic !important;
+  color: var(--ink-700) !important;
+  box-shadow: 0 4px 20px rgba(0,0,162,.07), inset 0 0 0 1px rgba(10,115,206,.1) !important;
+  overflow: visible !important;
+}
+.nv2-article-body p.nv2-cita-destacada::before {
+  content: '\201C';
+  position: absolute;
+  top: 2px; left: 12px;
+  font-size: 76px;
+  line-height: 1;
   font-family: var(--font-lora), Georgia, serif;
   color: var(--azul-claro);
   opacity: .22;
   font-weight: 700;
-  line-height: 1;
+  font-style: normal;
+  pointer-events: none;
+}
+html[data-theme="dark"] .nv2-article-body blockquote {
+  background: linear-gradient(135deg, rgba(0,0,162,.15) 0%, rgba(10,115,206,.08) 100%) !important;
+  color: #c8d8f8 !important;
+  box-shadow: 0 6px 28px rgba(0,0,0,.25) !important;
+}
+html[data-theme="dark"] .nv2-article-body p.nv2-cita-destacada {
+  background: linear-gradient(135deg, rgba(10,115,206,.12) 0%, rgba(10,115,206,.05) 100%) !important;
+  color: #c8d8f8 !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,.2) !important;
 }
 
 /* Imágenes embebidas */
@@ -416,9 +499,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  padding: 28px 0 0;
+  padding: 16px 0 0;
   border-top: 1px solid var(--ink-100);
-  margin-top: 36px;
+  margin-top: 18px;
 }
 .nv2-article-tags-lbl {
   font-family: var(--font-mono);
@@ -794,10 +877,10 @@
    RESPONSIVE — 900 px breakpoint
    ═══════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
-  .nv2-article-wrap { grid-template-columns: 1fr; gap: 0; padding: 0 16px; }
+  .nv2-article-wrap { grid-template-columns: 1fr; gap: 0; padding: 0; }
 
-  .nv2-article { border-radius: 14px; margin-top: 16px; margin-bottom: 20px; }
-  .nv2-article-head { padding: 22px 20px 18px; }
+  .nv2-article { border-radius: 0; margin-top: 0; margin-bottom: 20px; }
+  .nv2-article-head { padding: 22px 12px 18px; }
   .nv2-article-title { font-size: 26px !important; line-height: 1.12; }
   .nv2-article-subhead { font-size: 16px !important; padding-left: 12px; }
 
@@ -805,12 +888,13 @@
   .nv2-article-meta-block { padding: 16px 20px 0; }
   .nv2-meta-share { width: 100%; justify-content: flex-end; }
 
-  .nv2-article-body { padding: 4px 20px 24px; }
+  .nv2-article-body { padding: 4px 12px 24px; }
   .nv2-article-body p { font-size: 17px !important; }
   .nv2-article-body > .nv2-measure > p:first-of-type::first-letter { font-size: 48px; }
   .nv2-article-body h2 { font-size: 22px !important; margin: 32px 0 12px !important; }
   .nv2-article-body h3 { font-size: 19px !important; margin: 24px 0 10px !important; }
-  .nv2-article-body blockquote { font-size: 18px !important; padding: 18px 20px 18px 22px !important; }
+  .nv2-article-body blockquote { font-size: 18px !important; padding: 24px 24px 24px 36px !important; }
+  .nv2-article-body p.nv2-cita-destacada { font-size: 17px !important; padding: 20px 20px 20px 40px !important; }
 
   .nv2-author-card { margin: 0 20px 22px; padding: 20px; grid-template-columns: 1fr; text-align: center; }
   .nv2-author-card-avatar { width: 72px; height: 72px; font-size: 24px; margin: 0 auto; }
@@ -852,4 +936,121 @@
 
 @media (max-width: 768px) {
   .nv2-minibar { display: none !important; }
+}
+
+/* ─── FIX: alinear ThemeToggle con share-btns (mismo height/radius) ─── */
+.nv2-meta-share { align-items: center; }
+.nv2-meta-share .nv2-theme-toggle,
+.nv2-meta-share .nv2-theme-toggle-placeholder {
+  border-radius: 8px;
+  height: auto;
+  padding: 9px 14px;
+  font-size: 12px;
+}
+.nv2-meta-share .nv2-theme-toggle-placeholder { width: auto; min-width: 80px; }
+
+/* ─── FIX: tags en mobile aún más compacto ─── */
+@media (max-width: 900px) {
+  .nv2-article-tags {
+    margin-top: 12px;
+    padding-top: 12px;
+  }
+}
+
+/* ─── Banner WhatsApp CTA (auto-insertado después del 3er párrafo) ─────── */
+.nv2-wa-cta {
+  margin: 28px 0 !important;
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--azul, #0000A2) 0%, var(--azul-claro, #0a73ce) 100%);
+  box-shadow: 0 8px 20px rgba(0, 0, 162, .25);
+}
+.nv2-wa-cta a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  color: #fff !important;
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+  transition: transform .15s;
+}
+.nv2-wa-cta a:hover { transform: scale(1.01); color: #fff !important; }
+.nv2-wa-cta-icon {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.18);
+  display: flex; align-items: center; justify-content: center;
+}
+.nv2-wa-cta-body { flex: 1; min-width: 0; }
+.nv2-wa-cta-title {
+  font-family: var(--font-lora), Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 2px;
+  color: #fff !important;
+}
+.nv2-wa-cta-desc {
+  font-size: 12.5px;
+  line-height: 1.4;
+  opacity: .92;
+  display: block;
+}
+.nv2-wa-cta-arrow {
+  flex-shrink: 0;
+  font-size: 22px;
+  font-weight: 700;
+  opacity: .9;
+}
+@media (max-width: 600px) {
+  .nv2-wa-cta { margin: 22px 0 !important; }
+  .nv2-wa-cta a { padding: 14px 16px; gap: 12px; }
+  .nv2-wa-cta-icon { width: 38px; height: 38px; }
+  .nv2-wa-cta-title { font-size: 15px; }
+  .nv2-wa-cta-desc { font-size: 12px; }
+  .nv2-wa-cta-arrow { font-size: 20px; }
+}
+/* Dark mode: el verde brand se mantiene, solo ajustamos sombra */
+html[data-theme="dark"] .nv2-wa-cta {
+  box-shadow: 0 8px 20px rgba(10, 115, 206, .25);
+}
+
+/* ─── FIX: botones de meta-share TOP compactos en mobile ─────────────────
+   En pantallas <600px:
+   - share buttons del meta-share TOP (FB/WA/X): solo iconos
+   - ThemeToggle: solo ícono sol/luna, sin texto Claro/Oscuro
+   - NO afecta al bottom-share (que tiene los botones grandes con texto suelto)
+   ──────────────────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .nv2-meta-share {
+    gap: 6px;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  /* Share buttons del top → solo icono (SCOPED a .nv2-meta-share) */
+  .nv2-meta-share .nv2-share-btn {
+    padding: 8px;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+    border-radius: 8px;
+  }
+  .nv2-meta-share .nv2-share-btn > span { display: none; }
+  .nv2-meta-share .nv2-share-btn > svg { width: 16px; height: 16px; }
+
+  /* ThemeToggle → solo icono */
+  .nv2-meta-share .nv2-theme-toggle,
+  .nv2-meta-share .nv2-theme-toggle-placeholder {
+    padding: 8px;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+    border-radius: 8px;
+  }
+  .nv2-meta-share .nv2-theme-toggle > span { display: none; }
+  .nv2-meta-share .nv2-theme-toggle > svg { width: 16px; height: 16px; }
+  .nv2-meta-share .nv2-theme-toggle-placeholder { min-width: 36px; width: 36px; }
 }
