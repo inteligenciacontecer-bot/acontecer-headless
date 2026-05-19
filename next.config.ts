@@ -4,13 +4,6 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        // API routes: nunca cachear en CDN — datos dinámicos (RSS, webhooks, etc.)
-        source: '/api/:path*',
-        headers: [
-          { key: 'Cache-Control', value: 'no-store' },
-        ],
-      },
-      {
         // Nota: s-maxage agresivo (60s) para news + SWR largo (600s)
         // → Googlebot recibe HTML pre-renderizado al instante (TTFB <50ms)
         //   mientras Next revalida en segundo plano
@@ -110,6 +103,14 @@ const nextConfig: NextConfig = {
               // "upgrade-insecure-requests" — solo válido en CSP enforce, no en Report-Only
             ].join('; '),
           },
+        ],
+      },
+      {
+        // API routes: va al final para sobrescribir cualquier regla anterior
+        // /:categoria/:slug también matchea /api/podcast — esta regla gana por orden
+        source: '/api/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'no-store' },
         ],
       },
     ];
