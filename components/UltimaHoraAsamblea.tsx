@@ -147,11 +147,6 @@ export default function UltimaHoraAsamblea() {
         </div>
         {stats && (
           <div style={{ display: 'flex', gap: 8 }}>
-            {stats.votaciones_hoy > 0 && (
-              <span style={{ fontSize: 10, fontWeight: 700, background: '#eff6ff', color: '#1d4ed8', padding: '3px 8px', borderRadius: 10 }}>
-                {stats.votaciones_hoy} vot. hoy
-              </span>
-            )}
             {stats.expedientes_nuevos > 0 && (
               <span style={{ fontSize: 10, fontWeight: 700, background: '#fef9c3', color: '#92400e', padding: '3px 8px', borderRadius: 10 }}>
                 +{stats.expedientes_nuevos} exp. nuevos
@@ -169,7 +164,6 @@ export default function UltimaHoraAsamblea() {
       {/* Leyenda de tipos */}
       <div style={{ padding: '8px 20px', borderBottom: '1px solid #f8f9fa', display: 'flex', gap: 12 }}>
         {[
-          { tipo: 'votacion',        label: 'Votaciones' },
           { tipo: 'telegram',        label: 'Telegram oficial' },
           { tipo: 'expediente_nuevo', label: 'Nuevos proyectos' },
         ].map(({ tipo, label }) => {
@@ -190,7 +184,7 @@ export default function UltimaHoraAsamblea() {
         </div>
       ) : (
         <div style={{ maxHeight: 520, overflowY: 'auto' }}>
-          {timeline.slice(0, 25).map((ev, idx) => {
+          {timeline.filter(ev => ev.tipo !== 'votacion').slice(0, 25).map((ev, idx) => {
             const [bg, color, dot] = coloresTipo(ev.tipo);
             return (
               <div key={`${ev.tipo}-${ev.id}-${idx}`} style={{
