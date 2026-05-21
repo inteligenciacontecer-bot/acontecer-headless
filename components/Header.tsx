@@ -133,8 +133,6 @@ export default function Header() {
 
           <div style={{display:'flex', alignItems:'center', gap:'6px'}}>
             <button onClick={() => setSearchOpen(!searchOpen)}
-              aria-label={searchOpen ? 'Cerrar búsqueda' : 'Abrir búsqueda'}
-              aria-expanded={searchOpen}
               style={{background:'rgba(255,255,255,0.15)', border:'none', borderRadius:'50%', width:'36px', height:'36px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', color:'white'}}>
               {searchOpen ? <CloseIcon /> : <SearchIcon />}
             </button>
@@ -149,16 +147,23 @@ export default function Header() {
         </div>
 
         {searchOpen && (
-          <div style={{borderTop:'1px solid rgba(255,255,255,0.15)', padding:'12px 15px'}}>
-            <form onSubmit={handleSearch} style={{maxWidth:'1200px', margin:'0 auto', display:'flex', gap:'8px'}}>
+          <div style={{
+            position:'absolute', top:'100%', left:0, right:0,
+            background:'#0000A2',
+            borderTop:'1px solid rgba(255,255,255,0.15)',
+            padding:'14px 15px 16px',
+            boxShadow:'0 12px 32px rgba(0,0,162,0.35)',
+            animation:'searchSlideDown 0.18s ease',
+          }}>
+            <form onSubmit={handleSearch} style={{maxWidth:'1200px', margin:'0 auto', display:'flex', gap:'8px', alignItems:'center'}}>
               <input type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
                 placeholder="Buscar noticias..." autoFocus className="search-input"
                 style={{flex:1, padding:'10px 16px', borderRadius:'8px', border:'none', fontSize:'15px', outline:'none', background:'rgba(255,255,255,0.15)', color:'white'}} />
-              <button type="submit" style={{background:'rgba(255,255,255,0.2)', color:'white', border:'1px solid rgba(255,255,255,0.25)', borderRadius:'8px', padding:'10px 18px', fontWeight:'600', cursor:'pointer', fontSize:'13px', display:'flex', alignItems:'center', gap:6}}>
+              <button type="submit" style={{background:'rgba(255,255,255,0.2)', color:'white', border:'1px solid rgba(255,255,255,0.25)', borderRadius:'8px', padding:'10px 18px', fontWeight:'600', cursor:'pointer', fontSize:'13px', display:'flex', alignItems:'center', gap:6, whiteSpace:'nowrap', flexShrink:0}}>
                 <SearchIcon /> Buscar
               </button>
               <button type="button" onClick={() => setSearchOpen(false)}
-                style={{background:'transparent', color:'rgba(255,255,255,0.6)', border:'none', borderRadius:'8px', padding:'10px 12px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center'}}>
+                style={{background:'transparent', color:'rgba(255,255,255,0.6)', border:'none', borderRadius:'8px', padding:'10px 12px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0}}>
                 <CloseIcon />
               </button>
             </form>
@@ -173,13 +178,7 @@ export default function Header() {
       )}
 
       {/* ── DRAWER ───────────────────────────────────────────────────────── */}
-      <aside
-        role={menuOpen ? 'dialog' : undefined}
-        aria-modal={menuOpen ? true : undefined}
-        aria-label="Menú de navegación"
-        aria-hidden={!menuOpen}
-        {...(!menuOpen && { inert: '' as unknown as boolean })}
-        style={{
+      <aside aria-modal={menuOpen} aria-label="Menú de navegación" style={{
         position:'fixed', top:0, right:0, bottom:0,
         width:'min(480px, 92vw)',
         background:'#fff', zIndex:140,
@@ -345,6 +344,10 @@ export default function Header() {
       <style>{`
         .search-input::placeholder { color: rgba(255,255,255,0.55); }
         @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+        @keyframes searchSlideDown {
+          from { opacity:0; transform:translateY(-6px); }
+          to   { opacity:1; transform:translateY(0); }
+        }
         @media (max-width: 992px) {
           .desktop-nav   { display: none !important; }
           .hamburger-btn { display: flex !important; }
