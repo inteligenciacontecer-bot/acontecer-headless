@@ -112,63 +112,61 @@ export default function Header() {
       {/* ── HEADER BAR — no modificar ────────────────────────────────────── */}
       <header style={{background:'#0000A2', padding:'0 15px', position:'sticky', top:0, zIndex:120, boxShadow:'0 2px 20px rgba(0,0,162,0.3)', width:'100%', boxSizing:'border-box'}}>
         <div style={{maxWidth:'1200px', margin:'0 auto', display:'flex', alignItems:'center', justifyContent:'space-between', height:'60px'}} className="header-inner">
-          <Link href="/">
-            <Image src="/logo.png" alt="Acontecer.co.cr" width={204} height={32} style={{height:'32px', width:'auto', mixBlendMode:'screen'}} className="header-logo" />
-          </Link>
 
-          <nav style={{display:'flex', gap:'4px', alignItems:'center'}} className="desktop-nav">
-            {NAV_ITEMS.slice(0, 6).map(item => (
-              <Link key={item.name} href={item.href}
-                style={{color:'rgba(255,255,255,0.85)', fontSize:'12px', fontWeight:'600', padding:'6px 10px', borderRadius:'4px', textTransform:'uppercase', textDecoration:'none'}}
-                className="nav-link">
-                {item.name}
-              </Link>
-            ))}
-            <Link href="/asamblea"
-              style={{display:'flex', alignItems:'center', gap:'6px', color:'white', fontSize:'12px', fontWeight:'700', padding:'6px 12px', borderRadius:'6px', textDecoration:'none', background:'rgba(255,255,255,0.15)', border:'1px solid rgba(255,255,255,0.25)', marginLeft:'4px', whiteSpace:'nowrap'}}
-              className="nav-link nav-monitor">
-              <MonitorIconSm /> Monitor Legislativo
-            </Link>
-          </nav>
-
-          <div style={{display:'flex', alignItems:'center', gap:'6px'}}>
-            <button onClick={() => setSearchOpen(!searchOpen)}
-              style={{background:'rgba(255,255,255,0.15)', border:'none', borderRadius:'50%', width:'36px', height:'36px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', color:'white'}}>
-              {searchOpen ? <CloseIcon /> : <SearchIcon />}
-            </button>
-            <button onClick={() => setMenuOpen(!menuOpen)}
-              style={{display:'none', flexDirection:'column', justifyContent:'center', gap:'5px', cursor:'pointer', padding:'8px', background:'rgba(255,255,255,0.1)', border:'none', borderRadius:'8px', width:'38px', height:'38px'}}
-              className="hamburger-btn" aria-label="Menú">
-              <span style={{display:'block', width:'20px', height:'2px', background:'white', borderRadius:'2px', transition:'all 0.25s', transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none'}}/>
-              <span style={{display:'block', width:'20px', height:'2px', background:'white', borderRadius:'2px', transition:'all 0.25s', opacity: menuOpen ? 0 : 1}}/>
-              <span style={{display:'block', width:'20px', height:'2px', background:'white', borderRadius:'2px', transition:'all 0.25s', transform: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none'}}/>
-            </button>
-          </div>
-        </div>
-
-        {searchOpen && (
-          <div style={{
-            position:'absolute', top:'100%', left:0, right:0,
-            background:'#0000A2',
-            borderTop:'1px solid rgba(255,255,255,0.15)',
-            padding:'14px 15px 16px',
-            boxShadow:'0 12px 32px rgba(0,0,162,0.35)',
-            animation:'searchSlideDown 0.18s ease',
-          }}>
-            <form onSubmit={handleSearch} style={{maxWidth:'1200px', margin:'0 auto', display:'flex', gap:'8px', alignItems:'center'}}>
-              <input type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
-                placeholder="Buscar noticias..." autoFocus className="search-input"
-                style={{flex:1, padding:'10px 16px', borderRadius:'8px', border:'none', fontSize:'15px', outline:'none', background:'rgba(255,255,255,0.15)', color:'white'}} />
-              <button type="submit" style={{background:'rgba(255,255,255,0.2)', color:'white', border:'1px solid rgba(255,255,255,0.25)', borderRadius:'8px', padding:'10px 18px', fontWeight:'600', cursor:'pointer', fontSize:'13px', display:'flex', alignItems:'center', gap:6, whiteSpace:'nowrap', flexShrink:0}}>
-                <SearchIcon /> Buscar
-              </button>
+          {searchOpen ? (
+            /* ── MODO BÚSQUEDA: header completo se convierte en barra de búsqueda ── */
+            <form onSubmit={handleSearch} style={{flex:1, display:'flex', gap:'8px', alignItems:'center', animation:'searchSlideDown 0.15s ease'}}>
               <button type="button" onClick={() => setSearchOpen(false)}
-                style={{background:'transparent', color:'rgba(255,255,255,0.6)', border:'none', borderRadius:'8px', padding:'10px 12px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0}}>
+                style={{background:'rgba(255,255,255,0.15)', border:'none', borderRadius:'50%', width:'36px', height:'36px', flexShrink:0, cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', color:'white'}}>
                 <CloseIcon />
               </button>
+              <input type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
+                placeholder="Buscar noticias..." autoFocus className="search-input"
+                style={{flex:1, minWidth:0, padding:'9px 14px', borderRadius:'8px', border:'none', fontSize:'15px', outline:'none', background:'rgba(255,255,255,0.18)', color:'white'}} />
+              <button type="submit"
+                style={{background:'white', color:'#0000A2', border:'none', borderRadius:'8px', padding:'9px 16px', fontWeight:'700', cursor:'pointer', fontSize:'13px', display:'flex', alignItems:'center', gap:5, flexShrink:0, whiteSpace:'nowrap'}}>
+                <SearchIcon /> <span className="search-btn-label">Buscar</span>
+              </button>
             </form>
-          </div>
-        )}
+          ) : (
+            /* ── MODO NORMAL ─────────────────────────────────────────────────── */
+            <>
+              <Link href="/">
+                <Image src="/logo.png" alt="Acontecer.co.cr" width={204} height={32} style={{height:'32px', width:'auto', mixBlendMode:'screen'}} className="header-logo" />
+              </Link>
+
+              <nav style={{display:'flex', gap:'4px', alignItems:'center'}} className="desktop-nav">
+                {NAV_ITEMS.slice(0, 6).map(item => (
+                  <Link key={item.name} href={item.href}
+                    style={{color:'rgba(255,255,255,0.85)', fontSize:'12px', fontWeight:'600', padding:'6px 10px', borderRadius:'4px', textTransform:'uppercase', textDecoration:'none'}}
+                    className="nav-link">
+                    {item.name}
+                  </Link>
+                ))}
+                <Link href="/asamblea"
+                  style={{display:'flex', alignItems:'center', gap:'6px', color:'white', fontSize:'12px', fontWeight:'700', padding:'6px 12px', borderRadius:'6px', textDecoration:'none', background:'rgba(255,255,255,0.15)', border:'1px solid rgba(255,255,255,0.25)', marginLeft:'4px', whiteSpace:'nowrap'}}
+                  className="nav-link nav-monitor">
+                  <MonitorIconSm /> Monitor Legislativo
+                </Link>
+              </nav>
+
+              <div style={{display:'flex', alignItems:'center', gap:'6px'}}>
+                <button onClick={() => setSearchOpen(true)}
+                  style={{background:'rgba(255,255,255,0.15)', border:'none', borderRadius:'50%', width:'36px', height:'36px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', color:'white'}}>
+                  <SearchIcon />
+                </button>
+                <button onClick={() => setMenuOpen(!menuOpen)}
+                  style={{display:'none', flexDirection:'column', justifyContent:'center', gap:'5px', cursor:'pointer', padding:'8px', background:'rgba(255,255,255,0.1)', border:'none', borderRadius:'8px', width:'38px', height:'38px'}}
+                  className="hamburger-btn" aria-label="Menú">
+                  <span style={{display:'block', width:'20px', height:'2px', background:'white', borderRadius:'2px', transition:'all 0.25s', transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none'}}/>
+                  <span style={{display:'block', width:'20px', height:'2px', background:'white', borderRadius:'2px', transition:'all 0.25s', opacity: menuOpen ? 0 : 1}}/>
+                  <span style={{display:'block', width:'20px', height:'2px', background:'white', borderRadius:'2px', transition:'all 0.25s', transform: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none'}}/>
+                </button>
+              </div>
+            </>
+          )}
+
+        </div>
       </header>
 
       {/* ── Backdrop ─────────────────────────────────────────────────────── */}
@@ -345,8 +343,11 @@ export default function Header() {
         .search-input::placeholder { color: rgba(255,255,255,0.55); }
         @keyframes fadeIn { from{opacity:0} to{opacity:1} }
         @keyframes searchSlideDown {
-          from { opacity:0; transform:translateY(-6px); }
+          from { opacity:0; transform:translateY(-4px); }
           to   { opacity:1; transform:translateY(0); }
+        }
+        @media (max-width: 380px) {
+          .search-btn-label { display: none; }
         }
         @media (max-width: 992px) {
           .desktop-nav   { display: none !important; }
