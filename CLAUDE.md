@@ -51,13 +51,14 @@ Commit de respaldo **obligatorio** antes de cualquier cambio de impacto medio/al
 git add -A && git commit -m "backup: antes de [descripción]"
 ```
 
-## 5. Estado de Seguridad del VPS (auditado 2026-05-15)
+## 5. Estado de Seguridad del VPS (auditado 2026-05-27)
 
 | Control | Estado | Notas |
 |---|---|---|
-| UFW Firewall | ✅ Activo | Puertos 22, 80, 443 solamente |
-| SSH Password Auth | ✅ Desactivado | Efectivo vía `00-xcloud.conf` |
+| UFW Firewall | ✅ Activo | Puertos 80, 443 y **2847** (SSH) solamente — 22 bloqueado |
+| SSH Password Auth | ✅ Desactivado | Solo publickey |
 | SSH Root Login | ✅ Solo con llave | `permitrootlogin without-password` |
-| Fail2Ban | ✅ Activo | Jail: sshd — 85 IPs baneadas |
+| Fail2Ban | ✅ Activo | 3 jails: sshd (ban 24h), nginx-auth, nginx-rate |
+| IP VPS | `207.180.211.235` | Puerto SSH: 2847 · Llave: `id_ed25519_claude_vps` |
 | Carpeta proyecto | ✅ `root:root` | Corregido de UIDs desconocidos |
 | `.env.local` en git | ✅ Excluido | Regla `.env*` en `.gitignore` |
