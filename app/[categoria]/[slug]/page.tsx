@@ -143,6 +143,18 @@ function limpiarContenido(html: string, addHeadingIds = false) {
       const hMatch = a.match(/\bheight=["']?(\d+)["']?/);
       const ar = (wMatch && hMatch) ? '' : 'aspect-ratio:16/9;';
       return `<img${a} loading="lazy" decoding="async" style="max-width:100%;height:auto;${ar}border-radius:8px;margin:16px 0;display:block;">`;
+    })
+    // ── Cita destacada: párrafo que inicia con " y termina con " → clase visual
+    .replace(/<p([^>]*)>([\s\S]*?)<\/p>/gi, (_: string, attrs: string, content: string) => {
+      const texto = content.replace(/<[^>]+>/g, '').trim();
+      const abre   = /^(?:“|&#8220;|&ldquo;)/.test(texto);
+      const cierra = /(?:”|&#8221;|&rdquo;)$/.test(texto);
+      if (!abre || !cierra) return `<p${attrs}>${content}</p>`;
+      const hasCls = /\bclass\s*=\s*"/.test(attrs);
+      const newAttrs = hasCls
+        ? attrs.replace(/(\bclass\s*=\s*")/, '$1nv2-cita-destacada ')
+        : `${attrs} class="nv2-cita-destacada"`;
+      return `<p${newAttrs}>${content}</p>`;
     });
 }
 
