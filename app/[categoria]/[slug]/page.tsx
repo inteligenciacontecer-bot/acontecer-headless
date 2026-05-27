@@ -176,11 +176,15 @@ async function getPost(slug: string) {
 }
 
 async function getRelated(categoryIds: number[], currentId: number) {
-  const res = await fetch(
-    API + '/posts?categories=' + categoryIds.join(',') + '&per_page=4&_embed&exclude=' + currentId,
-    { next: { revalidate: 60 } }
-  );
-  return res.json();
+  try {
+    const res = await fetch(
+      API + '/posts?categories=' + categoryIds.join(',') + '&per_page=4&_embed&exclude=' + currentId,
+      { next: { revalidate: 60 } }
+    );
+    if (!res.ok) return [];
+    const data = await res.json();
+    return Array.isArray(data) ? data : [];
+  } catch { return []; }
 }
 
 async function getDiputadosMinimos(): Promise<DiputadoMinimo[]> {

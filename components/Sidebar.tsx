@@ -183,6 +183,24 @@ export default async function Sidebar({ related, catSlug, headings = [], reading
         </a>
       </div>
 
+      {/* PAUTE CON NOSOTROS */}
+      <div className="nv2-side-card nv2-paute-card">
+        <div className="nv2-side-eyebrow">Espacio publicitario</div>
+        <h3 className="nv2-side-title">Paute con nosotros</h3>
+        <p>Llegue a miles de lectores costarricenses. +15M vistas mensuales en nuestras plataformas.</p>
+        <a
+          href="https://wa.me/50662889467?text=Hola%2C+me+interesa+pautar+en+Acontecer.co.cr"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nv2-paute-btn"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:15,height:15}}>
+            <path d="M20.5 3.5A11 11 0 0 0 3.5 17l-1.4 5 5-1.4a11 11 0 0 0 13.4-17z"/>
+          </svg>
+          Escribir por WhatsApp
+        </a>
+      </div>
+
     </aside>
   );
 }
