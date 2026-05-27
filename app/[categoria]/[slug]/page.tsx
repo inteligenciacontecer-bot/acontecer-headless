@@ -19,6 +19,16 @@ const ASAMBLEA_API = 'https://cms.acontecer.co.cr/wp-json/acontecer/v1/asamblea'
 
 /* ── Helpers ────────────────────────────────────────────────────────────── */
 
+/** Decodifica entidades HTML numéricas y nombradas comunes */
+function decodeEntities(str: string): string {
+  return str
+    .replace(/&#(\d+);/g, (_, n: string) => String.fromCharCode(parseInt(n, 10)))
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, h: string) => String.fromCharCode(parseInt(h, 16)))
+    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&nbsp;/g, ' ')
+    .replace(/&laquo;/g, '«').replace(/&raquo;/g, '»');
+}
+
 function truncarHTML(html: string, maxParas = 3): string {
   const parts = html.split('</p>');
   if (parts.length <= maxParas) return html;
@@ -179,8 +189,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = await getPost(slug);
   if (!post) return { title: 'Nota no encontrada' };
   const featuredImg = cmsToLocal(post._embedded?.['wp:featuredmedia']?.[0]?.source_url) || 'https://acontecer.co.cr/opengraph-image';
-  const rawTitle   = post.title.rendered.replace(/<[^>]+>/g, '');
-  const rawExcerpt = post.excerpt?.rendered?.replace(/<[^>]+>/g, '').trim().slice(0, 160) || '';
+  const rawTitle   = decodeEntities(post.title.rendered.replace(/<[^>]+>/g, ''));
+  const rawExcerpt = decodeEntities(post.excerpt?.rendered?.replace(/<[^>]+>/g, '').trim() || '').slice(0, 160);
   const seoTitle   = cleanSeoTitle(post.meta?._acontecer_seo_title) || '';
   const seoDesc    = cleanSeoDesc(post.meta?._acontecer_seo_desc)   || '';
   const titulo     = (seoTitle || rawTitle); // layout title.template '%s | Acontecer.co.cr' agrega el sufijo automáticamente
@@ -307,7 +317,7 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
         '@context': 'https://schema.org',
         '@type': 'NewsArticle',
         headline:    tituloPlano.slice(0, 110),
-        description: post.excerpt?.rendered?.replace(/<[^>]+>/g, '').trim().slice(0, 160),
+        description: decodeEntities(post.excerpt?.rendered?.replace(/<[^>]+>/g, '').trim() || '').slice(0, 160),
         url:         `https://acontecer.co.cr/${catSlug}/${slug}`,
         datePublished:  post.date,
         dateModified:   post.modified,
