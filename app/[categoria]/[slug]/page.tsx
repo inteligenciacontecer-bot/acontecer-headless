@@ -83,7 +83,7 @@ function limpiarContenido(html: string, addHeadingIds = false) {
         const hasRel    = /\brel\s*=/i.test(all);
         const hasTarget = /\btarget\s*=/i.test(all);
         const extras: string[] = [];
-        if (!hasRel)    extras.push('rel="noopener noreferrer nofollow"');
+        if (!hasRel)    extras.push('rel="noopener noreferrer"');
         if (!hasTarget) extras.push('target="_blank"');
         return `<a${pre}href="${url}"${post}${extras.length ? ' ' + extras.join(' ') : ''}>`;
       })
@@ -93,6 +93,26 @@ function limpiarContenido(html: string, addHeadingIds = false) {
       if (/\bid\s*=/.test(attrs)) return `<h${level}${attrs}>`;
       sectionCount++;
       return `<h${level}${attrs} id="nv2-s${sectionCount}">`;
+    })
+    // ── Audio nativo: WP/Elementor genera bloques MEJS que requieren JS propietario.
+    //    En el frontend headless los convertimos a <audio controls> del navegador.
+    // Paso 1: <mediaelementwrapper> contiene el <audio> real → extraer src y reemplazar todo
+    .replace(
+      /<mediaelementwrapper[^>]*>[\s\S]*?<audio[^>]*?\bsrc="([^"?]+)[^"]*"[\s\S]*?<\/mediaelementwrapper>/gi,
+      (_: string, src: string) =>
+        `<audio controls preload="metadata" src="${src}" ` +
+        `style="width:100%;max-width:100%;display:block;margin:12px 0;border-radius:8px;"></audio>`
+    )
+    // Paso 2: quitar el height fijo del mejs-container (ya no contiene el player propio)
+    .replace(
+      /(<div[^>]*class="[^"]*mejs-container[^"]*"[^>]*)\sstyle="[^"]*"/gi,
+      '$1'
+    )
+    // Paso 3: <audio> sueltos sin controls (wp-block-audio, shortcodes básicos)
+    .replace(/<audio([^>]*)>/gi, (_: string, attrs: string) => {
+      if (/\bcontrols\b/i.test(attrs)) return `<audio${attrs}>`;
+      return `<audio${attrs} controls preload="metadata" ` +
+        `style="width:100%;max-width:100%;display:block;margin:12px 0;border-radius:8px;">`;
     })
     // Posts 2021: eliminar <noscript> (lazyload plugin los inserta como fallback;
     // con dangerouslySetInnerHTML se renderizan visibles duplicando imágenes)
