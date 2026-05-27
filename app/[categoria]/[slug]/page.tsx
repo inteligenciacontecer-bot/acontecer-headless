@@ -38,7 +38,7 @@ function truncarHTML(html: string, maxParas = 3): string {
 function extraerPrimerH2(html: string): { subtitulo: string | null; resto: string } {
   const match = html.match(/<h2[^>]*>([\s\S]*?)<\/h2>/i);
   if (!match) return { subtitulo: null, resto: html };
-  const subtitulo = match[1].replace(/<[^>]+>/g, '').trim();
+  const subtitulo = decodeEntities(match[1].replace(/<[^>]+>/g, '').trim());
   const resto = html.replace(match[0], '').trim();
   return { subtitulo, resto };
 }
@@ -48,7 +48,7 @@ function extraerEncabezados(html: string): Heading[] {
   const re = /<h([23])[^>]*\bid="([^"]+)"[^>]*>([\s\S]*?)<\/h[23]>/gi;
   let match;
   while ((match = re.exec(html)) !== null) {
-    const text = match[3].replace(/<[^>]+>/g, '').trim();
+    const text = decodeEntities(match[3].replace(/<[^>]+>/g, '').trim());
     if (text) headings.push({ id: match[2], text, level: parseInt(match[1]) });
   }
   return headings;
