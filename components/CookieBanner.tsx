@@ -7,7 +7,31 @@ export default function CookieBanner() {
   useEffect(() => {
     // Solo mostrar si no ha dado consentimiento antes
     const consent = localStorage.getItem('cookie_consent');
-    if (!consent) setVisible(true);
+    if (consent) return;
+
+    // Delay antes de mostrar: 3 segundos O primer scroll >150px, lo que llegue primero.
+    // Objetivo: que Discover capture el screenshot de la página SIN el banner visible,
+    // mejorando CTR de tarjetas. Google también penaliza interstitials que aparecen
+    // inmediatamente al cargar aunque sean de cookies.
+    let shown = false;
+    const show = () => {
+      if (shown) return;
+      shown = true;
+      setVisible(true);
+      window.removeEventListener('scroll', onScroll);
+    };
+
+    const onScroll = () => {
+      if (window.scrollY > 150) show();
+    };
+
+    const timer = setTimeout(show, 3000);
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', onScroll);
+    };
   }, []);
 
   function accept() {

@@ -59,13 +59,18 @@ export const metadata: Metadata = {
 const schemaOrganization = {
   "@context": "https://schema.org",
   "@type": "NewsMediaOrganization",
+  // @id canónico — permite que Google unifique todas las menciones del medio
+  // en un único nodo del Knowledge Graph, sin importar en qué página aparezca.
+  "@id": "https://acontecer.co.cr/#organization",
   "name": "Acontecer.co.cr",
+  "legalName": "Acontecer Costa Rica",
   "alternateName": "Acontecer Costa Rica",
   "url": "https://acontecer.co.cr",
   "sameAs": [
     "https://facebook.com/Acontecer.co.cr",
     "https://youtube.com/@acontecercocr",
-    "https://tiktok.com/@acontecer.co.cr"
+    "https://tiktok.com/@acontecer.co.cr",
+    "https://whatsapp.com/channel/0029VaEbClvAzNbnwhu3Hp0S"
   ],
   "contactPoint": {
     "@type": "ContactPoint",
@@ -78,7 +83,17 @@ const schemaOrganization = {
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "CR",
-    "addressLocality": "San José"
+    "addressLocality": "San José",
+    "addressRegion": "Provincia de San José"
+  },
+  // areaServed con Wikidata para señal de entidad ligada
+  "areaServed": {
+    "@type": "Country",
+    "name": "Costa Rica",
+    "sameAs": [
+      "https://es.wikipedia.org/wiki/Costa_Rica",
+      "https://www.wikidata.org/wiki/Q800"
+    ]
   },
   "foundingDate": "2022",
   "publishingPrinciples": "https://acontecer.co.cr/politicas",

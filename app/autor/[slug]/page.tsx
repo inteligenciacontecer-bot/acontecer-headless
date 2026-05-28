@@ -140,6 +140,22 @@ export default async function AutorPage({
     ? (author.avatar_urls['96'] as string).replace('s=96', 's=280').replace('s%3D96', 's%3D280')
     : null;
 
+  /* sameAs E-E-A-T: enlaces a perfiles externos del periodista.
+   * Fuente: campo "Website" del perfil WordPress (author.url).
+   * Para añadir LinkedIn o COLPER: el periodista llena su perfil WP
+   * con la URL de LinkedIn en el campo "Sitio web" de su perfil. */
+  const sameAsLinks: string[] = [];
+  if (author.url && /^https?:\/\//.test(author.url.trim())) {
+    sameAsLinks.push(author.url.trim());
+  }
+  // Extraer LinkedIn si el editor lo puso en su biografía de WP
+  const linkedInMatch = (author.description || '').match(
+    /https?:\/\/(?:www\.)?linkedin\.com\/in\/[a-zA-Z0-9_-]+\/?/
+  );
+  if (linkedInMatch && !sameAsLinks.includes(linkedInMatch[0])) {
+    sameAsLinks.push(linkedInMatch[0]);
+  }
+
   const initials = getInitials(author.name || '');
   const firstName = (author.name as string || '').split(' ')[0];
   const shareUrl = `https://acontecer.co.cr/autor/${slug}`;
@@ -152,7 +168,10 @@ export default async function AutorPage({
     <div className="ap-wrap">
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://acontecer.co.cr"},{"@type":"ListItem","position":2,"name":"Autores","item":"https://acontecer.co.cr/autores"},{"@type":"ListItem","position":3,"name":author.name,"item":`https://acontecer.co.cr/autor/${author.slug}`}]})}} />
 
-      {/* SCHEMA — Person enriquecido (E-E-A-T: autoridad del autor) */}
+      {/* SCHEMA — Person enriquecido (E-E-A-T: autoridad del autor)
+          @id canónico → permite que el NewsArticle de cada nota referencie
+          esta entidad Person sin duplicar datos. sameAs → LinkedIn / COLPER
+          cuando el periodista llene su perfil WordPress. */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{
         __html: JSON.stringify({
           '@context': 'https://schema.org',
@@ -168,16 +187,25 @@ export default async function AutorPage({
           } : undefined,
           description: author.description || undefined,
           jobTitle: 'Periodista',
+          // sameAs: LinkedIn, COLPER, sitio personal — se autocompletará cuando
+          // cada periodista llene su "Sitio web" en su perfil de WordPress.
+          ...(sameAsLinks.length > 0 ? { sameAs: sameAsLinks } : {}),
           knowsAbout: topics.length > 0
             ? topics.map(t => t.name)
             : ['Noticias Costa Rica', 'Periodismo digital'],
           worksFor: {
             '@type': 'NewsMediaOrganization',
+            '@id': 'https://acontecer.co.cr/#organization',
             name: 'Acontecer.co.cr',
             url: 'https://acontecer.co.cr',
-            logo: 'https://acontecer.co.cr/logo.png',
           },
-          nationality: { '@type': 'Country', name: 'Costa Rica' },
+          nationality: { '@type': 'Country', name: 'Costa Rica', sameAs: 'https://www.wikidata.org/wiki/Q800' },
+          alumniOf: {
+            '@type': 'Organization',
+            name: 'Colegio de Periodistas de Costa Rica',
+            url: 'https://colper.or.cr',
+            sameAs: 'https://es.wikipedia.org/wiki/Colegio_de_Periodistas_de_Costa_Rica',
+          },
         }),
       }} />
 

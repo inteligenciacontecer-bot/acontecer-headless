@@ -1,10 +1,76 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
+// Schema JSON-LD de validación legal — aparece en el footer de TODAS las páginas.
+// Mismo @id que layout.tsx → Google los une en un único nodo del Knowledge Graph.
+// Propósito: E-E-A-T — prueba que el medio tiene dirección, teléfono y política editorial real.
+const schemaFooterOrg = {
+  "@context": "https://schema.org",
+  "@type": "NewsMediaOrganization",
+  "@id": "https://acontecer.co.cr/#organization",
+  "name": "Acontecer.co.cr",
+  "legalName": "Acontecer Costa Rica",
+  "url": "https://acontecer.co.cr",
+  "telephone": "+50662889467",
+  "email": "prensa@acontecer.co.cr",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "San José",
+    "addressLocality": "San José",
+    "addressRegion": "Provincia de San José",
+    "addressCountry": "CR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 9.9281,
+    "longitude": -84.0907
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Costa Rica",
+    "sameAs": "https://www.wikidata.org/wiki/Q800"
+  },
+  "foundingDate": "2022",
+  "publishingPrinciples": "https://acontecer.co.cr/politicas",
+  "masthead": "https://acontecer.co.cr/nosotros",
+  "ethicsPolicy": "https://acontecer.co.cr/politicas",
+  "correctionsPolicy": "https://acontecer.co.cr/politicas",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://acontecer.co.cr/logo.png",
+    "width": 512,
+    "height": 512
+  },
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "editorial",
+      "telephone": "+50662889467",
+      "email": "prensa@acontecer.co.cr",
+      "availableLanguage": "Spanish",
+      "areaServed": "CR"
+    },
+    {
+      "@type": "ContactPoint",
+      "contactType": "advertising",
+      "url": "https://acontecer.co.cr/pauta",
+      "availableLanguage": "Spanish"
+    }
+  ],
+  "sameAs": [
+    "https://facebook.com/Acontecer.co.cr",
+    "https://youtube.com/@acontecercocr",
+    "https://tiktok.com/@acontecer.co.cr",
+    "https://whatsapp.com/channel/0029VaEbClvAzNbnwhu3Hp0S"
+  ]
+};
+
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer style={{background:'linear-gradient(180deg, #00007a 0%, #000055 100%)', color:'rgba(255,255,255,0.7)', marginTop:'40px'}}>
+      {/* JSON-LD de validación legal del medio — E-E-A-T anchor */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(schemaFooterOrg)}} />
 
       {/* FRANJA SUPERIOR */}
       <div style={{borderBottom:'1px solid rgba(255,255,255,0.08)', padding:'40px 20px'}}>

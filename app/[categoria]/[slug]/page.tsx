@@ -381,15 +381,20 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
         url:         `https://acontecer.co.cr/${catSlug}/${slug}`,
         datePublished:  toISO(post.date),
         dateModified:   toISO(post.modified),
-        author: { '@type':'Person', name:authorName, url:`https://acontecer.co.cr/autor/${authorSlug}` },
+        // @id → referencia cruzada al Person schema de /autor/[slug]#person
+        // Google une este nodo con la entidad del periodista sin duplicar datos.
+        author: {
+          '@type': 'Person',
+          '@id': `https://acontecer.co.cr/autor/${authorSlug}#person`,
+          name: authorName,
+          url: `https://acontecer.co.cr/autor/${authorSlug}`,
+        },
         publisher: {
-          '@type':'NewsMediaOrganization', name:'Acontecer.co.cr', url:'https://acontecer.co.cr',
+          '@type': 'NewsMediaOrganization',
+          '@id': 'https://acontecer.co.cr/#organization',
+          name: 'Acontecer.co.cr',
+          url: 'https://acontecer.co.cr',
           logo: { '@type':'ImageObject', url:'https://acontecer.co.cr/logo.png', width:2251, height:353 },
-          sameAs: [
-            'https://www.facebook.com/AcontecerCR',
-            'https://twitter.com/AcontecerCR',
-            'https://www.instagram.com/acontecer.co.cr/',
-          ],
         },
         image: featuredImg ? { '@type':'ImageObject', url:featuredImg, width:1200, height:630 } : undefined,
         mainEntityOfPage: { '@type':'WebPage', '@id':`https://acontecer.co.cr/${catSlug}/${slug}` },
