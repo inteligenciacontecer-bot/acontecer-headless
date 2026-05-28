@@ -1093,3 +1093,123 @@ html[data-theme="dark"] .nv2-wa-cta {
   .nv2-meta-share .nv2-theme-toggle > svg { width: 16px; height: 16px; }
   .nv2-meta-share .nv2-theme-toggle-placeholder { min-width: 36px; width: 36px; }
 }
+
+/* ─── PAUTE INLINE (dentro del artículo, visible en móvil) ────────────── */
+.nv2-paute-inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: linear-gradient(135deg, #0000A2, #0a73ce);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin: 32px 0;
+  color: #fff;
+}
+.nv2-paute-inline-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.65);
+  margin-bottom: 4px;
+}
+.nv2-paute-inline-title {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.nv2-paute-inline-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0 !important;
+}
+/* override .nv2-article-body p !important (specificity 0,2,0 > 0,1,1) */
+.nv2-paute-inline .nv2-paute-inline-desc {
+  color: rgba(255,255,255,.85) !important;
+  font-size: 13px !important;
+  margin: 0 !important;
+}
+.nv2-paute-inline-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: 12px 20px;
+  background: #fff;
+  color: #0000A2;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0,0,0,.18);
+  transition: transform .15s;
+}
+.nv2-paute-inline-btn:hover { transform: translateY(-1px); color: #0000A2; }
+
+@media (max-width: 600px) {
+  .nv2-paute-inline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px;
+  }
+  .nv2-paute-inline-btn { width: 100%; justify-content: center; }
+}
+
+/* ─── LEA MÁS INLINE (solo móvil, en medio del artículo) ────────────────── */
+.nv2-lea-mas {
+  border: 1.5px solid var(--ink-100, #e5e7eb);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin: 8px 0 24px;
+  background: #fff;
+}
+.nv2-lea-mas-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--azul, #0000A2);
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nv2-lea-mas-label::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  background: var(--azul, #0000A2);
+}
+.nv2-lea-mas-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 9px 0;
+  border-top: 1px solid var(--ink-100, #e5e7eb);
+  text-decoration: none;
+  color: var(--ink-900, #111);
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 600;
+  transition: color .15s;
+}
+.nv2-lea-mas-item:hover { color: var(--azul, #0000A2); }
+.nv2-lea-mas-icon {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--azul, #0000A2);
+}
+/* Solo visible en móvil — en desktop el sidebar ya tiene Relacionadas */
+@media (min-width: 900px) {
+  .nv2-lea-mas-wrap { display: none; }
+}

@@ -147,8 +147,9 @@ function limpiarContenido(html: string, addHeadingIds = false) {
     // ── Cita destacada: párrafo que inicia con " y termina con " → clase visual
     .replace(/<p([^>]*)>([\s\S]*?)<\/p>/gi, (_: string, attrs: string, content: string) => {
       const texto = content.replace(/<[^>]+>/g, '').trim();
-      const abre   = /^(?:“|&#8220;|&ldquo;)/.test(texto);
-      const cierra = /(?:”|&#8221;|&rdquo;)$/.test(texto);
+      const abre   = /^(?:“|&#8220;|&ldquo;|«|&#171;|&laquo;)/.test(texto);
+      // cierra: Spanish quotes end mid-paragraph (», attribution after) — opening alone is sufficient
+      const cierra = /»|&#187;|&raquo;|”|&#8221;|&rdquo;/.test(texto);
       if (!abre || !cierra) return `<p${attrs}>${content}</p>`;
       const hasCls = /\bclass\s*=\s*"/.test(attrs);
       const newAttrs = hasCls
@@ -505,13 +506,42 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
               <TextToSpeech slug={slug} readingTime={tiempoLectura} />
             </div>
 
-            {/* CUERPO */}
-            <div className="nv2-article-body">
-              <div
-                className="nv2-measure"
-                dangerouslySetInnerHTML={{__html: contenidoLimpio}}
-              />
-            </div>
+            {/* CUERPO: split para inyectar Lea más en móvil */}
+            {(() => {
+              // Split article HTML after 3rd </p> to inject inline lea-mas
+              let p1 = contenidoLimpio, p2 = '';
+              if (related.length > 0) {
+                let idx = 0, count = 0;
+                while (count < 3) {
+                  const next = contenidoLimpio.indexOf('</p>', idx);
+                  if (next === -1) break;
+                  idx = next + 4; count++;
+                }
+                if (count === 3) { p1 = contenidoLimpio.slice(0, idx); p2 = contenidoLimpio.slice(idx); }
+              }
+              return (
+                <div className="nv2-article-body">
+                  <div className="nv2-measure" dangerouslySetInnerHTML={{__html: p1}} />
+                  {p2 && related.length > 0 && (
+                    <div className="nv2-measure nv2-lea-mas-wrap">
+                      <div className="nv2-lea-mas">
+                        <div className="nv2-lea-mas-label">Lea también</div>
+                        {related.slice(0, 3).map((rp: any) => {
+                          const rpCat = rp._embedded?.['wp:term']?.[0]?.[0]?.slug || catSlug;
+                          return (
+                            <a key={rp.id} href={`/${rpCat}/${rp.slug}`} className="nv2-lea-mas-item">
+                              <svg className="nv2-lea-mas-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14}}><polyline points="9 18 15 12 9 6"/></svg>
+                              <span dangerouslySetInnerHTML={{__html: rp.title.rendered}} />
+                            </a>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                  {p2 && <div className="nv2-measure" dangerouslySetInnerHTML={{__html: p2}} />}
+                </div>
+              );
+            })()}
 
             {/* TAGS */}
             {tags.length > 0 && (
@@ -541,6 +571,30 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
                 <div className="nv2-author-card-foot">
                   <a href={`/autor/${authorSlug}`} className="nv2-author-card-link">
                     Ver todas sus notas <IcArrow />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* PAUTE INLINE — visible en móvil */}
+            <div className="nv2-article-body" style={{paddingTop:0, paddingBottom:0}}>
+              <div className="nv2-measure">
+                <div className="nv2-paute-inline">
+                  <div className="nv2-paute-inline-text">
+                    <div className="nv2-paute-inline-eyebrow">Espacio publicitario</div>
+                    <div className="nv2-paute-inline-title">Paute con nosotros</div>
+                    <p className="nv2-paute-inline-desc">Llegue a miles de lectores costarricenses. +15M vistas mensuales en nuestras plataformas.</p>
+                  </div>
+                  <a
+                    href="https://wa.me/50662889467?text=Hola%2C+me+interesa+pautar+en+Acontecer.co.cr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="nv2-paute-inline-btn"
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:16,height:16,flexShrink:0}}>
+                      <path d="M20.5 3.5A11 11 0 0 0 3.5 17l-1.4 5 5-1.4a11 11 0 0 0 13.4-17z"/>
+                    </svg>
+                    Escribir por WhatsApp
                   </a>
                 </div>
               </div>
