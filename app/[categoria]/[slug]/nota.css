@@ -150,7 +150,12 @@
   grid-template-columns: 1fr 320px;
   gap: var(--nv2-side-gap);
   align-items: start;
+  overflow-x: hidden; /* contiene desbordamiento de embeds/widgets */
 }
+/* Los grid items deben tener min-width:0; de lo contrario pueden expandir
+   el track más allá del contenedor cuando tienen contenido ancho */
+.nv2-article-wrap > main,
+.nv2-article-wrap > aside { min-width: 0; }
 
 /* ── ARTÍCULO (card principal) ─────────────────────────────────────────── */
 .nv2-article {
@@ -504,9 +509,17 @@ html[data-theme="dark"] .nv2-article-body p.nv2-cita-destacada {
 .nv2-article-body img { max-width: 100%; height: auto; }
 /* Embeds externos que limpiarContenido elimina; esto es defensa en profundidad */
 .nv2-article-body blockquote.tiktok-embed,
+.nv2-article-body blockquote.twitter-tweet,
+.nv2-article-body blockquote.instagram-media,
 .nv2-article-body ins.adsbygoogle { display: none !important; }
-/* Cualquier blockquote con atributos de embed que se cuele */
-.nv2-article-body blockquote[style*="max-width"] { max-width: 100% !important; min-width: unset !important; overflow: hidden; }
+/* Blockquotes con dimensiones fijas inline (embeds genéricos que se cuelen)
+   Necesita !important para anular el overflow:visible!important del pull-quote general */
+.nv2-article-body blockquote[style*="max-width"],
+.nv2-article-body blockquote[style*="min-width"] {
+  max-width: 100% !important;
+  min-width: unset !important;
+  overflow: hidden !important;
+}
 
 /* Tags */
 .nv2-article-tags {
