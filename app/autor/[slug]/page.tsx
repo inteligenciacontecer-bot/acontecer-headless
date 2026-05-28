@@ -145,7 +145,11 @@ export default async function AutorPage({
    * Para añadir LinkedIn o COLPER: el periodista llena su perfil WP
    * con la URL de LinkedIn en el campo "Sitio web" de su perfil. */
   const sameAsLinks: string[] = [];
-  if (author.url && /^https?:\/\//.test(author.url.trim())) {
+  if (
+    author.url &&
+    /^https?:\/\//.test(author.url.trim()) &&
+    !author.url.includes('acontecer.co.cr') // excluir URLs internas del CMS / sitio
+  ) {
     sameAsLinks.push(author.url.trim());
   }
   // Extraer LinkedIn si el editor lo puso en su biografía de WP
