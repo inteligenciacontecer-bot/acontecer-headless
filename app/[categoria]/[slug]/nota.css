@@ -141,6 +141,14 @@
 }
 .nv2-minibar-share a:hover { background: var(--azul); color: #fff; border-color: var(--azul); }
 
+/* ══════════════════════════════════════════════════════════════════════════
+   ⚠️  ZONA PROTEGIDA — OVERFLOW MÓVIL  ⚠️
+   NO eliminar overflow-x:hidden ni min-width:0. Sin ellos los artículos
+   de Entretenimiento (y cualquier otro con embeds) se ven como desktop en
+   móvil porque los grid items expanden el track más allá del viewport.
+   Contexto: bug diagnosticado 2026-05-28. Costó 2 sesiones encontrarlo.
+   ══════════════════════════════════════════════════════════════════════════ */
+
 /* ── LAYOUT PRINCIPAL ───────────────────────────────────────────────────── */
 .nv2-article-wrap {
   max-width: var(--nv2-container);
@@ -150,10 +158,11 @@
   grid-template-columns: 1fr 320px;
   gap: var(--nv2-side-gap);
   align-items: start;
-  overflow-x: hidden; /* contiene desbordamiento de embeds/widgets */
+  /* ⚠️ NO ELIMINAR: crea BFC que contiene overflow de embeds/widgets */
+  overflow-x: hidden;
 }
-/* Los grid items deben tener min-width:0; de lo contrario pueden expandir
-   el track más allá del contenedor cuando tienen contenido ancho */
+/* ⚠️ NO ELIMINAR: min-width:0 evita que los grid items expandan su track.
+   CSS grid usa min-width:auto por defecto → el contenido wide rompe el layout. */
 .nv2-article-wrap > main,
 .nv2-article-wrap > aside { min-width: 0; }
 
@@ -499,6 +508,13 @@ html[data-theme="dark"] .nv2-article-body p.nv2-cita-destacada {
 }
 .nv2-article-body a.diputado-link:hover { background: var(--azul); color: #fff !important; }
 
+/* ══════════════════════════════════════════════════════════════════════════
+   ⚠️  ZONA PROTEGIDA — EMBEDS & OVERFLOW EN CUERPO  ⚠️
+   Doble defensa: limpiarContenido (page.tsx) los elimina en el server,
+   y estas reglas CSS los contienen si algo se cuela (caché, artículo viejo).
+   NO simplificar ni eliminar el !important en blockquote[style*].
+   ══════════════════════════════════════════════════════════════════════════ */
+
 /* ─── CONTENIDO QUE PUEDE DESBORDAR EN MÓVIL ────────────────────────────── */
 .nv2-article-body table { display: block; overflow-x: auto; max-width: 100%; border-collapse: collapse; }
 .nv2-article-body table td, .nv2-article-body table th { padding: 8px 10px; border: 1px solid var(--ink-200, #e5e7eb); }
@@ -507,13 +523,15 @@ html[data-theme="dark"] .nv2-article-body p.nv2-cita-destacada {
 .nv2-article-body .wp-block-embed, .nv2-article-body .wp-block-embed__wrapper { max-width: 100%; overflow: hidden; }
 .nv2-article-body iframe { max-width: 100% !important; }
 .nv2-article-body img { max-width: 100%; height: auto; }
-/* Embeds externos que limpiarContenido elimina; esto es defensa en profundidad */
+/* ⚠️ NO ELIMINAR: oculta embeds de redes sociales que limpiarContenido ya elimina
+   en server-side. Es defensa en profundidad para artículos en caché. */
 .nv2-article-body blockquote.tiktok-embed,
 .nv2-article-body blockquote.twitter-tweet,
 .nv2-article-body blockquote.instagram-media,
 .nv2-article-body ins.adsbygoogle { display: none !important; }
-/* Blockquotes con dimensiones fijas inline (embeds genéricos que se cuelen)
-   Necesita !important para anular el overflow:visible!important del pull-quote general */
+/* ⚠️ NO ELIMINAR: el !important es OBLIGATORIO aquí porque el pull-quote general
+   (.nv2-article-body blockquote) tiene overflow:visible!important, y sin !important
+   esta regla pierde y el embed con min-width fijo vuelve a desbordar. */
 .nv2-article-body blockquote[style*="max-width"],
 .nv2-article-body blockquote[style*="min-width"] {
   max-width: 100% !important;

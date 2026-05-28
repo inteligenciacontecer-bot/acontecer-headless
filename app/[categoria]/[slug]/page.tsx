@@ -58,6 +58,11 @@ function extraerEncabezados(html: string): Heading[] {
  * insertarBannerWA — inyecta el banner del canal de WhatsApp después
  * del N-ésimo párrafo del contenido (default 3). Si el artículo tiene
  * menos párrafos, devuelve el HTML sin cambios.
+ *
+ * ⚠️ ZONA PROTEGIDA — Banner de canal WA oficial de Acontecer.
+ * El CTA apunta a https://whatsapp.com/channel/0029VaEbClvAzNbnwhu3Hp0S
+ * Aparece en el artículo principal después del 3er párrafo.
+ * El estilo visual está en nota.css (.nv2-wa-cta).
  */
 function insertarBannerWA(html: string, despuesDelParrafo = 3): string {
   const banner = `<aside class="nv2-wa-cta"><a href="https://whatsapp.com/channel/0029VaEbClvAzNbnwhu3Hp0S" target="_blank" rel="noopener noreferrer" aria-label="Unirse al canal oficial de WhatsApp de Acontecer.co.cr"><span class="nv2-wa-cta-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.88 11.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.84.98h.01a7.94 7.94 0 0 0 7.94-7.92 7.88 7.88 0 0 0-2.39-5.64zm-5.55 12.21h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.49.65.66-2.43-.16-.25a6.6 6.6 0 0 1-1.01-3.51 6.62 6.62 0 0 1 11.3-4.68 6.58 6.58 0 0 1 1.94 4.68 6.62 6.62 0 0 1-6.63 6.6zm3.62-4.94c-.2-.1-1.17-.58-1.35-.65-.18-.07-.31-.1-.45.1-.13.2-.51.65-.62.78-.12.13-.23.15-.42.05-.2-.1-.84-.31-1.6-.99-.6-.53-1-1.18-1.12-1.38-.12-.2-.01-.31.09-.4.09-.09.2-.23.3-.35.1-.12.13-.2.2-.33.07-.13.03-.25-.02-.35-.05-.1-.45-1.08-.62-1.48-.16-.39-.33-.34-.45-.34-.12-.01-.25-.01-.39-.01a.75.75 0 0 0-.54.25c-.18.2-.7.69-.7 1.67 0 .99.72 1.94.82 2.07.1.13 1.42 2.16 3.43 3.03.48.21.85.33 1.14.42.48.15.92.13 1.26.08.39-.06 1.17-.48 1.34-.94.16-.46.16-.86.12-.94-.05-.08-.18-.13-.38-.23z"/></svg></span><span class="nv2-wa-cta-body"><strong class="nv2-wa-cta-title">Únase al canal de WhatsApp</strong><span class="nv2-wa-cta-desc">Reciba las noticias al instante · canal oficial · sin grupos ni spam</span></span><span class="nv2-wa-cta-arrow" aria-hidden="true">→</span></a></aside>`;
@@ -72,6 +77,23 @@ function insertarBannerWA(html: string, despuesDelParrafo = 3): string {
 /**
  * limpiarContenido — sanitiza el HTML de WordPress para el render
  * @param addHeadingIds  true sólo para el artículo principal (activa TOC IDs)
+ *
+ * ⚠️ ZONA PROTEGIDA — NO eliminar ni simplificar ninguna línea de esta función.
+ * Cada regex tiene un motivo documentado. Historial de bugs:
+ *
+ *  • wp-block-embed / iframe   → embeds de video que no renderizan en headless
+ *  • blockquote.tiktok-embed   → tiene min-width:325px fijo → overflow móvil
+ *  • blockquote.twitter-tweet  → tiene min-width fijo → overflow móvil
+ *  • blockquote.instagram-media → ídem
+ *  • ins.adsbygoogle            → anuncios "fluid" que cargan iframes dinámicos
+ *  • <script> en contenido      → adsbygoogle.js, embed.js, etc.
+ *  • data-src → src             → imágenes lazy de artículos 2021 con placeholder gif
+ *  • noscript                   → lazyload plugin duplica imágenes visualmente
+ *  • cita-destacada             → párrafos con «guillemets» o "comillas tipográficas"
+ *                                  reciben clase nv2-cita-destacada para estilo visual
+ *
+ * La defensa es DOBLE: limpiarContenido la elimina en server-side,
+ * y nota.css tiene reglas display:none!important como fallback de caché.
  */
 function limpiarContenido(html: string, addHeadingIds = false) {
   let sectionCount = 0;
@@ -534,6 +556,11 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
               return (
                 <div className="nv2-article-body">
                   <div className="nv2-measure" dangerouslySetInnerHTML={{__html: p1}} />
+                  {/* ⚠️ ZONA PROTEGIDA — Bloque "Lea también" mid-article (solo móvil).
+                       Se inyecta después del 3er párrafo si hay artículos relacionados.
+                       En desktop está oculto (display:none via @media min-width:900px en nota.css).
+                       NO eliminar: es la única sección de relacionadas que ve el usuario móvil
+                       sin bajar hasta el sidebar. */}
                   {p2 && related.length > 0 && (
                     <div className="nv2-measure nv2-lea-mas-wrap">
                       <div className="nv2-lea-mas">
@@ -588,6 +615,10 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
               </div>
             </div>
 
+            {/* ⚠️ ZONA PROTEGIDA — Paute inline (banner "Paute con nosotros").
+                 Visible en móvil antes del share bar final.
+                 WhatsApp: 50662889467. Estilo: nota.css (.nv2-paute-inline).
+                 NO eliminar: es ingreso publicitario directo. */}
             {/* PAUTE INLINE — visible en móvil */}
             <div className="nv2-article-body" style={{paddingTop:0, paddingBottom:0}}>
               <div className="nv2-measure">

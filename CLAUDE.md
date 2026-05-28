@@ -51,7 +51,39 @@ Commit de respaldo **obligatorio** antes de cualquier cambio de impacto medio/al
 git add -A && git commit -m "backup: antes de [descripción]"
 ```
 
-## 5. Estado de Seguridad del VPS (auditado 2026-05-27)
+## 5. Features Críticas — NUNCA Romper
+
+> Diagnosticadas con costo alto. Están documentadas en el código con `⚠️ ZONA PROTEGIDA`.
+
+### A. Overflow móvil en páginas de artículo (`nota.css`)
+| Regla | Por qué existe |
+|---|---|
+| `.nv2-article-wrap { overflow-x: hidden }` | Crea BFC que contiene embeds/widgets anchos |
+| `.nv2-article-wrap > main, > aside { min-width: 0 }` | CSS grid usa `min-width:auto` por defecto → sin esto el track se expande más allá del viewport |
+| `blockquote.tiktok-embed, .twitter-tweet, .instagram-media, ins.adsbygoogle { display:none!important }` | Embeds con `min-width` fijo que no renderizan en headless |
+| `blockquote[style*="min/max-width"] { overflow:hidden!important }` | El `!important` es OBLIGATORIO porque el pull-quote general tiene `overflow:visible!important` |
+
+### B. Pipeline `limpiarContenido` (`app/[categoria]/[slug]/page.tsx`)
+Strips que NO se pueden eliminar:
+- `blockquote.tiktok-embed` — min-width:325px fijo
+- `blockquote.twitter-tweet` — min-width fijo
+- `blockquote.instagram-media` — min-width fijo
+- `ins.adsbygoogle` — anuncios fluid que cargan iframes
+- `<script>` en contenido — adsbygoogle.js, embed.js
+- `data-src → src` — artículos 2021 con placeholder gif
+- `<noscript>` — lazyload plugin duplica imágenes
+
+### C. Features de artículo activos en producción
+| Feature | Clase CSS | Ubicación en JSX |
+|---|---|---|
+| **Cita destacada** | `.nv2-cita-destacada` | `limpiarContenido` → párrafos con «» o "" tipográficas |
+| **Banner canal WA** | `.nv2-wa-cta` | `insertarBannerWA()` → después del 3er párrafo |
+| **Lea también** (mid-article, solo móvil) | `.nv2-lea-mas-wrap` | Entre p1 y p2 del artículo principal |
+| **Paute inline** | `.nv2-paute-inline` | Antes del share bar final (ingreso publicitario) |
+
+---
+
+## 6. Estado de Seguridad del VPS (auditado 2026-05-27)
 
 | Control | Estado | Notas |
 |---|---|---|
