@@ -62,7 +62,12 @@ export async function GET() {
     const items = Array.isArray(posts)
       ? posts.filter((p: any) => isValidSlug(p.slug)).map((p: any) => {
           const catSlug    = catMap[p.categories?.[0]] || 'nacionales';
-          const pubDate    = new Date(p.date).toISOString();
+          // WordPress devuelve p.date en hora local CR (sin zona).
+          // new Date(str_sin_zona) en Node.js UTC lo interpretaría como UTC → fechas 6h desfasadas.
+          // Forzamos la zona correcta antes de convertir para que ISO string sea UTC real.
+          const pubDate    = p.date.includes('+') || p.date.endsWith('Z')
+            ? p.date
+            : p.date + '-06:00';
           const title      = stripHtml(p.title?.rendered ?? '');
 
           // Tags del artículo → keywords para Google News

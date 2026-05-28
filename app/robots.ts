@@ -58,6 +58,9 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'ClaudeBot',        allow: '/' },
       { userAgent: 'anthropic-ai',     allow: '/' },
       { userAgent: 'CCBot',            allow: '/' },
+      // Googlebot-News: sección explícita — sin esto hereda las reglas de * que incluyen
+      // Disallow: /feed/ y pueden crear ambigüedad. Google News requiere acceso libre a artículos.
+      { userAgent: 'Googlebot-News',   allow: '/' },
       // Image bots: explícitos
       { userAgent: 'Googlebot-Image',  allow: ['/', '/wp-content/uploads/'] },
       { userAgent: 'Bingbot-Image',    allow: ['/', '/wp-content/uploads/'] },
