@@ -249,7 +249,9 @@
 }
 
 /* ── BODY LAYOUT ──────────────────────────────────────────── */
-.v1-body { overflow-x: clip;
+/* overflow-x: hidden en v1-body (no en body/html) — crea BFC y contiene overflow
+   de hijos sin romper el position:sticky del subnav (es sibling, no hijo) */
+.v1-body { overflow-x: hidden;
   max-width: 1500px;
   margin: 0 auto;
   padding: 48px 56px 72px;
@@ -294,6 +296,7 @@
 .v1-feature-content {
   display: flex; flex-direction: column;
   justify-content: center;
+  min-width: 0; /* evita que el grid item se expanda más allá del track */
 }
 .v1-feature-tagrow { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
 /* ⚠️ NEGRITA INTENCIONAL — no bajar de 700 */
@@ -375,7 +378,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
 }
-.v1-card { cursor: pointer; }
+.v1-card { cursor: pointer; min-width: 0; } /* min-width:0 evita expansión del grid track */
 .v1-card-link { text-decoration: none; color: inherit; display: block; }
 .v1-card-img {
   height: 200px; border-radius: 10px; margin-bottom: 16px;
@@ -702,7 +705,9 @@
     );
   }
 
-  .v1-subnav-inner { padding: 0 16px; height: 48px; gap: 2px; }
+  /* Subnav mobile: contenemos overflow para que no expanda el viewport */
+  .v1-subnav { overflow-x: hidden; }
+  .v1-subnav-inner { padding: 0 16px; height: 48px; gap: 2px; overflow-x: auto; }
   .v1-subnav-item { padding: 6px 12px; font-size: 12.5px; }
   .v1-subnav-filter { display: none; }
 
@@ -716,17 +721,17 @@
     gap: 18px; padding-bottom: 24px;
   }
   .v1-feature-img { height: 220px; }
-  .v1-feature-title { font-size: 22px; margin-bottom: 12px; }
-  .v1-feature-excerpt { font-size: 14px; margin-bottom: 16px; }
+  .v1-feature-title { font-size: 22px; margin-bottom: 12px; overflow-wrap: break-word; }
+  .v1-feature-excerpt { font-size: 14px; margin-bottom: 16px; overflow-wrap: break-word; }
   .v1-feature-foot { flex-direction: column; align-items: flex-start; gap: 12px; }
 
   .v1-sec-head { margin: 28px 0 16px; align-items: center; }
-  .v1-sec-title { font-size: 20px; }
+  .v1-sec-title { font-size: 20px; overflow-wrap: break-word; }
   .v1-sec-actions { display: none; }
 
   .v1-grid { grid-template-columns: 1fr; gap: 20px; }
   .v1-card-img { height: 180px; }
-  .v1-card-title { font-size: 17px; }
+  .v1-card-title { font-size: 17px; overflow-wrap: break-word; }
 
   .v1-load { margin-top: 28px; }
   .v1-load-btn { padding: 12px 24px; font-size: 13px; }
