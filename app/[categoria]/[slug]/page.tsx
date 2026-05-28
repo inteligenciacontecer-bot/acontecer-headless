@@ -82,6 +82,14 @@ function limpiarContenido(html: string, addHeadingIds = false) {
     // Elimina embeds de video/redes que no renderizamos
     .replace(/<figure[^>]*class="[^"]*wp-block-embed[^"]*"[^>]*>[\s\S]*?<\/figure>/gi, '')
     .replace(/<iframe[^>]*>[\s\S]*?<\/iframe>/gi, '')
+    // Elimina embeds de TikTok (blockquote.tiktok-embed + su script de carga)
+    .replace(/<blockquote[^>]*class="[^"]*tiktok-embed[^"]*"[^>]*>[\s\S]*?<\/blockquote>/gi, '')
+    // Elimina bloques de Google AdSense (<ins class="adsbygoogle">)
+    .replace(/<ins[^>]*class="[^"]*adsbygoogle[^"]*"[^>]*>[\s\S]*?<\/ins>/gi, '')
+    // Elimina <ins> auto-cerrado sin </ins> (variante de AdSense)
+    .replace(/<ins[^>]*class="[^"]*adsbygoogle[^"]*"[^>]*\/>/gi, '')
+    // Elimina <script> del contenido (adsbygoogle.js, embed.js, etc.)
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
     // Canonicaliza links internos del CMS al dominio principal
     .replace(/href="https?:\/\/(www\.|cms\.)?acontecer\.co\.cr/gi, 'href="https://acontecer.co.cr')
     // SEO+SEC: rel="noopener noreferrer" + target="_blank" en links externos

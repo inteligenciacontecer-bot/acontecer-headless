@@ -502,6 +502,11 @@ html[data-theme="dark"] .nv2-article-body p.nv2-cita-destacada {
 .nv2-article-body .wp-block-embed, .nv2-article-body .wp-block-embed__wrapper { max-width: 100%; overflow: hidden; }
 .nv2-article-body iframe { max-width: 100% !important; }
 .nv2-article-body img { max-width: 100%; height: auto; }
+/* Embeds externos que limpiarContenido elimina; esto es defensa en profundidad */
+.nv2-article-body blockquote.tiktok-embed,
+.nv2-article-body ins.adsbygoogle { display: none !important; }
+/* Cualquier blockquote con atributos de embed que se cuele */
+.nv2-article-body blockquote[style*="max-width"] { max-width: 100% !important; min-width: unset !important; overflow: hidden; }
 
 /* Tags */
 .nv2-article-tags {
