@@ -197,6 +197,9 @@ export async function generateMetadata(
       index: true, follow: true,
       googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
     },
+    // ⚠️ CRÍTICO Google News: páginas de sección/categoría NO son artículos.
+    // Sin este meta, Googlebot-News las puede confundir con noticias → Content Mismatch.
+    other: { 'Googlebot-News': 'noindex, nofollow' },
     openGraph: { title, description: desc, url: canonicalUrl, type: 'website' },
   };
 }

@@ -19,6 +19,15 @@ const ASAMBLEA_API = 'https://cms.acontecer.co.cr/wp-json/acontecer/v1/asamblea'
 
 /* ── Helpers ────────────────────────────────────────────────────────────── */
 
+/**
+ * toISO — garantiza timezone en fechas WordPress.
+ * WordPress REST API devuelve `date` como "2026-05-28T10:00:00" (sin zona).
+ * Costa Rica es UTC−6 sin horario de verano → siempre -06:00.
+ * Google News requiere ISO 8601 con timezone para validar frescura.
+ */
+const toISO = (d: string) =>
+  d && !d.includes('+') && !d.endsWith('Z') ? d + '-06:00' : (d || '');
+
 /** Decodifica entidades HTML numéricas y nombradas comunes */
 function decodeEntities(str: string): string {
   return str
@@ -266,8 +275,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       siteName: 'Acontecer.co.cr',
       images: [{ url: featuredImg, width: 1200, height: 630, alt: rawTitle }],
       type: 'article',
-      publishedTime:  post.date,
-      modifiedTime:   post.modified,
+      publishedTime:  toISO(post.date),
+      modifiedTime:   toISO(post.modified),
       authors: [autorNombre],
       section: realCatSlug,
       tags,
@@ -370,8 +379,8 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
         headline:    tituloPlano.slice(0, 110),
         description: decodeEntities(post.excerpt?.rendered?.replace(/<[^>]+>/g, '').trim() || '').slice(0, 160),
         url:         `https://acontecer.co.cr/${catSlug}/${slug}`,
-        datePublished:  post.date,
-        dateModified:   post.modified,
+        datePublished:  toISO(post.date),
+        dateModified:   toISO(post.modified),
         author: { '@type':'Person', name:authorName, url:`https://acontecer.co.cr/autor/${authorSlug}` },
         publisher: {
           '@type':'NewsMediaOrganization', name:'Acontecer.co.cr', url:'https://acontecer.co.cr',
@@ -492,6 +501,7 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
                 height={675}
                 // @ts-ignore
                 fetchpriority="high"
+                loading="eager"
                 decoding="async"
               />
             </div>

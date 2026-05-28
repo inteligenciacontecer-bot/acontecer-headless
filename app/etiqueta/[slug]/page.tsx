@@ -67,6 +67,9 @@ export async function generateMetadata({
     robots: isDelgado
       ? { index: false, follow: true }
       : { index: true, follow: true },
+    // ⚠️ CRÍTICO Google News: las páginas de etiqueta NO son artículos periodísticos.
+    // Sin este meta, Googlebot-News las indexa como noticias → "Content Mismatch" error.
+    other: { 'Googlebot-News': 'noindex, nofollow' },
   };
 }
 

@@ -29,6 +29,7 @@ export async function generateMetadata(
       card: 'summary',
       title: `${author.name}`,
     },
+    other: { 'Googlebot-News': 'noindex, nofollow' },
   };
 }
 
