@@ -10,8 +10,10 @@ export default function robots(): MetadataRoute.Robots {
           '/wp-admin/',
           '/wp-login.php',
           '/wp-json/',
-          '/author/',
-          '/nota/',
+          // NOTA: /author/, /nota/, /tag/ se omiten aquí a propósito.
+          // Tienen redirects 308 → /autor/, /nacionales/, /etiqueta/.
+          // Si los bloqueamos con Disallow, Googlebot no sigue el redirect
+          // y quedan como "indexed though blocked" en Search Console.
           '/page/',
           '/*?cat=',
           '/*?paged=',
@@ -47,8 +49,6 @@ export default function robots(): MetadataRoute.Robots {
           '/blog/ywnv',
           '/about/ywnv',
           '/item/ywnv',
-                    '/author/',
-          '/tag/',
         ],
       },
       // Permitir explícitamente a bots de IA (mejor visibilidad en LLMs/AI Overview)
