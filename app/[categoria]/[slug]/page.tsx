@@ -288,7 +288,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       images: [featuredImg],
     },
     robots: {
+      // max-image-preview:large aquí Y en googleBot — Discover lee ambos
       index: true, follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
       googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
     },
   };

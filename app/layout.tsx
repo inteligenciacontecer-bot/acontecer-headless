@@ -110,8 +110,8 @@ const schemaOrganization = {
   "logo": {
     "@type": "ImageObject",
     "url": "https://acontecer.co.cr/logo.png",
-    "width": 512,
-    "height": 512
+    "width": 2251,
+    "height": 353
   }
 };
 
