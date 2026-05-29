@@ -6,6 +6,14 @@ const BASE = 'https://acontecer.co.cr';
 
 // Filtra slugs corruptos que ensucian el sitemap (URLs de WP rotas con fbclid,
 // __trashed, etc.) — afectan presupuesto de rastreo y dan errores en Semrush.
+// safeDate — evita "Invalid Date" que rompe el build con RangeError en toISOString().
+// WordPress puede devolver date/modified null, vacío o malformado en posts corruptos.
+function safeDate(value: any, fallback: Date): Date {
+  if (!value) return fallback;
+  const d = new Date(value);
+  return isNaN(d.getTime()) ? fallback : d;
+}
+
 function isValidSlug(slug: string): boolean {
   if (!slug) return false;
   if (slug.startsWith('__')) return false;          // __trashed, __backup
@@ -23,7 +31,7 @@ async function getAllPosts() {
     let page = 1;
     while (true) {
       const res = await fetch(
-        `${API}/posts?per_page=100&page=${page}&_fields=slug,modified,categories&_embed=false`,
+        `${API}/posts?per_page=100&page=${page}&_fields=slug,date,modified,categories&_embed=false`,
         { next: { revalidate: 1800 } }
       );
       if (!res.ok) break;
@@ -79,9 +87,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // la fecha de modificación como si fuera publicación reciente.
   const ninetyDaysAgo = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000);
 
+  const now = new Date();
+
   const postPages: MetadataRoute.Sitemap = posts.filter((p: any) => isValidSlug(p.slug)).map((p: any) => {
-    const pubDate = new Date(p.date);
-    const modDate = new Date(p.modified);
+    const pubDate = safeDate(p.date, now);
+    const modDate = safeDate(p.modified, pubDate);
     // Artículos recientes: señalar modificaciones. Viejos: fecha original.
     const lastMod = modDate > ninetyDaysAgo ? modDate : pubDate;
     return {
@@ -95,7 +105,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Web Stories — una entry por cada artículo reciente (últimos 200)
   const storyPages: MetadataRoute.Sitemap = posts.filter((p: any) => isValidSlug(p.slug)).slice(0, 200).map((p: any) => ({
     url: `${BASE}/stories/${p.slug}`,
-    lastModified: new Date(p.date), // siempre fecha original para stories
+    lastModified: safeDate(p.date, now), // siempre fecha original para stories
     changeFrequency: 'weekly' as const,
     priority: 0.6,
   }));
