@@ -12,6 +12,11 @@ const API  = 'https://cms.acontecer.co.cr/wp-json/wp/v2';
 const BASE = 'https://acontecer.co.cr';
 const PER_PAGE = 12;
 
+// Reescribir URLs de imagen del CMS al dominio principal
+// (igual que en news-sitemap) — imágenes aparecen bajo acontecer.co.cr en Google Images
+const cmsToLocal = (url: string) =>
+  url.replace(/^https?:\/\/cms\.acontecer\.co\.cr\//i, 'https://acontecer.co.cr/');
+
 async function getTag(slug: string) {
   try {
     const res = await fetch(`${API}/tags?slug=${slug}&_fields=id,name,slug,count,description`, {
@@ -64,6 +69,13 @@ export async function generateMetadata({
       type: 'website',
       siteName: 'Acontecer.co.cr',
     },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@acontecercocr',
+      creator: '@acontecercocr',
+      title: titulo,
+      description: descripcion,
+    },
     // ⚠️ TODAS las páginas de etiqueta → noindex.
     // Son contenido delgado (listas de links). Indexarlas consume crawl budget
     // y hacen que site:acontecer.co.cr muestre etiquetas en vez de artículos.
@@ -90,8 +102,10 @@ export default async function EtiquetaPage({
 
   const { posts, totalPages, total } = await getTagPosts(tag.id, page);
 
-  const getFeaturedImg = (post: any) =>
-    post._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
+  const getFeaturedImg = (post: any) => {
+    const url = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+    return url ? cmsToLocal(url) : null;
+  };
 
   return (
     <>

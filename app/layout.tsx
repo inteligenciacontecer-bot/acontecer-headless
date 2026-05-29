@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+﻿import type { Metadata, Viewport } from "next";
 import { Inter, Lora as LoraFont } from 'next/font/google';
 import Script from 'next/script';
 import "./globals.css";
@@ -53,7 +53,16 @@ export const metadata: Metadata = {
     title: "Acontecer.co.cr - Noticias de Costa Rica",
     description: "El medio digital independiente de Costa Rica.",
   },
-  alternates: { canonical: "https://acontecer.co.cr" },
+  alternates: {
+    canonical: "https://acontecer.co.cr",
+    languages: { 'es-CR': 'https://acontecer.co.cr' },
+  },
+};
+
+// Viewport separado del metadata — evita que Next.js lo duplique en el <head>
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 const schemaOrganization = {
@@ -127,11 +136,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es" suppressHydrationWarning dir="ltr" className={`${inter.variable} ${lora.variable}`}>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* viewport se declara via export const viewport — no duplicar aquí */}
         <meta httpEquiv="content-language" content="es-cr" />
         {/* Preconnects — solo los orígenes críticos en el camino de carga inicial.
             webpushr se carga tarde (lazyOnload) → no necesita preconnect. */}
-        {/* preconnect a cms removido — imágenes ahora se sirven via rewrite del dominio principal */}
+        {/* cms.acontecer.co.cr: imágenes de etiquetas/categorías se cargan desde ahí */}
+        <link rel="preconnect" href="https://cms.acontecer.co.cr" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://cms.acontecer.co.cr" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
