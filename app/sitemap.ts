@@ -44,20 +44,10 @@ async function getCategories() {
   } catch { return []; }
 }
 
-async function getPopularTags() {
-  try {
-    // Solo etiquetas con al menos 3 artículos para no incluir tags huérfanas
-    const res = await fetch(`${API}/tags?per_page=100&orderby=count&order=desc&_fields=slug,count`, {
-      next: { revalidate: 3600 },
-    });
-    if (!res.ok) return [];
-    const tags = await res.json();
-    return Array.isArray(tags) ? tags.filter((t: any) => t.count >= 3) : [];
-  } catch { return []; }
-}
+// getPopularTags eliminado — etiquetas removidas del sitemap (ver comentario abajo)
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [posts, categories, popularTags] = await Promise.all([getAllPosts(), getCategories(), getPopularTags()]);
+  const [posts, categories] = await Promise.all([getAllPosts(), getCategories()]);
 
   const catMap: Record<number, string> = {};
   categories.forEach((c: any) => { catMap[c.id] = c.slug; });
@@ -83,29 +73,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     }));
 
-  const postPages: MetadataRoute.Sitemap = posts.filter((p: any) => isValidSlug(p.slug)).map((p: any) => ({
-    url: `${BASE}/${catMap[p.categories?.[0]] || 'nacionales'}/${p.slug}`,
-    lastModified: new Date(p.modified),
-    changeFrequency: 'weekly' as const,
-    priority: 0.7,
-  }));
+  // Para artículos: usar modified solo si es reciente (< 90 días).
+  // Editar un artículo viejo (corregir typo, agregar backlink) actualiza `modified`
+  // → sitemap muestra hoy como lastmod → Google lo re-rastrea y puede mostrar
+  // la fecha de modificación como si fuera publicación reciente.
+  const ninetyDaysAgo = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000);
+
+  const postPages: MetadataRoute.Sitemap = posts.filter((p: any) => isValidSlug(p.slug)).map((p: any) => {
+    const pubDate = new Date(p.date);
+    const modDate = new Date(p.modified);
+    // Artículos recientes: señalar modificaciones. Viejos: fecha original.
+    const lastMod = modDate > ninetyDaysAgo ? modDate : pubDate;
+    return {
+      url: `${BASE}/${catMap[p.categories?.[0]] || 'nacionales'}/${p.slug}`,
+      lastModified: lastMod,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    };
+  });
 
   // Web Stories — una entry por cada artículo reciente (últimos 200)
-  // Google Discover las descubre a través de este sitemap
   const storyPages: MetadataRoute.Sitemap = posts.filter((p: any) => isValidSlug(p.slug)).slice(0, 200).map((p: any) => ({
     url: `${BASE}/stories/${p.slug}`,
-    lastModified: new Date(p.modified),
+    lastModified: new Date(p.date), // siempre fecha original para stories
     changeFrequency: 'weekly' as const,
     priority: 0.6,
   }));
 
-  // Etiquetas populares (≥ 3 artículos)
-  const tagPages: MetadataRoute.Sitemap = popularTags.map((t: any) => ({
-    url: `${BASE}/etiqueta/${t.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.5,
-  }));
+  // ⚠️ Etiquetas eliminadas del sitemap — son contenido delgado (listas de links).
+  // Incluirlas consume crawl budget y hacen que site: muestre etiquetas en vez de artículos.
+  // Las páginas de etiqueta tienen noindex en su propio page.tsx.
 
-  return [...staticPages, ...categoryPages, ...tagPages, ...postPages, ...storyPages];
+  return [...staticPages, ...categoryPages, ...postPages, ...storyPages];
 }

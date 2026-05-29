@@ -64,11 +64,12 @@ export async function generateMetadata({
       type: 'website',
       siteName: 'Acontecer.co.cr',
     },
-    robots: isDelgado
-      ? { index: false, follow: true }
-      : { index: true, follow: true },
+    // ⚠️ TODAS las páginas de etiqueta → noindex.
+    // Son contenido delgado (listas de links). Indexarlas consume crawl budget
+    // y hacen que site:acontecer.co.cr muestre etiquetas en vez de artículos.
+    // follow:true conserva el link equity hacia los artículos que listan.
+    robots: { index: false, follow: true },
     // ⚠️ CRÍTICO Google News: las páginas de etiqueta NO son artículos periodísticos.
-    // Sin este meta, Googlebot-News las indexa como noticias → "Content Mismatch" error.
     other: { 'Googlebot-News': 'noindex, nofollow' },
   };
 }
