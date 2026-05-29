@@ -110,22 +110,18 @@ export async function POST(req: NextRequest) {
       }),
       // Google Indexing API → Google Search + Discover (requiere SA verificado en GSC)
       notifyGoogle(url),
-      // Google Sitemap Ping → fuerza re-crawl del news-sitemap sin auth
-      fetch(`https://www.google.com/ping?sitemap=${encodeURIComponent(`${BASE}/news-sitemap.xml`)}`),
     ]);
 
-    const inStatus   = indexNowRes.status === 'fulfilled' ? indexNowRes.value.status : 'error';
-    const gResult    = googleRes.status   === 'fulfilled' ? googleRes.value : { ok: false, status: 0, body: 'rejected' };
-    const pingStatus = sitemapPingRes.status === 'fulfilled' ? sitemapPingRes.value.status : 'error';
+    const inStatus = indexNowRes.status === 'fulfilled' ? indexNowRes.value.status : 'error';
+    const gResult  = googleRes.status   === 'fulfilled' ? googleRes.value : { ok: false, status: 0, body: 'rejected' };
 
-    console.log(`[index-url] ${url} | IndexNow:${inStatus} | GoogleAPI:${gResult.status}(${gResult.ok?'OK':gResult.body?.slice(0,80)}) | Ping:${pingStatus}`);
+    console.log(`[index-url] ${url} | IndexNow:${inStatus} | GoogleAPI:${gResult.status}(${gResult.ok ? 'OK' : gResult.body?.slice(0, 80)})`);
 
     return NextResponse.json({
-      ok       : true,
+      ok      : true,
       url,
-      indexnow : inStatus,
-      google   : { ok: gResult.ok, status: gResult.status },
-      ping     : pingStatus,
+      indexnow: inStatus,
+      google  : { ok: gResult.ok, status: gResult.status },
     });
 
   } catch (err: any) {
