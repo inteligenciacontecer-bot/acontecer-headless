@@ -14,7 +14,46 @@
 - Cualquier archivo nuevo que contenga credenciales → agregarlo a `.gitignore` **antes** del primer `git add`.
 - Verificar con `git status` antes de cada commit que `.env*` no aparezca en la lista de archivos staged.
 
-## 2. Build Obligatorio Antes de Producción
+## 2. Revisión Proactiva Obligatoria — Endpoints SEO
+
+> Cualquier tarea que toque `app/`, `components/`, `lib/` debe incluir revisión activa de los puntos abajo.
+> **No esperar a que el usuario reporte el problema.**
+
+### Endpoints SEO críticos — reglas que NUNCA se deben violar
+
+| Endpoint | Regla obligatoria |
+|---|---|
+| `/news-sitemap.xml` | `NO X-Robots-Tag`, `NO noindex`, `NO nofollow`. Cache-Control: no-store ✓ |
+| `/sitemap.xml`, `/image-sitemap.xml` | `NO X-Robots-Tag:noindex`. Se permiten `Cache-Control` largos |
+| `/robots.txt` | Verificar que Googlebot y AhrefsBot no estén bloqueados |
+| `/feed` (RSS) | `NO noindex`. Content-Type: application/rss+xml |
+| Páginas de artículo | `NO meta robots:noindex` salvo borradores |
+| OG/meta tags | `og:image` debe usar dominio principal, no cms.* |
+
+### Checklist al revisar/modificar cualquier `route.ts` de SEO
+
+Antes de commitear cambios a cualquier `route.ts`, verificar:
+1. ¿Tiene `X-Robots-Tag: noindex`? → **Eliminar** (bloquea crawlers)
+2. ¿Tiene `Cache-Control` correcto? → no-store para sitemaps de noticias, revalidar para los demás
+3. ¿El `Content-Type` es el correcto para el formato?
+4. ¿Hay fetch con `cache: 'no-store'` donde se necesita frescura?
+
+### Checklist al revisar/modificar `limpiarContenido` (page.tsx)
+
+Antes de cualquier cambio en la función:
+1. ¿Se eliminó algún strip que exista por razón documentada? → revisar comentario ZONA PROTEGIDA
+2. ¿Se agregó algo que podría romper links internos o diputado-links?
+3. ¿Se probó con artículos viejos (2021-2022) y nuevos?
+
+### Regla general de revisión activa
+
+Cuando el usuario pide "revisar", "auditar" o hace cualquier cambio en archivos SEO:
+- Hacer `WebFetch` del endpoint en producción para verificar headers y contenido
+- No asumir que el código es correcto — **leer y verificar en vivo**
+
+---
+
+## 3. Build Obligatorio Antes de Producción  
 
 Antes de dar por finalizada **cualquier tarea** que modifique `app/`, `components/`, `lib/`, `middleware.ts` o `next.config.ts`:
 
@@ -25,7 +64,7 @@ Antes de dar por finalizada **cualquier tarea** que modifique `app/`, `component
                git add -A && commit con formato de auditoría
 ```
 
-## 3. Restricción de Ámbito
+## 4. Restricción de Ámbito
 
 - Entorno de trabajo: **exclusivamente `/var/www/acontecer-headless/`**
 - Requieren permiso explícito antes de modificar:
@@ -35,7 +74,7 @@ Antes de dar por finalizada **cualquier tarea** que modifique `app/`, `component
   - `/opt/acontecer-ia/` → con cuidado, es el bot de producción activo
   - Cualquier `crontab` del sistema
 
-## 4. Formato de Commits (auditoría)
+## 5. Formato de Commits (auditoría)
 
 ```
 tipo: descripción breve | Impacto: bajo/medio/alto
@@ -51,7 +90,7 @@ Commit de respaldo **obligatorio** antes de cualquier cambio de impacto medio/al
 git add -A && git commit -m "backup: antes de [descripción]"
 ```
 
-## 5. Features Críticas — NUNCA Romper
+## 6. Features Críticas — NUNCA Romper
 
 > Diagnosticadas con costo alto. Están documentadas en el código con `⚠️ ZONA PROTEGIDA`.
 
@@ -83,7 +122,7 @@ Strips que NO se pueden eliminar:
 
 ---
 
-## 6. Estado de Seguridad del VPS (auditado 2026-05-27)
+## 7. Estado de Seguridad del VPS (auditado 2026-05-27)
 
 | Control | Estado | Notas |
 |---|---|---|
