@@ -118,9 +118,11 @@ ${items}
       status: 200,
       headers: {
         'Content-Type': 'application/xml; charset=utf-8',
+        // no-store: Google News debe ver siempre contenido fresco (últimas 48h)
         'Cache-Control': 'no-cache, no-store, must-revalidate',
         'Pragma': 'no-cache',
-        'X-Robots-Tag': 'noindex',
+        // ⚠️ NO agregar X-Robots-Tag:noindex aquí — impide que Google News
+        // procese el sitemap en visitas posteriores a la primera.
       },
     });
   } catch (err) {
