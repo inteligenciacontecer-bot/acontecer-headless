@@ -45,9 +45,19 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: '/:path(sitemap.xml|news-sitemap.xml)',
+        // sitemap.xml principal: se revalida cada 30 min está bien (contenido estático)
+        source: '/sitemap.xml',
         headers: [
           { key: 'Cache-Control', value: 'public, s-maxage=1800, stale-while-revalidate=3600' },
+        ],
+      },
+      {
+        // ⚠️ news-sitemap.xml: NUNCA cachear — Google News necesita ver
+        // nuevos artículos al instante. s-maxage aquí retrasa indexación.
+        source: '/news-sitemap.xml',
+        headers: [
+          { key: 'Cache-Control', value: 'no-cache, no-store, must-revalidate' },
+          { key: 'Pragma', value: 'no-cache' },
         ],
       },
       {
