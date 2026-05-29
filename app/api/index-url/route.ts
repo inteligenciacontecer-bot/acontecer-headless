@@ -96,7 +96,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Llamar todo en paralelo
-    const [indexNowRes, googleRes, sitemapPingRes] = await Promise.allSettled([
+    const [indexNowRes, googleRes] = await Promise.allSettled([
       // IndexNow → Bing + Yandex
       fetch('https://api.indexnow.org/indexnow', {
         method : 'POST',
