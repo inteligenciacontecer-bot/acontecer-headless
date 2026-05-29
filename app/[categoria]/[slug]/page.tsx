@@ -7,7 +7,7 @@ import NotaInteractive from '@/components/NotaInteractive';
 import ThemeToggle from '@/components/ThemeToggle';
 import AuthorAvatar from '@/components/AuthorAvatar';
 import { linkDiputados, type DiputadoMinimo } from '@/lib/diputados-linker';
-import { cleanSeoTitle, cleanSeoDesc } from '@/lib/sanitize-seo';
+import { cleanSeoDesc } from '@/lib/sanitize-seo';
 import { buildMentions, buildAbout, buildSpeakable, extractCitations, buildArticleBody, buildFAQPage, buildSportsEvent, buildEvent } from '@/lib/schema-news';
 
 // SEO: reescribir URLs del CMS a dominio principal
@@ -251,9 +251,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const featuredImg = cmsToLocal(post._embedded?.['wp:featuredmedia']?.[0]?.source_url) || 'https://acontecer.co.cr/opengraph-image';
   const rawTitle   = decodeEntities(post.title.rendered.replace(/<[^>]+>/g, ''));
   const rawExcerpt = decodeEntities(post.excerpt?.rendered?.replace(/<[^>]+>/g, '').trim() || '').slice(0, 160);
-  const seoTitle   = cleanSeoTitle(post.meta?._acontecer_seo_title) || '';
   const seoDesc    = cleanSeoDesc(post.meta?._acontecer_seo_desc)   || '';
-  const titulo     = (seoTitle || rawTitle); // layout title.template '%s | Acontecer.co.cr' agrega el sufijo automáticamente
+  // Title = titular COMPLETO del artículo (con su gancho), NO la versión SEO corta.
+  // Decisión editorial: el titular con gancho genera más CTR aunque Google lo trunque a ~60.
+  const titulo     = rawTitle;
   const descripcion = seoDesc || rawExcerpt;
   const realCatSlug = post._embedded?.['wp:term']?.[0]?.[0]?.slug || categoria;
   const canonicalUrl = `https://acontecer.co.cr/${realCatSlug}/${slug}`;
