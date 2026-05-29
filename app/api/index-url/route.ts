@@ -95,8 +95,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid URL' }, { status: 400 });
     }
 
-    // Llamar ambas APIs en paralelo
-    const [indexNowRes, googleRes] = await Promise.allSettled([
+    // Llamar todo en paralelo
+    const [indexNowRes, googleRes, sitemapPingRes] = await Promise.allSettled([
       // IndexNow → Bing + Yandex
       fetch('https://api.indexnow.org/indexnow', {
         method : 'POST',
@@ -108,22 +108,24 @@ export async function POST(req: NextRequest) {
           urlList    : [url],
         }),
       }),
-      // Google Indexing API → Google Search + Discover
+      // Google Indexing API → Google Search + Discover (requiere SA verificado en GSC)
       notifyGoogle(url),
+      // Google Sitemap Ping → fuerza re-crawl del news-sitemap sin auth
+      fetch(`https://www.google.com/ping?sitemap=${encodeURIComponent(`${BASE}/news-sitemap.xml`)}`),
     ]);
 
-    const inStatus = indexNowRes.status === 'fulfilled'
-      ? indexNowRes.value.status : 'error';
-    const gResult  = googleRes.status === 'fulfilled'
-      ? googleRes.value : { ok: false, status: 0, body: 'promise rejected' };
+    const inStatus   = indexNowRes.status === 'fulfilled' ? indexNowRes.value.status : 'error';
+    const gResult    = googleRes.status   === 'fulfilled' ? googleRes.value : { ok: false, status: 0, body: 'rejected' };
+    const pingStatus = sitemapPingRes.status === 'fulfilled' ? sitemapPingRes.value.status : 'error';
 
-    console.log(`[index-url] ${url} | IndexNow: ${inStatus} | Google: ${gResult.status} ${gResult.ok ? 'OK' : gResult.body}`);
+    console.log(`[index-url] ${url} | IndexNow:${inStatus} | GoogleAPI:${gResult.status}(${gResult.ok?'OK':gResult.body?.slice(0,80)}) | Ping:${pingStatus}`);
 
     return NextResponse.json({
       ok       : true,
       url,
       indexnow : inStatus,
       google   : { ok: gResult.ok, status: gResult.status },
+      ping     : pingStatus,
     });
 
   } catch (err: any) {
