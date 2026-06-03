@@ -387,3 +387,9 @@
 .ag-footer { flex-direction: column; align-items: flex-start; gap: 16px; padding: 32px 20px; }
 .ag-footer-tagline { text-align: left; }
 }
+
+
+/* ===== Ocultar el footer de noticias del sitio SOLO en /agencia =====
+   agencia.css solo carga en esta ruta, así que no afecta otras páginas.
+   El cierre propio del diseño es <section.ag-footer> (no <footer>), no se toca. */
+footer { display: none !important; }
