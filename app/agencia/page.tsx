@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './agencia.css';
+import AgenciaForm from '@/components/AgenciaForm';
 
 export const metadata: Metadata = {
   title: 'Acontecer Studio · Agencia de Comunicación',
@@ -25,12 +26,6 @@ export default function AgenciaPage() {
       <div className="ag-hero-inner">
       <div className="ag-logo-row">
       <div className="ag-logo">
-      <span className="ag-logo-mark">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40">
-      <text x="7" y="30" fontFamily="Lora, Georgia, serif" fontWeight="700" fontSize="30" fill="#0a73ce">a</text>
-      <path d="M25 13 L35 20 L25 27 Z" fill="#0a73ce"/>
-      </svg>
-      </span>
       <span className="ag-logo-text">acontecer<span className="ag-logo-studio">.co.cr</span>
       </span>
       </div>
@@ -513,54 +508,11 @@ export default function AgenciaPage() {
       </div>
       </div>
       </div>
-      <form className="ag-form">
-      <div className="ag-form-grid">
-      <div className="ag-field ag-field-half">
-      <label className="ag-label">Nombre completo</label>
-      <input className="ag-input" placeholder="Ej. María Solano" />
-      </div>
-      <div className="ag-field ag-field-half">
-      <label className="ag-label">Cargo</label>
-      <input className="ag-input" placeholder="Director de Comunicación" />
-      </div>
-      <div className="ag-field ag-field-half">
-      <label className="ag-label">Organización</label>
-      <input className="ag-input" placeholder="Nombre de la empresa o institución" />
-      </div>
-      <div className="ag-field ag-field-half">
-      <label className="ag-label">Correo corporativo</label>
-      <input className="ag-input" placeholder="m.solano@empresa.cr" />
-      </div>
-      <div className="ag-field ag-field-full">
-      <label className="ag-label">¿Qué buscás?</label>
-      <select className="ag-input ag-select" defaultValue="">
-      <option value="" disabled>Seleccioná un servicio</option>
-      <option value="Comunicación institucional">Comunicación institucional</option>
-      <option value="Asesoría política / electoral">Asesoría política / electoral</option>
-      <option value="Gestión de crisis">Gestión de crisis</option>
-      <option value="Media tech &amp; desarrollo">Media tech &amp; desarrollo</option>
-      <option value="Producción audiovisual">Producción audiovisual</option>
-      <option value="Otro">Otro</option>
-      </select>
-      </div>
-      <div className="ag-field ag-field-full">
-      <label className="ag-label">Contanos brevemente</label>
-      <textarea className="ag-input ag-textarea" placeholder="Contexto del proyecto, plazos, presupuesto estimado…" rows={4} />
-      </div>
-      </div>
-      <button className="ag-submit" type="button">Escribir por WhatsApp →</button>
-      <p className="ag-form-privacy">Tus datos se manejan según nuestra política de privacidad. No los compartimos ni con anunciantes ni con terceros.</p>
-      </form>
+      <AgenciaForm />
       </div>
       </section>
       <section className="ag-footer">
       <div className="ag-logo">
-      <span className="ag-logo-mark">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 40">
-      <text x="7" y="30" fontFamily="Lora, Georgia, serif" fontWeight="700" fontSize="30" fill="#0a73ce">a</text>
-      <path d="M25 13 L35 20 L25 27 Z" fill="#0a73ce"/>
-      </svg>
-      </span>
       <span className="ag-logo-text">acontecer<span className="ag-logo-studio">.co.cr</span>
       </span>
       </div>

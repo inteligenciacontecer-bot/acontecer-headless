@@ -4,6 +4,7 @@ import Script from 'next/script';
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ConditionalFooter from "@/components/ConditionalFooter";
 import Ticker from "@/components/Ticker";
 import ConditionalTicker from "@/components/ConditionalTicker";
 import CookieBanner from "@/components/CookieBanner";
@@ -184,7 +185,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <Ticker />
         <div id="main-content" tabIndex={-1} style={{outline: 'none'}}>{children}</div>
-        <Footer />
+        <ConditionalFooter><Footer /></ConditionalFooter>
         {/* Google Analytics 4 + Consent Mode v2
             Orden correcto según docs de Google:
             1. dataLayer + gtag() → 2. consent default → 3. cargar gtag.js → 4. config */}
