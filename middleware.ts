@@ -233,9 +233,9 @@ const patternRedirects: Array<{ pattern: RegExp; replacement: string }> = [
     pattern: /^\/(nacionales|internacionales|deportes|economia|entretenimiento|tecnologia|opinion|tendencias|turismo)\/page\/\d+\/?$/i,
     replacement: '/categoria/$1',
   },
-  // /CAT/ sola → /categoria/CAT (sin prefijo /categoria/)
+  // /CAT/ sola → /categoria/CAT (sin prefijo /categoria/) — las 9 categorías
   {
-    pattern: /^\/(tecnologia|entretenimiento|opinion)\/?$/i,
+    pattern: /^\/(nacionales|internacionales|deportes|economia|entretenimiento|tecnologia|opinion|tendencias|turismo)\/?$/i,
     replacement: '/categoria/$1',
   },
   // /etiqueta/X/feed → /etiqueta/X
