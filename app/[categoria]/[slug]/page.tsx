@@ -399,7 +399,7 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
           '@id': 'https://acontecer.co.cr/#organization',
           name: 'Acontecer.co.cr',
           url: 'https://acontecer.co.cr',
-          logo: { '@type':'ImageObject', url:'https://acontecer.co.cr/logo.png', width:2251, height:353 },
+          logo: { '@type':'ImageObject', url:'https://acontecer.co.cr/logo.png', width:600, height:94 },
         },
         image: featuredImg ? { '@type':'ImageObject', url:featuredImg, width:1200, height:630 } : undefined,
         mainEntityOfPage: { '@type':'WebPage', '@id':`https://acontecer.co.cr/${catSlug}/${slug}` },
