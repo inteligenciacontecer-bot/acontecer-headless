@@ -124,7 +124,7 @@ ${items}
       headers: {
         'Content-Type': 'application/xml; charset=utf-8',
         'Cache-Control': 'public, s-maxage=1800, stale-while-revalidate=3600',
-        'X-Robots-Tag': 'noindex',
+        // Sin X-Robots-Tag: los sitemaps NO deben llevar noindex (frena el procesamiento).
       },
     });
   } catch (err) {
