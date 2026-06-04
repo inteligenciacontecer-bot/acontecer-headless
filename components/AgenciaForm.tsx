@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 // WhatsApp de la agencia (mismo número que el CTA del hero). Cambiar aquí si hace falta.
-const WA_NUMERO = '50688880000';
+const WA_NUMERO = '50662889467';
 
 export default function AgenciaForm() {
   const [nombre, setNombre] = useState('');

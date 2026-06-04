@@ -38,7 +38,7 @@ export default function AgenciaPage() {
       <h1 className="ag-hero-title">Agencia de Comunicación Acontecer.co.cr</h1>
       <p className="ag-hero-sub">Una agencia respaldada por la redacción de Acontecer.co.cr. Hacemos comunicación estratégica, asesoría política y desplegamos la infraestructura técnica que un mundo que no se detiene exige.</p>
       <div className="ag-hero-ctas">
-      <a className="ag-btn-primary" href="https://wa.me/50688880000?text=Hola%2C%20quiero%20un%20diagn%C3%B3stico%20estrat%C3%A9gico%20con%20la%20agencia%20de%20Acontecer.co.cr" target="_blank" rel="noopener">Diagnóstico por WhatsApp <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <a className="ag-btn-primary" href="https://wa.me/50662889467?text=Hola%2C%20quiero%20un%20diagn%C3%B3stico%20estrat%C3%A9gico%20con%20la%20agencia%20de%20Acontecer.co.cr" target="_blank" rel="noopener">Diagnóstico por WhatsApp <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
       <path d="M5 12h14M13 6l6 6-6 6"/>
       </svg>
       </a>
