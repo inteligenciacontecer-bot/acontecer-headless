@@ -114,6 +114,7 @@ export default function Footer() {
               {name:'Internacionales', href:'/categoria/internacionales'},
               {name:'Deportes', href:'/categoria/deportes'},
               {name:'Economía', href:'/categoria/economia'},
+              {name:'Tipo de cambio del dólar', href:'/tipo-de-cambio'},
               {name:'Entretenimiento', href:'/categoria/entretenimiento'},
               {name:'Tecnología', href:'/categoria/tecnologia'},
               {name:'Opinión', href:'/categoria/opinion'},

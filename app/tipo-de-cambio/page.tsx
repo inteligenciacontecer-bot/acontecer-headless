@@ -44,8 +44,8 @@ function fechaBonita(f: string): string {
 export async function generateMetadata(): Promise<Metadata> {
   const tc = await getTipoCambio();
   const desc = tc
-    ? `¿Cuánto está el dólar hoy en Costa Rica? Compra ₡${nf.format(tc.compra)} y venta ₡${nf.format(tc.venta)} según el tipo de cambio de referencia del BCCR. Convertí dólares a colones al instante con nuestra calculadora.`
-    : 'Tipo de cambio del dólar en Costa Rica hoy: compra y venta según el tipo de cambio de referencia del BCCR. Convertí dólares a colones al instante con nuestra calculadora.';
+    ? `¿Cuánto está el dólar hoy en Costa Rica? Compra ₡${nf.format(tc.compra)} y venta ₡${nf.format(tc.venta)} según el tipo de cambio de referencia del BCCR. Convertidor de dólares a colones actualizado automáticamente.`
+    : 'Tipo de cambio del dólar en Costa Rica hoy: compra y venta según el tipo de cambio de referencia del BCCR. Convertidor de dólares a colones actualizado automáticamente.';
   return {
     title: 'Tipo de Cambio del Dólar Hoy en Costa Rica',
     description: desc,
@@ -77,7 +77,7 @@ function buildFaq(tc: TipoCambio | null) {
     },
     {
       q: '¿Cuál es la diferencia entre el tipo de cambio de compra y de venta?',
-      a: 'El de compra es el precio al que las entidades financieras te compran tus dólares (vos recibís colones). El de venta es el precio al que te venden dólares (vos entregás colones). La venta siempre es más alta que la compra; esa diferencia es el margen de la entidad.',
+      a: 'El de compra es el precio al que las entidades financieras compran los dólares del público (que recibe colones a cambio). El de venta es el precio al que venden dólares (el cliente entrega colones). La venta siempre es más alta que la compra; esa diferencia es el margen de la entidad.',
     },
     {
       q: '¿Qué es el tipo de cambio de referencia del BCCR?',
@@ -93,7 +93,7 @@ function buildFaq(tc: TipoCambio | null) {
     },
     {
       q: '¿Cada cuánto se actualiza esta página?',
-      a: 'Esta página se actualiza de forma automática cada hora con el último tipo de cambio de referencia publicado por el Banco Central de Costa Rica. No necesitás recargarla manualmente.',
+      a: 'Esta página se actualiza de forma automática cada hora con el último tipo de cambio de referencia publicado por el Banco Central de Costa Rica. No requiere recargarla de forma manual.',
     },
   ];
 }
@@ -177,8 +177,8 @@ export default async function TipoCambioPage() {
           <span className="tc-eyebrow">Servicio en vivo · BCCR</span>
           <h1 className="tc-title">Tipo de cambio del dólar hoy en Costa Rica</h1>
           <p className="tc-lead">
-            Consultá el precio del dólar estadounidense (USD) frente al colón (CRC) según el tipo de cambio de
-            referencia del Banco Central de Costa Rica. La página se actualiza automáticamente cada hora.
+            El precio del dólar estadounidense (USD) frente al colón (CRC) se rige por el tipo de cambio de
+            referencia del Banco Central de Costa Rica. La información se actualiza automáticamente cada hora.
           </p>
         </header>
 
@@ -192,7 +192,7 @@ export default async function TipoCambioPage() {
                   <span className="tc-rate-sym">₡</span>
                   {nf.format(tc.compra)}
                 </span>
-                <span className="tc-rate-hint">Te compran tus dólares</span>
+                <span className="tc-rate-hint">Para cambiar dólares a colones</span>
               </div>
               <div className="tc-rate tc-rate--venta">
                 <span className="tc-rate-lbl">Venta</span>
@@ -200,7 +200,7 @@ export default async function TipoCambioPage() {
                   <span className="tc-rate-sym">₡</span>
                   {nf.format(tc.venta)}
                 </span>
-                <span className="tc-rate-hint">Te venden dólares</span>
+                <span className="tc-rate-hint">Para comprar dólares con colones</span>
               </div>
             </div>
             <div className="tc-card-foot">
@@ -211,7 +211,7 @@ export default async function TipoCambioPage() {
           </section>
         ) : (
           <section className="tc-card tc-card--off" aria-label="Tipo de cambio">
-            <p>El dato de referencia está temporalmente no disponible. Volvé a intentarlo en unos minutos.</p>
+            <p>El dato de referencia está temporalmente no disponible. Intente de nuevo en unos minutos.</p>
           </section>
         )}
 
@@ -228,11 +228,11 @@ export default async function TipoCambioPage() {
             valor sirve de guía para bancos, comercios y personas, aunque cada entidad fija después su propia tarifa.
           </p>
 
-          <h2>Compra y venta: ¿cuál tarifa me aplica?</h2>
+          <h2>Compra y venta: ¿cuál tarifa aplica en cada caso?</h2>
           <p>
-            Siempre vas a ver dos números. El <strong>tipo de compra</strong> es el precio al que la entidad te compra
-            tus dólares —es decir, los colones que recibís si vendés dólares—. El <strong>tipo de venta</strong> es el
-            precio al que te vende dólares, los colones que pagás por cada dólar. La venta es más alta que la compra, y
+            Siempre aparecen dos números. El <strong>tipo de compra</strong> es el precio al que la entidad compra
+            los dólares del público —es decir, los colones que se reciben al vender dólares—. El <strong>tipo de venta</strong> es el
+            precio al que la entidad vende dólares, los colones que se pagan por cada dólar. La venta es más alta que la compra, y
             esa diferencia (el «diferencial») es la ganancia de la entidad.
           </p>
 
@@ -246,15 +246,15 @@ export default async function TipoCambioPage() {
 
           <h2>¿Dónde cambiar dólares a colones?</h2>
           <p>
-            Podés cambiar divisas en bancos como el Banco Nacional, BCR, BAC, Davivienda o Scotiabank, en casas de
+            Las divisas se pueden cambiar en bancos como el Banco Nacional, BCR, BAC, Davivienda o Scotiabank, en casas de
             cambio autorizadas y en algunos cajeros. Conviene comparar: cada entidad aplica su propio margen sobre el
-            tipo de cambio de referencia, así que el monto final que recibís o pagás puede variar de una a otra.
+            tipo de cambio de referencia, así que el monto final recibido o pagado puede variar de una a otra.
           </p>
 
           <p className="tc-disclaimer">
             <strong>Importante:</strong> los valores mostrados corresponden al tipo de cambio de referencia del BCCR y
-            tienen carácter informativo. No constituyen una oferta de compra o venta de divisas. Verificá la tarifa
-            vigente con tu entidad financiera antes de realizar cualquier transacción.
+            tienen carácter informativo. No constituyen una oferta de compra o venta de divisas. Conviene verificar la
+            tarifa vigente con la entidad financiera antes de realizar cualquier transacción.
           </p>
         </section>
 

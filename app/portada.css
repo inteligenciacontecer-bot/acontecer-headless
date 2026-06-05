@@ -386,6 +386,17 @@
   font-family: var(--serif); font-size: 22px; font-weight: 500;
   color: var(--ink-900); letter-spacing: -.01em;
 }
+.p-cambio-link {
+  display: block; text-decoration: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.p-cambio-link:hover { border-color: var(--blue-600); box-shadow: 0 12px 28px -20px rgba(10,115,206,.6); }
+.p-cambio-more {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 14px;
+  font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--blue-600);
+  transition: gap .15s;
+}
+.p-cambio-link:hover .p-cambio-more { gap: 10px; }
 /* lo más leído */
 .p-leidos { display: flex; flex-direction: column; }
 .p-leidos-item {

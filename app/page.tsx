@@ -366,7 +366,7 @@ export default async function Home() {
           </div>
 
           {/* Tipo de cambio */}
-          <div className="p-widget">
+          <a href="/tipo-de-cambio" className="p-widget p-cambio-link" aria-label="Ver tipo de cambio del dólar y convertidor">
             <div className="p-widget-eyebrow">BCCR · cierre del día</div>
             <h3 className="p-widget-title">Tipo de cambio</h3>
             <div className="p-cambio-grid">
@@ -379,7 +379,8 @@ export default async function Home() {
                 <div className="val">₡{tipoCambio?.venta || 'N/D'}</div>
               </div>
             </div>
-          </div>
+            <span className="p-cambio-more">Convertidor de dólares <span aria-hidden="true">→</span></span>
+          </a>
 
           {/* Lo más reciente */}
           <div className="p-widget">
