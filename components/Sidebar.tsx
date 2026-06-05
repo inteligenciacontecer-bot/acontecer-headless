@@ -133,6 +133,12 @@ export default async function Sidebar({ related, catSlug, headings = [], reading
               <div className="nv2-cambio-val">₡{tipoCambio.venta}</div>
             </div>
           </div>
+          <a
+            href="/tipo-de-cambio"
+            style={{ display: 'block', marginTop: 12, fontSize: 12, fontWeight: 600, color: '#0a73ce', letterSpacing: '0.01em' }}
+          >
+            Convertidor de dólares →
+          </a>
         </div>
       )}
 
