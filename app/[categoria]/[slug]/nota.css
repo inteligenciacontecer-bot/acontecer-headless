@@ -161,6 +161,16 @@
   /* ⚠️ NO ELIMINAR: crea BFC que contiene overflow de embeds/widgets */
   overflow-x: hidden;
 }
+/* ── FIX sticky del sidebar en DESKTOP (solo PC) ──────────────────────────
+   El overflow-x:hidden de arriba fuerza overflow-y a `auto` → convierte el
+   wrap en scroll container → ROMPE el position:sticky de .nv2-side, así que
+   en PC el sidebar (y sus iconos) no acompaña el scroll. En desktop (≥901px,
+   donde existe el grid de 2 columnas) usamos overflow-x:clip: contiene el
+   overflow horizontal SIN crear scroll container → el sticky vuelve a andar.
+   Móvil (≤900px) conserva overflow-x:hidden → protección de overflow intacta. */
+@media (min-width: 901px) {
+  .nv2-article-wrap { overflow-x: clip; }
+}
 /* ⚠️ NO ELIMINAR: min-width:0 evita que los grid items expandan su track.
    CSS grid usa min-width:auto por defecto → el contenido wide rompe el layout. */
 .nv2-article-wrap > main,
