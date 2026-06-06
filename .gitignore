@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# datos generados por crons (scraper de combustibles, etc.)
+/data/combustibles.json

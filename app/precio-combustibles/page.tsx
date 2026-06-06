@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import './combustible.css';
 import CalculadoraCombustible from '@/components/CalculadoraCombustible';
 
@@ -7,14 +9,17 @@ export const revalidate = 86400;
 
 const URL_PAGINA = 'https://acontecer.co.cr/precio-combustibles';
 
+interface Combustible { nombre: string; precio: number; nota: string }
+interface Precios { vigenteDesde: string; combustibles: Combustible[] }
+
 // ──────────────────────────────────────────────────────────────────────────
-// ⚠️ PRECIOS OFICIALES — actualizar cuando ARESEP/RECOPE cambie las tarifas
-// (la revisión es mensual, alrededor del 2.º viernes de cada mes).
+// PRECIOS: se actualizan SOLOS vía cron (vps-scripts/scraper_combustibles.py),
+// que escribe data/combustibles.json desde RECOPE el 2.º sábado de cada mes.
+// Esta constante es solo el FALLBACK si el JSON no existe o falla el scraper.
+// Para actualizar a mano: editar data/combustibles.json o estos valores.
 // Fuente: https://www.recope.go.cr/productos/precios-nacionales/tabla-precios/
-//         https://aresep.go.cr/combustible/tarifas/
-// Al actualizar: cambiar `precio` y `vigenteDesde` (formato YYYY-MM-DD).
 // ──────────────────────────────────────────────────────────────────────────
-const PRECIOS = {
+const PRECIOS_FALLBACK: Precios = {
   vigenteDesde: '2026-06-03',
   combustibles: [
     { nombre: 'Gasolina Súper', precio: 753, nota: '95 octanos' },
@@ -22,6 +27,20 @@ const PRECIOS = {
     { nombre: 'Diésel', precio: 670, nota: 'Diésel 50' },
   ],
 };
+
+// Lee el JSON generado por el cron. Defensivo: cualquier problema → fallback.
+function getPrecios(): Precios {
+  try {
+    const raw = readFileSync(join(process.cwd(), 'data', 'combustibles.json'), 'utf-8');
+    const d = JSON.parse(raw);
+    if (d && typeof d.vigenteDesde === 'string'
+        && Array.isArray(d.combustibles) && d.combustibles.length >= 3
+        && d.combustibles.every((c: any) => typeof c?.precio === 'number' && c.precio > 0)) {
+      return { vigenteDesde: d.vigenteDesde, combustibles: d.combustibles };
+    }
+  } catch { /* archivo ausente o inválido → fallback */ }
+  return PRECIOS_FALLBACK;
+}
 
 const nf = new Intl.NumberFormat('es-CR', { maximumFractionDigits: 0 });
 
@@ -31,7 +50,8 @@ function fechaBonita(iso: string): string {
   return new Date(y, m - 1, d).toLocaleDateString('es-CR', { day: 'numeric', month: 'long', year: 'numeric' });
 }
 
-export const metadata: Metadata = (() => {
+export function generateMetadata(): Metadata {
+  const PRECIOS = getPrecios();
   const sup = PRECIOS.combustibles[0].precio;
   const reg = PRECIOS.combustibles[1].precio;
   const die = PRECIOS.combustibles[2].precio;
@@ -49,9 +69,9 @@ export const metadata: Metadata = (() => {
     },
     twitter: { card: 'summary_large_image', title: 'Precio de los Combustibles Hoy en Costa Rica', description: desc },
   };
-})();
+}
 
-function buildFaq() {
+function buildFaq(PRECIOS: Precios) {
   const [sup, reg, die] = PRECIOS.combustibles;
   return [
     {
@@ -82,7 +102,8 @@ function buildFaq() {
 }
 
 export default function CombustiblePage() {
-  const faq = buildFaq();
+  const PRECIOS = getPrecios();
+  const faq = buildFaq(PRECIOS);
   const fechaISO = `${PRECIOS.vigenteDesde}T00:00:00-06:00`;
 
   const breadcrumbSchema = {
