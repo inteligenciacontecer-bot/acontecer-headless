@@ -125,6 +125,13 @@ export const CANTONES: Record<string, Canton[]> = {
     { slug: 'monteverde',     nombre: 'Monteverde',     lat: 10.3000, lon: -84.8200 },
     { slug: 'puerto-jimenez', nombre: 'Puerto Jiménez', lat: 8.5300, lon: -83.3000 },
   ],
+  'limon': [
+    { slug: 'pococi',     nombre: 'Pococí',     lat: 10.2167, lon: -83.7867 },
+    { slug: 'siquirres',  nombre: 'Siquirres',  lat: 10.0967, lon: -83.5072 },
+    { slug: 'talamanca',  nombre: 'Talamanca',  lat: 9.6300,  lon: -82.8500 },
+    { slug: 'matina',     nombre: 'Matina',     lat: 10.0700, lon: -83.2600 },
+    { slug: 'guacimo',    nombre: 'Guácimo',    lat: 10.2100, lon: -83.6900 },
+  ],
 };
 
 export function getCantones(provSlug: string): Canton[] {
