@@ -99,6 +99,18 @@ export const CANTONES: Record<string, Canton[]> = {
     { slug: 'san-pablo',     nombre: 'San Pablo',     lat: 9.9986,  lon: -84.0883 },
     { slug: 'sarapiqui',     nombre: 'Sarapiquí',     lat: 10.4500, lon: -83.9400 },
   ],
+  'guanacaste': [
+    { slug: 'nicoya',     nombre: 'Nicoya',     lat: 10.1483, lon: -85.4517 },
+    { slug: 'santa-cruz', nombre: 'Santa Cruz', lat: 10.2606, lon: -85.5836 },
+    { slug: 'bagaces',    nombre: 'Bagaces',    lat: 10.5253, lon: -85.2522 },
+    { slug: 'carrillo',   nombre: 'Carrillo',   lat: 10.4197, lon: -85.5000 },
+    { slug: 'canas',      nombre: 'Cañas',      lat: 10.4256, lon: -85.0931 },
+    { slug: 'abangares',  nombre: 'Abangares',  lat: 10.2667, lon: -84.9500 },
+    { slug: 'tilaran',    nombre: 'Tilarán',    lat: 10.4583, lon: -84.9694 },
+    { slug: 'nandayure',  nombre: 'Nandayure',  lat: 9.9931,  lon: -85.2500 },
+    { slug: 'la-cruz',    nombre: 'La Cruz',    lat: 11.0667, lon: -85.6500 },
+    { slug: 'hojancha',   nombre: 'Hojancha',   lat: 10.0667, lon: -85.4167 },
+  ],
 };
 
 export function getCantones(provSlug: string): Canton[] {
