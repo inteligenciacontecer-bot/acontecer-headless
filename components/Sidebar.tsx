@@ -98,9 +98,9 @@ export default async function Sidebar({ related, catSlug, headings = [], reading
         </div>
       )}
 
-      {/* CLIMA */}
+      {/* CLIMA — todo el bloque enlaza a la página de clima */}
       {clima && (
-        <div className="nv2-side-card nv2-clima-card">
+        <a href="/clima" className="nv2-side-card nv2-clima-card" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer', display: 'block' }} aria-label="Ver el clima en Costa Rica por provincia y cantón">
           <div className="nv2-side-eyebrow">Hoy · San José</div>
           <h3 className="nv2-side-title">Clima</h3>
           <div className="nv2-clima-row">
@@ -115,12 +115,15 @@ export default async function Sidebar({ related, catSlug, headings = [], reading
             <span>MÍN <b>{clima.minT}°</b></span>
             <span>LLUVIA <b>{clima.rain}%</b></span>
           </div>
-        </div>
+          <span style={{ display: 'block', marginTop: 12, fontSize: 12, fontWeight: 600, color: '#0a73ce', letterSpacing: '0.01em' }}>
+            Pronóstico por provincia →
+          </span>
+        </a>
       )}
 
-      {/* TIPO DE CAMBIO */}
+      {/* TIPO DE CAMBIO — todo el bloque enlaza a la página de tipo de cambio */}
       {tipoCambio && (
-        <div className="nv2-side-card nv2-cambio-card">
+        <a href="/tipo-de-cambio" className="nv2-side-card nv2-cambio-card" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer', display: 'block' }} aria-label="Ver tipo de cambio del dólar y convertidor de monedas">
           <div className="nv2-side-eyebrow">BCCR · cierre</div>
           <h3 className="nv2-side-title">Tipo de cambio</h3>
           <div className="nv2-cambio-grid">
@@ -133,13 +136,10 @@ export default async function Sidebar({ related, catSlug, headings = [], reading
               <div className="nv2-cambio-val">₡{tipoCambio.venta}</div>
             </div>
           </div>
-          <a
-            href="/tipo-de-cambio"
-            style={{ display: 'block', marginTop: 12, fontSize: 12, fontWeight: 600, color: '#0a73ce', letterSpacing: '0.01em' }}
-          >
-            Convertidor de dólares →
-          </a>
-        </div>
+          <span style={{ display: 'block', marginTop: 12, fontSize: 12, fontWeight: 600, color: '#0a73ce', letterSpacing: '0.01em' }}>
+            Convertidor de dólares, euros y más →
+          </span>
+        </a>
       )}
 
       {/* RELACIONADAS */}
