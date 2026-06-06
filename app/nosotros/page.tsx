@@ -49,7 +49,7 @@ export default function NosotrosPage() {
         </div>
 
         <div className="nos-stats">
-          {[{num:'+1,200', label:'Artículos publicados'},{num:'+50K', label:'Lectores mensuales'},{num:'6', label:'Secciones temáticas'},{num:'2022', label:'Año de fundación'}].map(s => (
+          {[{num:'+1,200', label:'Artículos publicados'},{num:'+200K', label:'Lectores mensuales'},{num:'6', label:'Secciones temáticas'},{num:'2020', label:'Año de fundación'}].map(s => (
             <div key={s.label}>
               <strong style={{display:'block', fontFamily:'var(--font-lora), Georgia, serif', fontSize:'32px', color:'white', marginBottom:'6px'}}>{s.num}</strong>
               <span style={{color:'rgba(255,255,255,0.8)', fontSize:'13px'}}>{s.label}</span>

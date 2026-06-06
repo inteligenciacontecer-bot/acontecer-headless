@@ -39,7 +39,7 @@ export default function PautaPage() {
         <div className="pauta-stats">
           {[
             {num:'+15M', label:'Vistas mensuales en Facebook'},
-            {num:'+50K', label:'Lectores mensuales web'},
+            {num:'+200K', label:'Lectores mensuales web'},
             {num:'+1,200', label:'Artículos publicados'},
             {num:'6', label:'Secciones temáticas'},
           ].map(s => (

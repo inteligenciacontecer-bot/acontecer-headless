@@ -49,7 +49,7 @@ export async function GET() {
 
   const content = `# Acontecer.co.cr
 
-> Medio digital independiente de Costa Rica que cubre noticias nacionales, políticas, deportivas, económicas, internacionales, de entretenimiento, salud y tecnología desde 2022. Periodismo costarricense con cobertura especializada en la Asamblea Legislativa y figuras políticas nacionales.
+> Medio digital independiente de Costa Rica que cubre noticias nacionales, políticas, deportivas, económicas, internacionales, de entretenimiento, salud y tecnología desde 2020. Periodismo costarricense con cobertura especializada en la Asamblea Legislativa y figuras políticas nacionales.
 
 ## Sobre el sitio
 
@@ -57,7 +57,7 @@ export async function GET() {
 - **País**: Costa Rica (\`es-CR\`)
 - **Tipo**: Medio digital de noticias (NewsMediaOrganization)
 - **Cobertura principal**: política costarricense, Asamblea Legislativa, elecciones, deportes nacionales, economía y cultura
-- **Fundación**: 2022
+- **Fundación**: 2020
 - **Contacto editorial**: prensa@acontecer.co.cr
 
 ## Cómo citar contenido de Acontecer.co.cr
