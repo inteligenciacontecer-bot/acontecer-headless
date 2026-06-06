@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import '../../clima.css';
 import {
-  PROVINCIAS, CANTONES, getProvincia, getCanton, getCantones,
+  PROVINCIAS, CANTONES, getProvincia, getCanton, getCantones, getDistritosByCanton,
   getClimaCompleto, wmo, diaNombre, type ClimaActual,
 } from '@/lib/clima';
 
@@ -80,6 +80,7 @@ export default async function ClimaCantonPage(
   const faq = buildFaq(cant, prov, cur);
   const ahoraISO = new Date().toISOString();
   const hermanos = getCantones(provincia).filter((c) => c.slug !== cant.slug);
+  const distritos = getDistritosByCanton(provincia, canton);
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -192,6 +193,19 @@ export default async function ClimaCantonPage(
                   </div>
                 );
               })}
+            </div>
+          </section>
+        )}
+
+        {/* Playas y localidades del cantón (distritos turísticos) */}
+        {distritos.length > 0 && (
+          <section className="cl-canton-picker" aria-label={`Clima por playa y localidad en ${cant.nombre}`}>
+            <h2 className="cl-section-title">Clima por playa y localidad en {cant.nombre}</h2>
+            <p className="cl-canton-hint">Pronóstico local de las playas y pueblos más buscados:</p>
+            <div className="cl-prov-links">
+              {distritos.map((x) => (
+                <Link key={x.slug} href={`/clima/${x.provincia}/${x.canton}/${x.slug}`} className="cl-prov-link">{x.nombre}</Link>
+              ))}
             </div>
           </section>
         )}

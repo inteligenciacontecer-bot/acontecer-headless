@@ -141,6 +141,37 @@ export function getCanton(provSlug: string, cantonSlug: string): Canton | undefi
   return (CANTONES[provSlug] || []).find((c) => c.slug === cantonSlug);
 }
 
+// ── Distritos / localidades con búsqueda real (playas y pueblos turísticos).
+// NO todos los distritos del país: solo los que la gente busca ("clima tamarindo",
+// "clima jaco", "clima puerto viejo"...). Evita contenido delgado masivo.
+export interface Distrito {
+  slug: string;
+  nombre: string;
+  provincia: string;     // slug de provincia
+  canton: string;        // slug de cantón
+  cantonNombre: string;  // nombre del cantón (para breadcrumb)
+  lat: number;
+  lon: number;
+}
+
+export const DISTRITOS: Distrito[] = [
+  // ── GUANACASTE ──
+  { slug: 'tamarindo',      nombre: 'Tamarindo',       provincia: 'guanacaste', canton: 'santa-cruz', cantonNombre: 'Santa Cruz', lat: 10.2992, lon: -85.8400 },
+  { slug: 'playa-flamingo', nombre: 'Playa Flamingo',  provincia: 'guanacaste', canton: 'santa-cruz', cantonNombre: 'Santa Cruz', lat: 10.4358, lon: -85.7869 },
+  { slug: 'playa-grande',   nombre: 'Playa Grande',    provincia: 'guanacaste', canton: 'santa-cruz', cantonNombre: 'Santa Cruz', lat: 10.3340, lon: -85.8400 },
+  { slug: 'samara',         nombre: 'Sámara',          provincia: 'guanacaste', canton: 'nicoya',     cantonNombre: 'Nicoya',     lat: 9.8817,  lon: -85.5283 },
+  { slug: 'nosara',         nombre: 'Nosara',          provincia: 'guanacaste', canton: 'nicoya',     cantonNombre: 'Nicoya',     lat: 9.9783,  lon: -85.6531 },
+  { slug: 'playas-del-coco', nombre: 'Playas del Coco', provincia: 'guanacaste', canton: 'carrillo',  cantonNombre: 'Carrillo',   lat: 10.5497, lon: -85.6986 },
+  { slug: 'playa-hermosa',  nombre: 'Playa Hermosa',   provincia: 'guanacaste', canton: 'carrillo',   cantonNombre: 'Carrillo',   lat: 10.5772, lon: -85.6800 },
+];
+
+export function getDistrito(provincia: string, canton: string, distrito: string): Distrito | undefined {
+  return DISTRITOS.find((d) => d.provincia === provincia && d.canton === canton && d.slug === distrito);
+}
+export function getDistritosByCanton(provincia: string, canton: string): Distrito[] {
+  return DISTRITOS.filter((d) => d.provincia === provincia && d.canton === canton);
+}
+
 export interface WmoInfo { icon: string; desc: string; }
 export function wmo(code: number): WmoInfo {
   const m: Record<number, WmoInfo> = {
