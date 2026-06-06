@@ -175,6 +175,11 @@ export const DISTRITOS: Distrito[] = [
   { slug: 'montezuma',      nombre: 'Montezuma',       provincia: 'puntarenas', canton: 'puntarenas', cantonNombre: 'Puntarenas', lat: 9.6553,  lon: -85.0700 },
   { slug: 'cobano',         nombre: 'Cóbano',          provincia: 'puntarenas', canton: 'puntarenas', cantonNombre: 'Puntarenas', lat: 9.6400,  lon: -85.1000 },
   { slug: 'tambor',         nombre: 'Tambor',          provincia: 'puntarenas', canton: 'puntarenas', cantonNombre: 'Puntarenas', lat: 9.7333,  lon: -85.0153 },
+  // ── LIMÓN ──
+  { slug: 'puerto-viejo',   nombre: 'Puerto Viejo',    provincia: 'limon', canton: 'talamanca', cantonNombre: 'Talamanca', lat: 9.6561,  lon: -82.7553 },
+  { slug: 'cahuita',        nombre: 'Cahuita',         provincia: 'limon', canton: 'talamanca', cantonNombre: 'Talamanca', lat: 9.7350,  lon: -82.8400 },
+  { slug: 'manzanillo',     nombre: 'Manzanillo',      provincia: 'limon', canton: 'talamanca', cantonNombre: 'Talamanca', lat: 9.6333,  lon: -82.6553 },
+  { slug: 'tortuguero',     nombre: 'Tortuguero',      provincia: 'limon', canton: 'pococi',    cantonNombre: 'Pococí',    lat: 10.5433, lon: -83.5036 },
 ];
 
 export function getDistrito(provincia: string, canton: string, distrito: string): Distrito | undefined {
