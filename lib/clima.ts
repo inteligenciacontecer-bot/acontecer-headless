@@ -163,6 +163,18 @@ export const DISTRITOS: Distrito[] = [
   { slug: 'nosara',         nombre: 'Nosara',          provincia: 'guanacaste', canton: 'nicoya',     cantonNombre: 'Nicoya',     lat: 9.9783,  lon: -85.6531 },
   { slug: 'playas-del-coco', nombre: 'Playas del Coco', provincia: 'guanacaste', canton: 'carrillo',  cantonNombre: 'Carrillo',   lat: 10.5497, lon: -85.6986 },
   { slug: 'playa-hermosa',  nombre: 'Playa Hermosa',   provincia: 'guanacaste', canton: 'carrillo',   cantonNombre: 'Carrillo',   lat: 10.5772, lon: -85.6800 },
+  // ── PUNTARENAS ──
+  { slug: 'jaco',           nombre: 'Jacó',            provincia: 'puntarenas', canton: 'garabito',   cantonNombre: 'Garabito',   lat: 9.6170,  lon: -84.6294 },
+  { slug: 'playa-herradura', nombre: 'Playa Herradura', provincia: 'puntarenas', canton: 'garabito',  cantonNombre: 'Garabito',   lat: 9.6486,  lon: -84.6597 },
+  { slug: 'manuel-antonio', nombre: 'Manuel Antonio',  provincia: 'puntarenas', canton: 'quepos',     cantonNombre: 'Quepos',     lat: 9.3920,  lon: -84.1370 },
+  { slug: 'uvita',          nombre: 'Uvita',           provincia: 'puntarenas', canton: 'osa',        cantonNombre: 'Osa',        lat: 9.1667,  lon: -83.7333 },
+  { slug: 'dominical',      nombre: 'Dominical',       provincia: 'puntarenas', canton: 'osa',        cantonNombre: 'Osa',        lat: 9.2533,  lon: -83.8606 },
+  { slug: 'bahia-drake',    nombre: 'Bahía Drake',     provincia: 'puntarenas', canton: 'osa',        cantonNombre: 'Osa',        lat: 8.6936,  lon: -83.6700 },
+  { slug: 'santa-teresa',   nombre: 'Santa Teresa',    provincia: 'puntarenas', canton: 'puntarenas', cantonNombre: 'Puntarenas', lat: 9.6433,  lon: -85.1683 },
+  { slug: 'mal-pais',       nombre: 'Mal País',        provincia: 'puntarenas', canton: 'puntarenas', cantonNombre: 'Puntarenas', lat: 9.5917,  lon: -85.1417 },
+  { slug: 'montezuma',      nombre: 'Montezuma',       provincia: 'puntarenas', canton: 'puntarenas', cantonNombre: 'Puntarenas', lat: 9.6553,  lon: -85.0700 },
+  { slug: 'cobano',         nombre: 'Cóbano',          provincia: 'puntarenas', canton: 'puntarenas', cantonNombre: 'Puntarenas', lat: 9.6400,  lon: -85.1000 },
+  { slug: 'tambor',         nombre: 'Tambor',          provincia: 'puntarenas', canton: 'puntarenas', cantonNombre: 'Puntarenas', lat: 9.7333,  lon: -85.0153 },
 ];
 
 export function getDistrito(provincia: string, canton: string, distrito: string): Distrito | undefined {
