@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import './clima.css';
+import ClimaPorHora from '@/components/ClimaPorHora';
 
 // ISR: el clima se refresca cada 30 min. Una sola URL evergreen.
 export const revalidate = 1800;
@@ -51,21 +52,10 @@ function wmo(code: number): WmoInfo {
   return m[code] || { icon: '🌡️', desc: 'Variable' };
 }
 
-interface CurrentSJ {
-  temp: number;
-  feels: number;
-  humidity: number;
-  wind: number;
-  code: number;
-}
-interface DiaForecast {
-  fecha: string; // ISO yyyy-mm-dd
-  code: number;
-  tmax: number;
-  tmin: number;
-  lluvia: number; // prob %
-}
-interface CiudadClima { nombre: string; temp: number | null; code: number; }
+interface CurrentSJ { temp: number; feels: number; humidity: number; wind: number; code: number; }
+interface DiaForecast { fecha: string; code: number; tmax: number; tmin: number; lluvia: number; }
+interface HoraForecast { hora: string; temp: number; icon: string; lluvia: number; }
+interface CiudadData { nombre: string; temp: number | null; code: number; horas: HoraForecast[]; }
 
 async function getSanJose(): Promise<{ current: CurrentSJ; dias: DiaForecast[] } | null> {
   try {
@@ -102,24 +92,42 @@ async function getSanJose(): Promise<{ current: CurrentSJ; dias: DiaForecast[] }
   }
 }
 
-async function getCiudades(): Promise<CiudadClima[]> {
+async function getCiudadesData(): Promise<CiudadData[]> {
+  const vacio = (): CiudadData[] => CIUDADES.map((c) => ({ nombre: c.nombre, temp: null, code: 0, horas: [] }));
   try {
     const lats = CIUDADES.map((c) => c.lat).join(',');
     const lons = CIUDADES.map((c) => c.lon).join(',');
     const url =
       `https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lons}` +
-      '&current=temperature_2m,weather_code&timezone=America/Costa_Rica&forecast_days=1';
+      '&current=temperature_2m,weather_code' +
+      '&hourly=temperature_2m,weather_code,precipitation_probability' +
+      '&timezone=America/Costa_Rica&forecast_days=2';
     const res = await fetch(url, { next: { revalidate: 1800 } });
-    if (!res.ok) return CIUDADES.map((c) => ({ nombre: c.nombre, temp: null, code: 0 }));
+    if (!res.ok) return vacio();
     const data = await res.json();
     const arr = Array.isArray(data) ? data : [data];
-    return CIUDADES.map((c, i) => ({
-      nombre: c.nombre,
-      temp: arr[i]?.current?.temperature_2m != null ? Math.round(arr[i].current.temperature_2m) : null,
-      code: arr[i]?.current?.weather_code ?? 0,
-    }));
+    return CIUDADES.map((c, i) => {
+      const item = arr[i] || {};
+      const h = item.hourly || {};
+      const times: string[] = h.time || [];
+      const nowH = (item.current?.time || '').slice(0, 13);
+      let start = times.findIndex((t) => t.slice(0, 13) === nowH);
+      if (start < 0) start = 0;
+      const horas: HoraForecast[] = times.slice(start, start + 24).map((t, k) => ({
+        hora: t.slice(11, 16),
+        temp: Math.round(h.temperature_2m?.[start + k] ?? 0),
+        icon: wmo(h.weather_code?.[start + k] ?? 0).icon,
+        lluvia: h.precipitation_probability?.[start + k] ?? 0,
+      }));
+      return {
+        nombre: c.nombre,
+        temp: item.current?.temperature_2m != null ? Math.round(item.current.temperature_2m) : null,
+        code: item.current?.weather_code ?? 0,
+        horas,
+      };
+    });
   } catch {
-    return CIUDADES.map((c) => ({ nombre: c.nombre, temp: null, code: 0 }));
+    return vacio();
   }
 }
 
@@ -134,16 +142,16 @@ export async function generateMetadata(): Promise<Metadata> {
   const sj = await getSanJose();
   const w = sj ? wmo(sj.current.code) : null;
   const desc = sj
-    ? `Clima en Costa Rica hoy: San José ${sj.current.temp}°C, ${w?.desc.toLowerCase()}. Pronóstico de 7 días y temperatura actual por provincia. Datos actualizados automáticamente.`
-    : 'Clima en Costa Rica hoy: temperatura actual, pronóstico de 7 días y condiciones por provincia. Datos actualizados automáticamente.';
+    ? `Clima en Costa Rica hoy: San José ${sj.current.temp}°C, ${w?.desc.toLowerCase()}. Pronóstico por hora y de 7 días, y temperatura por provincia. Datos actualizados automáticamente.`
+    : 'Clima en Costa Rica hoy: temperatura actual, pronóstico por hora y de 7 días, y condiciones por provincia. Datos actualizados automáticamente.';
   return {
-    title: 'Clima en Costa Rica Hoy — Pronóstico del Tiempo',
+    title: 'Clima en Costa Rica Hoy — Pronóstico por Hora y 7 Días',
     description: desc,
     alternates: { canonical: URL_PAGINA },
     openGraph: {
       type: 'website',
       url: URL_PAGINA,
-      title: 'Clima en Costa Rica Hoy — Pronóstico del Tiempo | Acontecer.co.cr',
+      title: 'Clima en Costa Rica Hoy — Pronóstico por Hora y 7 Días | Acontecer.co.cr',
       description: desc,
       locale: 'es_CR',
     },
@@ -153,10 +161,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
 function buildFaq(sj: { current: CurrentSJ } | null) {
   const hoy = sj
-    ? `Ahora mismo en San José hay ${sj.current.temp}°C (sensación ${sj.current.feels}°C), ${wmo(sj.current.code).desc.toLowerCase()}, con ${sj.current.humidity}% de humedad. El detalle por provincia y el pronóstico de 7 días están más arriba en esta página.`
-    : 'El clima de Costa Rica se actualiza automáticamente en esta página con la temperatura actual y el pronóstico de los próximos 7 días para San José y las principales provincias.';
+    ? `Ahora mismo en San José hay ${sj.current.temp}°C (sensación ${sj.current.feels}°C), ${wmo(sj.current.code).desc.toLowerCase()}, con ${sj.current.humidity}% de humedad. El detalle por hora, por provincia y el pronóstico de 7 días están más arriba en esta página.`
+    : 'El clima de Costa Rica se actualiza automáticamente en esta página con la temperatura actual, el pronóstico por hora y el de los próximos 7 días para San José y las principales provincias.';
   return [
     { q: '¿Qué clima hace hoy en Costa Rica?', a: hoy },
+    {
+      q: '¿Cómo veo el pronóstico del clima por hora de mi provincia?',
+      a: 'En la sección «Pronóstico por hora» de esta página se puede seleccionar la provincia (San José, Alajuela, Cartago, Heredia, Liberia, Puntarenas, Limón o Pérez Zeledón) y ver la temperatura, la condición y la probabilidad de lluvia hora por hora para las próximas 24 horas.',
+    },
     {
       q: '¿Cuándo es la estación seca y la lluviosa en Costa Rica?',
       a: 'Costa Rica tiene dos estaciones: la seca (verano), que va aproximadamente de diciembre a abril, y la lluviosa (invierno), de mayo a noviembre. En el Caribe el patrón es distinto: puede llover durante todo el año, con periodos más secos en septiembre y octubre.',
@@ -177,11 +189,12 @@ function buildFaq(sj: { current: CurrentSJ } | null) {
 }
 
 export default async function ClimaPage() {
-  const [sj, ciudades] = await Promise.all([getSanJose(), getCiudades()]);
+  const [sj, ciudades] = await Promise.all([getSanJose(), getCiudadesData()]);
   const faq = buildFaq(sj);
   const ahoraISO = new Date().toISOString();
   const cur = sj?.current;
   const curW = cur ? wmo(cur.code) : null;
+  const ciudadesHoras = ciudades.filter((c) => c.horas.length > 0).map((c) => ({ nombre: c.nombre, horas: c.horas }));
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -196,8 +209,8 @@ export default async function ClimaPage() {
     '@type': 'WebPage',
     '@id': `${URL_PAGINA}#webpage`,
     url: URL_PAGINA,
-    name: 'Clima en Costa Rica Hoy — Pronóstico del Tiempo',
-    description: 'Clima en Costa Rica hoy: temperatura actual, pronóstico de 7 días y condiciones por provincia, actualizado automáticamente.',
+    name: 'Clima en Costa Rica Hoy — Pronóstico por Hora y 7 Días',
+    description: 'Clima en Costa Rica hoy: temperatura actual, pronóstico por hora por provincia, pronóstico de 7 días y condiciones por provincia, actualizado automáticamente.',
     inLanguage: 'es-CR',
     datePublished: '2026-06-05T06:00:00-06:00',
     dateModified: ahoraISO,
@@ -234,7 +247,7 @@ export default async function ClimaPage() {
           <span className="cl-eyebrow">Servicio en vivo · Open-Meteo</span>
           <h1 className="cl-title">Clima en Costa Rica hoy</h1>
           <p className="cl-lead">
-            Temperatura actual, pronóstico de 7 días y condiciones por provincia. La información se actualiza
+            Temperatura actual, pronóstico por hora por provincia y de 7 días. La información se actualiza
             automáticamente cada 30 minutos.
           </p>
         </header>
@@ -258,6 +271,14 @@ export default async function ClimaPage() {
           </section>
         ) : (
           <section className="cl-now cl-now--off"><p>El dato del clima está temporalmente no disponible. Intente de nuevo en unos minutos.</p></section>
+        )}
+
+        {/* Pronóstico por hora por provincia */}
+        {ciudadesHoras.length > 0 && (
+          <section aria-label="Pronóstico por hora por provincia">
+            <h2 className="cl-section-title">Pronóstico por hora · por provincia</h2>
+            <ClimaPorHora ciudades={ciudadesHoras} />
+          </section>
         )}
 
         {/* Pronóstico 7 días */}
