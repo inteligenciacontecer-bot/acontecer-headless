@@ -1,0 +1,144 @@
+/* ===========================================================================
+   Clima — página evergreen /clima. Mobile-first. Tokens globales (:root).
+   Prefijo .cl- para no colisionar.
+   =========================================================================== */
+
+.cl-wrap {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 26px 18px 72px;
+  font-family: var(--sans);
+  color: var(--ink-700);
+  overflow-x: clip;
+}
+
+.cl-crumbs {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 7px;
+  font-size: 12.5px; color: var(--ink-400); margin-bottom: 20px;
+}
+.cl-crumbs a { color: var(--blue-600); font-weight: 600; }
+.cl-crumbs a:hover { text-decoration: underline; }
+.cl-crumbs span[aria-current] { color: var(--ink-500); }
+
+.cl-eyebrow {
+  display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--blue-600); margin-bottom: 12px;
+}
+.cl-title {
+  font-family: var(--serif); font-size: clamp(1.7rem, 6vw, 2.6rem); line-height: 1.12;
+  font-weight: 700; color: var(--ink-900); letter-spacing: -.01em; margin-bottom: 14px;
+}
+.cl-lead {
+  font-size: clamp(1rem, 2.6vw, 1.12rem); line-height: 1.6; color: var(--ink-500); max-width: 60ch;
+}
+
+/* ── Tarjeta actual ─────────────────────────────────────────────────────── */
+.cl-now {
+  margin: 28px 0;
+  border-radius: 20px;
+  padding: 24px 22px;
+  background: radial-gradient(120% 140% at 0% 0%, #0a73ce 0%, #00009e 55%, #00006e 100%);
+  color: #fff;
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 110, 0.65);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 18px; flex-wrap: wrap;
+}
+.cl-now-main { display: flex; align-items: center; gap: 18px; min-width: 0; }
+.cl-now-icon { font-size: clamp(48px, 14vw, 72px); line-height: 1; }
+.cl-now-place {
+  font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: rgba(255, 255, 255, 0.75); margin-bottom: 4px;
+}
+.cl-now-temp { font-size: clamp(2.6rem, 12vw, 3.6rem); font-weight: 800; line-height: 1; letter-spacing: -.03em; }
+.cl-now-deg { font-size: 0.45em; font-weight: 700; opacity: 0.8; }
+.cl-now-desc { font-size: 14px; color: rgba(255, 255, 255, 0.85); margin-top: 4px; }
+.cl-now-meta { display: flex; gap: 10px; }
+.cl-now-cell {
+  display: flex; flex-direction: column; gap: 3px; padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px; min-width: 78px;
+}
+.cl-now-lbl { font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255, 255, 255, 0.7); }
+.cl-now-val { font-size: 17px; font-weight: 700; }
+.cl-now--off { background: var(--ink-50); color: var(--ink-500); box-shadow: none; border: 1px solid var(--ink-100); }
+.cl-now--off p { font-size: 14px; }
+
+/* ── Títulos de sección ─────────────────────────────────────────────────── */
+.cl-section-title {
+  font-family: var(--serif); font-size: clamp(1.2rem, 3.4vw, 1.45rem); font-weight: 700;
+  color: var(--ink-900); margin: 34px 0 14px;
+}
+
+/* ── Pronóstico 7 días ──────────────────────────────────────────────────── */
+.cl-forecast {
+  display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px;
+  scrollbar-width: thin; scrollbar-color: var(--ink-200) transparent;
+}
+.cl-forecast::-webkit-scrollbar { height: 5px; }
+.cl-forecast::-webkit-scrollbar-thumb { background: var(--ink-200); border-radius: 3px; }
+.cl-day {
+  flex: 1 0 84px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 16px 8px; border: 1px solid var(--ink-100); border-radius: 14px;
+  background: #fff; text-align: center;
+}
+.cl-day-name { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-500); font-weight: 600; }
+.cl-day-icon { font-size: 26px; line-height: 1; }
+.cl-day-temps { font-size: 14px; color: var(--ink-900); }
+.cl-day-temps b { font-weight: 700; }
+.cl-day-min { color: var(--ink-400); }
+.cl-day-rain { font-size: 11px; color: var(--blue-600); font-weight: 600; }
+
+/* ── Ciudades ───────────────────────────────────────────────────────────── */
+.cl-cities { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.cl-city {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; border: 1px solid var(--ink-100); border-radius: 12px; background: #fff;
+}
+.cl-city-icon { font-size: 22px; line-height: 1; flex-shrink: 0; }
+.cl-city-name { font-size: 13.5px; font-weight: 600; color: var(--ink-900); flex: 1; min-width: 0; }
+.cl-city-temp { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--blue-600); }
+
+/* ── Contenido ──────────────────────────────────────────────────────────── */
+.cl-prose { margin: 40px 0 8px; }
+.cl-prose h2 {
+  font-family: var(--serif); font-size: clamp(1.25rem, 3.6vw, 1.5rem); font-weight: 700;
+  color: var(--ink-900); line-height: 1.25; margin: 28px 0 12px;
+}
+.cl-prose h2:first-child { margin-top: 0; }
+.cl-prose p { font-size: 1.02rem; line-height: 1.72; color: var(--ink-700); margin-bottom: 14px; }
+.cl-prose strong { color: var(--ink-900); font-weight: 700; }
+.cl-disclaimer {
+  margin-top: 22px; padding: 14px 16px; background: var(--paper-warm);
+  border-left: 3px solid var(--accent-amber); border-radius: 0 10px 10px 0;
+  font-size: 0.92rem !important; line-height: 1.6 !important; color: var(--ink-500) !important;
+}
+
+/* ── FAQ ────────────────────────────────────────────────────────────────── */
+.cl-faq { margin: 40px 0 8px; }
+.cl-faq-title { font-family: var(--serif); font-size: clamp(1.3rem, 3.8vw, 1.6rem); font-weight: 700; color: var(--ink-900); margin-bottom: 8px; }
+.cl-faq-item { border-bottom: 1px solid var(--ink-100); }
+.cl-faq-q {
+  list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+  gap: 14px; padding: 17px 2px; font-size: 1.02rem; font-weight: 600; color: var(--ink-900); line-height: 1.4;
+}
+.cl-faq-q::-webkit-details-marker { display: none; }
+.cl-faq-q::after { content: '+'; flex-shrink: 0; font-size: 1.4rem; font-weight: 400; line-height: 1; color: var(--blue-600); transition: transform 0.2s; }
+.cl-faq-item[open] .cl-faq-q::after { transform: rotate(45deg); }
+.cl-faq-a { padding: 0 2px 18px; font-size: 0.98rem; line-height: 1.68; color: var(--ink-500); max-width: 64ch; }
+
+/* ── Pie ────────────────────────────────────────────────────────────────── */
+.cl-footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--ink-100); }
+.cl-updated { font-size: 12.5px; color: var(--ink-400); margin-bottom: 6px; }
+.cl-links { font-size: 13.5px; color: var(--ink-400); }
+.cl-links a { color: var(--blue-600); font-weight: 600; }
+.cl-links a:hover { text-decoration: underline; }
+
+/* ── Móvil ──────────────────────────────────────────────────────────────── */
+@media (max-width: 560px) {
+  .cl-wrap { padding: 22px 15px 60px; }
+  .cl-now { flex-direction: column; align-items: stretch; gap: 16px; }
+  .cl-now-meta { justify-content: space-between; }
+  .cl-now-cell { flex: 1; min-width: 0; }
+  .cl-cities { grid-template-columns: repeat(2, 1fr); }
+}

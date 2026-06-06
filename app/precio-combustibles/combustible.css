@@ -1,0 +1,92 @@
+/* ===========================================================================
+   Combustibles — página evergreen /precio-combustibles. Mobile-first.
+   Prefijo .cb- · tokens globales (:root).
+   =========================================================================== */
+
+.cb-wrap {
+  max-width: 880px; margin: 0 auto; padding: 26px 18px 72px;
+  font-family: var(--sans); color: var(--ink-700); overflow-x: clip;
+}
+
+.cb-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; font-size: 12.5px; color: var(--ink-400); margin-bottom: 20px; }
+.cb-crumbs a { color: var(--blue-600); font-weight: 600; }
+.cb-crumbs a:hover { text-decoration: underline; }
+.cb-crumbs span[aria-current] { color: var(--ink-500); }
+
+.cb-eyebrow { display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--blue-600); margin-bottom: 12px; }
+.cb-title { font-family: var(--serif); font-size: clamp(1.7rem, 6vw, 2.5rem); line-height: 1.12; font-weight: 700; color: var(--ink-900); letter-spacing: -.01em; margin-bottom: 14px; }
+.cb-lead { font-size: clamp(1rem, 2.6vw, 1.12rem); line-height: 1.6; color: var(--ink-500); max-width: 62ch; }
+
+/* ── Tarjetas de precio ─────────────────────────────────────────────────── */
+.cb-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 28px 0 10px; }
+.cb-card {
+  display: flex; flex-direction: column; gap: 6px; text-align: center;
+  padding: 24px 18px; background: #fff;
+  border: 1px solid var(--ink-100); border-top: 3px solid var(--azul); border-radius: 16px;
+  box-shadow: 0 12px 30px -26px rgba(0, 0, 80, 0.5);
+}
+.cb-card-name { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-500); }
+.cb-card-price { font-family: var(--serif); font-size: clamp(1.9rem, 7vw, 2.4rem); font-weight: 500; color: var(--blue-600); line-height: 1; letter-spacing: -.02em; }
+.cb-card-sym { font-size: 0.6em; font-weight: 600; opacity: 0.8; margin-right: 1px; }
+.cb-card-unit { font-size: 11.5px; color: var(--ink-400); }
+.cb-source { font-size: 12px; color: var(--ink-400); margin: 0 0 8px; }
+
+/* ── Calculadora ────────────────────────────────────────────────────────── */
+.cb-calc { margin: 28px 0; border: 1px solid var(--ink-100); border-radius: 18px; padding: 22px 20px; background: #fff; box-shadow: 0 10px 30px -24px rgba(10, 14, 26, 0.5); }
+.cb-calc-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 18px; }
+.cb-calc-title { font-family: var(--serif); font-size: 1.18rem; font-weight: 700; color: var(--ink-900); }
+.cb-calc-modes { display: inline-flex; background: var(--ink-50); border: 1px solid var(--ink-100); border-radius: 999px; padding: 3px; gap: 2px; }
+.cb-mode { appearance: none; border: none; background: transparent; cursor: pointer; font-family: var(--sans); font-size: 12.5px; font-weight: 600; color: var(--ink-500); padding: 7px 13px; border-radius: 999px; transition: background .15s, color .15s; white-space: nowrap; }
+.cb-mode.is-on { background: var(--blue-600); color: #fff; box-shadow: 0 4px 12px -6px rgba(10, 115, 206, 0.8); }
+
+.cb-calc-body { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 16px; }
+.cb-field { min-width: 0; }
+.cb-field-lbl { display: block; font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-400); margin-bottom: 7px; }
+.cb-field-box { display: flex; align-items: center; gap: 6px; border: 1.5px solid var(--ink-200); border-radius: 12px; padding: 0 12px; background: var(--paper); transition: border-color .15s, box-shadow .15s; }
+.cb-field-box:focus-within { border-color: var(--blue-600); box-shadow: 0 0 0 3px rgba(10, 115, 206, 0.14); background: #fff; }
+.cb-input { width: 100%; min-width: 0; border: none; outline: none; background: transparent; padding: 13px 0; font-family: var(--sans); font-size: 1.25rem; font-weight: 700; color: var(--ink-900); }
+.cb-field-unit { font-size: 15px; font-weight: 700; color: var(--ink-400); }
+.cb-presets { display: flex; gap: 6px; margin-top: 9px; }
+.cb-preset { appearance: none; cursor: pointer; border: 1px solid var(--ink-200); background: #fff; border-radius: 8px; padding: 5px 10px; font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--ink-500); transition: all .15s; }
+.cb-preset:hover { border-color: var(--blue-600); color: var(--blue-600); }
+.cb-calc-result { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; padding-bottom: 4px; }
+.cb-calc-result-lbl { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-400); }
+.cb-calc-result-val { font-family: var(--serif); font-size: clamp(1.6rem, 7vw, 2.1rem); font-weight: 500; color: var(--blue-600); line-height: 1; letter-spacing: -.02em; }
+.cb-calc-note { margin-top: 16px; font-size: 12.5px; line-height: 1.5; color: var(--ink-400); }
+.cb-calc-note strong { color: var(--ink-700); }
+
+/* ── Contenido ──────────────────────────────────────────────────────────── */
+.cb-prose { margin: 40px 0 8px; }
+.cb-prose h2 { font-family: var(--serif); font-size: clamp(1.25rem, 3.6vw, 1.5rem); font-weight: 700; color: var(--ink-900); line-height: 1.25; margin: 28px 0 12px; }
+.cb-prose h2:first-child { margin-top: 0; }
+.cb-prose p { font-size: 1.02rem; line-height: 1.72; color: var(--ink-700); margin-bottom: 14px; }
+.cb-prose strong { color: var(--ink-900); font-weight: 700; }
+.cb-disclaimer { margin-top: 22px; padding: 14px 16px; background: var(--paper-warm); border-left: 3px solid var(--accent-amber); border-radius: 0 10px 10px 0; font-size: 0.92rem !important; line-height: 1.6 !important; color: var(--ink-500) !important; }
+
+/* ── FAQ ────────────────────────────────────────────────────────────────── */
+.cb-faq { margin: 40px 0 8px; }
+.cb-faq-title { font-family: var(--serif); font-size: clamp(1.3rem, 3.8vw, 1.6rem); font-weight: 700; color: var(--ink-900); margin-bottom: 8px; }
+.cb-faq-item { border-bottom: 1px solid var(--ink-100); }
+.cb-faq-q { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 17px 2px; font-size: 1.02rem; font-weight: 600; color: var(--ink-900); line-height: 1.4; }
+.cb-faq-q::-webkit-details-marker { display: none; }
+.cb-faq-q::after { content: '+'; flex-shrink: 0; font-size: 1.4rem; font-weight: 400; line-height: 1; color: var(--blue-600); transition: transform .2s; }
+.cb-faq-item[open] .cb-faq-q::after { transform: rotate(45deg); }
+.cb-faq-a { padding: 0 2px 18px; font-size: 0.98rem; line-height: 1.68; color: var(--ink-500); max-width: 64ch; }
+
+/* ── Pie ────────────────────────────────────────────────────────────────── */
+.cb-footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--ink-100); }
+.cb-updated { font-size: 12.5px; color: var(--ink-400); margin-bottom: 6px; }
+.cb-links { font-size: 13.5px; color: var(--ink-400); }
+.cb-links a { color: var(--blue-600); font-weight: 600; }
+.cb-links a:hover { text-decoration: underline; }
+
+/* ── Móvil ──────────────────────────────────────────────────────────────── */
+@media (max-width: 560px) {
+  .cb-wrap { padding: 22px 15px 60px; }
+  .cb-cards { grid-template-columns: 1fr; }
+  .cb-calc-head { gap: 12px; }
+  .cb-calc-modes { width: 100%; }
+  .cb-mode { flex: 1; text-align: center; padding: 8px 6px; }
+  .cb-calc-body { grid-template-columns: 1fr; align-items: stretch; gap: 14px; }
+  .cb-calc-result { align-items: flex-start; }
+}
