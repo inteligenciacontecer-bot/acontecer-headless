@@ -26,6 +26,34 @@ function isValidSlug(slug: string): boolean {
   return true;
 }
 
+// ── Filtro de calidad del sitemap (NO deindexa: solo deja de apuntar a Google).
+// Concentra el crawl budget en lo que vale. Reversible. Las páginas ya indexadas
+// siguen indexadas y las que tienen enlaces internos se siguen rastreando.
+const DOCE_MESES_MS = 365 * 24 * 60 * 60 * 1000;
+// Marcadores de evento ya pasado en el slug. 2025/2026 NO se filtran (actual/futuro).
+const ANIOS_PASADOS = /\b(2019|2020|2021|2022|2023|2024)\b/;
+
+/** Grupo C — slug basura: palabras pegadas sin guiones (import roto de WP viejo). */
+function esSlugBasura(slug: string): boolean {
+  if (!slug.includes('-') && slug.length >= 14) return true;     // henrycalimunoz, carmenchancannabis
+  if (/^[a-z]{15,}-\d+$/.test(slug)) return true;                // carolinahidalgocand-3
+  return false;
+}
+
+/**
+ * Decide si una nota entra al sitemap.
+ *  - Reciente (<12 meses): siempre (noticia fresca, aunque sea efímera).
+ *  - Grupo C (basura): nunca.
+ *  - Grupo B (efímera vieja: slug con año pasado): fuera.
+ *  - Grupo A (evergreen viejo, sin marcadores): se mantiene.
+ */
+function incluirEnSitemap(slug: string, pubDate: Date, now: Date): boolean {
+  if (esSlugBasura(slug)) return false;
+  if (now.getTime() - pubDate.getTime() < DOCE_MESES_MS) return true;
+  if (ANIOS_PASADOS.test(slug)) return false;
+  return true;
+}
+
 async function getAllPosts() {
   try {
     const all: any[] = [];
@@ -101,26 +129,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const now = new Date();
 
-  const postPages: MetadataRoute.Sitemap = posts.filter((p: any) => isValidSlug(p.slug)).map((p: any) => {
-    const pubDate = safeDate(p.date, now);
-    const modDate = safeDate(p.modified, pubDate);
-    // Artículos recientes: señalar modificaciones. Viejos: fecha original.
-    const lastMod = modDate > ninetyDaysAgo ? modDate : pubDate;
-    return {
-      url: `${BASE}/${catMap[p.categories?.[0]] || 'nacionales'}/${p.slug}`,
-      lastModified: lastMod,
-      changeFrequency: 'weekly' as const,
-      priority: 0.7,
-    };
-  });
+  const postPages: MetadataRoute.Sitemap = posts
+    .filter((p: any) => isValidSlug(p.slug) && incluirEnSitemap(p.slug, safeDate(p.date, now), now))
+    .map((p: any) => {
+      const pubDate = safeDate(p.date, now);
+      const modDate = safeDate(p.modified, pubDate);
+      // Artículos recientes: señalar modificaciones. Viejos: fecha original.
+      const lastMod = modDate > ninetyDaysAgo ? modDate : pubDate;
+      return {
+        url: `${BASE}/${catMap[p.categories?.[0]] || 'nacionales'}/${p.slug}`,
+        lastModified: lastMod,
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+      };
+    });
 
-  // Web Stories — una entry por cada artículo reciente (últimos 200)
-  const storyPages: MetadataRoute.Sitemap = posts.filter((p: any) => isValidSlug(p.slug)).slice(0, 200).map((p: any) => ({
-    url: `${BASE}/stories/${p.slug}`,
-    lastModified: safeDate(p.date, now), // siempre fecha original para stories
-    changeFrequency: 'weekly' as const,
-    priority: 0.6,
-  }));
+  // Web Stories — una entry por cada artículo reciente (últimos 200, mismo filtro)
+  const storyPages: MetadataRoute.Sitemap = posts
+    .filter((p: any) => isValidSlug(p.slug) && incluirEnSitemap(p.slug, safeDate(p.date, now), now))
+    .slice(0, 200)
+    .map((p: any) => ({
+      url: `${BASE}/stories/${p.slug}`,
+      lastModified: safeDate(p.date, now), // siempre fecha original para stories
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    }));
 
   // ⚠️ Etiquetas eliminadas del sitemap — son contenido delgado (listas de links).
   // Incluirlas consume crawl budget y hacen que site: muestre etiquetas en vez de artículos.
