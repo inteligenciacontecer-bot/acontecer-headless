@@ -72,6 +72,7 @@ export default function robots(): MetadataRoute.Robots {
       'https://acontecer.co.cr/sitemap.xml',
       'https://acontecer.co.cr/news-sitemap.xml',
       'https://acontecer.co.cr/image-sitemap.xml',
+      'https://acontecer.co.cr/clima-sitemap.xml',
     ],
     host: 'https://acontecer.co.cr',
   };
