@@ -62,6 +62,23 @@ export const CANTONES: Record<string, Canton[]> = {
     { slug: 'perez-zeledon',       nombre: 'Pérez Zeledón',      lat: 9.3736, lon: -83.7019 },
     { slug: 'leon-cortes',         nombre: 'León Cortés',        lat: 9.7000, lon: -84.0667 },
   ],
+  'alajuela': [
+    { slug: 'san-ramon',     nombre: 'San Ramón',     lat: 10.0897, lon: -84.4694 },
+    { slug: 'grecia',        nombre: 'Grecia',        lat: 10.0717, lon: -84.3144 },
+    { slug: 'san-mateo',     nombre: 'San Mateo',     lat: 9.9522,  lon: -84.5286 },
+    { slug: 'atenas',        nombre: 'Atenas',        lat: 9.9794,  lon: -84.3814 },
+    { slug: 'naranjo',       nombre: 'Naranjo',       lat: 10.0950, lon: -84.3789 },
+    { slug: 'palmares',      nombre: 'Palmares',      lat: 10.0564, lon: -84.4361 },
+    { slug: 'poas',          nombre: 'Poás',          lat: 10.0900, lon: -84.2350 },
+    { slug: 'orotina',       nombre: 'Orotina',       lat: 9.9072,  lon: -84.5253 },
+    { slug: 'san-carlos',    nombre: 'San Carlos',    lat: 10.3236, lon: -84.4278 },
+    { slug: 'zarcero',       nombre: 'Zarcero',       lat: 10.1900, lon: -84.3917 },
+    { slug: 'sarchi',        nombre: 'Sarchí',        lat: 10.0883, lon: -84.3719 },
+    { slug: 'upala',         nombre: 'Upala',         lat: 10.8983, lon: -85.0156 },
+    { slug: 'los-chiles',    nombre: 'Los Chiles',    lat: 11.0331, lon: -84.7072 },
+    { slug: 'guatuso',       nombre: 'Guatuso',       lat: 10.6692, lon: -84.8378 },
+    { slug: 'rio-cuarto',    nombre: 'Río Cuarto',    lat: 10.3417, lon: -84.2125 },
+  ],
 };
 
 export function getCantones(provSlug: string): Canton[] {

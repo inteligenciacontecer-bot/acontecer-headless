@@ -148,6 +148,19 @@ export default async function ClimaProvinciaPage(
           <section className="cl-now cl-now--off"><p>El dato del clima está temporalmente no disponible. Intente de nuevo en unos minutos.</p></section>
         )}
 
+        {/* Selector de cantones — arriba para llegar fácil a cada cantón */}
+        {cantones.length > 0 && (
+          <section className="cl-canton-picker" aria-label={`Elegir cantón de ${prov.provincia}`}>
+            <h2 className="cl-section-title">Clima por cantón en {prov.provincia}</h2>
+            <p className="cl-canton-hint">Elija su cantón para ver el pronóstico local:</p>
+            <div className="cl-prov-links">
+              {cantones.map((c) => (
+                <Link key={c.slug} href={`/clima/${prov.slug}/${c.slug}`} className="cl-prov-link">{c.nombre}</Link>
+              ))}
+            </div>
+          </section>
+        )}
+
         {clima && clima.horas.length > 0 && (
           <section aria-label={`Pronóstico por hora en ${prov.provincia}`}>
             <h2 className="cl-section-title">Pronóstico por hora · {prov.provincia}</h2>
@@ -179,18 +192,6 @@ export default async function ClimaProvinciaPage(
                   </div>
                 );
               })}
-            </div>
-          </section>
-        )}
-
-        {/* Cantones de la provincia */}
-        {cantones.length > 0 && (
-          <section aria-label={`Clima por cantón en ${prov.provincia}`}>
-            <h2 className="cl-section-title">Clima por cantón en {prov.provincia}</h2>
-            <div className="cl-prov-links">
-              {cantones.map((c) => (
-                <Link key={c.slug} href={`/clima/${prov.slug}/${c.slug}`} className="cl-prov-link">{c.nombre}</Link>
-              ))}
             </div>
           </section>
         )}

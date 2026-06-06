@@ -145,6 +145,9 @@
 }
 .cl-prov-link:hover { background: var(--blue-600); color: #fff; border-color: var(--blue-600); }
 .cl-prov-link--all { background: var(--blue-50); }
+.cl-canton-picker { margin-top: 22px; padding: 18px; border: 1px solid var(--ink-100); border-radius: 16px; background: var(--blue-50); }
+.cl-canton-picker .cl-section-title { margin-top: 0; }
+.cl-canton-hint { font-size: 0.95rem; color: var(--ink-500); margin-bottom: 14px; }
 
 /* ── Contenido ──────────────────────────────────────────────────────────── */
 .cl-prose { margin: 40px 0 8px; }

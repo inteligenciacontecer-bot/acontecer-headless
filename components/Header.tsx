@@ -276,7 +276,7 @@ export default function Header() {
               <div className="mnu-eyebrow"><span>Servicio en vivo</span></div>
               <div className="mnu-live">
                 {clima && (
-                  <div className="mnu-live-card">
+                  <Link href="/clima" onClick={() => setMenuOpen(false)} className="mnu-live-card" style={{ textDecoration: 'none', color: 'inherit' }} aria-label="Ver el clima en Costa Rica por provincia y cantón">
                     <div className="mnu-live-eyebrow">Hoy · San José</div>
                     <div className="mnu-live-clima">
                       <span className="mnu-live-clima-icon">{clima.icon}</span>
@@ -285,10 +285,11 @@ export default function Header() {
                         <div className="mnu-live-clima-desc">{clima.desc}</div>
                       </div>
                     </div>
-                  </div>
+                    <div className="mnu-live-more">Ver pronóstico <span aria-hidden="true">→</span></div>
+                  </Link>
                 )}
                 {tipoCambio && (
-                  <div className="mnu-live-card">
+                  <Link href="/tipo-de-cambio" onClick={() => setMenuOpen(false)} className="mnu-live-card" style={{ textDecoration: 'none', color: 'inherit' }} aria-label="Ver tipo de cambio del dólar y convertidor de monedas">
                     <div className="mnu-live-eyebrow">BCCR · cierre</div>
                     <div className="mnu-live-row">
                       <span className="mnu-live-lbl">Venta</span>
@@ -299,7 +300,8 @@ export default function Header() {
                       <span className="mnu-live-lbl">Compra</span>
                       <span className="mnu-live-val">₡{tipoCambio.compra}</span>
                     </div>
-                  </div>
+                    <div className="mnu-live-more">Convertidor <span aria-hidden="true">→</span></div>
+                  </Link>
                 )}
               </div>
             </div>
@@ -478,7 +480,9 @@ export default function Header() {
         .mnu-cta:hover .mnu-cta-inner > svg:last-child { opacity: 1; transform: translateX(2px); }
 
         .mnu-live { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-bottom: 14px; }
-        .mnu-live-card { background: #f3f4f6; border-radius: 12px; padding: 14px 16px; min-width: 0; box-sizing: border-box; }
+        .mnu-live-card { display: block; background: #f3f4f6; border-radius: 12px; padding: 14px 16px; min-width: 0; box-sizing: border-box; transition: background .15s; cursor: pointer; }
+        .mnu-live-card:hover { background: #e5e7eb; }
+        .mnu-live-more { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: #0a73ce; font-weight: 600; margin-top: 10px; }
         .mnu-live-eyebrow { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: #6b7280; margin-bottom: 8px; }
         .mnu-live-clima { display: flex; align-items: center; gap: 10px; }
         .mnu-live-clima-icon { font-size: 24px; line-height: 1; }
