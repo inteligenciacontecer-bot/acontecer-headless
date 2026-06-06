@@ -343,8 +343,8 @@ export default async function Home() {
 
         {/* ── SIDEBAR ─────────────────────────────────────────────────── */}
         <aside className="p-body-aside">
-          {/* Clima */}
-          <div className="p-widget">
+          {/* Clima — enlaza a la página general de clima */}
+          <a href="/clima" className="p-widget p-cambio-link" aria-label="Ver el clima en Costa Rica: pronóstico por hora y por provincia">
             <div className="p-widget-eyebrow">Hoy en San José</div>
             <h3 className="p-widget-title">Clima</h3>
             {clima ? (
@@ -363,7 +363,8 @@ export default async function Home() {
             ) : (
               <div style={{ color: 'var(--ink-400)', fontSize: 13 }}>Datos no disponibles</div>
             )}
-          </div>
+            <span className="p-cambio-more">Pronóstico por provincia <span aria-hidden="true">→</span></span>
+          </a>
 
           {/* Tipo de cambio */}
           <a href="/tipo-de-cambio" className="p-widget p-cambio-link" aria-label="Ver tipo de cambio del dólar y convertidor">
