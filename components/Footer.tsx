@@ -118,6 +118,7 @@ export default function Footer() {
               {name:'Entretenimiento', href:'/categoria/entretenimiento'},
               {name:'Tecnología', href:'/categoria/tecnologia'},
               {name:'Opinión', href:'/categoria/opinion'},
+              {name:'Turismo', href:'/categoria/turismo'},
             ].map(s => (
               <Link key={s.name} href={s.href}
                 style={{display:'block', color:'rgba(255,255,255,0.55)', fontSize:'13px', marginBottom:'9px', textDecoration:'none', transition:'color 0.2s'}}>

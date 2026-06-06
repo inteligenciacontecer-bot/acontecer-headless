@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { num: '06', name: 'Entretenimiento', href: '/categoria/entretenimiento' },
   { num: '07', name: 'Tecnología',      href: '/categoria/tecnologia' },
   { num: '08', name: 'Opinión',         href: '/categoria/opinion' },
+  { num: '09', name: 'Turismo',         href: '/categoria/turismo' },
 ];
 
 /* ── SVG Icons ───────────────────────────────────────────────────────────── */
@@ -156,7 +157,7 @@ export default function Header() {
                   <SearchIcon />
                 </button>
                 <button onClick={() => setMenuOpen(!menuOpen)}
-                  style={{display:'none', flexDirection:'column', justifyContent:'center', gap:'5px', cursor:'pointer', padding:'8px', background:'rgba(255,255,255,0.1)', border:'none', borderRadius:'8px', width:'38px', height:'38px'}}
+                  style={{display:'flex', flexDirection:'column', justifyContent:'center', gap:'5px', cursor:'pointer', padding:'8px', background:'rgba(255,255,255,0.1)', border:'none', borderRadius:'8px', width:'38px', height:'38px'}}
                   className="hamburger-btn" aria-label="Menú">
                   <span style={{display:'block', width:'20px', height:'2px', background:'white', borderRadius:'2px', transition:'all 0.25s', transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none'}}/>
                   <span style={{display:'block', width:'20px', height:'2px', background:'white', borderRadius:'2px', transition:'all 0.25s', opacity: menuOpen ? 0 : 1}}/>
