@@ -135,6 +135,17 @@
 .cl-city-name { font-size: 13.5px; font-weight: 600; color: var(--ink-900); flex: 1; min-width: 0; }
 .cl-city-temp { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--blue-600); }
 
+/* ── Enlaces a páginas por provincia ────────────────────────────────────── */
+.cl-prov-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.cl-prov-link {
+  display: inline-block; padding: 9px 16px; border-radius: 999px;
+  border: 1px solid var(--ink-100); background: #fff;
+  font-size: 13.5px; font-weight: 600; color: var(--blue-600);
+  text-decoration: none; transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.cl-prov-link:hover { background: var(--blue-600); color: #fff; border-color: var(--blue-600); }
+.cl-prov-link--all { background: var(--blue-50); }
+
 /* ── Contenido ──────────────────────────────────────────────────────────── */
 .cl-prose { margin: 40px 0 8px; }
 .cl-prose h2 {

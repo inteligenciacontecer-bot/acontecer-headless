@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { PROVINCIAS } from '@/lib/clima';
 
 const API  = 'https://cms.acontecer.co.cr/wp-json/wp/v2';
 const BASE = 'https://acontecer.co.cr';
@@ -75,6 +76,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/asamblea`,     lastModified: new Date(), changeFrequency: 'hourly',  priority: 0.8 },
   ];
 
+  // Clima por provincia — 7 páginas estáticas (evergreen, alto valor SEO local)
+  const climaProvinciaPages: MetadataRoute.Sitemap = PROVINCIAS.map((p) => ({
+    url: `${BASE}/clima/${p.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'daily' as const,
+    priority: 0.6,
+  }));
+
   const categoryPages: MetadataRoute.Sitemap = categories
     .filter((c: any) => c.slug !== 'uncategorized')
     .map((c: any) => ({
@@ -117,5 +126,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Incluirlas consume crawl budget y hacen que site: muestre etiquetas en vez de artículos.
   // Las páginas de etiqueta tienen noindex en su propio page.tsx.
 
-  return [...staticPages, ...categoryPages, ...postPages, ...storyPages];
+  return [...staticPages, ...climaProvinciaPages, ...categoryPages, ...postPages, ...storyPages];
 }

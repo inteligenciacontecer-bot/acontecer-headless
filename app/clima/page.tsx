@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import './clima.css';
 import ClimaPorHora from '@/components/ClimaPorHora';
+import { PROVINCIAS } from '@/lib/clima';
 
 // ISR: el clima se refresca cada 30 min. Una sola URL evergreen.
 export const revalidate = 1800;
@@ -315,6 +316,18 @@ export default async function ClimaPage() {
                 </div>
               );
             })}
+          </div>
+        </section>
+
+        {/* Páginas de clima por provincia (enlaces internos + SEO) */}
+        <section aria-label="Pronóstico del tiempo por provincia">
+          <h2 className="cl-section-title">Pronóstico del tiempo por provincia</h2>
+          <div className="cl-prov-links">
+            {PROVINCIAS.map((p) => (
+              <Link key={p.slug} href={`/clima/${p.slug}`} className="cl-prov-link">
+                Clima en {p.provincia}
+              </Link>
+            ))}
           </div>
         </section>
 
