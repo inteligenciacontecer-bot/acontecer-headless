@@ -149,8 +149,9 @@ export default function Footer() {
 
           {/* MONITOR LEGISLATIVO */}
           <div>
-            <h4 style={{color:'white', fontSize:'11px', fontWeight:'700', textTransform:'uppercase', letterSpacing:'2px', marginBottom:'18px', paddingBottom:'10px', borderBottom:'2px solid #0a73ce'}}>
-              🏛️ Monitor Legislativo
+            <h4 style={{color:'white', fontSize:'11px', fontWeight:'700', textTransform:'uppercase', letterSpacing:'2px', marginBottom:'18px', paddingBottom:'10px', borderBottom:'2px solid #0a73ce', display:'flex', alignItems:'center', gap:'7px'}}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width:13,height:13,flexShrink:0}} aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>
+              Monitor Legislativo
             </h4>
             {[
               {name:'Dashboard',   href:'/asamblea'},
@@ -185,8 +186,9 @@ export default function Footer() {
               <a href="https://wa.me/50662889467" style={{color:'rgba(255,255,255,0.7)', fontSize:'13px', textDecoration:'none'}}>Enviar mensaje</a>
             </div>
             <a href="/pauta"
-              style={{display:'inline-block', background:'#0a73ce', color:'white', padding:'9px 18px', borderRadius:'6px', fontSize:'12px', fontWeight:'700', textDecoration:'none'}}>
-              📢 Paute aquí
+              style={{display:'inline-flex', alignItems:'center', gap:'7px', background:'#0a73ce', color:'white', padding:'9px 18px', borderRadius:'6px', fontSize:'12px', fontWeight:'700', textDecoration:'none'}}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width:14,height:14,flexShrink:0}} aria-hidden="true"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+              Paute aquí
             </a>
           </div>
         </div>
