@@ -111,6 +111,20 @@ export const CANTONES: Record<string, Canton[]> = {
     { slug: 'la-cruz',    nombre: 'La Cruz',    lat: 11.0667, lon: -85.6500 },
     { slug: 'hojancha',   nombre: 'Hojancha',   lat: 10.0667, lon: -85.4167 },
   ],
+  'puntarenas': [
+    { slug: 'esparza',        nombre: 'Esparza',        lat: 9.9928, lon: -84.6614 },
+    { slug: 'buenos-aires',   nombre: 'Buenos Aires',   lat: 9.1700, lon: -83.3300 },
+    { slug: 'montes-de-oro',  nombre: 'Montes de Oro',  lat: 10.0931, lon: -84.7300 },
+    { slug: 'osa',            nombre: 'Osa',            lat: 8.9600, lon: -83.5200 },
+    { slug: 'quepos',         nombre: 'Quepos',         lat: 9.4300, lon: -84.1600 },
+    { slug: 'golfito',        nombre: 'Golfito',        lat: 8.6400, lon: -83.1600 },
+    { slug: 'coto-brus',      nombre: 'Coto Brus',      lat: 8.8200, lon: -82.9700 },
+    { slug: 'parrita',        nombre: 'Parrita',        lat: 9.5200, lon: -84.3200 },
+    { slug: 'corredores',     nombre: 'Corredores',     lat: 8.6300, lon: -82.9300 },
+    { slug: 'garabito',       nombre: 'Garabito',       lat: 9.6100, lon: -84.6300 },
+    { slug: 'monteverde',     nombre: 'Monteverde',     lat: 10.3000, lon: -84.8200 },
+    { slug: 'puerto-jimenez', nombre: 'Puerto Jiménez', lat: 8.5300, lon: -83.3000 },
+  ],
 };
 
 export function getCantones(provSlug: string): Canton[] {
