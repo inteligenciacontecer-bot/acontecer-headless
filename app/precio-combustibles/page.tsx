@@ -42,6 +42,21 @@ function getPrecios(): Precios {
   return PRECIOS_FALLBACK;
 }
 
+interface HistEntry { vigenteDesde: string; combustibles: Combustible[] }
+
+// Lee el histórico de cambios de precio (lo acumula el cron). Vacío si no existe.
+function getHistorico(): HistEntry[] {
+  try {
+    const raw = readFileSync(join(process.cwd(), 'data', 'combustibles_historico.json'), 'utf-8');
+    const d = JSON.parse(raw);
+    if (Array.isArray(d)) {
+      return d.filter((e: any) =>
+        e && typeof e.vigenteDesde === 'string' && Array.isArray(e.combustibles) && e.combustibles.length >= 3);
+    }
+  } catch { /* sin histórico aún */ }
+  return [];
+}
+
 const nf = new Intl.NumberFormat('es-CR', { maximumFractionDigits: 0 });
 
 function fechaBonita(iso: string): string {
@@ -103,6 +118,7 @@ function buildFaq(PRECIOS: Precios) {
 
 export default function CombustiblePage() {
   const PRECIOS = getPrecios();
+  const historico = getHistorico();
   const faq = buildFaq(PRECIOS);
   const fechaISO = `${PRECIOS.vigenteDesde}T00:00:00-06:00`;
 
@@ -179,6 +195,40 @@ export default function CombustiblePage() {
 
         {/* Calculadora */}
         <CalculadoraCombustible combustibles={PRECIOS.combustibles} />
+
+        {/* Histórico de precios (server-rendered, SEO — lo acumula el cron) */}
+        {historico.length >= 2 && (
+          <section className="cb-hist-sec" aria-label="Histórico de precios de combustibles">
+            <h2 className="cb-hist-title">Histórico del precio de los combustibles</h2>
+            <p className="cb-hist-intro">
+              Evolución de las tarifas al consumidor según los ajustes de ARESEP. Así puede ver si la gasolina y el
+              diésel subieron o bajaron en los últimos meses.
+            </p>
+            <div className="cb-hist-wrap">
+              <table className="cb-hist">
+                <thead>
+                  <tr>
+                    <th scope="col">Vigente desde</th>
+                    {PRECIOS.combustibles.map((c) => (
+                      <th key={c.nombre} scope="col">{c.nombre}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {historico.map((h) => (
+                    <tr key={h.vigenteDesde}>
+                      <th scope="row" className="cb-hist-fecha">{fechaBonita(h.vigenteDesde)}</th>
+                      {h.combustibles.map((c) => (
+                        <td key={c.nombre}>₡{nf.format(c.precio)}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="cb-hist-note">Fuente: ARESEP / RECOPE. La tabla crece con cada nuevo ajuste de precios.</p>
+          </section>
+        )}
 
         {/* Contenido */}
         <section className="cb-prose">

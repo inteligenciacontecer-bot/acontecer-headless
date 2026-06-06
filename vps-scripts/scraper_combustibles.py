@@ -30,6 +30,8 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 URL = 'https://www.recope.go.cr/productos/precios-nacionales/tabla-precios/'
 OUT = Path('/var/www/acontecer-headless/data/combustibles.json')
+HIST = Path('/var/www/acontecer-headless/data/combustibles_historico.json')
+HIST_MAX = 24  # guardar hasta 24 cambios de precio (≈2 años)
 CR = ZoneInfo('America/Costa_Rica')
 
 # Rango sano de precios al consumidor (₡/litro). Fuera de esto = dato corrupto.
@@ -166,6 +168,43 @@ def main():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding='utf-8')
     log.info(f'Escrito {OUT} ✓')
+
+    actualizar_historico(data)
+
+
+def actualizar_historico(data: dict) -> None:
+    """Mantiene un histórico de cambios de precio. Inserta una entrada nueva
+    solo cuando cambia `vigenteDesde` (o los precios), para no duplicar."""
+    try:
+        historico = []
+        if HIST.exists():
+            historico = json.loads(HIST.read_text(encoding='utf-8'))
+            if not isinstance(historico, list):
+                historico = []
+    except Exception as e:
+        log.warning(f'Histórico ilegible, se reinicia: {e}')
+        historico = []
+
+    entrada = {
+        'vigenteDesde': data['vigenteDesde'],
+        'combustibles': data['combustibles'],
+        'registrado': data['actualizado'],
+    }
+
+    ultimo = historico[0] if historico else None
+    precios_iguales = (
+        ultimo
+        and ultimo.get('vigenteDesde') == entrada['vigenteDesde']
+        and [c['precio'] for c in ultimo.get('combustibles', [])] == [c['precio'] for c in entrada['combustibles']]
+    )
+    if precios_iguales:
+        log.info('Histórico: sin cambios (mismo vigenteDesde y precios).')
+        return
+
+    historico.insert(0, entrada)
+    historico = historico[:HIST_MAX]
+    HIST.write_text(json.dumps(historico, ensure_ascii=False, indent=2), encoding='utf-8')
+    log.info(f'Histórico actualizado: {len(historico)} entradas ✓')
 
 
 if __name__ == '__main__':

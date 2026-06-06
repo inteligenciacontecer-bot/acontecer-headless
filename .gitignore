@@ -42,3 +42,4 @@ next-env.d.ts
 
 # datos generados por crons (scraper de combustibles, etc.)
 /data/combustibles.json
+/data/combustibles_historico.json
