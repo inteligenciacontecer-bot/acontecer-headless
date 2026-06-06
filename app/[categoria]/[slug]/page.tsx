@@ -28,6 +28,21 @@ const ASAMBLEA_API = 'https://cms.acontecer.co.cr/wp-json/acontecer/v1/asamblea'
 const toISO = (d: string) =>
   d && !d.includes('+') && !d.endsWith('Z') ? d + '-06:00' : (d || '');
 
+/**
+ * fechaModEfectiva — evita que artículos VIEJOS se muestren como «actualizados hoy».
+ * Si el artículo se publicó hace menos de 90 días, usa la fecha de modificación real
+ * (frescura legítima). Si es más viejo, devuelve la fecha de publicación original,
+ * de modo que corregir un dato o agregar un enlace NO lo reposicione como nuevo en
+ * Google ni cambie su fecha visible. Mismo umbral que el sitemap (coherencia).
+ */
+const MOD_FRESCO_MS = 90 * 24 * 60 * 60 * 1000;
+function fechaModEfectiva(date: string, modified: string): string {
+  if (!date) return modified || '';
+  const pub = new Date(toISO(date)).getTime();
+  if (!Number.isFinite(pub)) return date;
+  return (Date.now() - pub) < MOD_FRESCO_MS ? (modified || date) : date;
+}
+
 /** Decodifica entidades HTML numéricas y nombradas comunes */
 function decodeEntities(str: string): string {
   return str
@@ -277,7 +292,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       images: [{ url: featuredImg, width: 1200, height: 630, alt: rawTitle }],
       type: 'article',
       publishedTime:  toISO(post.date),
-      modifiedTime:   toISO(post.modified),
+      modifiedTime:   toISO(fechaModEfectiva(post.date, post.modified)),
       authors: [autorNombre],
       section: realCatSlug,
       tags,
@@ -385,7 +400,7 @@ export default async function NotaPage({ params }: { params: Promise<{ slug: str
         description: decodeEntities(post.excerpt?.rendered?.replace(/<[^>]+>/g, '').trim() || '').slice(0, 160),
         url:         `https://acontecer.co.cr/${catSlug}/${slug}`,
         datePublished:  toISO(post.date),
-        dateModified:   toISO(post.modified),
+        dateModified:   toISO(fechaModEfectiva(post.date, post.modified)),
         // @id → referencia cruzada al Person schema de /autor/[slug]#person
         // Google une este nodo con la entidad del periodista sin duplicar datos.
         author: {
