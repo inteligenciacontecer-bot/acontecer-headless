@@ -122,7 +122,6 @@ export default function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
       ))}
       <div className="p-hero-grid" />
       <div className="p-hero-overlay" />
-      <span className="p-hero-photo-tag">FOTO · {catLabel}</span>
 
       {/* Content */}
       <div className="p-hero-content">

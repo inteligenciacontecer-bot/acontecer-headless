@@ -104,7 +104,7 @@ const schemaOrganization = {
       "https://www.wikidata.org/wiki/Q800"
     ]
   },
-  "foundingDate": "2022",
+  "foundingDate": "2020",
   "publishingPrinciples": "https://acontecer.co.cr/politicas",
   "masthead": "https://acontecer.co.cr/nosotros",
   "logo": {

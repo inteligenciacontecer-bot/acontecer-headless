@@ -508,12 +508,12 @@ export default async function Home() {
             <div className="p-stats-eyebrow">Periodismo independiente</div>
             <h2 className="p-stats-title">Acontecer en cifras</h2>
           </div>
-          <div className="p-stats-grid">
+          <a className="p-stats-grid" href="/pauta" aria-label="Paute con nosotros en Acontecer">
             {[
               { num: '+15M',  lbl: 'Vistas mensuales',  sub: 'en Facebook' },
-              { num: '+50K',  lbl: 'Lectores únicos',    sub: 'cada mes' },
+              { num: '+200K',  lbl: 'Lectores únicos',    sub: 'cada mes' },
               { num: '+1.200',lbl: 'Artículos',          sub: 'publicados' },
-              { num: '2022',  lbl: 'Fundados en',        sub: 'San José, Costa Rica' },
+              { num: '2020',  lbl: 'Fundados en',        sub: 'San José, Costa Rica' },
             ].map(s => (
               <div key={s.lbl} className="p-stat-cell">
                 <div className="num">{s.num}</div>
@@ -521,7 +521,11 @@ export default async function Home() {
                 <div className="sub">{s.sub}</div>
               </div>
             ))}
-          </div>
+          </a>
+          <a className="p-stats-cta" href="/pauta">
+            Paute con nosotros
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
         </div>
       </section>
 

@@ -30,7 +30,7 @@ const schemaFooterOrg = {
     "name": "Costa Rica",
     "sameAs": "https://www.wikidata.org/wiki/Q800"
   },
-  "foundingDate": "2022",
+  "foundingDate": "2020",
   "publishingPrinciples": "https://acontecer.co.cr/politicas",
   "masthead": "https://acontecer.co.cr/nosotros",
   "ethicsPolicy": "https://acontecer.co.cr/politicas",
