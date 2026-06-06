@@ -1,55 +1,62 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import '../clima.css';
+import '../../clima.css';
 import {
-  PROVINCIAS, getProvincia, getCantones, getClimaCompleto, wmo, diaNombre,
-  type ClimaActual,
+  PROVINCIAS, CANTONES, getProvincia, getCanton, getCantones,
+  getClimaCompleto, wmo, diaNombre, type ClimaActual,
 } from '@/lib/clima';
 
-// ISR: clima cada 30 min. Páginas estáticas por provincia (generateStaticParams).
+// ISR: clima cada 30 min. Páginas estáticas por cantón (generateStaticParams).
 export const revalidate = 1800;
 
 const BASE = 'https://acontecer.co.cr';
 
 export function generateStaticParams() {
-  return PROVINCIAS.map((p) => ({ provincia: p.slug }));
+  const params: { provincia: string; canton: string }[] = [];
+  for (const provincia of Object.keys(CANTONES)) {
+    for (const c of CANTONES[provincia]) {
+      params.push({ provincia, canton: c.slug });
+    }
+  }
+  return params;
 }
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ provincia: string }> },
+  { params }: { params: Promise<{ provincia: string; canton: string }> },
 ): Promise<Metadata> {
-  const { provincia } = await params;
+  const { provincia, canton } = await params;
   const prov = getProvincia(provincia);
-  if (!prov) return { title: 'Provincia no encontrada' };
-  const url = `${BASE}/clima/${prov.slug}`;
-  const clima = await getClimaCompleto(prov.lat, prov.lon);
+  const cant = getCanton(provincia, canton);
+  if (!prov || !cant) return { title: 'Cantón no encontrado' };
+  const url = `${BASE}/clima/${prov.slug}/${cant.slug}`;
+  const clima = await getClimaCompleto(cant.lat, cant.lon);
   const w = clima ? wmo(clima.current.code) : null;
   const desc = clima
-    ? `Clima en ${prov.provincia} hoy: ${clima.current.temp}°C, ${w?.desc.toLowerCase()}. Pronóstico del tiempo por hora y de 7 días para ${prov.provincia}, Costa Rica. Actualizado automáticamente.`
-    : `Clima en ${prov.provincia} hoy: temperatura actual, pronóstico por hora y de 7 días para ${prov.provincia}, Costa Rica. Actualizado automáticamente.`;
+    ? `Clima en ${cant.nombre} hoy: ${clima.current.temp}°C, ${w?.desc.toLowerCase()}. Pronóstico del tiempo por hora y de 7 días para ${cant.nombre}, ${prov.provincia}, Costa Rica. Actualizado automáticamente.`
+    : `Clima en ${cant.nombre} hoy: temperatura actual, pronóstico por hora y de 7 días para ${cant.nombre}, ${prov.provincia}, Costa Rica.`;
   return {
-    title: `Clima en ${prov.provincia} Hoy — Pronóstico del Tiempo por Hora`,
+    title: `Clima en ${cant.nombre} Hoy — Pronóstico del Tiempo por Hora`,
     description: desc,
     alternates: { canonical: url },
     openGraph: {
       type: 'website', url,
-      title: `Clima en ${prov.provincia} Hoy — Pronóstico por Hora y 7 Días | Acontecer.co.cr`,
+      title: `Clima en ${cant.nombre} Hoy — Pronóstico por Hora y 7 Días | Acontecer.co.cr`,
       description: desc, locale: 'es_CR',
     },
-    twitter: { card: 'summary_large_image', title: `Clima en ${prov.provincia} Hoy`, description: desc },
+    twitter: { card: 'summary_large_image', title: `Clima en ${cant.nombre} Hoy`, description: desc },
   };
 }
 
-function buildFaq(prov: { provincia: string }, cur: ClimaActual | null) {
+function buildFaq(cant: { nombre: string }, prov: { provincia: string }, cur: ClimaActual | null) {
   const hoy = cur
-    ? `Ahora en ${prov.provincia} hay ${cur.temp}°C (sensación ${cur.feels}°C), ${wmo(cur.code).desc.toLowerCase()}, con ${cur.humidity}% de humedad. El pronóstico por hora y de 7 días está más arriba en esta página.`
-    : `El clima de ${prov.provincia} se actualiza automáticamente en esta página con la temperatura actual, el pronóstico por hora y el de los próximos 7 días.`;
+    ? `Ahora en ${cant.nombre} hay ${cur.temp}°C (sensación ${cur.feels}°C), ${wmo(cur.code).desc.toLowerCase()}, con ${cur.humidity}% de humedad. El pronóstico por hora y de 7 días está más arriba en esta página.`
+    : `El clima de ${cant.nombre} se actualiza automáticamente con la temperatura actual, el pronóstico por hora y el de los próximos 7 días.`;
   return [
-    { q: `¿Qué clima hace hoy en ${prov.provincia}?`, a: hoy },
+    { q: `¿Qué clima hace hoy en ${cant.nombre}?`, a: hoy },
     {
-      q: `¿Cómo estará el tiempo esta semana en ${prov.provincia}?`,
-      a: `En la sección de pronóstico de 7 días de esta página se muestran la temperatura máxima y mínima y la probabilidad de lluvia para cada día en ${prov.provincia}. Los datos se actualizan de forma automática cada 30 minutos.`,
+      q: `¿Cómo estará el tiempo esta semana en ${cant.nombre}?`,
+      a: `En la sección de pronóstico de 7 días se muestran la temperatura máxima y mínima y la probabilidad de lluvia para cada día en ${cant.nombre}, ${prov.provincia}. Los datos se actualizan automáticamente cada 30 minutos.`,
     },
     {
       q: '¿De dónde provienen estos datos del clima?',
@@ -58,21 +65,21 @@ function buildFaq(prov: { provincia: string }, cur: ClimaActual | null) {
   ];
 }
 
-export default async function ClimaProvinciaPage(
-  { params }: { params: Promise<{ provincia: string }> },
+export default async function ClimaCantonPage(
+  { params }: { params: Promise<{ provincia: string; canton: string }> },
 ) {
-  const { provincia } = await params;
+  const { provincia, canton } = await params;
   const prov = getProvincia(provincia);
-  if (!prov) return notFound();
+  const cant = getCanton(provincia, canton);
+  if (!prov || !cant) return notFound();
 
-  const url = `${BASE}/clima/${prov.slug}`;
-  const clima = await getClimaCompleto(prov.lat, prov.lon);
+  const url = `${BASE}/clima/${prov.slug}/${cant.slug}`;
+  const clima = await getClimaCompleto(cant.lat, cant.lon);
   const cur = clima?.current ?? null;
   const curW = cur ? wmo(cur.code) : null;
-  const faq = buildFaq(prov, cur);
+  const faq = buildFaq(cant, prov, cur);
   const ahoraISO = new Date().toISOString();
-  const otras = PROVINCIAS.filter((p) => p.slug !== prov.slug);
-  const cantones = getCantones(prov.slug);
+  const hermanos = getCantones(provincia).filter((c) => c.slug !== cant.slug);
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -80,7 +87,8 @@ export default async function ClimaProvinciaPage(
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE },
       { '@type': 'ListItem', position: 2, name: 'Clima en Costa Rica', item: `${BASE}/clima` },
-      { '@type': 'ListItem', position: 3, name: `Clima en ${prov.provincia}`, item: url },
+      { '@type': 'ListItem', position: 3, name: `Clima en ${prov.provincia}`, item: `${BASE}/clima/${prov.slug}` },
+      { '@type': 'ListItem', position: 4, name: `Clima en ${cant.nombre}`, item: url },
     ],
   };
   const webPageSchema = {
@@ -88,8 +96,8 @@ export default async function ClimaProvinciaPage(
     '@type': 'WebPage',
     '@id': `${url}#webpage`,
     url,
-    name: `Clima en ${prov.provincia} Hoy — Pronóstico por Hora y 7 Días`,
-    description: `Pronóstico del tiempo en ${prov.provincia}, Costa Rica: temperatura actual, por hora y de 7 días, actualizado automáticamente.`,
+    name: `Clima en ${cant.nombre} Hoy — Pronóstico por Hora y 7 Días`,
+    description: `Pronóstico del tiempo en ${cant.nombre}, ${prov.provincia}, Costa Rica: temperatura actual, por hora y de 7 días, actualizado automáticamente.`,
     inLanguage: 'es-CR',
     datePublished: '2026-06-06T06:00:00-06:00',
     dateModified: ahoraISO,
@@ -99,7 +107,7 @@ export default async function ClimaProvinciaPage(
       name: 'Acontecer.co.cr', url: BASE,
       logo: { '@type': 'ImageObject', url: `${BASE}/logo.png`, width: 600, height: 94 },
     },
-    about: { '@type': 'Thing', name: `Clima y pronóstico del tiempo en ${prov.provincia}, Costa Rica` },
+    about: { '@type': 'Thing', name: `Clima y pronóstico del tiempo en ${cant.nombre}, Costa Rica` },
   };
   const faqSchema = {
     '@context': 'https://schema.org',
@@ -119,21 +127,26 @@ export default async function ClimaProvinciaPage(
           <span aria-hidden="true">›</span>
           <Link href="/clima">Clima</Link>
           <span aria-hidden="true">›</span>
-          <span aria-current="page">{prov.provincia}</span>
+          <Link href={`/clima/${prov.slug}`}>{prov.provincia}</Link>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">{cant.nombre}</span>
         </nav>
 
         <header className="cl-head">
           <span className="cl-eyebrow">Servicio en vivo · Open-Meteo</span>
-          <h1 className="cl-title">Clima en {prov.provincia} hoy</h1>
-          <p className="cl-lead">{prov.intro} La información se actualiza automáticamente cada 30 minutos.</p>
+          <h1 className="cl-title">Clima en {cant.nombre} hoy</h1>
+          <p className="cl-lead">
+            Pronóstico del tiempo en {cant.nombre}, {prov.provincia}: temperatura actual, por hora y de 7 días.
+            La información se actualiza automáticamente cada 30 minutos.
+          </p>
         </header>
 
         {cur && curW ? (
-          <section className="cl-now" aria-label={`Clima actual en ${prov.provincia}`}>
+          <section className="cl-now" aria-label={`Clima actual en ${cant.nombre}`}>
             <div className="cl-now-main">
               <span className="cl-now-icon" aria-hidden="true">{curW.icon}</span>
               <div>
-                <div className="cl-now-place">{prov.ciudad} · ahora</div>
+                <div className="cl-now-place">{cant.nombre} · ahora</div>
                 <div className="cl-now-temp">{cur.temp}<span className="cl-now-deg">°C</span></div>
                 <div className="cl-now-desc">{curW.desc}</div>
               </div>
@@ -149,8 +162,8 @@ export default async function ClimaProvinciaPage(
         )}
 
         {clima && clima.horas.length > 0 && (
-          <section aria-label={`Pronóstico por hora en ${prov.provincia}`}>
-            <h2 className="cl-section-title">Pronóstico por hora · {prov.provincia}</h2>
+          <section aria-label={`Pronóstico por hora en ${cant.nombre}`}>
+            <h2 className="cl-section-title">Pronóstico por hora · {cant.nombre}</h2>
             <div className="cl-hourly-strip">
               {clima.horas.map((h, i) => (
                 <div key={i} className="cl-hour">
@@ -165,8 +178,8 @@ export default async function ClimaProvinciaPage(
         )}
 
         {clima && clima.dias.length > 0 && (
-          <section aria-label={`Pronóstico de 7 días en ${prov.provincia}`}>
-            <h2 className="cl-section-title">Pronóstico de 7 días · {prov.provincia}</h2>
+          <section aria-label={`Pronóstico de 7 días en ${cant.nombre}`}>
+            <h2 className="cl-section-title">Pronóstico de 7 días · {cant.nombre}</h2>
             <div className="cl-forecast">
               {clima.dias.map((d, i) => {
                 const w = wmo(d.code);
@@ -183,36 +196,26 @@ export default async function ClimaProvinciaPage(
           </section>
         )}
 
-        {/* Cantones de la provincia */}
-        {cantones.length > 0 && (
-          <section aria-label={`Clima por cantón en ${prov.provincia}`}>
-            <h2 className="cl-section-title">Clima por cantón en {prov.provincia}</h2>
+        {/* Otros cantones de la provincia */}
+        {hermanos.length > 0 && (
+          <section aria-label={`Clima en otros cantones de ${prov.provincia}`}>
+            <h2 className="cl-section-title">Clima en otros cantones de {prov.provincia}</h2>
             <div className="cl-prov-links">
-              {cantones.map((c) => (
+              {hermanos.map((c) => (
                 <Link key={c.slug} href={`/clima/${prov.slug}/${c.slug}`} className="cl-prov-link">{c.nombre}</Link>
               ))}
+              <Link href={`/clima/${prov.slug}`} className="cl-prov-link cl-prov-link--all">Toda {prov.provincia}</Link>
             </div>
           </section>
         )}
 
-        {/* Otras provincias */}
-        <section aria-label="Clima en otras provincias">
-          <h2 className="cl-section-title">Clima en otras provincias</h2>
-          <div className="cl-prov-links">
-            {otras.map((p) => (
-              <Link key={p.slug} href={`/clima/${p.slug}`} className="cl-prov-link">{p.provincia}</Link>
-            ))}
-            <Link href="/clima" className="cl-prov-link cl-prov-link--all">Todo el país</Link>
-          </div>
-        </section>
-
         <section className="cl-prose">
-          <h2>El clima en {prov.provincia}</h2>
+          <h2>El clima en {cant.nombre}, {prov.provincia}</h2>
           <p>{prov.intro}</p>
           <p>
             Costa Rica tiene dos estaciones: la seca (de diciembre a abril) y la lluviosa (de mayo a noviembre).
-            En {prov.provincia}, como en el resto del país, el relieve genera microclimas, por lo que la temperatura
-            y la lluvia pueden variar dentro de la misma provincia en un mismo día.
+            En {cant.nombre} y el resto de {prov.provincia}, el relieve genera microclimas, por lo que la temperatura
+            y la lluvia pueden variar dentro de la misma zona en un mismo día.
           </p>
           <p className="cl-disclaimer">
             <strong>Importante:</strong> esta página es informativa y los datos provienen de modelos meteorológicos
@@ -221,7 +224,7 @@ export default async function ClimaProvinciaPage(
           </p>
         </section>
 
-        <section className="cl-faq" aria-label={`Preguntas frecuentes sobre el clima en ${prov.provincia}`}>
+        <section className="cl-faq" aria-label={`Preguntas frecuentes sobre el clima en ${cant.nombre}`}>
           <h2 className="cl-faq-title">Preguntas frecuentes</h2>
           {faq.map((f, i) => (
             <details key={i} className="cl-faq-item">
@@ -234,9 +237,9 @@ export default async function ClimaProvinciaPage(
         <footer className="cl-footer">
           <p className="cl-updated">Actualizado automáticamente con datos meteorológicos de Open-Meteo.</p>
           <p className="cl-links">
-            <Link href="/clima">Clima de todo Costa Rica</Link> ·{' '}
-            <Link href="/tipo-de-cambio">Tipo de cambio</Link> ·{' '}
-            <Link href="/precio-combustibles">Combustibles</Link>
+            <Link href={`/clima/${prov.slug}`}>Clima en {prov.provincia}</Link> ·{' '}
+            <Link href="/clima">Todo Costa Rica</Link> ·{' '}
+            <Link href="/tipo-de-cambio">Tipo de cambio</Link>
           </p>
         </footer>
       </main>

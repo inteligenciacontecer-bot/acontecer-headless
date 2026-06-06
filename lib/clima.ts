@@ -34,6 +34,43 @@ export function getProvincia(slug: string): Provincia | undefined {
   return PROVINCIAS.find((p) => p.slug === slug);
 }
 
+export interface Canton { slug: string; nombre: string; lat: number; lon: number; }
+
+// Cantones por provincia (coordenadas de la cabecera). Se EXCLUYE el cantón
+// central que coincide con la ciudad de referencia de la provincia (ya cubierto
+// por /clima/[provincia]) para no duplicar contenido.
+// Se agregan por bloques, una provincia a la vez.
+export const CANTONES: Record<string, Canton[]> = {
+  'san-jose': [
+    { slug: 'escazu',              nombre: 'Escazú',             lat: 9.9189, lon: -84.1397 },
+    { slug: 'desamparados',        nombre: 'Desamparados',       lat: 9.8997, lon: -84.0656 },
+    { slug: 'puriscal',            nombre: 'Puriscal',           lat: 9.8456, lon: -84.3158 },
+    { slug: 'tarrazu',             nombre: 'Tarrazú',            lat: 9.6536, lon: -84.0211 },
+    { slug: 'aserri',              nombre: 'Aserrí',             lat: 9.8589, lon: -84.1031 },
+    { slug: 'mora',                nombre: 'Mora',               lat: 9.9136, lon: -84.2386 },
+    { slug: 'goicoechea',          nombre: 'Goicoechea',         lat: 9.9486, lon: -84.0494 },
+    { slug: 'santa-ana',           nombre: 'Santa Ana',          lat: 9.9325, lon: -84.1822 },
+    { slug: 'alajuelita',          nombre: 'Alajuelita',         lat: 9.9019, lon: -84.0986 },
+    { slug: 'vazquez-de-coronado', nombre: 'Vázquez de Coronado', lat: 9.9831, lon: -84.0006 },
+    { slug: 'acosta',              nombre: 'Acosta',             lat: 9.7964, lon: -84.1814 },
+    { slug: 'tibas',               nombre: 'Tibás',              lat: 9.9550, lon: -84.0830 },
+    { slug: 'moravia',             nombre: 'Moravia',            lat: 9.9658, lon: -84.0492 },
+    { slug: 'montes-de-oca',       nombre: 'Montes de Oca',      lat: 9.9339, lon: -84.0533 },
+    { slug: 'turrubares',          nombre: 'Turrubares',         lat: 9.8400, lon: -84.4300 },
+    { slug: 'dota',                nombre: 'Dota',               lat: 9.6447, lon: -83.9633 },
+    { slug: 'curridabat',          nombre: 'Curridabat',         lat: 9.9244, lon: -84.0331 },
+    { slug: 'perez-zeledon',       nombre: 'Pérez Zeledón',      lat: 9.3736, lon: -83.7019 },
+    { slug: 'leon-cortes',         nombre: 'León Cortés',        lat: 9.7000, lon: -84.0667 },
+  ],
+};
+
+export function getCantones(provSlug: string): Canton[] {
+  return CANTONES[provSlug] || [];
+}
+export function getCanton(provSlug: string, cantonSlug: string): Canton | undefined {
+  return (CANTONES[provSlug] || []).find((c) => c.slug === cantonSlug);
+}
+
 export interface WmoInfo { icon: string; desc: string; }
 export function wmo(code: number): WmoInfo {
   const m: Record<number, WmoInfo> = {
