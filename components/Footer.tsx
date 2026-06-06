@@ -117,6 +117,7 @@ export default function Footer() {
               {name:'Tipo de cambio del dólar', href:'/tipo-de-cambio'},
               {name:'Clima en Costa Rica', href:'/clima'},
               {name:'Precio de combustibles', href:'/precio-combustibles'},
+              {name:'Resultados de lotería', href:'/resultados-loteria'},
               {name:'Entretenimiento', href:'/categoria/entretenimiento'},
               {name:'Tecnología', href:'/categoria/tecnologia'},
               {name:'Opinión', href:'/categoria/opinion'},
