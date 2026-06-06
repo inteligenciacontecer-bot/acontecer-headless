@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import './tipo-de-cambio.css';
-import ConvertidorDivisas from '@/components/ConvertidorDivisas';
+import ConvertidorMonedas, { type Moneda } from '@/components/ConvertidorMonedas';
 
 // ISR: la tarifa y el dateModified se refrescan cada hora.
 // Una sola URL evergreen que se actualiza sola → acumula autoridad y rankea durable.
@@ -33,6 +33,63 @@ async function getTipoCambio(): Promise<TipoCambio | null> {
   }
 }
 
+// Catálogo de monedas para el convertidor y la tabla SEO.
+// El orden define el orden visible (las más buscadas en CR primero).
+const MONEDAS_INFO: { code: string; nombre: string; simbolo: string }[] = [
+  { code: 'USD', nombre: 'Dólar estadounidense', simbolo: '$' },
+  { code: 'EUR', nombre: 'Euro', simbolo: '€' },
+  { code: 'GBP', nombre: 'Libra esterlina', simbolo: '£' },
+  { code: 'MXN', nombre: 'Peso mexicano', simbolo: '$' },
+  { code: 'CAD', nombre: 'Dólar canadiense', simbolo: 'C$' },
+  { code: 'COP', nombre: 'Peso colombiano', simbolo: '$' },
+  { code: 'NIO', nombre: 'Córdoba nicaragüense', simbolo: 'C$' },
+  { code: 'PAB', nombre: 'Balboa panameño', simbolo: 'B/.' },
+  { code: 'GTQ', nombre: 'Quetzal guatemalteco', simbolo: 'Q' },
+  { code: 'JPY', nombre: 'Yen japonés', simbolo: '¥' },
+  { code: 'CNY', nombre: 'Yuan chino', simbolo: '¥' },
+  { code: 'BRL', nombre: 'Real brasileño', simbolo: 'R$' },
+  { code: 'CHF', nombre: 'Franco suizo', simbolo: 'CHF' },
+];
+
+// Tasas internacionales base USD (gratis, sin key). Para derivar las demás
+// monedas frente al colón usando el ancla oficial USD↔CRC del BCCR.
+async function getTasasUSD(): Promise<Record<string, number> | null> {
+  try {
+    const res = await fetch('https://open.er-api.com/v6/latest/USD', { next: { revalidate: 3600 } });
+    if (!res.ok) return null;
+    const d = await res.json();
+    if (d && d.result === 'success' && d.rates && typeof d.rates.EUR === 'number') {
+      return d.rates as Record<string, number>;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Construye la lista de monedas con su valor en colones.
+ * Ancla: 1 USD = (compra+venta)/2 colones (referencia BCCR).
+ * Para moneda X: 1 X = colonesPorUsd / rates[X]  (rates[X] = X por 1 USD).
+ */
+function construirMonedas(tc: TipoCambio, rates: Record<string, number> | null): Moneda[] {
+  const colonesPorUsd = (tc.compra + tc.venta) / 2;
+  const out: Moneda[] = [
+    { code: 'CRC', nombre: 'Colón costarricense', simbolo: '₡', colones: 1 },
+    { code: 'USD', nombre: 'Dólar estadounidense', simbolo: '$', colones: colonesPorUsd },
+  ];
+  if (rates) {
+    for (const info of MONEDAS_INFO) {
+      if (info.code === 'USD') continue;
+      const r = rates[info.code];
+      if (typeof r === 'number' && r > 0) {
+        out.push({ ...info, colones: colonesPorUsd / r });
+      }
+    }
+  }
+  return out;
+}
+
 const nf = new Intl.NumberFormat('es-CR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
 function fechaBonita(f: string): string {
@@ -44,36 +101,48 @@ function fechaBonita(f: string): string {
 export async function generateMetadata(): Promise<Metadata> {
   const tc = await getTipoCambio();
   const desc = tc
-    ? `¿Cuánto está el dólar hoy en Costa Rica? Compra ₡${nf.format(tc.compra)} y venta ₡${nf.format(tc.venta)} según el tipo de cambio de referencia del BCCR. Convertidor de dólares a colones actualizado automáticamente.`
-    : 'Tipo de cambio del dólar en Costa Rica hoy: compra y venta según el tipo de cambio de referencia del BCCR. Convertidor de dólares a colones actualizado automáticamente.';
+    ? `¿Cuánto está el dólar y el euro hoy en Costa Rica? Dólar: compra ₡${nf.format(tc.compra)} y venta ₡${nf.format(tc.venta)} según el BCCR. Convertidor de colones a dólares, euros y +12 monedas, actualizado automáticamente.`
+    : 'Tipo de cambio hoy en Costa Rica: dólar y euro según el BCCR. Convertidor de colones a dólares, euros, libras, pesos y más monedas, actualizado automáticamente.';
   return {
-    title: 'Tipo de Cambio del Dólar Hoy en Costa Rica',
+    title: 'Tipo de Cambio Hoy en Costa Rica — Dólar, Euro y Convertidor de Monedas',
     description: desc,
     alternates: { canonical: URL_PAGINA },
     openGraph: {
       type: 'website',
       url: URL_PAGINA,
-      title: 'Tipo de Cambio del Dólar Hoy en Costa Rica | Acontecer.co.cr',
+      title: 'Tipo de Cambio Hoy en Costa Rica — Dólar, Euro y más monedas | Acontecer.co.cr',
       description: desc,
       locale: 'es_CR',
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Tipo de Cambio del Dólar Hoy en Costa Rica',
+      title: 'Tipo de Cambio Hoy en Costa Rica — Dólar, Euro y Convertidor',
       description: desc,
     },
   };
 }
 
 // FAQ — fuente única para el contenido visible y para el FAQPage schema.
-function buildFaq(tc: TipoCambio | null) {
+function buildFaq(tc: TipoCambio | null, monedas: Moneda[]) {
   const hoy = tc
     ? `Hoy el dólar está en ₡${nf.format(tc.venta)} para la venta y ₡${nf.format(tc.compra)} para la compra, según el tipo de cambio de referencia del Banco Central de Costa Rica (BCCR)${tc.fecha ? ` del ${fechaBonita(tc.fecha)}` : ''}.`
     : 'El dólar se cotiza según el tipo de cambio de referencia que publica a diario el Banco Central de Costa Rica (BCCR). Esta página se actualiza automáticamente con el último dato disponible.';
+  const eur = monedas.find((m) => m.code === 'EUR');
+  const euroHoy = eur
+    ? `Hoy un euro (EUR) equivale a aproximadamente ₡${nf.format(eur.colones)} colones. El valor se calcula a partir del tipo de cambio de referencia del dólar del BCCR y la cotización internacional del euro frente al dólar, y se actualiza automáticamente cada hora.`
+    : 'El valor del euro en colones se calcula a partir del tipo de cambio del dólar del BCCR y la cotización internacional del euro, y se actualiza automáticamente en esta página.';
   return [
     {
       q: '¿Cuánto está el dólar hoy en Costa Rica?',
       a: hoy,
+    },
+    {
+      q: '¿Cuánto está el euro hoy en Costa Rica?',
+      a: euroHoy,
+    },
+    {
+      q: '¿Cómo convierto colones a euros, dólares u otra moneda?',
+      a: 'En el convertidor de monedas de esta página se elige la moneda de origen y la de destino (por ejemplo, colones a euros), se escribe la cantidad y el resultado se calcula al instante. Permite convertir entre colones, dólares, euros, libras, pesos mexicanos y colombianos, y más de una docena de monedas.',
     },
     {
       q: '¿Cuál es la diferencia entre el tipo de cambio de compra y de venta?',
@@ -99,8 +168,10 @@ function buildFaq(tc: TipoCambio | null) {
 }
 
 export default async function TipoCambioPage() {
-  const tc = await getTipoCambio();
-  const faq = buildFaq(tc);
+  const [tc, rates] = await Promise.all([getTipoCambio(), getTasasUSD()]);
+  const monedas = tc ? construirMonedas(tc, rates) : [];
+  const tablaMonedas = monedas.filter((m) => m.code !== 'CRC'); // tabla "1 X = ₡ …"
+  const faq = buildFaq(tc, monedas);
   const ahoraISO = new Date().toISOString();
 
   // ── Schema.org ──────────────────────────────────────────────────────────
@@ -119,9 +190,9 @@ export default async function TipoCambioPage() {
     '@type': 'WebPage',
     '@id': `${URL_PAGINA}#webpage`,
     url: URL_PAGINA,
-    name: 'Tipo de Cambio del Dólar Hoy en Costa Rica',
+    name: 'Tipo de Cambio Hoy en Costa Rica — Dólar, Euro y más monedas',
     description:
-      'Tipo de cambio del dólar en Costa Rica hoy: compra y venta según el BCCR, con convertidor de dólares a colones actualizado a diario.',
+      'Tipo de cambio del dólar y el euro en Costa Rica hoy según el BCCR, con convertidor de colones a dólares, euros y más de doce monedas, actualizado automáticamente.',
     inLanguage: 'es-CR',
     datePublished: '2026-06-05T06:00:00-06:00',
     dateModified: ahoraISO,
@@ -215,8 +286,41 @@ export default async function TipoCambioPage() {
           </section>
         )}
 
-        {/* ── Convertidor interactivo ── */}
-        {tc && <ConvertidorDivisas compra={tc.compra} venta={tc.venta} />}
+        {/* ── Convertidor multi-moneda interactivo ── */}
+        {monedas.length > 1 && <ConvertidorMonedas monedas={monedas} origen="USD" destino="CRC" />}
+
+        {/* ── Tabla SEO: monedas frente al colón (server-rendered, indexable) ── */}
+        {tablaMonedas.length > 1 && (
+          <section className="tc-tabla-sec" aria-label="Cotización de monedas frente al colón">
+            <h2 className="tc-section-title">¿Cuánto vale cada moneda en colones hoy?</h2>
+            <p className="tc-tabla-intro">
+              Valor de referencia de las principales monedas frente al colón costarricense (CRC),
+              calculado con el tipo de cambio del dólar del BCCR y la cotización internacional. Actualizado cada hora.
+            </p>
+            <div className="tc-tabla-wrap">
+              <table className="tc-tabla">
+                <thead>
+                  <tr>
+                    <th scope="col">Moneda</th>
+                    <th scope="col">1 unidad en colones</th>
+                    <th scope="col">¢100 equivalen a</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tablaMonedas.map((m) => (
+                    <tr key={m.code}>
+                      <th scope="row" className="tc-tabla-moneda">
+                        <span className="tc-tabla-sym">{m.simbolo}</span> {m.nombre} <span className="tc-tabla-code">{m.code}</span>
+                      </th>
+                      <td>₡{nf.format(m.colones)}</td>
+                      <td>{m.simbolo}{nf.format(100 / m.colones)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
 
         {/* ── Contenido / E-E-A-T ── */}
         <section className="tc-prose">
@@ -251,10 +355,26 @@ export default async function TipoCambioPage() {
             tipo de cambio de referencia, así que el monto final recibido o pagado puede variar de una a otra.
           </p>
 
+          <h2>El euro y otras monedas frente al colón</h2>
+          <p>
+            Además del dólar, en esta página se puede consultar y convertir el <strong>euro (EUR)</strong>, la
+            <strong> libra esterlina (GBP)</strong>, el <strong>peso mexicano (MXN)</strong>, el peso colombiano, el
+            dólar canadiense, el córdoba nicaragüense, el balboa panameño, el quetzal guatemalteco, el yen, el yuan, el
+            real brasileño y el franco suizo. El valor de cada moneda en colones se calcula combinando el tipo de cambio
+            de referencia del dólar del BCCR con la cotización internacional de cada divisa frente al dólar, y se
+            actualiza automáticamente cada hora.
+          </p>
+          <p>
+            Así, para saber <strong>cuánto está el euro hoy en Costa Rica</strong> o convertir
+            <strong> colones a euros</strong>, dólares a euros o cualquier otra combinación, basta con usar el convertidor
+            de monedas de arriba: se elige la moneda de origen y la de destino, se escribe la cantidad y el resultado
+            aparece al instante. La tabla de cotizaciones muestra, además, cuántos colones vale una unidad de cada moneda.
+          </p>
+
           <p className="tc-disclaimer">
-            <strong>Importante:</strong> los valores mostrados corresponden al tipo de cambio de referencia del BCCR y
-            tienen carácter informativo. No constituyen una oferta de compra o venta de divisas. Conviene verificar la
-            tarifa vigente con la entidad financiera antes de realizar cualquier transacción.
+            <strong>Importante:</strong> los valores mostrados corresponden al tipo de cambio de referencia del BCCR y a
+            cotizaciones internacionales, y tienen carácter informativo. No constituyen una oferta de compra o venta de
+            divisas. Conviene verificar la tarifa vigente con la entidad financiera antes de realizar cualquier transacción.
           </p>
         </section>
 
