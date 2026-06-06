@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import '../clima.css';
 import {
-  PROVINCIAS, getProvincia, getCantones, getClimaCompleto, wmo, diaNombre,
+  PROVINCIAS, getProvincia, getCantones, getDistritosByProvincia, getClimaCompleto, wmo, diaNombre,
   type ClimaActual,
 } from '@/lib/clima';
 
@@ -73,6 +73,7 @@ export default async function ClimaProvinciaPage(
   const ahoraISO = new Date().toISOString();
   const otras = PROVINCIAS.filter((p) => p.slug !== prov.slug);
   const cantones = getCantones(prov.slug);
+  const lugares = getDistritosByProvincia(prov.slug);
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -146,6 +147,19 @@ export default async function ClimaProvinciaPage(
           </section>
         ) : (
           <section className="cl-now cl-now--off"><p>El dato del clima está temporalmente no disponible. Intente de nuevo en unos minutos.</p></section>
+        )}
+
+        {/* Lugares de interés (playas y pueblos turísticos) — destacados arriba */}
+        {lugares.length > 0 && (
+          <section className="cl-canton-picker cl-lugares-picker" aria-label={`Lugares de interés en ${prov.provincia}`}>
+            <h2 className="cl-section-title">Clima en lugares de interés de {prov.provincia}</h2>
+            <p className="cl-canton-hint">Playas y pueblos turísticos más buscados:</p>
+            <div className="cl-prov-links">
+              {lugares.map((d) => (
+                <Link key={d.slug} href={`/clima/${d.provincia}/${d.canton}/${d.slug}`} className="cl-prov-link cl-prov-link--lugar">⭐ {d.nombre}</Link>
+              ))}
+            </div>
+          </section>
         )}
 
         {/* Selector de cantones — arriba para llegar fácil a cada cantón */}

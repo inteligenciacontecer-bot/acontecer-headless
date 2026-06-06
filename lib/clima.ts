@@ -180,6 +180,16 @@ export const DISTRITOS: Distrito[] = [
   { slug: 'cahuita',        nombre: 'Cahuita',         provincia: 'limon', canton: 'talamanca', cantonNombre: 'Talamanca', lat: 9.7350,  lon: -82.8400 },
   { slug: 'manzanillo',     nombre: 'Manzanillo',      provincia: 'limon', canton: 'talamanca', cantonNombre: 'Talamanca', lat: 9.6333,  lon: -82.6553 },
   { slug: 'tortuguero',     nombre: 'Tortuguero',      provincia: 'limon', canton: 'pococi',    cantonNombre: 'Pococí',    lat: 10.5433, lon: -83.5036 },
+  // ── ALAJUELA (interior turístico) ──
+  { slug: 'la-fortuna',     nombre: 'La Fortuna',      provincia: 'alajuela', canton: 'san-carlos', cantonNombre: 'San Carlos', lat: 10.4706, lon: -84.6447 },
+  { slug: 'bijagua',        nombre: 'Bijagua',         provincia: 'alajuela', canton: 'upala',      cantonNombre: 'Upala',      lat: 10.7333, lon: -85.0500 },
+  // ── SAN JOSÉ (interior turístico) ──
+  { slug: 'san-gerardo-de-dota', nombre: 'San Gerardo de Dota', provincia: 'san-jose', canton: 'dota', cantonNombre: 'Dota', lat: 9.5500, lon: -83.8100 },
+  // ── CARTAGO (interior turístico) ──
+  { slug: 'orosi',          nombre: 'Orosi',           provincia: 'cartago', canton: 'paraiso',   cantonNombre: 'Paraíso',    lat: 9.7969,  lon: -83.8517 },
+  { slug: 'cachi',          nombre: 'Cachí',           provincia: 'cartago', canton: 'paraiso',   cantonNombre: 'Paraíso',    lat: 9.8300,  lon: -83.8050 },
+  // ── HEREDIA (interior turístico) ──
+  { slug: 'vara-blanca',    nombre: 'Vara Blanca',     provincia: 'heredia', canton: 'barva',     cantonNombre: 'Barva',      lat: 10.1700, lon: -84.1600 },
 ];
 
 export function getDistrito(provincia: string, canton: string, distrito: string): Distrito | undefined {
@@ -187,6 +197,9 @@ export function getDistrito(provincia: string, canton: string, distrito: string)
 }
 export function getDistritosByCanton(provincia: string, canton: string): Distrito[] {
   return DISTRITOS.filter((d) => d.provincia === provincia && d.canton === canton);
+}
+export function getDistritosByProvincia(provincia: string): Distrito[] {
+  return DISTRITOS.filter((d) => d.provincia === provincia);
 }
 
 export interface WmoInfo { icon: string; desc: string; }

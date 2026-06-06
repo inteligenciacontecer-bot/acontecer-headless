@@ -148,6 +148,9 @@
 .cl-canton-picker { margin-top: 22px; padding: 18px; border: 1px solid var(--ink-100); border-radius: 16px; background: var(--blue-50); }
 .cl-canton-picker .cl-section-title { margin-top: 0; }
 .cl-canton-hint { font-size: 0.95rem; color: var(--ink-500); margin-bottom: 14px; }
+.cl-lugares-picker { background: linear-gradient(135deg, #fff7ed, #eff6ff); border-color: #fed7aa; }
+.cl-prov-link--lugar { border-color: #fdba74; color: #c2410c; font-weight: 700; }
+.cl-prov-link--lugar:hover { background: #ea580c; border-color: #ea580c; color: #fff; }
 
 /* ── Contenido ──────────────────────────────────────────────────────────── */
 .cl-prose { margin: 40px 0 8px; }
