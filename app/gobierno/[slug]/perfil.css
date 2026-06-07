@@ -31,6 +31,27 @@
 .gp-descriptor p:last-child { margin-bottom: 0; }
 .gp-fuente { margin-top: 12px; font-size: 12px; line-height: 1.5; color: var(--ink-500); }
 
+.gp-curriculo-card {
+  margin: 14px 0 18px; background: #fff; border: 1px solid var(--ink-100); border-radius: 14px;
+  overflow: hidden; box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+}
+.gp-card-head {
+  --accent: var(--blue-600);
+  display: flex; align-items: center; gap: 10px; padding: 14px 18px 13px; border-bottom: 1px solid var(--ink-100);
+}
+.gp-card-accent { width: 3px; height: 18px; border-radius: 2px; background: var(--accent); flex-shrink: 0; }
+.gp-card-icon {
+  width: 28px; height: 28px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center;
+  background: color-mix(in srgb, var(--accent) 12%, white); color: var(--accent);
+  font-family: var(--mono); font-size: 10px; font-weight: 800; letter-spacing: 0;
+}
+.gp-card-head h2 {
+  margin: 0; font-family: var(--serif); font-size: 18px; font-weight: 800; color: var(--ink-900); letter-spacing: 0;
+}
+.gp-card-body { padding: 16px 18px 18px; }
+.gp-card-body p { margin: 0 0 13px; font-size: 0.96rem; color: var(--ink-700); line-height: 1.75; }
+.gp-card-body p:last-child { margin-bottom: 0; }
+
 /* ── Notas relacionadas ──────────────────────────────────────────────────── */
 .gp-notas { margin-top: 12px; }
 .gp-notas-list { background: #fff; border: 1px solid var(--ink-100); border-radius: 14px; overflow: hidden; }

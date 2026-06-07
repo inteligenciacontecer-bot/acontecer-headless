@@ -94,7 +94,13 @@ export default async function PerfilGobiernoPage({ params }: { params: Promise<{
   const notas = await getNotas(f.nombre);
   const descriptor = `${f.nombre} ocupa el cargo de ${f.cargo} en el Gobierno de Costa Rica, en la administración de la presidenta Laura Fernández Delgado (2026-2030)${f.institucion ? `, al frente de ${f.institucion}` : ''}.`;
   const textoPerfil = f.bio || descriptor;
+  const parrafosPerfil = textoPerfil.split(/\n+/).map((parrafo) => parrafo.trim()).filter(Boolean);
   const fotoAbs = f.foto ? `${BASE}${f.foto}` : undefined;
+  const fuentes = f.fuentes?.length
+    ? f.fuentes
+    : f.fuenteUrl
+      ? [{ nombre: f.fuenteNombre || 'fuente oficial', url: f.fuenteUrl }]
+      : [];
 
   const personSchema = {
     '@context': 'https://schema.org', '@type': 'Person',
@@ -102,7 +108,7 @@ export default async function PerfilGobiernoPage({ params }: { params: Promise<{
     name: f.nombre, jobTitle: f.cargo, url,
     ...(fotoAbs ? { image: fotoAbs } : {}),
     ...(f.bio ? { description: f.bio } : { description: descriptor }),
-    ...(f.fuenteUrl ? { sameAs: [f.fuenteUrl] } : {}),
+    ...(fuentes.length ? { sameAs: fuentes.map((fuente) => fuente.url) } : {}),
     worksFor: { '@type': 'GovernmentOrganization', name: f.institucion || 'Gobierno de Costa Rica' },
     nationality: { '@type': 'Country', name: 'Costa Rica' },
   };
@@ -159,16 +165,33 @@ export default async function PerfilGobiernoPage({ params }: { params: Promise<{
             {f.institucion && <div className="gp-dato"><span className="gp-dato-lbl">Institución</span><span className="gp-dato-val">{f.institucion}</span></div>}
             <div className="gp-dato"><span className="gp-dato-lbl">Administración</span><span className="gp-dato-val">Laura Fernández (2026–2030)</span></div>
             <div className="gp-descriptor">
-              {textoPerfil.split(/\n+/).map((parrafo) => parrafo.trim()).filter(Boolean).map((parrafo, i) => (
-                <p key={i}>{parrafo}</p>
-              ))}
+              <p>{descriptor}</p>
             </div>
-            {f.fuenteUrl && (
+          </div>
+        </section>
+
+        {/* Currículo */}
+        <section className="gp-curriculo-card" aria-labelledby="curriculo">
+          <div className="gp-card-head" style={{ '--accent': accent } as React.CSSProperties}>
+            <span className="gp-card-accent" aria-hidden="true" />
+            <span className="gp-card-icon" aria-hidden="true">CV</span>
+            <h2 id="curriculo">Currículo</h2>
+          </div>
+          <div className="gp-card-body">
+            {parrafosPerfil.map((parrafo, i) => (
+              <p key={i}>{parrafo}</p>
+            ))}
+            {fuentes.length > 0 && (
               <p className="gp-fuente">
-                Fuente del currículo:{' '}
-                <a href={f.fuenteUrl} target="_blank" rel="noopener noreferrer">
-                  {f.fuenteNombre || 'fuente oficial'}
-                </a>
+                {fuentes.length === 1 ? 'Fuente del currículo:' : 'Fuentes del currículo:'}{' '}
+                {fuentes.map((fuente, i) => (
+                  <span key={fuente.url}>
+                    {i > 0 ? ' · ' : ''}
+                    <a href={fuente.url} target="_blank" rel="noopener noreferrer">
+                      {fuente.nombre}
+                    </a>
+                  </span>
+                ))}
               </p>
             )}
           </div>
