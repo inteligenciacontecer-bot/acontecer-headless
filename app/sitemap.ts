@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 import { PROVINCIAS, CANTONES, DISTRITOS } from '@/lib/clima';
-import { FUNCIONARIOS, slugify as gobSlug } from '@/lib/gobierno';
+import { FUNCIONARIOS, funcionarioSlug } from '@/lib/gobierno';
 
 const API  = 'https://cms.acontecer.co.cr/wp-json/wp/v2';
 const BASE = 'https://acontecer.co.cr';
@@ -138,7 +138,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Perfiles del Poder Ejecutivo (SEO: "ministro X Costa Rica", gabinete…)
   const gobiernoPages: MetadataRoute.Sitemap = FUNCIONARIOS.map((f) => ({
-    url: `${BASE}/gobierno/${gobSlug(f.nombre)}`,
+    url: `${BASE}/gobierno/${funcionarioSlug(f)}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.6,

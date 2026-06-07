@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import './gobierno.css';
-import { PRESIDENCIA, MINISTROS, PRESIDENCIAS, slugify, type Funcionario } from '@/lib/gobierno';
+import { PRESIDENCIA, MINISTROS, PRESIDENCIAS, funcionarioSlug, type Funcionario } from '@/lib/gobierno';
 
 export const revalidate = 86400;
 
@@ -43,11 +43,14 @@ const FAQ = [
   },
 ];
 
-function Tarjeta({ nombre, cargo, accent }: { nombre: string; cargo: string; accent: string }) {
+function Tarjeta({ funcionario, accent }: { funcionario: Funcionario; accent: string }) {
+  const { nombre, cargo, foto } = funcionario;
   return (
-    <Link href={`/gobierno/${slugify(nombre)}`} className="gb-card" style={{ borderTopColor: accent }}>
+    <Link href={`/gobierno/${funcionarioSlug(funcionario)}`} className="gb-card" style={{ borderTopColor: accent }}>
       <div className="gb-card-avatar" style={{ background: accent + '15', color: accent }}>
-        {iniciales(nombre)}
+        {foto
+          ? /* eslint-disable-next-line @next/next/no-img-element */ <img src={foto} alt={nombre} loading="lazy" decoding="async" />
+          : iniciales(nombre)}
       </div>
       <div className="gb-card-info">
         <div className="gb-card-nombre">{nombre}</div>
@@ -107,17 +110,17 @@ export default function GobiernoPage() {
 
         <h2 className="gb-section-title">Presidencia</h2>
         <div className="gb-grid">
-          {PRESIDENCIA.map((p) => <Tarjeta key={p.nombre} nombre={p.nombre} cargo={p.cargo} accent="#0000A2" />)}
+          {PRESIDENCIA.map((p) => <Tarjeta key={p.nombre} funcionario={p} accent="#0000A2" />)}
         </div>
 
         <h2 className="gb-section-title">Gabinete · Ministros</h2>
         <div className="gb-grid">
-          {MINISTROS.map((p) => <Tarjeta key={p.nombre} nombre={p.nombre} cargo={p.cargo} accent="#0a73ce" />)}
+          {MINISTROS.map((p) => <Tarjeta key={p.nombre} funcionario={p} accent="#0a73ce" />)}
         </div>
 
         <h2 className="gb-section-title">Presidencias ejecutivas</h2>
         <div className="gb-grid">
-          {PRESIDENCIAS.map((p) => <Tarjeta key={p.nombre} nombre={p.nombre} cargo={p.cargo} accent="#0e9f6e" />)}
+          {PRESIDENCIAS.map((p) => <Tarjeta key={p.nombre} funcionario={p} accent="#0e9f6e" />)}
         </div>
 
         <section className="gb-prose">

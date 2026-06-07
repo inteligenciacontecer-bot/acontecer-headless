@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import '../gobierno.css';
 import './perfil.css';
-import { FUNCIONARIOS, getFuncionario, slugify, ACCENT, GRUPO_LABEL, type Funcionario } from '@/lib/gobierno';
+import { FUNCIONARIOS, getFuncionario, funcionarioSlug, ACCENT, GRUPO_LABEL, type Funcionario } from '@/lib/gobierno';
 
 export const revalidate = 1800; // refresca notas relacionadas cada 30 min
 
@@ -51,22 +51,35 @@ async function getNotas(nombre: string): Promise<Nota[]> {
 }
 
 export function generateStaticParams() {
-  return FUNCIONARIOS.map((f) => ({ slug: slugify(f.nombre) }));
+  return FUNCIONARIOS.flatMap((f) => [
+    { slug: funcionarioSlug(f) },
+    ...(f.aliases ?? []).map((slug) => ({ slug })),
+  ]);
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const f = getFuncionario(slug);
   if (!f) return { title: 'Funcionario no encontrado' };
-  const url = `${BASE}/gobierno/${slug}`;
-  const titulo = `${f.nombre} — ${f.cargo} | Gobierno de Costa Rica`;
-  const desc = `${f.nombre}, ${f.cargo} en el Gobierno de Costa Rica (administración de Laura Fernández, 2026-2030)${f.institucion ? `, al frente de ${f.institucion}` : ''}. Perfil, cargo y noticias en Acontecer.co.cr.`;
+  const canonicalSlug = funcionarioSlug(f);
+  const url = `${BASE}/gobierno/${canonicalSlug}`;
+  const ogImage = `${url}/opengraph-image`;
+  const titulo = `${f.nombre}, ${f.cargo} | Perfil y currículo`;
+  const desc = `${f.nombre}: perfil, currículo, cargo actual y noticias como ${f.cargo} en el Gobierno de Costa Rica 2026-2030${f.institucion ? `, ${f.institucion}` : ''}.`;
   return {
     title: titulo,
     description: desc,
     alternates: { canonical: url },
-    openGraph: { type: 'profile', url, title: titulo, description: desc, locale: 'es_CR', ...(f.foto ? { images: [{ url: f.foto }] } : {}) },
-    twitter: { card: 'summary_large_image', title: `${f.nombre} — ${f.cargo}`, description: desc },
+    keywords: [f.nombre, f.cargo, f.institucion || 'Gobierno de Costa Rica', 'ministro Costa Rica', 'gabinete Costa Rica'],
+    openGraph: {
+      type: 'profile',
+      url,
+      title: titulo,
+      description: desc,
+      locale: 'es_CR',
+      images: [{ url: ogImage, width: 1200, height: 630, alt: `${f.nombre} — ${f.cargo}` }],
+    },
+    twitter: { card: 'summary_large_image', title: `${f.nombre} — ${f.cargo}`, description: desc, images: [ogImage] },
   };
 }
 
@@ -75,17 +88,21 @@ export default async function PerfilGobiernoPage({ params }: { params: Promise<{
   const f = getFuncionario(slug);
   if (!f) return notFound();
 
-  const url = `${BASE}/gobierno/${slug}`;
+  const canonicalSlug = funcionarioSlug(f);
+  const url = `${BASE}/gobierno/${canonicalSlug}`;
   const accent = ACCENT[f.grupo];
   const notas = await getNotas(f.nombre);
   const descriptor = `${f.nombre} ocupa el cargo de ${f.cargo} en el Gobierno de Costa Rica, en la administración de la presidenta Laura Fernández Delgado (2026-2030)${f.institucion ? `, al frente de ${f.institucion}` : ''}.`;
+  const textoPerfil = f.bio || descriptor;
+  const fotoAbs = f.foto ? `${BASE}${f.foto}` : undefined;
 
   const personSchema = {
     '@context': 'https://schema.org', '@type': 'Person',
     '@id': `${url}#person`,
     name: f.nombre, jobTitle: f.cargo, url,
-    ...(f.foto ? { image: f.foto } : {}),
+    ...(fotoAbs ? { image: fotoAbs } : {}),
     ...(f.bio ? { description: f.bio } : { description: descriptor }),
+    ...(f.fuenteUrl ? { sameAs: [f.fuenteUrl] } : {}),
     worksFor: { '@type': 'GovernmentOrganization', name: f.institucion || 'Gobierno de Costa Rica' },
     nationality: { '@type': 'Country', name: 'Costa Rica' },
   };
@@ -129,14 +146,31 @@ export default async function PerfilGobiernoPage({ params }: { params: Promise<{
                 : <span className="gp-iniciales">{iniciales(f.nombre)}</span>}
             </div>
             {f.foto && f.fotoCredito && (
-              <p className="gp-credito">Foto: {f.fotoCredito}</p>
+              <p className="gp-credito">
+                Foto:{' '}
+                {f.fuenteUrl
+                  ? <a href={f.fuenteUrl} target="_blank" rel="noopener noreferrer">{f.fotoCredito}</a>
+                  : f.fotoCredito}
+              </p>
             )}
           </div>
           <div className="gp-datos">
             <div className="gp-dato"><span className="gp-dato-lbl">Cargo</span><span className="gp-dato-val">{f.cargo}</span></div>
             {f.institucion && <div className="gp-dato"><span className="gp-dato-lbl">Institución</span><span className="gp-dato-val">{f.institucion}</span></div>}
             <div className="gp-dato"><span className="gp-dato-lbl">Administración</span><span className="gp-dato-val">Laura Fernández (2026–2030)</span></div>
-            <p className="gp-descriptor">{f.bio || descriptor}</p>
+            <div className="gp-descriptor">
+              {textoPerfil.split(/\n+/).map((parrafo) => parrafo.trim()).filter(Boolean).map((parrafo, i) => (
+                <p key={i}>{parrafo}</p>
+              ))}
+            </div>
+            {f.fuenteUrl && (
+              <p className="gp-fuente">
+                Fuente del currículo:{' '}
+                <a href={f.fuenteUrl} target="_blank" rel="noopener noreferrer">
+                  {f.fuenteNombre || 'fuente oficial'}
+                </a>
+              </p>
+            )}
           </div>
         </section>
 
