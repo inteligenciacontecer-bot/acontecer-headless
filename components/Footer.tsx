@@ -114,13 +114,6 @@ export default function Footer() {
               {name:'Internacionales', href:'/categoria/internacionales'},
               {name:'Deportes', href:'/categoria/deportes'},
               {name:'Economía', href:'/categoria/economia'},
-              {name:'Servicios', href:'/servicios'},
-              {name:'Tipo de cambio del dólar', href:'/tipo-de-cambio'},
-              {name:'Clima en Costa Rica', href:'/clima'},
-              {name:'Precio de combustibles', href:'/precio-combustibles'},
-              {name:'Resultados de lotería', href:'/resultados-loteria'},
-              {name:'Feriados de Costa Rica', href:'/feriados-costa-rica'},
-              {name:'Restricción vehicular', href:'/restriccion-vehicular'},
               {name:'Entretenimiento', href:'/categoria/entretenimiento'},
               {name:'Tecnología', href:'/categoria/tecnologia'},
               {name:'Opinión', href:'/categoria/opinion'},
@@ -129,6 +122,26 @@ export default function Footer() {
               <Link key={s.name} href={s.href}
                 style={{display:'block', color:'rgba(255,255,255,0.55)', fontSize:'13px', marginBottom:'9px', textDecoration:'none', transition:'color 0.2s'}}>
                 {s.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* SERVICIOS */}
+          <div>
+            <h4 style={{color:'white', fontSize:'11px', fontWeight:'700', textTransform:'uppercase', letterSpacing:'2px', marginBottom:'18px', paddingBottom:'10px', borderBottom:'2px solid #0a73ce'}}>
+              <Link href="/servicios" style={{color:'inherit', textDecoration:'none'}}>Servicios</Link>
+            </h4>
+            {[
+              {name:'Tipo de cambio', href:'/tipo-de-cambio'},
+              {name:'Clima', href:'/clima'},
+              {name:'Combustibles', href:'/precio-combustibles'},
+              {name:'Lotería', href:'/resultados-loteria'},
+              {name:'Feriados', href:'/feriados-costa-rica'},
+              {name:'Restricción vehicular', href:'/restriccion-vehicular'},
+            ].map(item => (
+              <Link key={item.name} href={item.href}
+                style={{display:'block', color:'rgba(255,255,255,0.55)', fontSize:'13px', marginBottom:'9px', textDecoration:'none'}}>
+                {item.name}
               </Link>
             ))}
           </div>
