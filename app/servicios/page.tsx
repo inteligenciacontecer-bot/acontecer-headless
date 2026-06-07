@@ -27,6 +27,9 @@ const IcCombustible = () => (
 const IcLoteria = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" /><path d="M13 5v14" strokeDasharray="2 3" /></svg>
 );
+const IcCalendario = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
+);
 const IcArrow = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
 );
@@ -36,6 +39,7 @@ const SERVICIOS = [
   { href: '/clima', nombre: 'Clima en Costa Rica', desc: 'Temperatura actual, pronóstico por hora y de 7 días, y condiciones por provincia.', icon: <IcClima /> },
   { href: '/precio-combustibles', nombre: 'Precio de combustibles', desc: 'Precio de la gasolina y el diésel hoy según ARESEP, con calculadora de costo por litros.', icon: <IcCombustible /> },
   { href: '/resultados-loteria', nombre: 'Resultados de lotería', desc: 'Nuevos Tiempos, 3 Monazos, Lotería Nacional, Lotto y Chances de la JPS, en tiempo real.', icon: <IcLoteria /> },
+  { href: '/feriados-costa-rica', nombre: 'Feriados de Costa Rica', desc: 'Calendario oficial de feriados, su día de la semana y modalidad de pago.', icon: <IcCalendario /> },
 ];
 
 export default function ServiciosPage() {
