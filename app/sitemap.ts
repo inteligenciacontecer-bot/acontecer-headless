@@ -5,6 +5,8 @@ import { FUNCIONARIOS, funcionarioSlug } from '@/lib/gobierno';
 const API  = 'https://cms.acontecer.co.cr/wp-json/wp/v2';
 const BASE = 'https://acontecer.co.cr';
 
+export const revalidate = 300;
+
 
 // Filtra slugs corruptos que ensucian el sitemap (URLs de WP rotas con fbclid,
 // __trashed, etc.) — afectan presupuesto de rastreo y dan errores en Semrush.
