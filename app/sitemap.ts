@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { PROVINCIAS, CANTONES, DISTRITOS } from '@/lib/clima';
+import { FUNCIONARIOS, slugify as gobSlug } from '@/lib/gobierno';
 
 const API  = 'https://cms.acontecer.co.cr/wp-json/wp/v2';
 const BASE = 'https://acontecer.co.cr';
@@ -135,6 +136,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.55,
   }));
 
+  // Perfiles del Poder Ejecutivo (SEO: "ministro X Costa Rica", gabinete…)
+  const gobiernoPages: MetadataRoute.Sitemap = FUNCIONARIOS.map((f) => ({
+    url: `${BASE}/gobierno/${gobSlug(f.nombre)}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.6,
+  }));
+
   const categoryPages: MetadataRoute.Sitemap = categories
     .filter((c: any) => c.slug !== 'uncategorized')
     .map((c: any) => ({
@@ -182,5 +191,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Incluirlas consume crawl budget y hacen que site: muestre etiquetas en vez de artículos.
   // Las páginas de etiqueta tienen noindex en su propio page.tsx.
 
-  return [...staticPages, ...climaProvinciaPages, ...climaCantonPages, ...climaDistritoPages, ...categoryPages, ...postPages, ...storyPages];
+  return [...staticPages, ...climaProvinciaPages, ...climaCantonPages, ...climaDistritoPages, ...gobiernoPages, ...categoryPages, ...postPages, ...storyPages];
 }

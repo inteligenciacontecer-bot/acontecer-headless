@@ -1,0 +1,47 @@
+/* Perfil individual de funcionario del Poder Ejecutivo — /gobierno/[slug] */
+
+.gb-hero-eyebrow {
+  display: inline-block; font-family: var(--mono); font-size: 10.5px; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.75); margin-bottom: 6px;
+}
+
+/* ── Ficha: foto + datos ─────────────────────────────────────────────────── */
+.gp-ficha {
+  display: grid; grid-template-columns: 180px 1fr; gap: 24px; align-items: start;
+  margin: 22px 0 8px; padding: 20px; background: #fff; border: 1px solid var(--ink-100); border-radius: 16px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+}
+.gp-foto-col { display: flex; flex-direction: column; gap: 8px; }
+.gp-foto {
+  width: 180px; height: 200px; border-radius: 12px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; border: 2px solid;
+}
+.gp-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gp-iniciales { font-family: var(--serif); font-size: 56px; font-weight: 700; }
+.gp-credito { font-size: 10.5px; color: var(--ink-400); line-height: 1.4; }
+
+.gp-datos { min-width: 0; }
+.gp-dato { display: flex; flex-direction: column; gap: 2px; padding: 8px 0; border-bottom: 1px solid var(--ink-100); }
+.gp-dato-lbl { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-400); }
+.gp-dato-val { font-size: 15px; font-weight: 600; color: var(--ink-900); line-height: 1.4; }
+.gp-descriptor { margin-top: 14px; font-size: 1.0rem; line-height: 1.7; color: var(--ink-700); }
+
+/* ── Notas relacionadas ──────────────────────────────────────────────────── */
+.gp-notas { margin-top: 12px; }
+.gp-notas-list { background: #fff; border: 1px solid var(--ink-100); border-radius: 14px; overflow: hidden; }
+.gp-nota { display: flex; gap: 14px; padding: 14px 16px; border-bottom: 1px solid var(--ink-100); text-decoration: none; transition: background .15s; align-items: flex-start; }
+.gp-nota:last-child { border-bottom: none; }
+.gp-nota:hover { background: var(--ink-50); }
+.gp-nota-img { width: 92px; height: 64px; flex-shrink: 0; border-radius: 8px; overflow: hidden; background: var(--ink-100); }
+.gp-nota-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gp-nota-body { flex: 1; min-width: 0; }
+.gp-nota-titulo { font-size: 13.5px; font-weight: 700; color: var(--ink-900); line-height: 1.4; margin-bottom: 4px; }
+.gp-nota-extracto { font-size: 11.5px; color: var(--ink-500); line-height: 1.55; }
+.gp-nota-meta { font-size: 10px; color: var(--ink-400); margin-top: 6px; }
+.gp-sin-notas { font-size: 0.95rem; color: var(--ink-500); line-height: 1.6; padding: 14px 0; }
+
+@media (max-width: 540px) {
+  .gp-ficha { grid-template-columns: 1fr; gap: 16px; }
+  .gp-foto, .gp-foto-col { width: 100%; }
+  .gp-foto { height: 240px; }
+}

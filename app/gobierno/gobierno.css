@@ -23,10 +23,13 @@
 /* ── Grid de tarjetas (igual que diputados) ────────────────────────────── */
 .gb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 10px; }
 .gb-card {
+  display: block; text-decoration: none;
   background: #fff; border-radius: 10px; overflow: hidden;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.07);
   border-top: 3px solid #0000A2;
+  transition: transform .15s, box-shadow .15s;
 }
+.gb-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12); }
 .gb-card-avatar {
   height: 104px; display: flex; align-items: center; justify-content: center;
   font-family: var(--serif); font-size: 34px; font-weight: 700; letter-spacing: .02em;

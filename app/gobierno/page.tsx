@@ -1,64 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import './gobierno.css';
+import { PRESIDENCIA, MINISTROS, PRESIDENCIAS, slugify, type Funcionario } from '@/lib/gobierno';
 
 export const revalidate = 86400;
 
 const URL_PAGINA = 'https://acontecer.co.cr/gobierno';
-
-// ⚠️ Gabinete del Gobierno de Laura Fernández (2026-2030). Actualizar ante
-// cambios de nombramientos. Fuente: nombramientos oficiales (mayo 2026).
-const PRESIDENCIA = [
-  { nombre: 'Laura Fernández Delgado', cargo: 'Presidenta de la República' },
-  { nombre: 'Francisco Gamboa Soto', cargo: 'Primer vicepresidente' },
-  { nombre: 'Douglas Soto Campos', cargo: 'Segundo vicepresidente' },
-];
-
-const MINISTROS = [
-  { nombre: 'Rodrigo Chaves Robles', cargo: 'Presidencia y Hacienda' },
-  { nombre: 'Manuel Tovar Rivera', cargo: 'Relaciones Exteriores y Culto' },
-  { nombre: 'Gerald Campos Valverde', cargo: 'Seguridad Pública y Gobernación' },
-  { nombre: 'Gabriel Aguilar Vargas', cargo: 'Justicia y Paz' },
-  { nombre: 'José Leonardo Sánchez Hernández', cargo: 'Educación Pública' },
-  { nombre: 'Efraím Zeledón Leiva', cargo: 'Obras Públicas y Transportes' },
-  { nombre: 'María del Milagro Solórzano León', cargo: 'Economía, Industria y Comercio' },
-  { nombre: 'Juan Gabriel Ramírez Guillén', cargo: 'Agricultura y Ganadería' },
-  { nombre: 'Alexander Sánchez Cabo', cargo: 'Salud' },
-  { nombre: 'Roy Thompson Chacón', cargo: 'Trabajo y Seguridad Social' },
-  { nombre: 'Jorge Rodríguez Vives', cargo: 'Cultura y Juventud' },
-  { nombre: 'Carla Morales Rojas', cargo: 'Planificación (MIDEPLAN)' },
-  { nombre: 'Mónica Navarro del Valle', cargo: 'Ambiente y Energía' },
-  { nombre: 'Guillermo Carazo Ramírez', cargo: 'Vivienda y Asentamientos Humanos' },
-  { nombre: 'Indiana Trejos Gallo', cargo: 'Comercio Exterior' },
-  { nombre: 'Paula Bogantes Zamora', cargo: 'Ciencia, Innovación y Tecnología' },
-  { nombre: 'Arnold Zamora Miranda', cargo: 'Comunicación' },
-  { nombre: 'Carlos Andrés Robles Obando', cargo: 'Costas, Mares y Pesca' },
-  { nombre: 'Yorleny León Marchena', cargo: 'Desarrollo Humano e Inclusión Social' },
-];
-
-const PRESIDENCIAS = [
-  { nombre: 'Róger Madrigal López', cargo: 'Banco Central (BCCR)' },
-  { nombre: 'Mónica Taylor Hernández', cargo: 'Caja del Seguro Social (CCSS)' },
-  { nombre: 'Marco Acuña Mora', cargo: 'Instituto de Electricidad (ICE)' },
-  { nombre: 'Gabriela Chacón Fernández', cargo: 'Instituto de Seguros (INS)' },
-  { nombre: 'Karla Montero Víquez', cargo: 'Refinadora (RECOPE)' },
-  { nombre: 'Lourdes Sáurez Barboza', cargo: 'Acueductos y Alcantarillados (AyA)' },
-  { nombre: 'Paola Nájera Abarca', cargo: 'Junta de Protección Social (JPS)' },
-  { nombre: 'Edgar Oviedo Blanco', cargo: 'Aprendizaje (INA)' },
-  { nombre: 'José David Córdoba Rodríguez', cargo: 'Consejo de Producción (CNP)' },
-  { nombre: 'María José Vega Sanabria', cargo: 'Patronato de la Infancia (PANI)' },
-  { nombre: 'Carolina Delgado Ramírez', cargo: 'Instituto de las Mujeres (INAMU)' },
-  { nombre: 'Ricardo Quesada Salas', cargo: 'Desarrollo Rural (INDER)' },
-  { nombre: 'Johnny Leiva Badilla', cargo: 'Vivienda y Urbanismo (INVU)' },
-  { nombre: 'Warner Quesada Céspedes', cargo: 'Puertos del Pacífico (INCOP)' },
-  { nombre: 'Álvaro Bermúdez Peña', cargo: 'Ferrocarriles (INCOFER)' },
-  { nombre: 'Marcos Vargas Borges', cargo: 'Turismo (ICT)' },
-  { nombre: 'José Miguel Jiménez Araya', cargo: 'Fomento Municipal (IFAM)' },
-  { nombre: 'Alejandro Picado Eduarte', cargo: 'Emergencias (CNE)' },
-  { nombre: 'Nelson Peña Navarro', cargo: 'Pesca y Acuicultura (INCOPESCA)' },
-  { nombre: 'Juan Diego López', cargo: 'Radio y Televisión (SINART)' },
-  { nombre: 'Martín Vargas Santamaría', cargo: 'Desarrollo Atlántico (JAPDEVA)' },
-];
 
 function iniciales(nombre: string): string {
   const p = nombre.trim().split(/\s+/);
@@ -98,7 +45,7 @@ const FAQ = [
 
 function Tarjeta({ nombre, cargo, accent }: { nombre: string; cargo: string; accent: string }) {
   return (
-    <div className="gb-card" style={{ borderTopColor: accent }}>
+    <Link href={`/gobierno/${slugify(nombre)}`} className="gb-card" style={{ borderTopColor: accent }}>
       <div className="gb-card-avatar" style={{ background: accent + '15', color: accent }}>
         {iniciales(nombre)}
       </div>
@@ -106,7 +53,7 @@ function Tarjeta({ nombre, cargo, accent }: { nombre: string; cargo: string; acc
         <div className="gb-card-nombre">{nombre}</div>
         <div className="gb-card-cargo">{cargo}</div>
       </div>
-    </div>
+    </Link>
   );
 }
 

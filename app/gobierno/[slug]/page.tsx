@@ -1,0 +1,181 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import '../gobierno.css';
+import './perfil.css';
+import { FUNCIONARIOS, getFuncionario, slugify, ACCENT, GRUPO_LABEL, type Funcionario } from '@/lib/gobierno';
+
+export const revalidate = 1800; // refresca notas relacionadas cada 30 min
+
+const BASE = 'https://acontecer.co.cr';
+const WP_API = 'https://cms.acontecer.co.cr/wp-json/wp/v2';
+
+function iniciales(nombre: string): string {
+  const p = nombre.trim().split(/\s+/);
+  return ((p[0]?.[0] || '') + (p[p.length - 1]?.[0] || '')).toUpperCase();
+}
+
+const cmsToLocal = (u: string) => (u || '')
+  .replace(/^https?:\/\/(www\.|cms\.)?acontecer\.co\.cr/, '')
+  .replace(/\/$/, '') || '/';
+
+interface Nota { id: number; titulo: string; extracto: string; img: string | null; link: string; date: string; }
+
+// Notas que le hemos sacado al funcionario (búsqueda en el CMS por nombre + apellido).
+async function getNotas(nombre: string): Promise<Nota[]> {
+  try {
+    const partes = nombre.trim().split(/\s+/);
+    const primerApellido = partes.length >= 2 ? partes[partes.length - 2] : partes[0];
+    const [r1, r2] = await Promise.all([
+      fetch(`${WP_API}/posts?search=${encodeURIComponent(nombre)}&per_page=10&_embed`, { next: { revalidate: 1800 } }),
+      fetch(`${WP_API}/posts?search=${encodeURIComponent(primerApellido)}&per_page=10&_embed`, { next: { revalidate: 1800 } }),
+    ]);
+    const [p1, p2]: [any[], any[]] = await Promise.all([r1.ok ? r1.json() : [], r2.ok ? r2.json() : []]);
+    const seen = new Set<number>();
+    const todos: any[] = [];
+    for (const p of [...p1, ...p2]) if (!seen.has(p.id)) { seen.add(p.id); todos.push(p); }
+    // Filtro: al menos un token del nombre (≥4 chars) en título o excerpt
+    const tokens = nombre.toLowerCase().split(/\s+/).filter((t) => t.length >= 4);
+    return todos.filter((p: any) => {
+      const hay = ((p.title?.rendered || '') + ' ' + (p.excerpt?.rendered || '')).toLowerCase().replace(/<[^>]+>/g, '');
+      return tokens.some((t) => hay.includes(t));
+    }).slice(0, 8).map((p: any) => ({
+      id: p.id,
+      titulo: (p.title?.rendered || '').replace(/&#(\d+);/g, (_: string, n: string) => String.fromCharCode(Number(n))).replace(/<[^>]+>/g, ''),
+      extracto: (p.excerpt?.rendered || '').replace(/<[^>]+>/g, '').trim().slice(0, 120),
+      img: p._embedded?.['wp:featuredmedia']?.[0]?.source_url ? cmsToLocal(p._embedded['wp:featuredmedia'][0].source_url) : null,
+      link: cmsToLocal(p.link || ''),
+      date: p.date,
+    }));
+  } catch { return []; }
+}
+
+export function generateStaticParams() {
+  return FUNCIONARIOS.map((f) => ({ slug: slugify(f.nombre) }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const f = getFuncionario(slug);
+  if (!f) return { title: 'Funcionario no encontrado' };
+  const url = `${BASE}/gobierno/${slug}`;
+  const titulo = `${f.nombre} — ${f.cargo} | Gobierno de Costa Rica`;
+  const desc = `${f.nombre}, ${f.cargo} en el Gobierno de Costa Rica (administración de Laura Fernández, 2026-2030)${f.institucion ? `, al frente de ${f.institucion}` : ''}. Perfil, cargo y noticias en Acontecer.co.cr.`;
+  return {
+    title: titulo,
+    description: desc,
+    alternates: { canonical: url },
+    openGraph: { type: 'profile', url, title: titulo, description: desc, locale: 'es_CR', ...(f.foto ? { images: [{ url: f.foto }] } : {}) },
+    twitter: { card: 'summary_large_image', title: `${f.nombre} — ${f.cargo}`, description: desc },
+  };
+}
+
+export default async function PerfilGobiernoPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const f = getFuncionario(slug);
+  if (!f) return notFound();
+
+  const url = `${BASE}/gobierno/${slug}`;
+  const accent = ACCENT[f.grupo];
+  const notas = await getNotas(f.nombre);
+  const descriptor = `${f.nombre} ocupa el cargo de ${f.cargo} en el Gobierno de Costa Rica, en la administración de la presidenta Laura Fernández Delgado (2026-2030)${f.institucion ? `, al frente de ${f.institucion}` : ''}.`;
+
+  const personSchema = {
+    '@context': 'https://schema.org', '@type': 'Person',
+    '@id': `${url}#person`,
+    name: f.nombre, jobTitle: f.cargo, url,
+    ...(f.foto ? { image: f.foto } : {}),
+    ...(f.bio ? { description: f.bio } : { description: descriptor }),
+    worksFor: { '@type': 'GovernmentOrganization', name: f.institucion || 'Gobierno de Costa Rica' },
+    nationality: { '@type': 'Country', name: 'Costa Rica' },
+  };
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE },
+      { '@type': 'ListItem', position: 2, name: 'Gobierno', item: `${BASE}/gobierno` },
+      { '@type': 'ListItem', position: 3, name: f.nombre, item: url },
+    ],
+  };
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+
+      <div className="gb-hero" style={{ background: `linear-gradient(135deg, ${accent}, #0000A2)` }}>
+        <div className="gb-hero-inner">
+          <span className="gb-hero-eyebrow">{GRUPO_LABEL[f.grupo]}</span>
+          <h1 className="gb-hero-title">{f.nombre}</h1>
+          <p className="gb-hero-sub">{f.cargo} · Gobierno de Costa Rica 2026–2030</p>
+        </div>
+      </div>
+
+      <main className="gb-wrap">
+        <nav className="gb-crumbs" aria-label="Migas de pan">
+          <Link href="/">Inicio</Link>
+          <span aria-hidden="true">›</span>
+          <Link href="/gobierno">Gobierno</Link>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">{f.nombre}</span>
+        </nav>
+
+        {/* Ficha: foto + datos */}
+        <section className="gp-ficha">
+          <div className="gp-foto-col">
+            <div className="gp-foto" style={{ background: accent + '15', color: accent, borderColor: accent }}>
+              {f.foto
+                ? /* eslint-disable-next-line @next/next/no-img-element */ <img src={f.foto} alt={f.nombre} />
+                : <span className="gp-iniciales">{iniciales(f.nombre)}</span>}
+            </div>
+            {f.foto && f.fotoCredito && (
+              <p className="gp-credito">Foto: {f.fotoCredito}</p>
+            )}
+          </div>
+          <div className="gp-datos">
+            <div className="gp-dato"><span className="gp-dato-lbl">Cargo</span><span className="gp-dato-val">{f.cargo}</span></div>
+            {f.institucion && <div className="gp-dato"><span className="gp-dato-lbl">Institución</span><span className="gp-dato-val">{f.institucion}</span></div>}
+            <div className="gp-dato"><span className="gp-dato-lbl">Administración</span><span className="gp-dato-val">Laura Fernández (2026–2030)</span></div>
+            <p className="gp-descriptor">{f.bio || descriptor}</p>
+          </div>
+        </section>
+
+        {/* Notas relacionadas */}
+        <section className="gp-notas" aria-label={`Noticias sobre ${f.nombre}`}>
+          <h2 className="gb-section-title">Noticias sobre {f.nombre}</h2>
+          {notas.length > 0 ? (
+            <div className="gp-notas-list">
+              {notas.map((n) => (
+                <Link key={n.id} href={n.link} className="gp-nota">
+                  {n.img && <div className="gp-nota-img"><img src={n.img} alt="" loading="lazy" decoding="async" /></div>}
+                  <div className="gp-nota-body">
+                    <div className="gp-nota-titulo">{n.titulo}</div>
+                    {n.extracto && <div className="gp-nota-extracto">{n.extracto}{n.extracto.length >= 120 ? '…' : ''}</div>}
+                    <div className="gp-nota-meta">📰 Acontecer.co.cr · {new Date(n.date).toLocaleDateString('es-CR', { day: 'numeric', month: 'long', year: 'numeric' })}</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <p className="gp-sin-notas">Aún no hay notas publicadas sobre {f.nombre} en Acontecer.co.cr. Cuando publiquemos, aparecerán aquí automáticamente.</p>
+          )}
+        </section>
+
+        <section className="gb-prose">
+          <p className="gb-disclaimer">
+            <strong>Importante:</strong> este perfil es informativo y se basa en los nombramientos oficiales del Gobierno
+            de Costa Rica. Ante cualquier cambio, la referencia es la Presidencia de la República y Casa Presidencial.
+          </p>
+        </section>
+
+        <footer className="gb-footer">
+          <p className="gb-links">
+            <Link href="/gobierno">← Volver al directorio del Gobierno</Link> ·{' '}
+            <Link href="/asamblea">Monitor Legislativo</Link> ·{' '}
+            <Link href="/">Portada</Link>
+          </p>
+        </footer>
+      </main>
+    </>
+  );
+}
