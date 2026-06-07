@@ -101,6 +101,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/precio-combustibles`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
     { url: `${BASE}/resultados-loteria`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.7 },
     { url: `${BASE}/feriados-costa-rica`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.6 },
+    { url: `${BASE}/restriccion-vehicular`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.7 },
     { url: `${BASE}/politicas`,    lastModified: new Date(), changeFrequency: 'monthly', priority: 0.3 },
     { url: `${BASE}/privacidad`,   lastModified: new Date(), changeFrequency: 'monthly', priority: 0.3 },
     { url: `${BASE}/enlaces`,      lastModified: new Date(), changeFrequency: 'daily',   priority: 0.6 },

@@ -120,6 +120,7 @@ export default function Footer() {
               {name:'Precio de combustibles', href:'/precio-combustibles'},
               {name:'Resultados de lotería', href:'/resultados-loteria'},
               {name:'Feriados de Costa Rica', href:'/feriados-costa-rica'},
+              {name:'Restricción vehicular', href:'/restriccion-vehicular'},
               {name:'Entretenimiento', href:'/categoria/entretenimiento'},
               {name:'Tecnología', href:'/categoria/tecnologia'},
               {name:'Opinión', href:'/categoria/opinion'},
