@@ -64,7 +64,7 @@ async function getAllPosts() {
     while (true) {
       const res = await fetch(
         `${API}/posts?per_page=100&page=${page}&_fields=slug,date,modified,categories&_embed=false`,
-        { next: { revalidate: 1800 } }
+        { next: { revalidate: 300 } }
       );
       if (!res.ok) break;
       const data = await res.json();
@@ -79,7 +79,7 @@ async function getAllPosts() {
 
 async function getCategories() {
   try {
-    const res = await fetch(`${API}/categories?per_page=50&_fields=id,slug`, { next: { revalidate: 3600 } });
+    const res = await fetch(`${API}/categories?per_page=50&_fields=id,slug`, { next: { revalidate: 300 } });
     return res.json();
   } catch { return []; }
 }
