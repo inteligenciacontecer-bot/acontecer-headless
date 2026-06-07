@@ -144,6 +144,11 @@ export default function Header() {
                     {item.name}
                   </Link>
                 ))}
+                <Link href="/servicios"
+                  style={{color:'rgba(255,255,255,0.85)', fontSize:'12px', fontWeight:'600', padding:'6px 10px', borderRadius:'4px', textTransform:'uppercase', textDecoration:'none'}}
+                  className="nav-link">
+                  Servicios
+                </Link>
                 <Link href="/asamblea"
                   style={{display:'flex', alignItems:'center', gap:'6px', color:'white', fontSize:'12px', fontWeight:'700', padding:'6px 12px', borderRadius:'6px', textDecoration:'none', background:'rgba(255,255,255,0.15)', border:'1px solid rgba(255,255,255,0.25)', marginLeft:'4px', whiteSpace:'nowrap'}}
                   className="nav-link nav-monitor">
@@ -267,6 +272,16 @@ export default function Header() {
                   <ChevronRight size={16} />
                 </div>
               </a>
+              <Link href="/servicios" onClick={() => setMenuOpen(false)} className="mnu-cta mnu-cta-svc">
+                <div className="mnu-cta-inner">
+                  <div className="mnu-cta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{width:20,height:20}}><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+                  <div>
+                    <div className="mnu-cta-title">Servicios</div>
+                    <div className="mnu-cta-sub">Tipo de cambio · Clima · Combustibles · Lotería</div>
+                  </div>
+                  <ChevronRight size={16} />
+                </div>
+              </Link>
             </div>
           </div>
 
@@ -464,6 +479,7 @@ export default function Header() {
         }
         .mnu-cta-monitor { background: linear-gradient(135deg, #00006e 0%, #0a73ce 100%); }
         .mnu-cta-wa      { background: linear-gradient(135deg, #00a040 0%, #007c34 100%); }
+        .mnu-cta-svc     { background: linear-gradient(135deg, #0a73ce 0%, #00c6ff 100%); }
         .mnu-cta-inner { display: flex; align-items: center; gap: 14px; position: relative; }
         .mnu-cta-icon {
           width: 42px; height: 42px; border-radius: 12px;

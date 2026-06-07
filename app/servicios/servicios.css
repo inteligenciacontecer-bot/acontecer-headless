@@ -1,0 +1,49 @@
+/* ===========================================================================
+   Hub de Servicios — /servicios. Mobile-first. Prefijo .sv- · tokens globales.
+   =========================================================================== */
+
+.sv-wrap { max-width: 880px; margin: 0 auto; padding: 26px 18px 72px; font-family: var(--sans); color: var(--ink-700); overflow-x: clip; }
+
+.sv-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; font-size: 12.5px; color: var(--ink-400); margin-bottom: 20px; }
+.sv-crumbs a { color: var(--blue-600); font-weight: 600; }
+.sv-crumbs a:hover { text-decoration: underline; }
+.sv-crumbs span[aria-current] { color: var(--ink-500); }
+
+.sv-eyebrow { display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--blue-600); margin-bottom: 12px; }
+.sv-title { font-family: var(--serif); font-size: clamp(1.8rem, 6vw, 2.6rem); line-height: 1.1; font-weight: 700; color: var(--ink-900); letter-spacing: -.01em; margin-bottom: 14px; }
+.sv-lead { font-size: clamp(1rem, 2.6vw, 1.12rem); line-height: 1.6; color: var(--ink-500); max-width: 60ch; }
+
+/* ── Grid de servicios ──────────────────────────────────────────────────── */
+.sv-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 30px 0 8px; }
+.sv-card {
+  display: flex; align-items: center; gap: 16px;
+  padding: 22px 20px; background: #fff; text-decoration: none;
+  border: 1px solid var(--ink-100); border-radius: 16px;
+  transition: transform .18s, box-shadow .18s, border-color .18s;
+}
+.sv-card:hover { transform: translateY(-3px); border-color: var(--blue-600); box-shadow: 0 16px 34px -22px rgba(0, 0, 110, 0.5); }
+.sv-card-icon {
+  flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px;
+  display: grid; place-items: center;
+  background: var(--blue-50); color: var(--blue-600);
+}
+.sv-card-icon svg { width: 24px; height: 24px; }
+.sv-card-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.sv-card-name { font-family: var(--serif); font-size: 1.12rem; font-weight: 700; color: var(--ink-900); letter-spacing: -.01em; line-height: 1.25; }
+.sv-card-desc { font-size: 13px; line-height: 1.5; color: var(--ink-500); }
+.sv-card-arrow { flex-shrink: 0; color: var(--ink-300); transition: color .18s, transform .18s; align-self: center; }
+.sv-card-arrow svg { width: 18px; height: 18px; }
+.sv-card:hover .sv-card-arrow { color: var(--blue-600); transform: translateX(3px); }
+
+/* ── Prosa + pie ────────────────────────────────────────────────────────── */
+.sv-prose { margin: 30px 0 8px; }
+.sv-prose p { font-size: 1.02rem; line-height: 1.72; color: var(--ink-700); }
+.sv-footer { margin-top: 34px; padding-top: 20px; border-top: 1px solid var(--ink-100); }
+.sv-links { font-size: 13.5px; color: var(--ink-400); }
+.sv-links a { color: var(--blue-600); font-weight: 600; }
+.sv-links a:hover { text-decoration: underline; }
+
+@media (max-width: 560px) {
+  .sv-wrap { padding: 22px 15px 60px; }
+  .sv-grid { grid-template-columns: 1fr; }
+}

@@ -114,6 +114,7 @@ export default function Footer() {
               {name:'Internacionales', href:'/categoria/internacionales'},
               {name:'Deportes', href:'/categoria/deportes'},
               {name:'Economía', href:'/categoria/economia'},
+              {name:'Servicios', href:'/servicios'},
               {name:'Tipo de cambio del dólar', href:'/tipo-de-cambio'},
               {name:'Clima en Costa Rica', href:'/clima'},
               {name:'Precio de combustibles', href:'/precio-combustibles'},
