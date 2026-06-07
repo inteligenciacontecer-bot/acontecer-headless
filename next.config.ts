@@ -45,10 +45,10 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // sitemap.xml principal: se revalida cada 30 min está bien (contenido estático)
+        // sitemap.xml principal: mantener fresco para cambios SEO y perfiles evergreen
         source: '/sitemap.xml',
         headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=1800, stale-while-revalidate=3600' },
+          { key: 'Cache-Control', value: 'public, s-maxage=300, stale-while-revalidate=600' },
         ],
       },
       {
