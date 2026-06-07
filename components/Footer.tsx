@@ -179,6 +179,7 @@ export default function Footer() {
               {name:'Expedientes', href:'/asamblea/expedientes'},
               {name:'Comisiones',  href:'/asamblea/comisiones'},
               {name:'En vivo',     href:'/asamblea/en-vivo'},
+              {name:'Gobierno y ministros', href:'/gobierno'},
             ].map(item => (
               <Link key={item.name} href={item.href}
                 style={{display:'block', color:'rgba(255,255,255,0.55)', fontSize:'13px', marginBottom:'9px', textDecoration:'none'}}>
