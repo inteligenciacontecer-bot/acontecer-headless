@@ -8,6 +8,8 @@ import {
   MUNDIAL_SOURCE,
   formatCostaRicaDateTime,
   getMundialGroupStandings,
+  getMundialTeamFlag,
+  getMundialTeams,
   getMatchesByDate,
   getUpcomingMundialMatches,
 } from '@/lib/mundial-2026';
@@ -33,14 +35,36 @@ export const metadata: Metadata = {
 export const revalidate = 300;
 
 function MatchCard({ match }: { match: (typeof MUNDIAL_MATCHES)[number] }) {
+  const homeFlag = getMundialTeamFlag(match.home);
+  const awayFlag = getMundialTeamFlag(match.away);
+  const homeScore = match.homeScore ?? 0;
+  const awayScore = match.awayScore ?? 0;
+
   return (
-    <Link className="wc-match-card" href={`/mundial-2026/partido/${match.slug}`}>
-      <div className="wc-match-num">#{match.matchNumber}</div>
-      <div className="wc-match-main">
-        <strong>{match.home} vs {match.away}</strong>
-        <span>{match.phaseEs} · {match.venue}</span>
+    <Link className="wc-fixture-card" href={`/mundial-2026/partido/${match.slug}`}>
+      <div className="wc-fixture-card-head">
+        <span>{match.phaseEs}</span>
+        <strong>Partido {match.matchNumber}</strong>
       </div>
-      <div className="wc-match-meta">{formatCostaRicaDateTime(match.kickoffUtc)}</div>
+      <div className="wc-fixture-teams">
+        <div>
+          <img src={homeFlag.url} alt={`Bandera de ${match.home}`} loading="lazy" />
+          <strong>{match.home}</strong>
+        </div>
+        <div className="wc-fixture-score">
+          <span>{homeScore}</span>
+          <b>-</b>
+          <span>{awayScore}</span>
+        </div>
+        <div>
+          <img src={awayFlag.url} alt={`Bandera de ${match.away}`} loading="lazy" />
+          <strong>{match.away}</strong>
+        </div>
+      </div>
+      <div className="wc-fixture-meta">
+        <span>{formatCostaRicaDateTime(match.kickoffUtc)}</span>
+        <span>{match.venue}</span>
+      </div>
     </Link>
   );
 }
@@ -50,6 +74,7 @@ export default function Mundial2026Page() {
   const dates = getMatchesByDate().slice(0, 6);
   const groupCount = Object.keys(MUNDIAL_GROUPS).length;
   const standings = getMundialGroupStandings();
+  const teams = getMundialTeams();
 
   const schema = {
     '@context': 'https://schema.org',
@@ -78,11 +103,12 @@ export default function Mundial2026Page() {
             <div>
               <h1 className="wc-title">Mundial 2026</h1>
               <p className="wc-subtitle">
-                Calendario, grupos, sedes y páginas individuales de los 104 partidos. La base queda lista para conectar goles,
-                tarjetas, cambios, faltas y minuto a minuto durante los juegos.
+                Calendario, grupos, selecciones, sedes y páginas individuales de los 104 partidos. La base queda lista para
+                conectar goles, estadísticas, alineaciones, crónica y minuto a minuto durante los juegos.
               </p>
               <div className="wc-hero-actions">
                 <Link className="wc-btn wc-btn--primary" href="/mundial-2026/calendario">Ver calendario</Link>
+                <Link className="wc-btn" href="#selecciones">Ver selecciones</Link>
                 <Link className="wc-btn" href="#grupos">Ver grupos</Link>
               </div>
             </div>
@@ -102,6 +128,7 @@ export default function Mundial2026Page() {
         <div className="wc-nav-inner">
           <Link className="is-active" href="/mundial-2026">Portada</Link>
           <Link href="/mundial-2026/calendario">Calendario</Link>
+          <a href="#selecciones">Selecciones</a>
           <a href="#grupos">Grupos</a>
           <a href="#fuente">Datos y actualización</a>
         </div>
@@ -113,11 +140,11 @@ export default function Mundial2026Page() {
             <div className="wc-section-head">
               <div>
                 <h2>Próximos partidos</h2>
-                <p>Horarios mostrados en hora de Costa Rica cuando el dato está disponible.</p>
+                <p>Fixtures con banderas, marcador base y enlaces al centro de partido.</p>
               </div>
               <Link className="wc-pill" href="/mundial-2026/calendario">104 partidos</Link>
             </div>
-            <div className="wc-match-list">
+            <div className="wc-fixture-card-list">
               {upcoming.map((match) => <MatchCard key={match.id} match={match} />)}
             </div>
           </div>
@@ -125,9 +152,8 @@ export default function Mundial2026Page() {
           <aside className="wc-card" id="fuente">
             <h2 style={{ marginTop: 0 }}>Motor en vivo</h2>
             <p className="wc-source">
-              Esta primera versión guarda el calendario en una base local y deja preparado el contrato para eventos en vivo:
-              goles, tarjetas, cambios, faltas, VAR e incidencias. Para tiempo real estable se recomienda conectar un proveedor
-              deportivo con licencia; el scraping puede servir como respaldo monitoreado.
+              La sección guarda calendario, grupos, selecciones y contrato de datos para eventos en vivo: goles, tarjetas,
+              cambios, faltas, VAR, estadísticas, alineaciones, crónica e historial entre equipos.
             </p>
             <p className="wc-source">
               Fuente base: <a href={MUNDIAL_SOURCE.url} target="_blank" rel="noopener noreferrer">FourFourTwo</a> y referencia oficial FIFA: <a href={MUNDIAL_SOURCE.officialUrl} target="_blank" rel="noopener noreferrer">calendario FIFA</a>.
@@ -146,11 +172,31 @@ export default function Mundial2026Page() {
           {dates.map((day) => (
             <div className="wc-date-block" key={day.dateLabel}>
               <h3 className="wc-date-title">{day.dateLabel}</h3>
-              <div className="wc-match-list">
+              <div className="wc-fixture-card-list">
                 {day.matches.map((match) => <MatchCard key={match.id} match={match} />)}
               </div>
             </div>
           ))}
+        </section>
+
+        <section id="selecciones" style={{ marginTop: 30 }}>
+          <div className="wc-section-head">
+            <div>
+              <h2>Selecciones</h2>
+              <p>Perfiles por país con grupo, calendario, convocados, ranking FIFA e historial mundialista listos para alimentar.</p>
+            </div>
+          </div>
+          <div className="wc-team-grid">
+            {teams.map((team) => (
+              <Link className="wc-team-card" href={`/mundial-2026/seleccion/${team.slug}`} key={team.slug}>
+                <img src={team.flag.url} alt={`Bandera de ${team.name}`} loading="lazy" />
+                <div>
+                  <strong>{team.name}</strong>
+                  <span>Grupo {team.group} · {team.matches.length} partidos</span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </section>
 
         <section id="grupos" style={{ marginTop: 30 }}>

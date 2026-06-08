@@ -104,12 +104,33 @@ export type MundialMatchCenter = {
   publicPulse: MundialPublicPulse;
 };
 
+export type MundialTeamProfile = {
+  name: string;
+  slug: string;
+  group: string;
+  flag: MundialTeamFlag;
+  matches: MundialMatch[];
+  fifaRanking: number | null;
+  roster: MundialLineupPlayer[];
+  recentResults: MundialHeadToHeadMatch[];
+  worldCupHistory: string[];
+};
+
 export const MUNDIAL_SOURCE = {
   name: 'FourFourTwo / calendario Mundial 2026 con base en calendario FIFA',
   url: 'https://www.fourfourtwo.com/competition/world-cup-2026-fixtures-and-results',
   officialUrl: 'https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/match-schedule-fixtures-results-teams-stadiums',
   importedAt: '2026-06-08T10:58:10.871Z',
 };
+
+export function getMundialTeamSlug(team: string): string {
+  return team
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
 
 export const MUNDIAL_TEAM_FLAGS: Record<string, MundialTeamFlag> = {
   "Alemania": { code: "de", url: "https://flagcdn.com/de.svg" },
@@ -2005,6 +2026,43 @@ export function getMundialGroupStandings(matches: MundialMatch[] = MUNDIAL_MATCH
       return a.seed - b.seed;
     }),
   }));
+}
+
+export function getMundialTeams(): MundialTeamProfile[] {
+  return Object.entries(MUNDIAL_GROUPS).flatMap(([group, teams]) =>
+    teams.map((team) => getMundialTeamProfile(team, group)).filter((profile): profile is MundialTeamProfile => Boolean(profile)),
+  );
+}
+
+export function getMundialTeamProfile(slugOrName: string, knownGroup?: string): MundialTeamProfile | undefined {
+  const slug = getMundialTeamSlug(slugOrName);
+  let teamName: string | undefined;
+  let groupName = knownGroup;
+
+  for (const [group, teams] of Object.entries(MUNDIAL_GROUPS)) {
+    const found = teams.find((team) => team === slugOrName || getMundialTeamSlug(team) === slug);
+    if (found) {
+      teamName = found;
+      groupName = group;
+      break;
+    }
+  }
+
+  if (!teamName || !groupName) return undefined;
+
+  const matches = MUNDIAL_MATCHES.filter((match) => match.home === teamName || match.away === teamName);
+
+  return {
+    name: teamName,
+    slug: getMundialTeamSlug(teamName),
+    group: groupName,
+    flag: getMundialTeamFlag(teamName),
+    matches,
+    fifaRanking: null,
+    roster: [],
+    recentResults: [],
+    worldCupHistory: [],
+  };
 }
 
 function emptyLineup(team: string): MundialTeamLineup {

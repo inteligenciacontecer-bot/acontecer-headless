@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import '../mundial.css';
-import { formatCostaRicaDateTime, getMatchesByDate, getMatchesByPhase } from '@/lib/mundial-2026';
+import { MUNDIAL_MATCHES, formatCostaRicaDateTime, getMatchesByDate, getMatchesByPhase, getMundialTeamFlag } from '@/lib/mundial-2026';
 
 export const metadata: Metadata = {
   title: 'Calendario Mundial 2026: partidos, fechas y sedes',
@@ -18,6 +18,39 @@ export const metadata: Metadata = {
 
 export const revalidate = 300;
 
+function CalendarMatchCard({ match }: { match: (typeof MUNDIAL_MATCHES)[number] }) {
+  const homeFlag = getMundialTeamFlag(match.home);
+  const awayFlag = getMundialTeamFlag(match.away);
+
+  return (
+    <Link className="wc-fixture-card" href={`/mundial-2026/partido/${match.slug}`}>
+      <div className="wc-fixture-card-head">
+        <span>{match.phaseEs}</span>
+        <strong>Partido {match.matchNumber}</strong>
+      </div>
+      <div className="wc-fixture-teams">
+        <div>
+          <img src={homeFlag.url} alt={`Bandera de ${match.home}`} loading="lazy" />
+          <strong>{match.home}</strong>
+        </div>
+        <div className="wc-fixture-score">
+          <span>{match.homeScore ?? 0}</span>
+          <b>-</b>
+          <span>{match.awayScore ?? 0}</span>
+        </div>
+        <div>
+          <img src={awayFlag.url} alt={`Bandera de ${match.away}`} loading="lazy" />
+          <strong>{match.away}</strong>
+        </div>
+      </div>
+      <div className="wc-fixture-meta">
+        <span>{formatCostaRicaDateTime(match.kickoffUtc)}</span>
+        <span>{match.venue}</span>
+      </div>
+    </Link>
+  );
+}
+
 export default function MundialCalendarioPage() {
   const byDate = getMatchesByDate();
   const byPhase = getMatchesByPhase();
@@ -28,7 +61,7 @@ export default function MundialCalendarioPage() {
         <div className="wc-hero-inner">
           <div className="wc-kicker">Mundial 2026</div>
           <h1 className="wc-title">Calendario</h1>
-          <p className="wc-subtitle">Los 104 partidos ordenados por fecha. Cada partido tiene página individual preparada para marcador y minuto a minuto.</p>
+          <p className="wc-subtitle">Los 104 partidos ordenados por fecha. Cada partido tiene página individual preparada para marcador, crónica, estadísticas, alineaciones y minuto a minuto.</p>
         </div>
       </section>
       <nav className="wc-nav">
@@ -43,23 +76,14 @@ export default function MundialCalendarioPage() {
           <div className="wc-section-head">
             <div>
               <h2>Por fecha</h2>
-              <p>Vista pensada para usuarios que quieren encontrar rápido qué se juega hoy, mañana o en cada jornada.</p>
+              <p>Vista pensada para encontrar rápido qué se juega hoy, mañana o en cada jornada.</p>
             </div>
           </div>
           {byDate.map((day) => (
             <div className="wc-date-block" key={day.dateLabel}>
               <h3 className="wc-date-title">{day.dateLabel}</h3>
-              <div className="wc-match-list">
-                {day.matches.map((match) => (
-                  <Link className="wc-match-card" href={`/mundial-2026/partido/${match.slug}`} key={match.id}>
-                    <div className="wc-match-num">#{match.matchNumber}</div>
-                    <div className="wc-match-main">
-                      <strong>{match.home} vs {match.away}</strong>
-                      <span>{match.phaseEs} · {match.venue}</span>
-                    </div>
-                    <div className="wc-match-meta">{formatCostaRicaDateTime(match.kickoffUtc)}</div>
-                  </Link>
-                ))}
+              <div className="wc-fixture-card-list">
+                {day.matches.map((match) => <CalendarMatchCard match={match} key={match.id} />)}
               </div>
             </div>
           ))}
