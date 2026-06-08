@@ -249,6 +249,24 @@
   text-align: center;
 }
 
+.wc-fixture-team-link {
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+  min-width: 0;
+  border-radius: 8px;
+  color: inherit;
+  padding: 6px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.wc-fixture-team-link:hover,
+.wc-fixture-team-link:focus-visible {
+  background: #eff4ff;
+  outline: none;
+}
+
 .wc-fixture-teams img {
   width: 46px;
   height: 32px;
@@ -277,6 +295,7 @@
   color: #fff;
   padding: 10px;
   text-align: center;
+  text-decoration: none;
 }
 
 .wc-fixture-score span {
@@ -292,7 +311,9 @@
 
 .wc-fixture-meta {
   flex-wrap: wrap;
+  color: inherit;
   padding-top: 2px;
+  text-decoration: none;
 }
 
 .wc-match-card {
@@ -627,7 +648,17 @@
   justify-items: center;
   gap: 9px;
   min-width: 0;
+  border-radius: 8px;
+  color: inherit;
+  padding: 8px;
   text-align: center;
+  text-decoration: none;
+}
+
+.wc-match-team:hover,
+.wc-match-team:focus-visible {
+  background: rgba(255,255,255,.08);
+  outline: none;
 }
 
 .wc-match-team img {
@@ -1327,6 +1358,16 @@
   align-items: center;
   gap: 8px;
   min-width: 0;
+  border-radius: 8px;
+  color: inherit;
+  padding: 4px;
+  text-decoration: none;
+}
+
+.wc-team-cell:hover,
+.wc-team-cell:focus-visible {
+  background: #eff4ff;
+  outline: none;
 }
 
 .wc-team-cell b {

@@ -10,6 +10,7 @@ import {
   getMundialMatchCenter,
   getMundialTeamFlag,
   getMundialTeamProfile,
+  getMundialTeamSlug,
 } from '@/lib/mundial-2026';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -234,12 +235,12 @@ export default async function MundialPartidoPage({ params }: Props) {
           </div>
 
           <div className="wc-match-scorecard" aria-label={`Marcador ${match.home} contra ${match.away}`}>
-            <div className="wc-match-team wc-match-team--home">
+            <Link className="wc-match-team wc-match-team--home" href={`/mundial-2026/seleccion/${getMundialTeamSlug(match.home)}`}>
               <img src={homeFlag.url} alt={`Bandera de ${match.home}`} />
               <strong>{match.home}</strong>
               <small>{match.homeRaw}</small>
               <small>{homeRanking}</small>
-            </div>
+            </Link>
 
             <div className="wc-match-scorebox">
               <div className="wc-match-status">{statusLabel}</div>
@@ -251,12 +252,12 @@ export default async function MundialPartidoPage({ params }: Props) {
               <div className="wc-match-vs">VS</div>
             </div>
 
-            <div className="wc-match-team wc-match-team--away">
+            <Link className="wc-match-team wc-match-team--away" href={`/mundial-2026/seleccion/${getMundialTeamSlug(match.away)}`}>
               <img src={awayFlag.url} alt={`Bandera de ${match.away}`} />
               <strong>{match.away}</strong>
               <small>{match.awayRaw}</small>
               <small>{awayRanking}</small>
-            </div>
+            </Link>
           </div>
 
           <div className="wc-match-meta-strip">

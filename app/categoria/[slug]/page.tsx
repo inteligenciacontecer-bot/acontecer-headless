@@ -373,6 +373,28 @@ export default async function CategoriaPage({
             </div>
           )}
 
+          {slug === 'deportes' && page === 1 && (
+            <section className="v1-worldcup-promo" aria-labelledby="mundial-2026-deportes">
+              <div className="v1-worldcup-promo-copy">
+                <div className="v1-worldcup-kicker">Cobertura especial</div>
+                <h2 id="mundial-2026-deportes">Mundial 2026</h2>
+                <p>
+                  Calendario completo, grupos, perfiles de selecciones, ranking FIFA, marcadores y páginas individuales
+                  de los 104 partidos.
+                </p>
+                <div className="v1-worldcup-actions">
+                  <a className="v1-worldcup-primary" href="/mundial-2026">Abrir especial</a>
+                  <a href="/mundial-2026/calendario">Ver calendario</a>
+                </div>
+              </div>
+              <div className="v1-worldcup-promo-stats" aria-label="Datos del especial Mundial 2026">
+                <div><strong>104</strong><span>partidos</span></div>
+                <div><strong>48</strong><span>selecciones</span></div>
+                <div><strong>12</strong><span>grupos</span></div>
+              </div>
+            </section>
+          )}
+
           {/* ── Featured article (page 1 only) ── */}
           {featuredPost && (() => {
             const img          = getFeaturedImg(featuredPost);

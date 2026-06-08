@@ -9,6 +9,7 @@ import {
   formatCostaRicaDateTime,
   getMundialGroupStandings,
   getMundialTeamFlag,
+  getMundialTeamSlug,
   getMundialTeams,
   getMatchesByDate,
   getUpcomingMundialMatches,
@@ -41,31 +42,31 @@ function MatchCard({ match }: { match: (typeof MUNDIAL_MATCHES)[number] }) {
   const awayScore = match.awayScore ?? 0;
 
   return (
-    <Link className="wc-fixture-card" href={`/mundial-2026/partido/${match.slug}`}>
+    <article className="wc-fixture-card">
       <div className="wc-fixture-card-head">
         <span>{match.phaseEs}</span>
         <strong>Partido {match.matchNumber}</strong>
       </div>
       <div className="wc-fixture-teams">
-        <div>
+        <Link className="wc-fixture-team-link" href={`/mundial-2026/seleccion/${getMundialTeamSlug(match.home)}`}>
           <img src={homeFlag.url} alt={`Bandera de ${match.home}`} loading="lazy" />
           <strong>{match.home}</strong>
-        </div>
-        <div className="wc-fixture-score">
+        </Link>
+        <Link className="wc-fixture-score" href={`/mundial-2026/partido/${match.slug}`} aria-label={`Ver partido ${match.home} vs ${match.away}`}>
           <span>{homeScore}</span>
           <b>-</b>
           <span>{awayScore}</span>
-        </div>
-        <div>
+        </Link>
+        <Link className="wc-fixture-team-link" href={`/mundial-2026/seleccion/${getMundialTeamSlug(match.away)}`}>
           <img src={awayFlag.url} alt={`Bandera de ${match.away}`} loading="lazy" />
           <strong>{match.away}</strong>
-        </div>
+        </Link>
       </div>
-      <div className="wc-fixture-meta">
+      <Link className="wc-fixture-meta" href={`/mundial-2026/partido/${match.slug}`}>
         <span>{formatCostaRicaDateTime(match.kickoffUtc)}</span>
         <span>{match.venue}</span>
-      </div>
-    </Link>
+      </Link>
+    </article>
   );
 }
 

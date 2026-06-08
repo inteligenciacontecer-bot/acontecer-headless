@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import type { MundialGroupStanding } from '@/lib/mundial-2026';
 
@@ -18,6 +19,15 @@ function getUpdatedLabel(updatedAt: string | null) {
     hour12: true,
     timeZone: 'America/Costa_Rica',
   }).format(new Date(updatedAt));
+}
+
+function getTeamSlug(team: string): string {
+  return team
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 export default function MundialGroupsTable({ initialGroups }: Props) {
@@ -82,11 +92,11 @@ export default function MundialGroupsTable({ initialGroups }: Props) {
 
               {group.teams.map((team, index) => (
                 <div className="wc-standings-row" role="row" key={team.team}>
-                  <span className="wc-team-cell">
+                  <Link className="wc-team-cell" href={`/mundial-2026/seleccion/${getTeamSlug(team.team)}`}>
                     <b>{index + 1}</b>
                     <img src={team.flag.url} alt={`Bandera de ${team.team}`} loading="lazy" />
                     <strong>{team.team}</strong>
-                  </span>
+                  </Link>
                   <span>{team.played}</span>
                   <span>{team.won}</span>
                   <span>{team.drawn}</span>
