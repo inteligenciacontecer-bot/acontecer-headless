@@ -193,9 +193,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   ].filter(Boolean).join(', ');
 
   // ── OG image ─────────────────────────────────────────────────────────────
-  const ogImage = d.foto_url
-    ? { url: d.foto_url, width: 400, height: 400, alt: d.nombre_completo }
-    : { url: 'https://acontecer.co.cr/asamblea/opengraph-image', width: 1200, height: 630, alt: 'Monitor Legislativo — Acontecer.co.cr' };
+  const ogImage = {
+    url: `https://acontecer.co.cr/asamblea/${slug}/opengraph-image`,
+    width: 1200,
+    height: 630,
+    alt: `${d.nombre_completo} — Monitor Legislativo`,
+  };
 
   return {
     title: titulo,

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import '../gobierno.css';
 import './perfil.css';
-import { FUNCIONARIOS, getFuncionario, funcionarioSlug, ACCENT, GRUPO_LABEL, type Funcionario } from '@/lib/gobierno';
+import { FUNCIONARIOS, getFuncionario, funcionarioSlug, curriculoFuncionario, ACCENT, GRUPO_LABEL, type Funcionario } from '@/lib/gobierno';
 
 export const revalidate = 1800; // refresca notas relacionadas cada 30 min
 
@@ -93,7 +93,7 @@ export default async function PerfilGobiernoPage({ params }: { params: Promise<{
   const accent = ACCENT[f.grupo];
   const notas = await getNotas(f.nombre);
   const descriptor = `${f.nombre} ocupa el cargo de ${f.cargo} en el Gobierno de Costa Rica, en la administración de la presidenta Laura Fernández Delgado (2026-2030)${f.institucion ? `, al frente de ${f.institucion}` : ''}.`;
-  const textoPerfil = f.bio || descriptor;
+  const textoPerfil = curriculoFuncionario(f) || descriptor;
   const parrafosPerfil = textoPerfil.split(/\n+/).map((parrafo) => parrafo.trim()).filter(Boolean);
   const fotoAbs = f.foto ? `${BASE}${f.foto}` : undefined;
   const fuentes = f.fuentes?.length
@@ -107,7 +107,7 @@ export default async function PerfilGobiernoPage({ params }: { params: Promise<{
     '@id': `${url}#person`,
     name: f.nombre, jobTitle: f.cargo, url,
     ...(fotoAbs ? { image: fotoAbs } : {}),
-    ...(f.bio ? { description: f.bio } : { description: descriptor }),
+    description: textoPerfil,
     ...(fuentes.length ? { sameAs: fuentes.map((fuente) => fuente.url) } : {}),
     worksFor: { '@type': 'GovernmentOrganization', name: f.institucion || 'Gobierno de Costa Rica' },
     nationality: { '@type': 'Country', name: 'Costa Rica' },

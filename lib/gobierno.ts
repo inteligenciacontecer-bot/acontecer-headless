@@ -48,6 +48,97 @@ export function funcionarioSlug(f: Pick<Funcionario, 'nombre'>): string {
   return slugify(f.nombre);
 }
 
+const CURRICULOS_EDITORIALES: Record<string, string> = {
+  'laura-fernandez-delgado': `Laura Fernández Delgado es Presidenta de la República para el periodo 2026-2030. Antes de asumir la Presidencia, ocupó los ministerios de la Presidencia y de Planificación Nacional y Política Económica.
+Su trayectoria pública se vincula con gestión institucional, planificación estratégica y políticas públicas.`,
+  'francisco-ernesto-gamboa-soto': `Francisco Ernesto Gamboa Soto es economista y Primer Vicepresidente de la República para el periodo 2026-2030. Antes de asumir la vicepresidencia, fue Ministro de Economía, Industria y Comercio.
+Su experiencia pública y profesional se relaciona con desarrollo económico, competitividad, gestión institucional y sectores productivos.`,
+  'douglas-soto-campos': `Douglas Soto Campos es Segundo Vicepresidente de la República para el periodo 2026-2030. Es administrador de empresas y ha ocupado cargos de alta dirección en el sector financiero y corporativo.
+Su trayectoria se relaciona con banca, gestión empresarial, innovación y desarrollo estratégico.`,
+  'rodrigo-chaves-robles': `Rodrigo Chaves Robles es economista y fue Presidente de la República de Costa Rica entre 2022 y 2026. En mayo de 2026 fue nombrado Ministro de la Presidencia y Ministro de Hacienda en la administración de Laura Fernández Delgado.
+En esos cargos participa en la coordinación política del Poder Ejecutivo y en la conducción de la agenda hacendaria del Gobierno.`,
+  'manuel-tovar-rivera': `Manuel Tovar Rivera es licenciado en Derecho por la Universidad Autónoma de Centroamérica, máster en Derecho Internacional y Relaciones Internacionales por la Universidad Complutense de Madrid y doctor en Ciencias Políticas por la Universidad de Salamanca. También realizó estudios de actualización profesional en Harvard y London School of Economics and Political Science.
+En mayo de 2026 fue nombrado Ministro de Relaciones Exteriores y Culto. Como canciller tiene a cargo la política exterior, la representación diplomática y la coordinación de relaciones internacionales del país.`,
+  'gerald-campos-valverde': `Gerald Campos Valverde fue nombrado Ministro de Seguridad Pública y Gobernación en mayo de 2026. Su trayectoria se relaciona con seguridad, investigación criminal y administración pública.
+Desde el ministerio tiene responsabilidades sobre los cuerpos policiales, la seguridad ciudadana y la coordinación institucional en materia de orden público.`,
+  'gabriel-aguilar-vargas': `Gabriel Aguilar Vargas es abogado y funcionario público. En mayo de 2026 fue nombrado Ministro de Justicia y Paz.
+Su cargo comprende la administración del sistema penitenciario, políticas de justicia, convivencia social y coordinación institucional en temas jurídicos y de paz social.`,
+  'jose-leonardo-sanchez-hernandez': `José Leonardo Sánchez Hernández fue nombrado Ministro de Educación Pública en mayo de 2026. Su experiencia se relaciona con gestión educativa, liderazgo académico y políticas públicas en educación.
+Como jerarca del MEP tiene a cargo la administración del sistema educativo público y la ejecución de políticas para centros educativos, docentes y población estudiantil.`,
+  'efraim-zeledon-leiva': `Efraím Zeledón Leiva fue nombrado Ministro de Obras Públicas y Transportes en mayo de 2026. Su trayectoria se vincula con infraestructura, planificación y gestión de proyectos de transporte.
+El MOPT tiene bajo su responsabilidad obra pública, red vial, movilidad y coordinación de proyectos de infraestructura nacional.`,
+  'maria-del-milagro-solorzano-leon': `María del Milagro Solórzano León fue nombrada Ministra de Economía, Industria y Comercio en mayo de 2026. Cuenta con más de 20 años de experiencia profesional en el sector privado, con énfasis en defensa de consumidores, simplificación de trámites, procedimientos administrativos y contratación pública.
+También ha brindado asesoría a organizaciones empresariales como la Cámara de Industria y Comercio Costa Rica-México y la Cámara Costarricense de la Construcción.`,
+  'juan-gabriel-ramirez-guillen': `Juan Gabriel Ramírez Guillén es ingeniero en agronegocios y fue nombrado Ministro de Agricultura y Ganadería en mayo de 2026. Su experiencia se relaciona con producción, exportación, innovación y mercados internacionales.
+Ha trabajado en proyectos vinculados al sector agropecuario y cadenas productivas, además de colaborar con organismos como FAO y PROCOMER.`,
+  'alexander-sanchez-cabo': `Alexander Sánchez Cabo fue nombrado Ministro de Salud en mayo de 2026. Su trayectoria se vincula con gestión de servicios de salud y administración hospitalaria.
+Antes de asumir el ministerio se desempeñó como gerente médico interino de la Caja Costarricense de Seguro Social, donde participó en procesos relacionados con atención médica y servicios sanitarios.`,
+  'roy-thompson-chacon': `Roy Thompson Chacón fue nombrado Ministro de Trabajo y Seguridad Social en mayo de 2026. Su experiencia se relaciona con asuntos legislativos, derecho, gestión pública y políticas regulatorias.
+El MTSS tiene a cargo políticas laborales, empleo, seguridad social, inspección laboral y coordinación de diálogo entre sectores productivos y personas trabajadoras.`,
+  'jorge-rodriguez-vives': `Jorge Rodríguez Vives fue nombrado Ministro de Cultura y Juventud en mayo de 2026. Desde ese cargo administra la cartera responsable de políticas culturales, programas para juventudes, patrimonio, artes y gestión institucional del sector cultural.`,
+  'carla-morales-rojas': `Carla Morales Rojas es politóloga y fue nombrada Ministra de Planificación Nacional y Política Económica en mayo de 2026. Cuenta con más de 25 años de experiencia en diseño, implementación y evaluación de políticas públicas.
+Posee una Maestría en Derechos Humanos por la UNED, además de licenciatura y bachillerato en Ciencias Políticas por la Universidad de Costa Rica. Su trayectoria incluye descentralización, desarrollo local, participación ciudadana, consultorías y docencia universitaria.`,
+  'monica-navarro-del-valle': `Mónica Navarro del Valle es abogada y fue nombrada Ministra de Ambiente y Energía en mayo de 2026. Su trayectoria se relaciona con políticas públicas ambientales, sostenibilidad, gestión ambiental y articulación entre sectores públicos y privados.
+El MINAE tiene a cargo áreas como ambiente, energía, conservación, recursos naturales y regulación vinculada al sector ambiental.`,
+  'guillermo-carazo-ramirez': `Guillermo Carazo Ramírez fue nombrado Ministro de Vivienda y Asentamientos Humanos en mayo de 2026. Su trayectoria se vincula con desarrollo urbano, infraestructura y planificación territorial.
+Antes de asumir el ministerio fue Director Ejecutivo del Colegio Federado de Ingenieros y de Arquitectos, entidad relacionada con construcción, ingeniería, arquitectura y ordenamiento urbano.`,
+  'indiana-trejos-gallo': `Indiana Trejos Gallo fue nombrada Ministra de Comercio Exterior en mayo de 2026. Es especialista en comercio exterior y cuenta con más de dos décadas de experiencia en negociaciones comerciales, facilitación del comercio y gestión pública.
+Antes de asumir COMEX fue Viceministra de Comercio Exterior y presidenta del Consejo Nacional de Facilitación del Comercio.`,
+  'paula-bogantes-zamora': `Paula Bogantes Zamora fue nombrada Ministra de Ciencia, Innovación, Tecnología y Telecomunicaciones. Es máster en Comercio y Mercados Internacionales por LEAD University y bachiller en Administración de Negocios por la Universidad Internacional de las Américas.
+Cuenta con formación en liderazgo organizacional por Georgetown y cursa un diplomado en Transformación Digital del MIT. Fue viceministra de Comercio Exterior, presidenta de CONAFAC y gerente en CINDE en sectores de tecnologías digitales, manufactura avanzada y tecnologías limpias.`,
+  'arnold-zamora-miranda': `Arnold Zamora Miranda fue nombrado Ministro de Comunicación y Enlace en mayo de 2026. La cartera tiene a cargo la comunicación pública del Gobierno, la coordinación informativa con instituciones y el enlace entre la Presidencia, medios y ciudadanía.`,
+  'carlos-andres-robles-obando': `Carlos Andrés Robles Obando es administrador de empresas y fue diputado por Puntarenas durante el periodo legislativo 2022-2026.
+En el Gobierno de Laura Fernández Delgado fue designado Ministro de Costas, Mares y Pesca, cartera relacionada con territorios costeros, sector pesquero y asuntos marítimos.`,
+  'yorleni-leon-marchena': `Yorleni León Marchena fue nombrada Ministra de Desarrollo Humano e Inclusión Social. Es licenciada en Administración de Negocios por la Universidad Interamericana de Costa Rica y máster en Desarrollo Económico Local por Flacso.
+Su trayectoria incluye gestión de proyectos, desarrollo comunitario, docencia, consultoría y dirección ejecutiva de la Agencia para el Desarrollo Local de Pococí. También fue asesora de la Presidencia de JAPDEVA, docente en la UCR y la UNED, y diputada por Limón en el periodo 2018-2022.`,
+  'roger-madrigal-lopez': `Róger Madrigal López ocupa la Presidencia del Banco Central de Costa Rica. Su carrera profesional ha estado vinculada al BCCR desde 1984 y entre 2008 y 2022 se desempeñó como economista jefe y director de la División Económica.
+Es licenciado en Economía y bachiller en Estadística por la Universidad de Costa Rica. También cuenta con un doctorado por la Universidad Estatal de Ohio, con una tesis sobre instrumentos de política monetaria en economías pequeñas y abiertas.`,
+  'monica-taylor-hernandez': `Mónica Taylor Hernández ocupa la Presidencia Ejecutiva de la Caja Costarricense de Seguro Social. La fuente oficial consultada no detalla formación académica o cargos anteriores.
+Desde la CCSS tiene a cargo la conducción institucional de la entidad responsable del seguro de salud, pensiones, servicios médicos y administración de recursos del sistema de seguridad social.`,
+  'marco-vinicio-acuna-mora': `Marco Vinicio Acuña Mora es ingeniero eléctrico y ocupa la Presidencia Ejecutiva del Instituto Costarricense de Electricidad. Cuenta con una Maestría en Sistemas de Energía Eléctrica por la Universidad de Costa Rica y una Maestría en Administración de Negocios por la Universidad Heriot-Watt.
+Fue gerente de Electricidad del ICE, consultor en temas de energía y profesor universitario.`,
+  'gabriela-chacon-fernandez': `Gabriela Chacón Fernández ocupa la Presidencia Ejecutiva del Instituto Nacional de Seguros. La fuente oficial consultada no detalla formación académica o cargos anteriores.
+El INS administra seguros comerciales y solidarios, además de programas vinculados con riesgos del trabajo, prevención y servicios relacionados con aseguramiento.`,
+  'karla-montero-viquez': `Karla Montero Víquez ocupa la Presidencia Ejecutiva de RECOPE. Cuenta con experiencia en regulación de servicios públicos y mercados energéticos, incluida una trayectoria de 16 años en ARESEP en fijaciones tarifarias, metodologías, reglamentos sectoriales y asesoría institucional.
+También trabajó en AT&T en negociación de contratos, seguimiento de mercados y análisis financiero. Fue gerente general de RECOPE entre 2022 y 2024. Es licenciada en Economía, máster en Economía de la Regulación y cuenta con especialidades en derecho y políticas de competencia, combustibles limpios y planificación energética.`,
+  'lourdes-saurez-barboza': `Lourdes Sáurez Barboza ocupa la Presidencia Ejecutiva del Instituto Costarricense de Acueductos y Alcantarillados. La fuente oficial consultada no detalla formación académica o cargos anteriores.
+El AyA tiene a cargo servicios de agua potable, saneamiento, acueductos, alcantarillados y proyectos relacionados con infraestructura hídrica.`,
+  'paola-najera-abarca': `Paola Nájera Abarca ocupa la Presidencia Ejecutiva de la Junta de Protección Social. Fue diputada de la República durante el periodo 2022-2026.
+Su trayectoria se relaciona con gestión pública, asesoría política y trabajo con comunidades. La JPS administra productos de lotería y programas de apoyo social financiados con esos recursos.`,
+  'edgar-oviedo-blanco': `Edgar Oviedo Blanco ocupa la Presidencia Ejecutiva del Instituto Nacional de Aprendizaje. Cuenta con más de 22 años de experiencia como consultor, investigador y docente universitario.
+Su formación y trayectoria se relacionan con tecnologías de información, transformación digital, innovación, administración, ingeniería de software y gobierno digital.`,
+  'jose-david-cordoba-rodriguez': `José David Córdoba Rodríguez ocupa la Presidencia Ejecutiva del Consejo Nacional de Producción. La fuente oficial consultada no detalla formación académica o cargos anteriores.
+El CNP tiene funciones vinculadas con producción agropecuaria, abastecimiento institucional, seguridad alimentaria y relación con productores nacionales.`,
+  'maria-jose-vega-sanabria': `María José Vega Sanabria ocupa la Presidencia Ejecutiva del Patronato Nacional de la Infancia. Es licenciada en Trabajo Social y cuenta con maestrías en Gestión y Política Pública y en Gerencia de Proyectos de Desarrollo.
+Tiene más de 20 años de experiencia en administración pública, gestión social, coordinación interinstitucional y políticas públicas.`,
+  'carolina-delgado-ramirez': `Carolina Delgado Ramírez ocupa la Presidencia Ejecutiva del Instituto Nacional de las Mujeres. Fue diputada de la República y su trayectoria se relaciona con gestión pública, liderazgo político y políticas sociales.
+El INAMU tiene a cargo programas y políticas públicas relacionadas con derechos de las mujeres, igualdad, prevención de violencia y articulación institucional.`,
+  'ricardo-quesada-salas': `Ricardo Quesada Salas ocupa la Presidencia Ejecutiva del Instituto de Desarrollo Rural. La fuente oficial consultada no detalla formación académica o cargos anteriores.
+El INDER tiene funciones relacionadas con desarrollo rural, acceso a recursos productivos, proyectos territoriales y apoyo a comunidades rurales.`,
+  'johnny-leiva-badilla': `Johnny Leiva Badilla ocupa la Presidencia Ejecutiva del Instituto Nacional de Vivienda y Urbanismo. Es ingeniero industrial y máster en Administración de Empresas con énfasis en Banca y Finanzas.
+Su trayectoria incluye desarrollo inmobiliario, gestión empresarial, función pública y un periodo como diputado de la República. También ha trabajado en temas de financiamiento, estructuración de proyectos y articulación público-privada.`,
+  'wagner-alberto-quesada-cespedes': `Wagner Alberto Quesada Céspedes ocupa la Presidencia Ejecutiva del Instituto Costarricense de Puertos del Pacífico. Es bachiller en Ciencias Políticas por la Universidad de Costa Rica y máster en Administración de Empresas con énfasis en Mercadeo por el Tecnológico de Costa Rica.
+Su trayectoria se relaciona con logística, comercio exterior, aduanas, puertos y gestión de equipos en el sector público y privado.`,
+  'alvaro-bermudez-pena': `Álvaro Bermúdez Peña ocupa la Presidencia Ejecutiva del Instituto Costarricense de Ferrocarriles. Es profesional en Ingeniería Civil, con especialidad en sistemas de transporte y planificación sectorial.
+Su trayectoria incluye planificación, diseño y operación de sistemas de transporte, formación internacional en planificación urbana y transporte, y experiencia en modelos de financiamiento para obra pública.`,
+  'marcos-borges': `Marcos Borges ocupa la Presidencia Ejecutiva del Instituto Costarricense de Turismo. Es administrador de empresas con énfasis en mercadeo.
+Su experiencia se relaciona con gestión estratégica, administración y coordinación de proyectos. El ICT tiene funciones de promoción turística, regulación sectorial y coordinación de políticas vinculadas con turismo.`,
+  'jose-miguel-jimenez-araya': `José Miguel Jiménez Araya ocupa la Presidencia Ejecutiva del Instituto de Fomento y Asesoría Municipal. Es abogado, especialista en derecho comercial, y fue alcalde de Río Cuarto.
+Según su perfil municipal, trabajó como asesor en Casa Presidencial, asesor jurídico de la Presidencia Ejecutiva del IMAS, jefe de proyectos del IMAS y asesor de la Subgerencia de Desarrollo Social de esa institución.`,
+  'alejandro-picado-eduarte': `Alejandro Picado Eduarte ocupa la Presidencia de la Comisión Nacional de Emergencias. La fuente oficial consultada no detalla formación académica o cargos anteriores.
+La CNE tiene funciones de coordinación interinstitucional para gestión del riesgo, prevención, atención de emergencias y respuesta ante desastres.`,
+  'nelson-pena-navarro': `Nelson Peña Navarro ocupa la Presidencia Ejecutiva del Instituto Costarricense de Pesca y Acuicultura. La fuente oficial consultada no detalla formación académica o cargos anteriores.
+INCOPESCA tiene funciones relacionadas con pesca, acuicultura, regulación del sector, conservación de recursos marinos y coordinación con comunidades pesqueras.`,
+  'juan-diego-lopez': `Juan Diego López ocupa la Presidencia Ejecutiva del Sistema Nacional de Radio y Televisión. Su trayectoria se relaciona con medios de comunicación, comunicación estratégica y gestión institucional.
+La fuente oficial indica que se desempeñó como periodista, presentador y director de comunicación, además de ocupar funciones relacionadas con estrategia y comunicación pública.`,
+  'martin-vargas-santamaria': `Martín Vargas Santamaría ocupa la Presidencia Ejecutiva de JAPDEVA. Su trayectoria se relaciona con gestión institucional, administración y desarrollo estratégico.
+JAPDEVA tiene funciones vinculadas con administración portuaria, desarrollo económico de la vertiente atlántica e impulso de proyectos en la región Caribe.`,
+};
+
+export function curriculoFuncionario(f: Pick<Funcionario, 'nombre' | 'bio'>): string | undefined {
+  return CURRICULOS_EDITORIALES[funcionarioSlug(f)] || f.bio;
+}
+
 export const PRESIDENCIA: Funcionario[] = [
   {
     "nombre": "Laura Fernández Delgado",

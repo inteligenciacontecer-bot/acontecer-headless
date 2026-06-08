@@ -36,6 +36,27 @@
   overflow: hidden;
 }
 .gb-card-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.gb-card-avatar--cutout {
+  position: relative; align-items: flex-end;
+  background: linear-gradient(135deg, #0000A2 0%, #07145f 100%);
+}
+.gb-card-avatar--cutout::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255,255,255,.16), transparent 34%),
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.08));
+}
+.gb-card-avatar--cutout::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 7px;
+  background: linear-gradient(180deg, #fff 0 2px, #d71920 2px 100%);
+}
+.gb-card-avatar--cutout img {
+  position: relative; z-index: 1;
+  width: 112%; height: 124%; object-fit: contain; object-position: center bottom;
+  transform: translateY(-8px) scale(1.04);
+  filter: drop-shadow(0 8px 10px rgba(0,0,0,.22));
+}
+.gb-card-avatar--presidencia img { object-position: top center; }
 .gb-card-info { padding: 9px 11px 11px; }
 .gb-card-nombre { font-size: 12px; font-weight: 700; color: #111; line-height: 1.3; margin-bottom: 3px; }
 .gb-card-cargo { font-size: 10.5px; color: #888; line-height: 1.35; }

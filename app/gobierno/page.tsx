@@ -12,6 +12,23 @@ function iniciales(nombre: string): string {
   return ((p[0]?.[0] || '') + (p[p.length - 1]?.[0] || '')).toUpperCase();
 }
 
+const SIN_RECORTE_EN_TARJETA = new Set([
+  'jose-miguel-jimenez-araya',
+  'carlos-andres-robles-obando',
+  'johnny-leiva-badilla',
+]);
+
+function recorteGobierno(funcionario: Funcionario): string | null {
+  if (funcionario.grupo === 'presidencia') return null;
+  const slug = funcionarioSlug(funcionario);
+  if (SIN_RECORTE_EN_TARJETA.has(slug)) return null;
+  if (!funcionario.foto?.startsWith('/gobierno/fotos/')) return null;
+
+  return funcionario.foto
+    .replace('/gobierno/fotos/', '/gobierno/recortes/')
+    .replace(/\.jpe?g$/i, '.png');
+}
+
 export const metadata: Metadata = {
   title: 'Gobierno de Costa Rica 2026-2030 — Ministros y Presidencias Ejecutivas',
   description: `Directorio del Poder Ejecutivo de Costa Rica en la administración de Laura Fernández: la presidenta, los vicepresidentes, los ${MINISTROS.length} ministros del gabinete y los ${PRESIDENCIAS.length} presidentes ejecutivos de las instituciones autónomas.`,
@@ -45,11 +62,18 @@ const FAQ = [
 
 function Tarjeta({ funcionario, accent }: { funcionario: Funcionario; accent: string }) {
   const { nombre, cargo, foto } = funcionario;
+  const recorte = recorteGobierno(funcionario);
+  const avatarClass = [
+    'gb-card-avatar',
+    recorte ? 'gb-card-avatar--cutout' : '',
+    funcionario.grupo === 'presidencia' ? 'gb-card-avatar--presidencia' : '',
+  ].filter(Boolean).join(' ');
+
   return (
     <Link href={`/gobierno/${funcionarioSlug(funcionario)}`} className="gb-card" style={{ borderTopColor: accent }}>
-      <div className="gb-card-avatar" style={{ background: accent + '15', color: accent }}>
+      <div className={avatarClass} style={{ background: recorte ? undefined : accent + '15', color: accent }}>
         {foto
-          ? /* eslint-disable-next-line @next/next/no-img-element */ <img src={foto} alt={nombre} loading="lazy" decoding="async" />
+          ? /* eslint-disable-next-line @next/next/no-img-element */ <img src={recorte || foto} alt={nombre} loading="lazy" decoding="async" />
           : iniciales(nombre)}
       </div>
       <div className="gb-card-info">
