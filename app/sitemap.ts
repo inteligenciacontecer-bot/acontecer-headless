@@ -111,6 +111,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/privacidad`,   lastModified: new Date(), changeFrequency: 'monthly', priority: 0.3 },
     { url: `${BASE}/enlaces`,      lastModified: new Date(), changeFrequency: 'daily',   priority: 0.6 },
     { url: `${BASE}/asamblea`,     lastModified: new Date(), changeFrequency: 'hourly',  priority: 0.8 },
+    { url: `${BASE}/asamblea/actas`, lastModified: new Date(), changeFrequency: 'daily',  priority: 0.6 },
     { url: `${BASE}/mundial-2026`, lastModified: new Date(), changeFrequency: 'hourly',  priority: 0.85 },
     { url: `${BASE}/mundial-2026/calendario`, lastModified: new Date(), changeFrequency: 'hourly', priority: 0.8 },
   ];
