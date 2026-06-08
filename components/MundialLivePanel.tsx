@@ -59,11 +59,11 @@ export default function MundialLivePanel({ match }: { match: MundialMatch }) {
       <div className="wc-scoreboard">
         <div className="wc-score-team">
           <span>{match.home}</span>
-          <strong>{match.homeScore ?? '-'}</strong>
+          <strong>{match.homeScore ?? 0}</strong>
         </div>
         <div className="wc-score-sep">vs</div>
         <div className="wc-score-team wc-score-team--right">
-          <strong>{match.awayScore ?? '-'}</strong>
+          <strong>{match.awayScore ?? 0}</strong>
           <span>{match.away}</span>
         </div>
       </div>

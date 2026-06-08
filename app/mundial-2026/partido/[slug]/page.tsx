@@ -3,7 +3,12 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import MundialLivePanel from '@/components/MundialLivePanel';
 import '../../mundial.css';
-import { MUNDIAL_MATCHES, formatCostaRicaDateTime, getMundialMatch } from '@/lib/mundial-2026';
+import {
+  MUNDIAL_MATCHES,
+  formatCostaRicaDateTime,
+  getMundialMatch,
+  getMundialTeamFlag,
+} from '@/lib/mundial-2026';
 
 type Props = { params: Promise<{ slug: string }> };
 type Match = (typeof MUNDIAL_MATCHES)[number];
@@ -15,27 +20,39 @@ function getMatchUrl(slug: string) {
 }
 
 function getMatchTitle(match: Match) {
-  return `${match.home} vs ${match.away}: hora, sede y minuto a minuto | Mundial 2026`;
+  return `${match.home} vs ${match.away}: marcador, hora y minuto a minuto | Mundial 2026`;
 }
 
 function getMatchDescription(match: Match) {
-  return `${match.home} vs ${match.away} en el Mundial 2026: fecha, horario de Costa Rica, sede, grupo, ficha del partido y cobertura minuto a minuto en Acontecer.co.cr.`;
+  return `${match.home} vs ${match.away} en el Mundial 2026: marcador, fecha, horario de Costa Rica, sede, grupo, ficha del partido, estadísticas y cobertura minuto a minuto en Acontecer.co.cr.`;
 }
 
 function getMatchKeywords(match: Match) {
   return [
     `${match.home} vs ${match.away}`,
     `${match.home} ${match.away} Mundial 2026`,
+    `marcador ${match.home} vs ${match.away}`,
     `partido ${match.matchNumber} Mundial 2026`,
     `hora ${match.home} vs ${match.away}`,
     `minuto a minuto ${match.home} vs ${match.away}`,
     `resultado ${match.home} vs ${match.away}`,
     `alineaciones ${match.home} vs ${match.away}`,
+    `estadísticas ${match.home} vs ${match.away}`,
     'calendario Mundial 2026',
     match.phaseEs,
     match.group ? `Grupo ${match.group} Mundial 2026` : match.phaseEs,
     match.venue,
   ];
+}
+
+function getMatchStatusLabel(match: Match) {
+  if (match.status === 'live') return 'En vivo';
+  if (match.status === 'finished') return 'Finalizado';
+  return 'Programado';
+}
+
+function getScoreValue(score?: number | null) {
+  return score ?? 0;
 }
 
 export function generateStaticParams() {
@@ -112,6 +129,19 @@ export default async function MundialPartidoPage({ params }: Props) {
   const image = `${url}/opengraph-image`;
   const formattedTime = formatCostaRicaDateTime(match.kickoffUtc);
   const phaseLine = match.group ? `${match.phaseEs}, Grupo ${match.group}` : match.phaseEs;
+  const homeFlag = getMundialTeamFlag(match.home);
+  const awayFlag = getMundialTeamFlag(match.away);
+  const statusLabel = getMatchStatusLabel(match);
+  const homeScore = getScoreValue(match.homeScore);
+  const awayScore = getScoreValue(match.awayScore);
+  const matchStats = [
+    { label: 'Posesión', home: '-', away: '-' },
+    { label: 'Remates', home: '-', away: '-' },
+    { label: 'Remates al arco', home: '-', away: '-' },
+    { label: 'Faltas', home: '-', away: '-' },
+    { label: 'Tarjetas amarillas', home: '-', away: '-' },
+    { label: 'Tiros de esquina', home: '-', away: '-' },
+  ];
   const faq = [
     {
       question: `¿Cuándo juega ${match.home} vs ${match.away}?`,
@@ -123,7 +153,7 @@ export default async function MundialPartidoPage({ params }: Props) {
     },
     {
       question: `¿Dónde seguir el minuto a minuto de ${match.home} vs ${match.away}?`,
-      answer: `Acontecer.co.cr mantiene esta página preparada para el marcador, eventos, goles, tarjetas, cambios, faltas y actualizaciones en vivo del partido.`,
+      answer: `Acontecer.co.cr mantiene esta página preparada para el marcador, eventos, goles, tarjetas, cambios, faltas, estadísticas y actualizaciones en vivo del partido.`,
     },
   ];
   const sportsEventSchema = {
@@ -192,17 +222,52 @@ export default async function MundialPartidoPage({ params }: Props) {
         <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       ))}
 
-      <section className="wc-match-hero">
+      <section className="wc-match-hero wc-match-hero--center">
         <div className="wc-match-hero-inner">
-          <div className="wc-kicker">Partido #{match.matchNumber} · {match.phaseEs}</div>
-          <div className="wc-score-title">
-            <strong>{match.home}</strong>
-            <span>vs</span>
-            <strong>{match.away}</strong>
+          <div className="wc-match-topline">
+            <span>Partido #{match.matchNumber}</span>
+            <span>{phaseLine}</span>
+            <span>{statusLabel}</span>
           </div>
-          <p className="wc-subtitle" style={{ marginTop: 18 }}>
-            {formattedTime} · {match.venue}
-          </p>
+
+          <div className="wc-match-scorecard" aria-label={`Marcador ${match.home} contra ${match.away}`}>
+            <div className="wc-match-team wc-match-team--home">
+              <img src={homeFlag.url} alt={`Bandera de ${match.home}`} />
+              <strong>{match.home}</strong>
+              <small>{match.homeRaw}</small>
+            </div>
+
+            <div className="wc-match-scorebox">
+              <div className="wc-match-status">{statusLabel}</div>
+              <div className="wc-match-score">
+                <span>{homeScore}</span>
+                <b>-</b>
+                <span>{awayScore}</span>
+              </div>
+              <div className="wc-match-vs">VS</div>
+            </div>
+
+            <div className="wc-match-team wc-match-team--away">
+              <img src={awayFlag.url} alt={`Bandera de ${match.away}`} />
+              <strong>{match.away}</strong>
+              <small>{match.awayRaw}</small>
+            </div>
+          </div>
+
+          <div className="wc-match-meta-strip">
+            <div>
+              <span>Hora Costa Rica</span>
+              <strong>{formattedTime}</strong>
+            </div>
+            <div>
+              <span>Sede</span>
+              <strong>{match.venue}</strong>
+            </div>
+            <div>
+              <span>Competencia</span>
+              <strong>Copa Mundial de la FIFA 2026</strong>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -210,26 +275,107 @@ export default async function MundialPartidoPage({ params }: Props) {
         <div className="wc-nav-inner">
           <Link href="/mundial-2026">Portada</Link>
           <Link href="/mundial-2026/calendario">Calendario</Link>
-          <a className="is-active" href="#minuto-a-minuto">Minuto a minuto</a>
+          <a className="is-active" href="#resumen">Resumen</a>
+          <a href="#estadisticas">Estadísticas</a>
+          <a href="#alineaciones">Alineaciones</a>
+          <a href="#minuto-a-minuto">Minuto a minuto</a>
         </div>
       </nav>
 
       <div className="wc-wrap">
         <section className="wc-layout">
-          <div id="minuto-a-minuto">
-            <MundialLivePanel match={match} />
+          <div className="wc-match-main-column">
+            <section className="wc-match-module wc-match-summary" id="resumen">
+              <div className="wc-module-head">
+                <div>
+                  <p className="wc-kicker">Centro de partido</p>
+                  <h2>{match.home} vs {match.away}</h2>
+                </div>
+                <span className="wc-match-chip">{statusLabel}</span>
+              </div>
+              <div className="wc-summary-grid">
+                <div>
+                  <span>Marcador</span>
+                  <strong>{homeScore} - {awayScore}</strong>
+                </div>
+                <div>
+                  <span>Fase</span>
+                  <strong>{phaseLine}</strong>
+                </div>
+                <div>
+                  <span>Partido</span>
+                  <strong>#{match.matchNumber}</strong>
+                </div>
+              </div>
+              <p>
+                Esta página queda lista como ficha viva del partido: marcador, eventos, estadísticas, alineaciones,
+                sede, horario y cobertura minuto a minuto se integrarán aquí conforme exista información confirmada.
+              </p>
+            </section>
+
+            <section className="wc-match-module" id="estadisticas">
+              <div className="wc-module-head">
+                <div>
+                  <p className="wc-kicker">Datos del juego</p>
+                  <h2>Estadísticas</h2>
+                </div>
+                <span className="wc-match-chip">Por conectar</span>
+              </div>
+              <div className="wc-stats-board">
+                {matchStats.map((stat) => (
+                  <div className="wc-stat-row" key={stat.label}>
+                    <strong>{stat.home}</strong>
+                    <span>{stat.label}</span>
+                    <strong>{stat.away}</strong>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section className="wc-match-module" id="alineaciones">
+              <div className="wc-module-head">
+                <div>
+                  <p className="wc-kicker">Equipos</p>
+                  <h2>Alineaciones</h2>
+                </div>
+                <span className="wc-match-chip">Pendiente</span>
+              </div>
+              <div className="wc-lineups">
+                <div>
+                  <img src={homeFlag.url} alt="" />
+                  <strong>{match.home}</strong>
+                  <p>La formación titular, suplentes y entrenador aparecerán aquí cuando el proveedor confirme la información.</p>
+                </div>
+                <div>
+                  <img src={awayFlag.url} alt="" />
+                  <strong>{match.away}</strong>
+                  <p>Este espacio queda preparado para alineaciones, sustituciones y novedades previas al inicio del partido.</p>
+                </div>
+              </div>
+            </section>
+
+            <div id="minuto-a-minuto">
+              <MundialLivePanel match={match} />
+            </div>
           </div>
 
-          <aside className="wc-card">
-            <h2 style={{ marginTop: 0 }}>Ficha del partido</h2>
-            <p><strong>Fase:</strong> {phaseLine}</p>
-            {match.group && <p><strong>Grupo:</strong> {match.group}</p>}
-            <p><strong>Partido:</strong> #{match.matchNumber}</p>
-            <p><strong>Sede:</strong> {match.venue}</p>
-            <p><strong>Hora CR:</strong> {formattedTime}</p>
+          <aside className="wc-card wc-match-side-card">
+            <h2>Ficha del partido</h2>
+            <div className="wc-side-score">
+              <span>{match.home}</span>
+              <strong>{homeScore} - {awayScore}</strong>
+              <span>{match.away}</span>
+            </div>
+            <dl className="wc-fixture-list">
+              <div><dt>Fase</dt><dd>{phaseLine}</dd></div>
+              {match.group && <div><dt>Grupo</dt><dd>{match.group}</dd></div>}
+              <div><dt>Partido</dt><dd>#{match.matchNumber}</dd></div>
+              <div><dt>Sede</dt><dd>{match.venue}</dd></div>
+              <div><dt>Hora CR</dt><dd>{formattedTime}</dd></div>
+              <div><dt>Estado</dt><dd>{statusLabel}</dd></div>
+            </dl>
             <p className="wc-source">
-              La página queda preparada para actualización en vivo. El panel recibirá eventos desde el proveedor de datos:
-              goles, tarjetas, cambios, faltas, VAR y estado del marcador.
+              Panel preparado para goles, tarjetas, cambios, faltas, VAR, marcador, alineaciones y estadísticas del partido.
             </p>
           </aside>
         </section>
@@ -246,8 +392,8 @@ export default async function MundialPartidoPage({ params }: Props) {
             <p>
               Esta página reúne la información base del partido, el enlace permanente para consulta y el espacio
               donde Acontecer.co.cr publicará el minuto a minuto cuando el juego esté en desarrollo. La cobertura
-              está preparada para incorporar marcador, goles, tarjetas, cambios, faltas, revisiones VAR, alineaciones
-              y actualizaciones relevantes antes, durante y después del encuentro.
+              está preparada para incorporar marcador, goles, tarjetas, cambios, faltas, revisiones VAR, alineaciones,
+              estadísticas y actualizaciones relevantes antes, durante y después del encuentro.
             </p>
           </div>
 
@@ -269,7 +415,7 @@ export default async function MundialPartidoPage({ params }: Props) {
                 <li>Resultado y marcador del partido.</li>
                 <li>Goles, tarjetas y cambios.</li>
                 <li>Faltas, revisiones VAR y eventos principales.</li>
-                <li>Alineaciones y contexto previo cuando esté disponible.</li>
+                <li>Alineaciones, estadísticas y contexto previo cuando esté disponible.</li>
                 <li>Resumen posterior al pitazo final.</li>
               </ul>
             </article>
