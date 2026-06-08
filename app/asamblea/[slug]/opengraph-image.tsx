@@ -3,6 +3,9 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 const API = 'https://cms.acontecer.co.cr/wp-json/acontecer/v1/asamblea';
+const ACONTECER_BLUE = '#0000A2';
+const DARK_BLUE = '#07145f';
+const CR_RED = '#d71920';
 
 export const runtime = 'nodejs';
 export const alt = 'Perfil legislativo en Monitor Legislativo | Acontecer.co.cr';
@@ -15,6 +18,10 @@ type Diputado = {
   partido?: string;
   provincia?: string;
 };
+
+function bufferToArrayBuffer(buffer: Buffer): ArrayBuffer {
+  return buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength) as ArrayBuffer;
+}
 
 function wrapText(text: string, maxChars: number): string[] {
   const words = text.split(/\s+/).filter(Boolean);
@@ -61,6 +68,20 @@ function initials(name: string): string {
     .toUpperCase();
 }
 
+async function getAssetDataUrl(path: string, mime: string): Promise<string> {
+  try {
+    const data = await readFile(join(process.cwd(), 'public', path), 'base64');
+    return `data:${mime};base64,${data}`;
+  } catch {
+    return '';
+  }
+}
+
+async function getFontData(path: string): Promise<ArrayBuffer> {
+  const data = await readFile(join(process.cwd(), 'public', path));
+  return bufferToArrayBuffer(data);
+}
+
 async function getPerfil(slug: string): Promise<Diputado | null> {
   try {
     const res = await fetch(`${API}/diputados/${slug}`, { next: { revalidate: 3600 } });
@@ -83,14 +104,20 @@ async function getRecorteDataUrl(slug: string): Promise<string | null> {
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const [diputado, recorteSrc] = await Promise.all([getPerfil(slug), getRecorteDataUrl(slug)]);
+  const [diputado, recorteSrc, logoSrc, metropolis600, metropolis800] = await Promise.all([
+    getPerfil(slug),
+    getRecorteDataUrl(slug),
+    getAssetDataUrl('logo.png', 'image/png'),
+    getFontData('fonts/metropolis/metropolis-latin-600-normal.woff'),
+    getFontData('fonts/metropolis/metropolis-latin-800-normal.woff'),
+  ]);
 
   const nombre = diputado?.nombre_completo || 'Monitor Legislativo';
   const partido = partidoLabel(diputado?.fraccion, diputado?.partido);
-  const provincia = diputado?.provincia ? `Representación por ${diputado.provincia}` : 'Asamblea Legislativa 2026-2030';
-  const nombreLines = wrapText(nombre, 24).slice(0, 3);
+  const provincia = diputado?.provincia ? `Representación por ${diputado.provincia}` : 'Asamblea Legislativa';
+  const nombreLines = wrapText(nombre, 17).slice(0, 4);
   const nombreMax = Math.max(...nombreLines.map((line) => line.length), 0);
-  const nombreSize = nombreLines.length >= 3 || nombreMax > 26 ? 58 : 68;
+  const nombreSize = nombreLines.length >= 4 || nombreMax > 17 ? 55 : nombreLines.length >= 3 ? 62 : 72;
 
   return new ImageResponse(
     (
@@ -101,9 +128,9 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           display: 'flex',
           position: 'relative',
           overflow: 'hidden',
-          background: '#0000A2',
+          background: ACONTECER_BLUE,
           color: '#ffffff',
-          fontFamily: 'Arial, Helvetica, sans-serif',
+          fontFamily: 'Metropolis',
         }}
       >
         <div
@@ -111,20 +138,67 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             position: 'absolute',
             inset: 0,
             display: 'flex',
-            background: 'linear-gradient(115deg, #0000A2 0%, #0000A2 56%, #07145f 56%, #07145f 100%)',
+            background: `linear-gradient(122deg, ${ACONTECER_BLUE} 0%, ${ACONTECER_BLUE} 56%, ${DARK_BLUE} 56%, ${DARK_BLUE} 100%)`,
           }}
         />
+        <div style={{ position: 'absolute', inset: 0, display: 'flex', background: 'radial-gradient(circle at 79% 22%, rgba(73,183,255,0.36) 0%, rgba(255,255,255,0) 38%)' }} />
         <div
           style={{
             position: 'absolute',
-            right: 0,
-            top: 0,
-            width: 520,
-            height: 630,
+            left: -120,
+            top: 80,
+            width: 320,
+            height: 320,
             display: 'flex',
-            background: 'radial-gradient(circle at 52% 40%, rgba(255,255,255,0.2), rgba(255,255,255,0) 58%)',
+            borderRadius: '50%',
+            border: '44px solid rgba(255,255,255,0.06)',
           }}
         />
+
+        {recorteSrc ? (
+          <img
+            src={recorteSrc}
+            alt=""
+            style={{
+              position: 'absolute',
+              right: 10,
+              bottom: 18,
+              width: 515,
+              height: 600,
+              objectFit: 'contain',
+              objectPosition: 'bottom right',
+            }}
+          />
+        ) : (
+          <div
+            style={{
+              position: 'absolute',
+              right: 78,
+              bottom: 124,
+              width: 320,
+              height: 320,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: '50%',
+              background: 'rgba(255,255,255,0.14)',
+              border: '2px solid rgba(255,255,255,0.3)',
+              fontSize: 92,
+              fontWeight: 800,
+            }}
+          >
+            {initials(nombre)}
+          </div>
+        )}
+
+        <div style={{ position: 'absolute', top: 46, left: 0, right: 0, display: 'flex', justifyContent: 'center' }}>
+          {logoSrc ? (
+            <img src={logoSrc} alt="" style={{ width: 315, height: 51, objectFit: 'contain' }} />
+          ) : (
+            <div style={{ display: 'flex', fontSize: 34, fontWeight: 800 }}>acontecer.co.cr</div>
+          )}
+        </div>
+
         <div
           style={{
             position: 'absolute',
@@ -133,7 +207,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             width: '100%',
             height: 18,
             display: 'flex',
-            background: '#d71920',
+            background: CR_RED,
           }}
         />
         <div
@@ -152,105 +226,53 @@ export default async function Image({ params }: { params: Promise<{ slug: string
         <div
           style={{
             position: 'relative',
-            zIndex: 2,
-            width: 720,
+            width: 690,
             height: '100%',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'space-between',
-            padding: '56px 42px 56px 64px',
+            justifyContent: 'center',
+            padding: '96px 0 74px 72px',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-            <div
-              style={{
-                width: 42,
-                height: 42,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                border: '2px solid rgba(255,255,255,0.86)',
-                fontSize: 24,
-                fontWeight: 800,
-              }}
-            >
-              A
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <div style={{ display: 'flex', fontSize: 25, fontWeight: 800, letterSpacing: 0 }}>Acontecer.co.cr</div>
-              <div style={{ display: 'flex', fontSize: 15, opacity: 0.78 }}>Monitor Legislativo</div>
-            </div>
+          <div style={{ display: 'flex', color: '#49b7ff', fontSize: 18, fontWeight: 800, letterSpacing: 4, textTransform: 'uppercase', marginBottom: 20 }}>
+            Monitor Legislativo
           </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-            <div style={{ display: 'flex', fontSize: 24, fontWeight: 700, color: '#ffffff', opacity: 0.86 }}>
-              Perfil legislativo
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              {nombreLines.map((line) => (
-                <div key={line} style={{ display: 'flex', fontSize: nombreSize, lineHeight: 1.03, fontWeight: 900 }}>
-                  {line}
-                </div>
-              ))}
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 5,
-                borderLeft: '8px solid #d71920',
-                paddingLeft: 18,
-              }}
-            >
-              <div style={{ display: 'flex', fontSize: 31, lineHeight: 1.1, fontWeight: 800 }}>{provincia}</div>
-              <div style={{ display: 'flex', fontSize: 22, lineHeight: 1.15, fontWeight: 700, opacity: 0.8 }}>{partido}</div>
-            </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 3, marginBottom: 24 }}>
+            {nombreLines.map((line) => (
+              <div key={line} style={{ display: 'flex', fontSize: nombreSize, lineHeight: 0.96, fontWeight: 800, letterSpacing: 0 }}>
+                {line}
+              </div>
+            ))}
           </div>
-
-          <div style={{ display: 'flex', fontSize: 18, opacity: 0.76, maxWidth: 620 }}>
-            Asamblea Legislativa de Costa Rica 2026-2030
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: 520 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '12px 16px', borderRadius: 14, background: 'rgba(255,255,255,0.13)', border: '1px solid rgba(255,255,255,0.2)' }}>
+              <div style={{ display: 'flex', width: 10, height: 42, borderRadius: 999, background: '#49b7ff' }} />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                <div style={{ display: 'flex', fontSize: 13, fontWeight: 800, letterSpacing: 2.2, color: 'rgba(255,255,255,0.6)', textTransform: 'uppercase' }}>Curul</div>
+                <div style={{ display: 'flex', fontSize: 27, fontWeight: 800, lineHeight: 1.05 }}>{provincia}</div>
+              </div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '12px 16px', borderRadius: 14, background: 'rgba(255,255,255,0.13)', border: '1px solid rgba(255,255,255,0.2)' }}>
+              <div style={{ display: 'flex', width: 10, height: 42, borderRadius: 999, background: CR_RED }} />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                <div style={{ display: 'flex', fontSize: 13, fontWeight: 800, letterSpacing: 2.2, color: 'rgba(255,255,255,0.6)', textTransform: 'uppercase' }}>Fracción</div>
+                <div style={{ display: 'flex', fontSize: 27, fontWeight: 800, lineHeight: 1.05 }}>{partido}</div>
+              </div>
+            </div>
           </div>
         </div>
 
-        {recorteSrc ? (
-          <img
-            src={recorteSrc}
-            alt=""
-            style={{
-              position: 'absolute',
-              zIndex: 3,
-              right: 18,
-              bottom: 18,
-              width: 500,
-              height: 600,
-              objectFit: 'contain',
-              objectPosition: 'bottom right',
-            }}
-          />
-        ) : (
-          <div
-            style={{
-              position: 'absolute',
-              zIndex: 3,
-              right: 72,
-              bottom: 116,
-              width: 330,
-              height: 330,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: '50%',
-              background: 'rgba(255,255,255,0.14)',
-              border: '2px solid rgba(255,255,255,0.3)',
-              fontSize: 96,
-              fontWeight: 900,
-            }}
-          >
-            {initials(nombre)}
-          </div>
-        )}
+        <div style={{ position: 'absolute', left: 72, bottom: 44, display: 'flex', fontSize: 18, fontWeight: 600, color: 'rgba(255,255,255,0.72)' }}>
+          Asamblea Legislativa de Costa Rica 2026-2030
+        </div>
       </div>
     ),
-    size,
+    {
+      ...size,
+      fonts: [
+        { name: 'Metropolis', data: metropolis600, weight: 600, style: 'normal' },
+        { name: 'Metropolis', data: metropolis800, weight: 800, style: 'normal' },
+      ],
+    },
   );
 }
