@@ -9,11 +9,12 @@ const NAV_ITEMS = [
   { num: '02', name: 'Nacionales',      href: '/categoria/nacionales' },
   { num: '03', name: 'Internacionales', href: '/categoria/internacionales' },
   { num: '04', name: 'Deportes',        href: '/categoria/deportes' },
-  { num: '05', name: 'Economía',        href: '/categoria/economia' },
-  { num: '06', name: 'Entretenimiento', href: '/categoria/entretenimiento' },
-  { num: '07', name: 'Tecnología',      href: '/categoria/tecnologia' },
-  { num: '08', name: 'Opinión',         href: '/categoria/opinion' },
-  { num: '09', name: 'Turismo',         href: '/categoria/turismo' },
+  { num: '05', name: 'Mundial 2026',    href: '/mundial-2026' },
+  { num: '06', name: 'Economía',        href: '/categoria/economia' },
+  { num: '07', name: 'Entretenimiento', href: '/categoria/entretenimiento' },
+  { num: '08', name: 'Tecnología',      href: '/categoria/tecnologia' },
+  { num: '09', name: 'Opinión',         href: '/categoria/opinion' },
+  { num: '10', name: 'Turismo',         href: '/categoria/turismo' },
 ];
 
 /* ── SVG Icons ───────────────────────────────────────────────────────────── */
