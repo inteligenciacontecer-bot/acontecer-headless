@@ -153,8 +153,24 @@ def fecha_de(texto, modified):
 
 
 # ── Resumen con Claude (cacheado) ────────────────────────────────────────────
+def _anthropic_key():
+    """Lee la API key del entorno o, si no está, del .env del bot (solo esa línea).
+    Nunca se imprime. Mismo patrón que get_db() leyendo wp-config.php."""
+    k = os.environ.get("ANTHROPIC_API_KEY", "")
+    if k:
+        return k
+    try:
+        with open("/opt/acontecer-ia/.env") as f:
+            for line in f:
+                if line.startswith("ANTHROPIC_API_KEY="):
+                    return line.split("=", 1)[1].strip().strip('"').strip("'")
+    except Exception:
+        pass
+    return ""
+
+
 def resumir_con_claude(texto, contexto):
-    key = os.environ.get("ANTHROPIC_API_KEY", "")
+    key = _anthropic_key()
     texto = (texto or "").strip()
     if not texto:
         return ""
