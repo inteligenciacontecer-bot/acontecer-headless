@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import MundialGroupsTable from '@/components/MundialGroupsTable';
 import './mundial.css';
 import {
   MUNDIAL_GROUPS,
   MUNDIAL_MATCHES,
   MUNDIAL_SOURCE,
   formatCostaRicaDateTime,
+  getMundialGroupStandings,
   getMatchesByDate,
   getUpcomingMundialMatches,
 } from '@/lib/mundial-2026';
@@ -47,6 +49,7 @@ export default function Mundial2026Page() {
   const upcoming = getUpcomingMundialMatches(6);
   const dates = getMatchesByDate().slice(0, 6);
   const groupCount = Object.keys(MUNDIAL_GROUPS).length;
+  const standings = getMundialGroupStandings();
 
   const schema = {
     '@context': 'https://schema.org',
@@ -153,20 +156,11 @@ export default function Mundial2026Page() {
         <section id="grupos" style={{ marginTop: 30 }}>
           <div className="wc-section-head">
             <div>
-              <h2>Grupos del Mundial 2026</h2>
-              <p>Doce grupos de cuatro selecciones para la primera fase.</p>
+              <h2>Tablas de grupos del Mundial 2026</h2>
+              <p>Posiciones con banderas, puntos, partidos jugados, goles a favor, goles en contra y diferencia de gol.</p>
             </div>
           </div>
-          <div className="wc-groups-grid">
-            {Object.entries(MUNDIAL_GROUPS).map(([group, teams]) => (
-              <article className="wc-group-card" key={group}>
-                <h3>Grupo {group}</h3>
-                <ol>
-                  {teams.map((team) => <li key={team}>{team}</li>)}
-                </ol>
-              </article>
-            ))}
-          </div>
+          <MundialGroupsTable initialGroups={standings} />
         </section>
       </div>
     </main>

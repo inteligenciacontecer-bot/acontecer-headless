@@ -29,11 +29,82 @@ export type MundialMatch = {
   events?: MundialEvent[];
 };
 
+export type MundialTeamFlag = {
+  code: string;
+  url: string;
+};
+
+export type MundialGroupStanding = {
+  group: string;
+  team: string;
+  flag: MundialTeamFlag;
+  seed: number;
+  played: number;
+  won: number;
+  drawn: number;
+  lost: number;
+  goalsFor: number;
+  goalsAgainst: number;
+  goalDifference: number;
+  points: number;
+};
+
 export const MUNDIAL_SOURCE = {
   name: 'FourFourTwo / calendario Mundial 2026 con base en calendario FIFA',
   url: 'https://www.fourfourtwo.com/competition/world-cup-2026-fixtures-and-results',
   officialUrl: 'https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/match-schedule-fixtures-results-teams-stadiums',
   importedAt: '2026-06-08T10:58:10.871Z',
+};
+
+export const MUNDIAL_TEAM_FLAGS: Record<string, MundialTeamFlag> = {
+  "Alemania": { code: "de", url: "https://flagcdn.com/de.svg" },
+  "Arabia Saudita": { code: "sa", url: "https://flagcdn.com/sa.svg" },
+  "Argelia": { code: "dz", url: "https://flagcdn.com/dz.svg" },
+  "Argentina": { code: "ar", url: "https://flagcdn.com/ar.svg" },
+  "Australia": { code: "au", url: "https://flagcdn.com/au.svg" },
+  "Austria": { code: "at", url: "https://flagcdn.com/at.svg" },
+  "Bélgica": { code: "be", url: "https://flagcdn.com/be.svg" },
+  "Bosnia y Herzegovina": { code: "ba", url: "https://flagcdn.com/ba.svg" },
+  "Brasil": { code: "br", url: "https://flagcdn.com/br.svg" },
+  "Cabo Verde": { code: "cv", url: "https://flagcdn.com/cv.svg" },
+  "Canadá": { code: "ca", url: "https://flagcdn.com/ca.svg" },
+  "Chequia": { code: "cz", url: "https://flagcdn.com/cz.svg" },
+  "Colombia": { code: "co", url: "https://flagcdn.com/co.svg" },
+  "Corea del Sur": { code: "kr", url: "https://flagcdn.com/kr.svg" },
+  "Costa de Marfil": { code: "ci", url: "https://flagcdn.com/ci.svg" },
+  "Croacia": { code: "hr", url: "https://flagcdn.com/hr.svg" },
+  "Curazao": { code: "cw", url: "https://flagcdn.com/cw.svg" },
+  "Ecuador": { code: "ec", url: "https://flagcdn.com/ec.svg" },
+  "Egipto": { code: "eg", url: "https://flagcdn.com/eg.svg" },
+  "Escocia": { code: "gb-sct", url: "https://flagcdn.com/gb-sct.svg" },
+  "España": { code: "es", url: "https://flagcdn.com/es.svg" },
+  "Estados Unidos": { code: "us", url: "https://flagcdn.com/us.svg" },
+  "Francia": { code: "fr", url: "https://flagcdn.com/fr.svg" },
+  "Ghana": { code: "gh", url: "https://flagcdn.com/gh.svg" },
+  "Haití": { code: "ht", url: "https://flagcdn.com/ht.svg" },
+  "Inglaterra": { code: "gb-eng", url: "https://flagcdn.com/gb-eng.svg" },
+  "Irak": { code: "iq", url: "https://flagcdn.com/iq.svg" },
+  "Irán": { code: "ir", url: "https://flagcdn.com/ir.svg" },
+  "Japón": { code: "jp", url: "https://flagcdn.com/jp.svg" },
+  "Jordania": { code: "jo", url: "https://flagcdn.com/jo.svg" },
+  "Marruecos": { code: "ma", url: "https://flagcdn.com/ma.svg" },
+  "México": { code: "mx", url: "https://flagcdn.com/mx.svg" },
+  "Noruega": { code: "no", url: "https://flagcdn.com/no.svg" },
+  "Nueva Zelanda": { code: "nz", url: "https://flagcdn.com/nz.svg" },
+  "Países Bajos": { code: "nl", url: "https://flagcdn.com/nl.svg" },
+  "Panamá": { code: "pa", url: "https://flagcdn.com/pa.svg" },
+  "Paraguay": { code: "py", url: "https://flagcdn.com/py.svg" },
+  "Portugal": { code: "pt", url: "https://flagcdn.com/pt.svg" },
+  "Qatar": { code: "qa", url: "https://flagcdn.com/qa.svg" },
+  "RD Congo": { code: "cd", url: "https://flagcdn.com/cd.svg" },
+  "Senegal": { code: "sn", url: "https://flagcdn.com/sn.svg" },
+  "Sudáfrica": { code: "za", url: "https://flagcdn.com/za.svg" },
+  "Suecia": { code: "se", url: "https://flagcdn.com/se.svg" },
+  "Suiza": { code: "ch", url: "https://flagcdn.com/ch.svg" },
+  "Túnez": { code: "tn", url: "https://flagcdn.com/tn.svg" },
+  "Turquía": { code: "tr", url: "https://flagcdn.com/tr.svg" },
+  "Uruguay": { code: "uy", url: "https://flagcdn.com/uy.svg" },
+  "Uzbekistán": { code: "uz", url: "https://flagcdn.com/uz.svg" },
 };
 
 export const MUNDIAL_GROUPS: Record<string, string[]> = {
@@ -1807,6 +1878,78 @@ export function getMatchesByPhase(): Array<{ phase: string; phaseEs: string; mat
     buckets.set(match.phase, list);
   }
   return Array.from(buckets.entries()).map(([phase, matches]) => ({ phase, phaseEs: matches[0]?.phaseEs || phase, matches }));
+}
+
+export function getMundialTeamFlag(team: string): MundialTeamFlag {
+  return MUNDIAL_TEAM_FLAGS[team] || { code: 'unknown', url: 'https://flagcdn.com/un.svg' };
+}
+
+function emptyStanding(group: string, team: string, seed: number): MundialGroupStanding {
+  return {
+    group,
+    team,
+    flag: getMundialTeamFlag(team),
+    seed,
+    played: 0,
+    won: 0,
+    drawn: 0,
+    lost: 0,
+    goalsFor: 0,
+    goalsAgainst: 0,
+    goalDifference: 0,
+    points: 0,
+  };
+}
+
+function applyResult(standing: MundialGroupStanding, goalsFor: number, goalsAgainst: number) {
+  standing.played += 1;
+  standing.goalsFor += goalsFor;
+  standing.goalsAgainst += goalsAgainst;
+  standing.goalDifference = standing.goalsFor - standing.goalsAgainst;
+
+  if (goalsFor > goalsAgainst) {
+    standing.won += 1;
+    standing.points += 3;
+  } else if (goalsFor === goalsAgainst) {
+    standing.drawn += 1;
+    standing.points += 1;
+  } else {
+    standing.lost += 1;
+  }
+}
+
+export function getMundialGroupStandings(matches: MundialMatch[] = MUNDIAL_MATCHES): Array<{ group: string; teams: MundialGroupStanding[] }> {
+  const groups = new Map<string, Map<string, MundialGroupStanding>>();
+
+  for (const [group, teams] of Object.entries(MUNDIAL_GROUPS)) {
+    groups.set(group, new Map(teams.map((team, index) => [team, emptyStanding(group, team, index + 1)])));
+  }
+
+  for (const match of matches) {
+    if (!match.group || match.homeScore == null || match.awayScore == null) continue;
+    if (match.status !== 'live' && match.status !== 'finished') continue;
+
+    const group = groups.get(match.group);
+    if (!group) continue;
+
+    const home = group.get(match.home);
+    const away = group.get(match.away);
+    if (!home || !away) continue;
+
+    applyResult(home, match.homeScore, match.awayScore);
+    applyResult(away, match.awayScore, match.homeScore);
+  }
+
+  return Array.from(groups.entries()).map(([group, teamMap]) => ({
+    group,
+    teams: Array.from(teamMap.values()).sort((a, b) => {
+      if (b.points !== a.points) return b.points - a.points;
+      if (b.goalDifference !== a.goalDifference) return b.goalDifference - a.goalDifference;
+      if (b.goalsFor !== a.goalsFor) return b.goalsFor - a.goalsFor;
+      if (b.won !== a.won) return b.won - a.won;
+      return a.seed - b.seed;
+    }),
+  }));
 }
 
 export function formatCostaRicaDateTime(iso: string | null): string {
