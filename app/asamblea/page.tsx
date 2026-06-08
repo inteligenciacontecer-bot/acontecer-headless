@@ -192,6 +192,7 @@ export default async function AsambleaPage() {
               { href: '/asamblea/votaciones',  label: 'Votaciones' },
               { href: '/asamblea/expedientes', label: 'Expedientes' },
               { href: '/asamblea/comisiones',  label: 'Comisiones' },
+              { href: '/asamblea/actas',       label: 'Actas' },
               { href: '/asamblea/en-vivo',     label: 'En Vivo' },
             ].map(item => (
               <Link key={item.href} href={item.href} style={{
