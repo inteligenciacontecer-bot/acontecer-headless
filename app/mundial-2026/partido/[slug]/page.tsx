@@ -61,6 +61,85 @@ function getScoreValue(score?: number | null) {
   return score ?? 0;
 }
 
+function getPlayerInitials(name: string) {
+  return name
+    .replace(/\./g, ' ')
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join('')
+    .toUpperCase();
+}
+
+function buildProjectedLineup(roster: NonNullable<ReturnType<typeof getMundialTeamProfile>>['roster']) {
+  const byPosition = {
+    GK: roster.filter((player) => player.position === 'GK'),
+    DF: roster.filter((player) => player.position === 'DF'),
+    MF: roster.filter((player) => player.position === 'MF'),
+    FW: roster.filter((player) => player.position === 'FW'),
+  };
+
+  const starters = [
+    byPosition.FW.slice(0, 3),
+    byPosition.MF.slice(0, 3),
+    byPosition.DF.slice(0, 4),
+    byPosition.GK.slice(0, 1),
+  ];
+
+  return starters;
+}
+
+function LineupPlayerToken({ player }: { player: NonNullable<ReturnType<typeof getMundialTeamProfile>>['roster'][number] }) {
+  return (
+    <div className="wc-lineup-player">
+      <div className="wc-lineup-avatar">
+        <span>{player.number}</span>
+        {player.photoUrl ? (
+          <img src={player.photoUrl} alt={player.name} loading="lazy" />
+        ) : (
+          <b>{getPlayerInitials(player.name)}</b>
+        )}
+      </div>
+      <strong>{player.name}</strong>
+      <em>{player.position}</em>
+    </div>
+  );
+}
+
+function TeamLineupPitch({ team, profile, formation }: {
+  team: string;
+  profile: ReturnType<typeof getMundialTeamProfile>;
+  formation: string;
+}) {
+  const rows = buildProjectedLineup(profile?.roster || []);
+  const sourceUrl = profile?.roster[0]?.sourceUrl;
+
+  return (
+    <article className="wc-lineup-pitch-card">
+      <header>
+        <div>
+          <span>{formation}</span>
+          <strong>{team}</strong>
+        </div>
+        <em>Alineación por confirmar</em>
+      </header>
+      <div className="wc-lineup-pitch" aria-label={`Vista previa de alineación de ${team}`}>
+        {rows.map((row, rowIndex) => (
+          <div className={`wc-lineup-row wc-lineup-row--${row.length || 1}`} key={`${team}-${rowIndex}`}>
+            {row.map((player) => <LineupPlayerToken key={`${team}-${player.number}-${player.name}`} player={player} />)}
+          </div>
+        ))}
+      </div>
+      <p>
+        Vista previa armada con la lista de convocados. Se reemplazará por titulares confirmados, suplentes y fotos de
+        jugador cuando la alineación oficial esté disponible.
+        {sourceUrl && <> Fuente de convocatoria: <a href={sourceUrl} target="_blank" rel="noopener noreferrer">lista FIFA</a>.</>}
+      </p>
+    </article>
+  );
+}
+
 export function generateStaticParams() {
   return MUNDIAL_MATCHES.map((match) => ({ slug: match.slug }));
 }
@@ -366,27 +445,15 @@ export default async function MundialPartidoPage({ params }: Props) {
                   <p className="wc-kicker">Equipos</p>
                   <h2>Alineaciones</h2>
                 </div>
-                <span className="wc-match-chip">Pendiente</span>
+                <span className="wc-match-chip">Cancha táctica</span>
               </div>
-              <div className="wc-lineups">
-                <div>
-                  <img src={homeFlag.url} alt="" />
-                  <strong>{match.home}</strong>
-                  <span>{center.lineups.home.formation || 'Formación por confirmar'}</span>
-                  <div className="wc-mini-pitch" aria-hidden="true">
-                    <i /><i /><i /><i /><i /><i /><i />
-                  </div>
-                  <p>La formación titular, suplentes y entrenador aparecerán aquí cuando el proveedor confirme la información.</p>
-                </div>
-                <div>
-                  <img src={awayFlag.url} alt="" />
-                  <strong>{match.away}</strong>
-                  <span>{center.lineups.away.formation || 'Formación por confirmar'}</span>
-                  <div className="wc-mini-pitch" aria-hidden="true">
-                    <i /><i /><i /><i /><i /><i /><i />
-                  </div>
-                  <p>Este espacio queda preparado para alineaciones, sustituciones y novedades previas al inicio del partido.</p>
-                </div>
+              <div className="wc-lineup-tabs" aria-hidden="true">
+                <span>{match.home}</span>
+                <span>{match.away}</span>
+              </div>
+              <div className="wc-lineup-pitches">
+                <TeamLineupPitch team={match.home} profile={homeProfile} formation={center.lineups.home.formation || '4-3-3'} />
+                <TeamLineupPitch team={match.away} profile={awayProfile} formation={center.lineups.away.formation || '4-3-3'} />
               </div>
             </section>
 

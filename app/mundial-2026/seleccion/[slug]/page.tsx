@@ -7,6 +7,7 @@ import {
   getMundialTeamProfile,
   getMundialTeams,
 } from '@/lib/mundial-2026';
+import { MUNDIAL_ROSTER_SOURCE } from '@/lib/mundial-rosters';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -20,6 +21,24 @@ function formatFifaRankingDate(date: string | null): string {
     year: 'numeric',
     timeZone: 'UTC',
   }).format(new Date(`${date}T00:00:00.000Z`));
+}
+
+const ROSTER_POSITION_LABELS = {
+  GK: 'Porteros',
+  DF: 'Defensas',
+  MF: 'Mediocampistas',
+  FW: 'Delanteros',
+} as const;
+
+function getPlayerInitials(name: string) {
+  return name
+    .replace(/\./g, ' ')
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join('')
+    .toUpperCase();
 }
 
 export function generateStaticParams() {
@@ -97,6 +116,11 @@ export default async function MundialTeamPage({ params }: Props) {
   };
   const rankingLabel = team.fifaRanking ? `#${team.fifaRanking}` : 'Por conectar';
   const rankingDate = formatFifaRankingDate(team.fifaRankingUpdatedAt);
+  const rosterByPosition = Object.entries(ROSTER_POSITION_LABELS).map(([position, label]) => ({
+    position,
+    label,
+    players: team.roster.filter((player) => player.position === position),
+  }));
 
   return (
     <main className="wc-page">
@@ -193,15 +217,36 @@ export default async function MundialTeamPage({ params }: Props) {
                   <p className="wc-kicker">Plantilla</p>
                   <h2>Convocados</h2>
                 </div>
-                <span className="wc-match-chip">Por confirmar</span>
+                <span className="wc-match-chip">{team.roster.length} jugadores</span>
               </div>
-              <div className="wc-empty-module">
-                <strong>Lista preparada para carga automática</strong>
-                <p>
-                  Aquí aparecerán porteros, defensas, mediocampistas, delanteros, entrenador y bajas cuando se conecte
-                  una fuente oficial o scraper verificado.
-                </p>
+              <div className="wc-roster-groups">
+                {rosterByPosition.map((group) => (
+                  <div className="wc-roster-group" key={group.position}>
+                    <h3>{group.label}</h3>
+                    <div className="wc-roster-grid">
+                      {group.players.map((player) => (
+                        <article className="wc-roster-card" key={`${player.number}-${player.name}`}>
+                          <div className="wc-roster-avatar">
+                            <span>{player.number}</span>
+                            {player.photoUrl ? (
+                              <img src={player.photoUrl} alt={player.name} loading="lazy" />
+                            ) : (
+                              <b>{getPlayerInitials(player.name)}</b>
+                            )}
+                          </div>
+                          <div>
+                            <strong>{player.name}</strong>
+                            <em>{player.club}</em>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
+              <p className="wc-source">
+                Convocatoria importada desde lista FIFA publicada el 3 de junio de 2026. Fuente espejo: <a href={MUNDIAL_ROSTER_SOURCE.url} target="_blank" rel="noopener noreferrer">World Cup Ranking</a>.
+              </p>
             </section>
 
             <section className="wc-match-module" id="historial">
@@ -235,7 +280,7 @@ export default async function MundialTeamPage({ params }: Props) {
               <div><dt>Ranking FIFA</dt><dd>{rankingLabel}</dd></div>
               <div><dt>Código FIFA</dt><dd>{team.fifaCode || 'Por confirmar'}</dd></div>
               <div><dt>Partidos</dt><dd>{team.matches.length}</dd></div>
-              <div><dt>Convocados</dt><dd>Por confirmar</dd></div>
+              <div><dt>Convocados</dt><dd>{team.roster.length}</dd></div>
               <div><dt>Historial</dt><dd>Por alimentar</dd></div>
             </dl>
             <p className="wc-source">

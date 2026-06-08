@@ -1,3 +1,6 @@
+import { MUNDIAL_TEAM_ROSTERS } from './mundial-rosters';
+import type { MundialRosterPlayer } from './mundial-rosters';
+
 export type MundialMatchStatus = 'scheduled' | 'live' | 'finished';
 
 export type MundialEvent = {
@@ -121,7 +124,7 @@ export type MundialTeamProfile = {
   fifaRanking: number | null;
   fifaRankingUpdatedAt: string | null;
   fifaRankingSourceUrl: string | null;
-  roster: MundialLineupPlayer[];
+  roster: MundialRosterPlayer[];
   recentResults: MundialHeadToHeadMatch[];
   worldCupHistory: string[];
 };
@@ -2136,7 +2139,7 @@ export function getMundialTeamProfile(slugOrName: string, knownGroup?: string): 
     fifaRanking: ranking?.rank ?? null,
     fifaRankingUpdatedAt: ranking?.updatedAt ?? null,
     fifaRankingSourceUrl: ranking?.sourceUrl ?? null,
-    roster: [],
+    roster: MUNDIAL_TEAM_ROSTERS[teamSlug] || [],
     recentResults: [],
     worldCupHistory: [],
   };
