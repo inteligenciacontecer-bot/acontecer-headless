@@ -6,7 +6,18 @@ export const metadata: Metadata = {
   title: 'Diputados de Costa Rica 2026-2030',
   description: 'Directorio completo de los 57 diputados de la Asamblea Legislativa de Costa Rica 2026-2030. Perfiles, fracciones, asistencia y gastos.',
   alternates: { canonical: 'https://acontecer.co.cr/asamblea/diputados' },
-  openGraph: { url: 'https://acontecer.co.cr/asamblea/diputados' },
+  openGraph: {
+    url: 'https://acontecer.co.cr/asamblea/diputados',
+    title: 'Diputados de Costa Rica 2026-2030',
+    description: 'Directorio completo de los 57 diputados de la Asamblea Legislativa de Costa Rica 2026-2030. Perfiles, fracciones, asistencia y gastos.',
+    images: [{ url: 'https://acontecer.co.cr/asamblea/diputados/opengraph-image', width: 1200, height: 630, alt: 'Diputados de Costa Rica 2026-2030' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Diputados de Costa Rica 2026-2030',
+    description: 'Directorio completo de diputados, fracciones, asistencia y gastos.',
+    images: ['https://acontecer.co.cr/asamblea/diputados/opengraph-image'],
+  },
 };
 
 const API = 'https://cms.acontecer.co.cr/wp-json/acontecer/v1/asamblea';

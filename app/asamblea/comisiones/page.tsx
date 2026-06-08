@@ -6,7 +6,18 @@ export const metadata: Metadata = {
   title: 'Comisiones Legislativas — Asamblea de Costa Rica',
   description: 'Composición de las comisiones permanentes y especiales de la Asamblea Legislativa de Costa Rica. Diputados miembros por comisión.',
   alternates: { canonical: 'https://acontecer.co.cr/asamblea/comisiones' },
-  openGraph: { url: 'https://acontecer.co.cr/asamblea/comisiones' },
+  openGraph: {
+    url: 'https://acontecer.co.cr/asamblea/comisiones',
+    title: 'Comisiones Legislativas — Asamblea de Costa Rica',
+    description: 'Composición de las comisiones permanentes y especiales de la Asamblea Legislativa de Costa Rica. Diputados miembros por comisión.',
+    images: [{ url: 'https://acontecer.co.cr/asamblea/comisiones/opengraph-image', width: 1200, height: 630, alt: 'Comisiones Legislativas' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Comisiones Legislativas — Asamblea de Costa Rica',
+    description: 'Composición de comisiones permanentes y especiales de la Asamblea Legislativa.',
+    images: ['https://acontecer.co.cr/asamblea/comisiones/opengraph-image'],
+  },
 };
 
 const API = 'https://cms.acontecer.co.cr/wp-json/acontecer/v1/asamblea';

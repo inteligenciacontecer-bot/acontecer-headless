@@ -1,4 +1,5 @@
 ﻿import Link from 'next/link';
+import type { Metadata } from 'next';
 import VotacionesClient from './VotacionesClient';
 
 const API = 'https://cms.acontecer.co.cr/wp-json/acontecer/v1/asamblea';
@@ -11,6 +12,24 @@ async function getVotaciones() {
 }
 
 export const revalidate = 30;
+
+export const metadata: Metadata = {
+  title: 'Votaciones del Plenario — Asamblea de Costa Rica',
+  description: 'Registro de votaciones del Plenario Legislativo de Costa Rica, resultados y seguimiento de decisiones legislativas.',
+  alternates: { canonical: 'https://acontecer.co.cr/asamblea/votaciones' },
+  openGraph: {
+    url: 'https://acontecer.co.cr/asamblea/votaciones',
+    title: 'Votaciones del Plenario — Asamblea de Costa Rica',
+    description: 'Registro de votaciones del Plenario Legislativo de Costa Rica, resultados y seguimiento de decisiones legislativas.',
+    images: [{ url: 'https://acontecer.co.cr/asamblea/votaciones/opengraph-image', width: 1200, height: 630, alt: 'Votaciones del Plenario' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Votaciones del Plenario — Asamblea de Costa Rica',
+    description: 'Resultados y seguimiento de votaciones legislativas.',
+    images: ['https://acontecer.co.cr/asamblea/votaciones/opengraph-image'],
+  },
+};
 
 export default async function VotacionesPage() {
   const votaciones = await getVotaciones();

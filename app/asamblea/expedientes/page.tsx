@@ -5,6 +5,18 @@ export const metadata: Metadata = {
   title: 'Expedientes Legislativos — Asamblea de Costa Rica',
   description: 'Consulta proyectos de ley, su estado en el proceso legislativo, comisión asignada y proponentes en la Asamblea Legislativa de Costa Rica.',
   alternates: { canonical: 'https://acontecer.co.cr/asamblea/expedientes' },
+  openGraph: {
+    url: 'https://acontecer.co.cr/asamblea/expedientes',
+    title: 'Expedientes Legislativos — Asamblea de Costa Rica',
+    description: 'Consulta proyectos de ley, su estado en el proceso legislativo, comisión asignada y proponentes.',
+    images: [{ url: 'https://acontecer.co.cr/asamblea/expedientes/opengraph-image', width: 1200, height: 630, alt: 'Expedientes Legislativos' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Expedientes Legislativos — Asamblea de Costa Rica',
+    description: 'Proyectos de ley, trámite legislativo, comisiones y proponentes.',
+    images: ['https://acontecer.co.cr/asamblea/expedientes/opengraph-image'],
+  },
 };
 
 export const revalidate = 1800;

@@ -16,7 +16,7 @@ type BrandOgOptions = {
   accentColor: string;
   cards: BrandOgCard[];
   footer?: string;
-  variant?: 'gobierno' | 'servicios' | 'feriados' | 'restriccion' | 'loteria';
+  variant?: 'gobierno' | 'servicios' | 'feriados' | 'restriccion' | 'loteria' | 'asamblea';
 };
 
 function assetDataUrl(path: string, mime: string): string {
@@ -143,6 +143,49 @@ function variantPattern(variant: BrandOgOptions['variant'], accentColor: string)
             }}
           />
         ))}
+      </div>
+    );
+  }
+
+  if (variant === 'asamblea') {
+    return (
+      <div style={{ position: 'absolute', right: 78, bottom: 60, width: 318, height: 132, display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <div style={{ display: 'flex', gap: 14, alignItems: 'flex-end' }}>
+          {[42, 68, 98, 58].map((height, i) => (
+            <div
+              key={height}
+              style={{
+                width: 60,
+                height,
+                display: 'flex',
+                borderRadius: 12,
+                background: i === 2 ? '#ffffff' : 'rgba(255,255,255,0.15)',
+                border: '1px solid rgba(255,255,255,0.18)',
+              }}
+            />
+          ))}
+        </div>
+        <div style={{ display: 'flex', gap: 12 }}>
+          {['57', 'Votos', 'Leyes'].map((label, i) => (
+            <div
+              key={label}
+              style={{
+                height: 38,
+                padding: '0 15px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: 999,
+                background: i === 0 ? accentColor : 'rgba(255,255,255,0.14)',
+                color: '#ffffff',
+                fontSize: i === 0 ? 21 : 17,
+                fontWeight: 800,
+              }}
+            >
+              {label}
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
