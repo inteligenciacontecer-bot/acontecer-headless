@@ -7,6 +7,7 @@ import {
   MUNDIAL_MATCHES,
   formatCostaRicaDateTime,
   getMundialMatch,
+  getMundialMatchCenter,
   getMundialTeamFlag,
 } from '@/lib/mundial-2026';
 
@@ -134,14 +135,8 @@ export default async function MundialPartidoPage({ params }: Props) {
   const statusLabel = getMatchStatusLabel(match);
   const homeScore = getScoreValue(match.homeScore);
   const awayScore = getScoreValue(match.awayScore);
-  const matchStats = [
-    { label: 'Posesión', home: '-', away: '-' },
-    { label: 'Remates', home: '-', away: '-' },
-    { label: 'Remates al arco', home: '-', away: '-' },
-    { label: 'Faltas', home: '-', away: '-' },
-    { label: 'Tarjetas amarillas', home: '-', away: '-' },
-    { label: 'Tiros de esquina', home: '-', away: '-' },
-  ];
+  const center = getMundialMatchCenter(match);
+  const matchStats = center.statistics;
   const faq = [
     {
       question: `¿Cuándo juega ${match.home} vs ${match.away}?`,
@@ -276,8 +271,11 @@ export default async function MundialPartidoPage({ params }: Props) {
           <Link href="/mundial-2026">Portada</Link>
           <Link href="/mundial-2026/calendario">Calendario</Link>
           <a className="is-active" href="#resumen">Resumen</a>
+          <a href="#cronica">Crónica</a>
           <a href="#estadisticas">Estadísticas</a>
           <a href="#alineaciones">Alineaciones</a>
+          <a href="#duelos-previos">Duelos previos</a>
+          <a href="#publico">Público</a>
           <a href="#minuto-a-minuto">Minuto a minuto</a>
         </div>
       </nav>
@@ -313,6 +311,25 @@ export default async function MundialPartidoPage({ params }: Props) {
               </p>
             </section>
 
+            <section className="wc-match-module" id="cronica">
+              <div className="wc-module-head">
+                <div>
+                  <p className="wc-kicker">Crónica</p>
+                  <h2>{center.chronicle.headline}</h2>
+                </div>
+                <span className="wc-match-chip">{center.dataStatus === 'scheduled-shell' ? 'Lista' : center.dataStatus}</span>
+              </div>
+              <p className="wc-chronicle-lead">{center.chronicle.lead}</p>
+              <div className="wc-chronicle-points">
+                {center.chronicle.keyPoints.map((point) => (
+                  <div key={point}>
+                    <span aria-hidden="true" />
+                    <p>{point}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
             <section className="wc-match-module" id="estadisticas">
               <div className="wc-module-head">
                 <div>
@@ -344,14 +361,79 @@ export default async function MundialPartidoPage({ params }: Props) {
                 <div>
                   <img src={homeFlag.url} alt="" />
                   <strong>{match.home}</strong>
+                  <span>{center.lineups.home.formation || 'Formación por confirmar'}</span>
+                  <div className="wc-mini-pitch" aria-hidden="true">
+                    <i /><i /><i /><i /><i /><i /><i />
+                  </div>
                   <p>La formación titular, suplentes y entrenador aparecerán aquí cuando el proveedor confirme la información.</p>
                 </div>
                 <div>
                   <img src={awayFlag.url} alt="" />
                   <strong>{match.away}</strong>
+                  <span>{center.lineups.away.formation || 'Formación por confirmar'}</span>
+                  <div className="wc-mini-pitch" aria-hidden="true">
+                    <i /><i /><i /><i /><i /><i /><i />
+                  </div>
                   <p>Este espacio queda preparado para alineaciones, sustituciones y novedades previas al inicio del partido.</p>
                 </div>
               </div>
+            </section>
+
+            <section className="wc-match-module" id="duelos-previos">
+              <div className="wc-module-head">
+                <div>
+                  <p className="wc-kicker">Historial</p>
+                  <h2>Duelos previos</h2>
+                </div>
+                <span className="wc-match-chip">Scraping / proveedor</span>
+              </div>
+              {center.headToHead.length > 0 ? (
+                <div className="wc-h2h-list">
+                  {center.headToHead.map((duel) => (
+                    <div className="wc-h2h-row" key={`${duel.date}-${duel.home}-${duel.away}`}>
+                      <span>{duel.date}</span>
+                      <strong>{duel.home} {duel.score} {duel.away}</strong>
+                      <em>{duel.competition}</em>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="wc-empty-module">
+                  <strong>Historial listo para alimentar</strong>
+                  <p>
+                    Este bloque queda preparado para duelos directos, últimos resultados entre selecciones y contexto histórico
+                    obtenido desde una fuente externa verificada.
+                  </p>
+                </div>
+              )}
+            </section>
+
+            <section className="wc-match-module" id="publico">
+              <div className="wc-module-head">
+                <div>
+                  <p className="wc-kicker">Pulso del público</p>
+                  <h2>¿Cómo llega la conversación?</h2>
+                </div>
+                <span className="wc-match-chip">Próximo</span>
+              </div>
+              <div className="wc-public-pulse">
+                {[
+                  { label: match.home, value: center.publicPulse.home },
+                  { label: 'Empate', value: center.publicPulse.draw },
+                  { label: match.away, value: center.publicPulse.away },
+                ].map((item) => (
+                  <div key={item.label}>
+                    <div>
+                      <span>{item.label}</span>
+                      <strong>{item.value == null ? '-' : `${item.value}%`}</strong>
+                    </div>
+                    <i style={{ width: `${item.value ?? 0}%` }} />
+                  </div>
+                ))}
+              </div>
+              <p className="wc-source">
+                Espacio listo para incorporar encuesta propia, señales sociales o tendencias de audiencia cuando se active la cobertura en vivo.
+              </p>
             </section>
 
             <div id="minuto-a-minuto">

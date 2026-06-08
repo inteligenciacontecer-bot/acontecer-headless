@@ -49,6 +49,61 @@ export type MundialGroupStanding = {
   points: number;
 };
 
+export type MundialMatchStatistic = {
+  label: string;
+  home: string;
+  away: string;
+};
+
+export type MundialLineupPlayer = {
+  name: string;
+  number?: number;
+  position?: string;
+  status?: 'starter' | 'substitute' | 'doubt' | 'injured' | 'suspended';
+};
+
+export type MundialTeamLineup = {
+  team: string;
+  formation: string | null;
+  coach: string | null;
+  starters: MundialLineupPlayer[];
+  substitutes: MundialLineupPlayer[];
+};
+
+export type MundialHeadToHeadMatch = {
+  date: string;
+  competition: string;
+  home: string;
+  away: string;
+  score: string;
+  source?: string;
+};
+
+export type MundialPublicPulse = {
+  home: number | null;
+  draw: number | null;
+  away: number | null;
+  votes: number | null;
+};
+
+export type MundialMatchCenter = {
+  matchId: string;
+  updatedAt: string;
+  dataStatus: 'scheduled-shell' | 'partial' | 'live' | 'final';
+  chronicle: {
+    headline: string;
+    lead: string;
+    keyPoints: string[];
+  };
+  statistics: MundialMatchStatistic[];
+  lineups: {
+    home: MundialTeamLineup;
+    away: MundialTeamLineup;
+  };
+  headToHead: MundialHeadToHeadMatch[];
+  publicPulse: MundialPublicPulse;
+};
+
 export const MUNDIAL_SOURCE = {
   name: 'FourFourTwo / calendario Mundial 2026 con base en calendario FIFA',
   url: 'https://www.fourfourtwo.com/competition/world-cup-2026-fixtures-and-results',
@@ -1950,6 +2005,56 @@ export function getMundialGroupStandings(matches: MundialMatch[] = MUNDIAL_MATCH
       return a.seed - b.seed;
     }),
   }));
+}
+
+function emptyLineup(team: string): MundialTeamLineup {
+  return {
+    team,
+    formation: null,
+    coach: null,
+    starters: [],
+    substitutes: [],
+  };
+}
+
+export function getMundialMatchCenter(match: MundialMatch): MundialMatchCenter {
+  const phaseLine = match.group ? `${match.phaseEs}, Grupo ${match.group}` : match.phaseEs;
+
+  return {
+    matchId: match.id,
+    updatedAt: new Date().toISOString(),
+    dataStatus: match.status === 'live' ? 'live' : match.status === 'finished' ? 'final' : 'scheduled-shell',
+    chronicle: {
+      headline: `${match.home} vs ${match.away}: centro de partido`,
+      lead: `Cobertura preparada para el partido #${match.matchNumber} del Mundial 2026. La crónica se actualizará con el desarrollo del juego, goles, incidencias, contexto táctico y cierre editorial cuando exista información confirmada.`,
+      keyPoints: [
+        `${phaseLine} en ${match.venue}.`,
+        'Marcador, estadísticas, alineaciones y minuto a minuto quedan listos para actualización automática.',
+        'Los datos en vivo deberán entrar desde proveedor deportivo, scraping monitoreado o carga editorial verificada.',
+      ],
+    },
+    statistics: [
+      { label: 'Posesión', home: '-', away: '-' },
+      { label: 'Remates', home: '-', away: '-' },
+      { label: 'Remates al arco', home: '-', away: '-' },
+      { label: 'Faltas', home: '-', away: '-' },
+      { label: 'Tarjetas amarillas', home: '-', away: '-' },
+      { label: 'Tiros de esquina', home: '-', away: '-' },
+      { label: 'Fueras de juego', home: '-', away: '-' },
+      { label: 'Atajadas', home: '-', away: '-' },
+    ],
+    lineups: {
+      home: emptyLineup(match.home),
+      away: emptyLineup(match.away),
+    },
+    headToHead: [],
+    publicPulse: {
+      home: null,
+      draw: null,
+      away: null,
+      votes: null,
+    },
+  };
 }
 
 export function formatCostaRicaDateTime(iso: string | null): string {
