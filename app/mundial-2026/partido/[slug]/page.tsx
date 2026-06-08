@@ -9,6 +9,7 @@ import {
   getMundialMatch,
   getMundialMatchCenter,
   getMundialTeamFlag,
+  getMundialTeamProfile,
 } from '@/lib/mundial-2026';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -39,6 +40,9 @@ function getMatchKeywords(match: Match) {
     `resultado ${match.home} vs ${match.away}`,
     `alineaciones ${match.home} vs ${match.away}`,
     `estadísticas ${match.home} vs ${match.away}`,
+    `ranking FIFA ${match.home}`,
+    `ranking FIFA ${match.away}`,
+    `historial ${match.home} vs ${match.away}`,
     'calendario Mundial 2026',
     match.phaseEs,
     match.group ? `Grupo ${match.group} Mundial 2026` : match.phaseEs,
@@ -132,6 +136,10 @@ export default async function MundialPartidoPage({ params }: Props) {
   const phaseLine = match.group ? `${match.phaseEs}, Grupo ${match.group}` : match.phaseEs;
   const homeFlag = getMundialTeamFlag(match.home);
   const awayFlag = getMundialTeamFlag(match.away);
+  const homeProfile = getMundialTeamProfile(match.home);
+  const awayProfile = getMundialTeamProfile(match.away);
+  const homeRanking = homeProfile?.fifaRanking ? `Ranking FIFA #${homeProfile.fifaRanking}` : 'Ranking FIFA por conectar';
+  const awayRanking = awayProfile?.fifaRanking ? `Ranking FIFA #${awayProfile.fifaRanking}` : 'Ranking FIFA por conectar';
   const statusLabel = getMatchStatusLabel(match);
   const homeScore = getScoreValue(match.homeScore);
   const awayScore = getScoreValue(match.awayScore);
@@ -230,6 +238,7 @@ export default async function MundialPartidoPage({ params }: Props) {
               <img src={homeFlag.url} alt={`Bandera de ${match.home}`} />
               <strong>{match.home}</strong>
               <small>{match.homeRaw}</small>
+              <small>{homeRanking}</small>
             </div>
 
             <div className="wc-match-scorebox">
@@ -246,6 +255,7 @@ export default async function MundialPartidoPage({ params }: Props) {
               <img src={awayFlag.url} alt={`Bandera de ${match.away}`} />
               <strong>{match.away}</strong>
               <small>{match.awayRaw}</small>
+              <small>{awayRanking}</small>
             </div>
           </div>
 
@@ -455,9 +465,11 @@ export default async function MundialPartidoPage({ params }: Props) {
               <div><dt>Sede</dt><dd>{match.venue}</dd></div>
               <div><dt>Hora CR</dt><dd>{formattedTime}</dd></div>
               <div><dt>Estado</dt><dd>{statusLabel}</dd></div>
+              <div><dt>{match.home}</dt><dd>{homeRanking}</dd></div>
+              <div><dt>{match.away}</dt><dd>{awayRanking}</dd></div>
             </dl>
             <p className="wc-source">
-              Panel preparado para goles, tarjetas, cambios, faltas, VAR, marcador, alineaciones y estadísticas del partido.
+              Panel preparado para goles, tarjetas, cambios, faltas, VAR, marcador, alineaciones y estadísticas del partido. Ranking FIFA con fuente oficial FIFA/Coca-Cola.
             </p>
           </aside>
         </section>

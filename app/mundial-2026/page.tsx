@@ -192,7 +192,9 @@ export default function Mundial2026Page() {
                 <img src={team.flag.url} alt={`Bandera de ${team.name}`} loading="lazy" />
                 <div>
                   <strong>{team.name}</strong>
-                  <span>Grupo {team.group} · {team.matches.length} partidos</span>
+                  <span>
+                    Grupo {team.group} · {team.fifaRanking ? `Ranking FIFA #${team.fifaRanking}` : `${team.matches.length} partidos`}
+                  </span>
                 </div>
               </Link>
             ))}

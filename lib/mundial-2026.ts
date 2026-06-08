@@ -34,6 +34,13 @@ export type MundialTeamFlag = {
   url: string;
 };
 
+export type MundialFifaRanking = {
+  fifaCode: string;
+  rank: number;
+  updatedAt: string;
+  sourceUrl: string;
+};
+
 export type MundialGroupStanding = {
   group: string;
   team: string;
@@ -110,7 +117,10 @@ export type MundialTeamProfile = {
   group: string;
   flag: MundialTeamFlag;
   matches: MundialMatch[];
+  fifaCode: string | null;
   fifaRanking: number | null;
+  fifaRankingUpdatedAt: string | null;
+  fifaRankingSourceUrl: string | null;
   roster: MundialLineupPlayer[];
   recentResults: MundialHeadToHeadMatch[];
   worldCupHistory: string[];
@@ -131,6 +141,68 @@ export function getMundialTeamSlug(team: string): string {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 }
+
+const FIFA_RANKING_UPDATED_AT = '2026-04-01';
+
+function fifaRanking(fifaCode: string, rank: number): MundialFifaRanking {
+  return {
+    fifaCode,
+    rank,
+    updatedAt: FIFA_RANKING_UPDATED_AT,
+    sourceUrl: `https://inside.fifa.com/fifa-world-ranking/${fifaCode}`,
+  };
+}
+
+export const MUNDIAL_FIFA_RANKINGS: Record<string, MundialFifaRanking> = {
+  'alemania': fifaRanking('GER', 10),
+  'arabia-saudita': fifaRanking('KSA', 61),
+  'argelia': fifaRanking('ALG', 28),
+  'argentina': fifaRanking('ARG', 3),
+  'australia': fifaRanking('AUS', 27),
+  'austria': fifaRanking('AUT', 24),
+  'belgica': fifaRanking('BEL', 9),
+  'bosnia-y-herzegovina': fifaRanking('BIH', 65),
+  'brasil': fifaRanking('BRA', 6),
+  'cabo-verde': fifaRanking('CPV', 69),
+  'canada': fifaRanking('CAN', 30),
+  'chequia': fifaRanking('CZE', 41),
+  'colombia': fifaRanking('COL', 13),
+  'corea-del-sur': fifaRanking('KOR', 25),
+  'costa-de-marfil': fifaRanking('CIV', 34),
+  'croacia': fifaRanking('CRO', 11),
+  'curazao': fifaRanking('CUW', 82),
+  'ecuador': fifaRanking('ECU', 23),
+  'egipto': fifaRanking('EGY', 29),
+  'escocia': fifaRanking('SCO', 43),
+  'espana': fifaRanking('ESP', 2),
+  'estados-unidos': fifaRanking('USA', 16),
+  'francia': fifaRanking('FRA', 1),
+  'ghana': fifaRanking('GHA', 74),
+  'haiti': fifaRanking('HAI', 83),
+  'inglaterra': fifaRanking('ENG', 4),
+  'irak': fifaRanking('IRQ', 57),
+  'iran': fifaRanking('IRN', 21),
+  'japon': fifaRanking('JPN', 18),
+  'jordania': fifaRanking('JOR', 63),
+  'marruecos': fifaRanking('MAR', 8),
+  'mexico': fifaRanking('MEX', 15),
+  'noruega': fifaRanking('NOR', 31),
+  'nueva-zelanda': fifaRanking('NZL', 85),
+  'paises-bajos': fifaRanking('NED', 7),
+  'panama': fifaRanking('PAN', 33),
+  'paraguay': fifaRanking('PAR', 40),
+  'portugal': fifaRanking('POR', 5),
+  'qatar': fifaRanking('QAT', 55),
+  'rd-congo': fifaRanking('COD', 46),
+  'senegal': fifaRanking('SEN', 14),
+  'sudafrica': fifaRanking('RSA', 60),
+  'suecia': fifaRanking('SWE', 38),
+  'suiza': fifaRanking('SUI', 19),
+  'tunez': fifaRanking('TUN', 44),
+  'turquia': fifaRanking('TUR', 22),
+  'uruguay': fifaRanking('URU', 17),
+  'uzbekistan': fifaRanking('UZB', 50),
+};
 
 export const MUNDIAL_TEAM_FLAGS: Record<string, MundialTeamFlag> = {
   "Alemania": { code: "de", url: "https://flagcdn.com/de.svg" },
@@ -2051,14 +2123,19 @@ export function getMundialTeamProfile(slugOrName: string, knownGroup?: string): 
   if (!teamName || !groupName) return undefined;
 
   const matches = MUNDIAL_MATCHES.filter((match) => match.home === teamName || match.away === teamName);
+  const teamSlug = getMundialTeamSlug(teamName);
+  const ranking = MUNDIAL_FIFA_RANKINGS[teamSlug];
 
   return {
     name: teamName,
-    slug: getMundialTeamSlug(teamName),
+    slug: teamSlug,
     group: groupName,
     flag: getMundialTeamFlag(teamName),
     matches,
-    fifaRanking: null,
+    fifaCode: ranking?.fifaCode ?? null,
+    fifaRanking: ranking?.rank ?? null,
+    fifaRankingUpdatedAt: ranking?.updatedAt ?? null,
+    fifaRankingSourceUrl: ranking?.sourceUrl ?? null,
     roster: [],
     recentResults: [],
     worldCupHistory: [],

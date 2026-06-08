@@ -12,6 +12,16 @@ type Props = { params: Promise<{ slug: string }> };
 
 const SITE_URL = 'https://acontecer.co.cr';
 
+function formatFifaRankingDate(date: string | null): string {
+  if (!date) return 'Por confirmar';
+  return new Intl.DateTimeFormat('es-CR', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(`${date}T00:00:00.000Z`));
+}
+
 export function generateStaticParams() {
   return getMundialTeams().map((team) => ({ slug: team.slug }));
 }
@@ -23,7 +33,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const url = `${SITE_URL}/mundial-2026/seleccion/${team.slug}`;
   const title = `${team.name} en el Mundial 2026: grupo, partidos y plantilla`;
-  const description = `Perfil de ${team.name} en el Mundial 2026: grupo ${team.group}, próximos partidos, convocados, ranking FIFA, últimos resultados e historial mundialista.`;
+  const rankingText = team.fifaRanking ? ` ranking FIFA #${team.fifaRanking},` : ' ranking FIFA,';
+  const description = `Perfil de ${team.name} en el Mundial 2026: grupo ${team.group}, próximos partidos, convocados,${rankingText} últimos resultados e historial mundialista.`;
 
   return {
     title,
@@ -73,7 +84,19 @@ export default async function MundialTeamPage({ params }: Props) {
       name: 'FIFA World Cup 2026',
     },
     url: `${SITE_URL}/mundial-2026/seleccion/${team.slug}`,
+    identifier: team.fifaCode || undefined,
+    additionalProperty: team.fifaRanking ? [
+      {
+        '@type': 'PropertyValue',
+        name: 'FIFA/Coca-Cola World Ranking',
+        value: team.fifaRanking,
+        dateModified: team.fifaRankingUpdatedAt || undefined,
+        url: team.fifaRankingSourceUrl || undefined,
+      },
+    ] : undefined,
   };
+  const rankingLabel = team.fifaRanking ? `#${team.fifaRanking}` : 'Por conectar';
+  const rankingDate = formatFifaRankingDate(team.fifaRankingUpdatedAt);
 
   return (
     <main className="wc-page">
@@ -93,6 +116,7 @@ export default async function MundialTeamPage({ params }: Props) {
             <div className="wc-team-flag-panel">
               <img src={team.flag.url} alt={`Bandera de ${team.name}`} />
               <strong>Grupo {team.group}</strong>
+              <span>Ranking FIFA {rankingLabel}</span>
             </div>
           </div>
         </div>
@@ -111,6 +135,36 @@ export default async function MundialTeamPage({ params }: Props) {
       <div className="wc-wrap">
         <section className="wc-team-profile-grid">
           <div className="wc-match-main-column">
+            <section className="wc-match-module">
+              <div className="wc-module-head">
+                <div>
+                  <p className="wc-kicker">Ficha</p>
+                  <h2>Datos de {team.name}</h2>
+                </div>
+                <span className="wc-match-chip">{team.fifaCode || 'FIFA'}</span>
+              </div>
+              <div className="wc-summary-grid">
+                <div>
+                  <span>Grupo</span>
+                  <strong>{team.group}</strong>
+                </div>
+                <div>
+                  <span>Ranking FIFA</span>
+                  <strong>{rankingLabel}</strong>
+                </div>
+                <div>
+                  <span>Partidos</span>
+                  <strong>{team.matches.length}</strong>
+                </div>
+              </div>
+              <p className="wc-source">
+                Ranking FIFA/Coca-Cola masculino con última actualización oficial del {rankingDate}
+                {team.fifaRankingSourceUrl && (
+                  <>. Fuente: <a href={team.fifaRankingSourceUrl} target="_blank" rel="noopener noreferrer">FIFA</a></>
+                )}.
+              </p>
+            </section>
+
             <section className="wc-match-module" id="partidos">
               <div className="wc-module-head">
                 <div>
@@ -178,13 +232,14 @@ export default async function MundialTeamPage({ params }: Props) {
               <strong>Grupo {team.group}</strong>
             </div>
             <dl className="wc-fixture-list">
-              <div><dt>Ranking FIFA</dt><dd>{team.fifaRanking ?? 'Por conectar'}</dd></div>
+              <div><dt>Ranking FIFA</dt><dd>{rankingLabel}</dd></div>
+              <div><dt>Código FIFA</dt><dd>{team.fifaCode || 'Por confirmar'}</dd></div>
               <div><dt>Partidos</dt><dd>{team.matches.length}</dd></div>
               <div><dt>Convocados</dt><dd>Por confirmar</dd></div>
               <div><dt>Historial</dt><dd>Por alimentar</dd></div>
             </dl>
             <p className="wc-source">
-              Perfil listo para integrarse con ranking FIFA, nómina oficial, últimos resultados e historial mundialista.
+              Ranking actualizado al {rankingDate}. Perfil listo para integrarse con nómina oficial, últimos resultados e historial mundialista.
             </p>
           </aside>
         </section>
