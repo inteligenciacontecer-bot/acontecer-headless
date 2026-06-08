@@ -16,7 +16,7 @@ type BrandOgOptions = {
   accentColor: string;
   cards: BrandOgCard[];
   footer?: string;
-  variant?: 'gobierno' | 'servicios' | 'feriados' | 'restriccion' | 'loteria' | 'asamblea';
+  variant?: 'gobierno' | 'servicios' | 'feriados' | 'restriccion' | 'loteria' | 'asamblea' | 'matutino';
 };
 
 function assetDataUrl(path: string, mime: string): string {
@@ -179,6 +179,49 @@ function variantPattern(variant: BrandOgOptions['variant'], accentColor: string)
                 background: i === 0 ? accentColor : 'rgba(255,255,255,0.14)',
                 color: '#ffffff',
                 fontSize: i === 0 ? 21 : 17,
+                fontWeight: 800,
+              }}
+            >
+              {label}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (variant === 'matutino') {
+    return (
+      <div style={{ position: 'absolute', right: 82, bottom: 52, width: 326, height: 128, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            width: 108,
+            height: 108,
+            display: 'flex',
+            borderRadius: '50%',
+            background: 'linear-gradient(180deg, #ffd166 0%, #ff9f1c 100%)',
+            boxShadow: '0 0 46px rgba(255,209,102,0.42)',
+          }}
+        />
+        <div style={{ position: 'absolute', top: 70, width: 304, height: 8, display: 'flex', borderRadius: 999, background: 'rgba(255,255,255,0.82)' }} />
+        <div style={{ position: 'absolute', top: 92, width: 244, height: 7, display: 'flex', borderRadius: 999, background: 'rgba(255,255,255,0.42)' }} />
+        <div style={{ position: 'absolute', top: 110, width: 190, height: 7, display: 'flex', borderRadius: 999, background: accentColor }} />
+        <div style={{ position: 'absolute', bottom: 0, display: 'flex', gap: 12 }}>
+          {['6 AM', 'Audio', 'Resumen'].map((label, i) => (
+            <div
+              key={label}
+              style={{
+                height: 40,
+                padding: '0 15px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: 999,
+                background: i === 0 ? '#ffffff' : '#2527aa',
+                color: i === 0 ? '#0000A2' : '#ffffff',
+                fontSize: i === 0 ? 19 : 17,
                 fontWeight: 800,
               }}
             >
