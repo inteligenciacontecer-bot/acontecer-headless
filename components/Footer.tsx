@@ -113,6 +113,7 @@ export default function Footer() {
               {name:'Nacionales', href:'/categoria/nacionales'},
               {name:'Internacionales', href:'/categoria/internacionales'},
               {name:'Deportes', href:'/categoria/deportes'},
+              {name:'Mundial 2026', href:'/mundial-2026'},
               {name:'Economía', href:'/categoria/economia'},
               {name:'Entretenimiento', href:'/categoria/entretenimiento'},
               {name:'Tecnología', href:'/categoria/tecnologia'},
