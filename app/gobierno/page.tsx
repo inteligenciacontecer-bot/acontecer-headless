@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import './gobierno.css';
-import { PRESIDENCIA, MINISTROS, PRESIDENCIAS, funcionarioSlug, type Funcionario } from '@/lib/gobierno';
+import { PRESIDENCIA, MINISTROS, PRESIDENCIAS, funcionarioSlug, recorteFuncionario, type Funcionario } from '@/lib/gobierno';
 
 export const revalidate = 86400;
 
@@ -10,23 +10,6 @@ const URL_PAGINA = 'https://acontecer.co.cr/gobierno';
 function iniciales(nombre: string): string {
   const p = nombre.trim().split(/\s+/);
   return ((p[0]?.[0] || '') + (p[p.length - 1]?.[0] || '')).toUpperCase();
-}
-
-const SIN_RECORTE_EN_TARJETA = new Set([
-  'jose-miguel-jimenez-araya',
-  'carlos-andres-robles-obando',
-  'johnny-leiva-badilla',
-]);
-
-function recorteGobierno(funcionario: Funcionario): string | null {
-  if (funcionario.grupo === 'presidencia') return null;
-  const slug = funcionarioSlug(funcionario);
-  if (SIN_RECORTE_EN_TARJETA.has(slug)) return null;
-  if (!funcionario.foto?.startsWith('/gobierno/fotos/')) return null;
-
-  return funcionario.foto
-    .replace('/gobierno/fotos/', '/gobierno/recortes/')
-    .replace(/\.jpe?g$/i, '.png');
 }
 
 export const metadata: Metadata = {
@@ -62,7 +45,7 @@ const FAQ = [
 
 function Tarjeta({ funcionario, accent }: { funcionario: Funcionario; accent: string }) {
   const { nombre, cargo, foto } = funcionario;
-  const recorte = recorteGobierno(funcionario);
+  const recorte = recorteFuncionario(funcionario);
   const avatarClass = [
     'gb-card-avatar',
     recorte ? 'gb-card-avatar--cutout' : '',

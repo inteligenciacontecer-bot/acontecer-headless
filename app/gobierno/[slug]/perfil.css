@@ -17,6 +17,28 @@
   display: flex; align-items: center; justify-content: center; border: 2px solid;
 }
 .gp-foto img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.gp-foto--cutout {
+  position: relative; align-items: flex-end;
+  background: linear-gradient(135deg, #0000A2 0%, #07145f 100%);
+  border-color: #0000A2 !important;
+}
+.gp-foto--cutout::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 74% 18%, rgba(255,255,255,.18), transparent 36%),
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.08));
+}
+.gp-foto--cutout::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 9px;
+  background: linear-gradient(180deg, #fff 0 3px, #d71920 3px 100%);
+}
+.gp-foto--cutout img {
+  position: relative; z-index: 1;
+  width: 116%; height: 116%; object-fit: contain; object-position: center bottom;
+  transform: translateY(-10px) scale(1.02);
+  filter: drop-shadow(0 10px 14px rgba(0,0,0,.22));
+}
+.gp-foto--presidencia img { object-position: top center; }
 .gp-iniciales { font-family: var(--serif); font-size: 56px; font-weight: 700; }
 .gp-credito { font-size: 10.5px; color: var(--ink-400); line-height: 1.4; }
 .gp-credito a, .gp-fuente a { color: var(--blue-600); font-weight: 600; text-decoration: none; }
@@ -70,4 +92,5 @@
   .gp-ficha { grid-template-columns: 1fr; gap: 16px; }
   .gp-foto, .gp-foto-col { width: 100%; }
   .gp-foto { height: 240px; }
+  .gp-foto--cutout img { width: 108%; height: 112%; transform: translateY(-8px) scale(1.01); }
 }

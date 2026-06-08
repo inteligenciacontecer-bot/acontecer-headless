@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import '../gobierno.css';
 import './perfil.css';
-import { FUNCIONARIOS, getFuncionario, funcionarioSlug, curriculoFuncionario, ACCENT, GRUPO_LABEL, type Funcionario } from '@/lib/gobierno';
+import { FUNCIONARIOS, getFuncionario, funcionarioSlug, curriculoFuncionario, recorteFuncionario, ACCENT, GRUPO_LABEL, type Funcionario } from '@/lib/gobierno';
 
 export const revalidate = 1800; // refresca notas relacionadas cada 30 min
 
@@ -96,6 +96,13 @@ export default async function PerfilGobiernoPage({ params }: { params: Promise<{
   const textoPerfil = curriculoFuncionario(f) || descriptor;
   const parrafosPerfil = textoPerfil.split(/\n+/).map((parrafo) => parrafo.trim()).filter(Boolean);
   const fotoAbs = f.foto ? `${BASE}${f.foto}` : undefined;
+  const recorte = recorteFuncionario(f);
+  const fotoPerfil = recorte || f.foto;
+  const fotoClass = [
+    'gp-foto',
+    recorte ? 'gp-foto--cutout' : '',
+    f.grupo === 'presidencia' ? 'gp-foto--presidencia' : '',
+  ].filter(Boolean).join(' ');
   const fuentes = f.fuentes?.length
     ? f.fuentes
     : f.fuenteUrl
@@ -146,9 +153,9 @@ export default async function PerfilGobiernoPage({ params }: { params: Promise<{
         {/* Ficha: foto + datos */}
         <section className="gp-ficha">
           <div className="gp-foto-col">
-            <div className="gp-foto" style={{ background: accent + '15', color: accent, borderColor: accent }}>
-              {f.foto
-                ? /* eslint-disable-next-line @next/next/no-img-element */ <img src={f.foto} alt={f.nombre} />
+            <div className={fotoClass} style={{ background: recorte ? undefined : accent + '15', color: accent, borderColor: accent }}>
+              {fotoPerfil
+                ? /* eslint-disable-next-line @next/next/no-img-element */ <img src={fotoPerfil} alt={f.nombre} />
                 : <span className="gp-iniciales">{iniciales(f.nombre)}</span>}
             </div>
             {f.foto && f.fotoCredito && (

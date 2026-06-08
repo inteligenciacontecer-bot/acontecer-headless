@@ -52,8 +52,8 @@
 }
 .gb-card-avatar--cutout img {
   position: relative; z-index: 1;
-  width: 112%; height: 124%; object-fit: contain; object-position: center bottom;
-  transform: translateY(-8px) scale(1.04);
+  width: 108%; height: 116%; object-fit: contain; object-position: center bottom;
+  transform: translateY(5px) scale(1.01);
   filter: drop-shadow(0 8px 10px rgba(0,0,0,.22));
 }
 .gb-card-avatar--presidencia img { object-position: top center; }

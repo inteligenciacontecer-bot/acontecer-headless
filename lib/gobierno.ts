@@ -48,6 +48,15 @@ export function funcionarioSlug(f: Pick<Funcionario, 'nombre'>): string {
   return slugify(f.nombre);
 }
 
+export function recorteFuncionario(f: Pick<Funcionario, 'nombre' | 'grupo' | 'foto'>): string | null {
+  if (f.grupo === 'presidencia') return null;
+  if (!f.foto?.startsWith('/gobierno/fotos/')) return null;
+
+  return f.foto
+    .replace('/gobierno/fotos/', '/gobierno/recortes/')
+    .replace(/\.jpe?g$/i, '.png');
+}
+
 const CURRICULOS_EDITORIALES: Record<string, string> = {
   'laura-fernandez-delgado': `Laura Fernández Delgado es Presidenta de la República para el periodo 2026-2030. Antes de asumir la Presidencia, ocupó los ministerios de la Presidencia y de Planificación Nacional y Política Económica.
 Su trayectoria pública se vincula con gestión institucional, planificación estratégica y políticas públicas.`,
