@@ -690,7 +690,8 @@ export default async function DiputadoPerfil({ params }: { params: Promise<{ slu
                 emptyMsg="Los proyectos presentados por este diputado se sincronizan automáticamente desde la Asamblea Legislativa."
               >
                 {expedientes.map((e: any, i: number) => (
-                  <div key={i} style={{
+                  <Link key={i} href={`/asamblea/expedientes/${e.numero}`} style={{
+                    textDecoration: 'none',
                     padding: '14px 18px',
                     borderBottom: i < expedientes.length - 1 ? '1px solid #f1f5f9' : 'none',
                     display: 'flex', justifyContent: 'space-between',
@@ -718,7 +719,7 @@ export default async function DiputadoPerfil({ params }: { params: Promise<{ slu
                       </div>
                     </div>
                     {e.estado && <EstadoBadge estado={e.estado} />}
-                  </div>
+                  </Link>
                 ))}
               </Section>
 

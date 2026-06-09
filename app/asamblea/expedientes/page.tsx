@@ -230,7 +230,7 @@ export default async function ExpedientesPage({
                 {expedientes.map((e: any, i: number) => {
                   const m = estadoMeta(e.estado || '');
                   const asambleaUrl = e.numero
-                    ? `https://www.asamblea.go.cr/glcp/SitePages/ConsultarExpediente.aspx?Num_Exp=${e.numero}`
+                    ? `/asamblea/expedientes/${e.numero}`
                     : null;
                   return (
                     <div key={e.id || i} style={{
