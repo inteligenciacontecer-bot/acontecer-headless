@@ -6,7 +6,7 @@ import { fotoDiputadoUrl } from '@/lib/diputado-foto';
 const API = 'https://cms.acontecer.co.cr/wp-json/acontecer/v1/asamblea';
 
 interface Prop { nombre_completo: string; slug: string; foto_url: string; fraccion: string; partido: string; }
-interface Exp { numero: string; titulo: string; estado: string; tipo: string; comision: string; proponente: string; fecha_presentacion: string; fecha_agenda: string; }
+interface Exp { numero: string; titulo: string; estado: string; tipo: string; comision: string; proponente: string; fecha_presentacion: string; fecha_agenda: string; explicacion: string; }
 interface Detalle { expediente: Exp; proponentes: Prop[]; }
 
 async function getExp(numero: string): Promise<Detalle | null> {
@@ -25,10 +25,17 @@ export async function generateMetadata({ params }: { params: Promise<{ numero: s
   const d = await getExp(numero);
   if (!d) return { title: `Expediente ${numero} — Acontecer.co.cr` };
   const t = d.expediente.titulo || `Expediente ${numero}`;
+  const titulo = `Expediente ${numero}: ${t.slice(0, 85)} | Acontecer.co.cr`;
+  const desc = (d.expediente.explicacion
+    ? d.expediente.explicacion
+    : `Proyecto de ley N.° ${numero} de la Asamblea Legislativa de Costa Rica: ${t.slice(0, 150)}.`).slice(0, 200);
+  const url = `https://acontecer.co.cr/asamblea/expedientes/${numero}`;
   return {
-    title: `Expediente ${numero}: ${t.slice(0, 90)} | Acontecer.co.cr`,
-    description: `Proyecto de ley N.° ${numero} de la Asamblea Legislativa de Costa Rica: ${t.slice(0, 150)}. Estado, comisión y proponentes.`,
-    alternates: { canonical: `https://acontecer.co.cr/asamblea/expedientes/${numero}` },
+    title: titulo,
+    description: desc,
+    alternates: { canonical: url },
+    openGraph: { type: 'article', url, title: `Expediente ${numero} — ${t.slice(0, 70)}`, description: desc, siteName: 'Acontecer.co.cr' },
+    twitter: { card: 'summary_large_image', title: `Expediente ${numero}`, description: desc },
   };
 }
 
@@ -79,6 +86,14 @@ export default async function ExpedientePage({ params }: { params: Promise<{ num
 
       <div style={{ background: '#f1f5f9', minHeight: '50vh' }}>
         <div style={{ maxWidth: 880, margin: '0 auto', padding: '20px 16px 56px', display: 'flex', flexDirection: 'column', gap: 14 }}>
+
+          {e.explicacion && (
+            <section style={{ background: 'white', borderRadius: 14, boxShadow: '0 2px 14px rgba(0,0,0,0.06)', padding: '18px', borderLeft: '4px solid #0a73ce' }}>
+              <h2 style={{ fontFamily: 'var(--font-Lora), serif', fontSize: 15, fontWeight: 800, color: '#0f172a', margin: '0 0 8px' }}>¿De qué trata?</h2>
+              <p style={{ fontSize: 14.5, lineHeight: 1.7, color: '#334155', margin: 0 }}>{e.explicacion}</p>
+              <p style={{ fontSize: 10.5, color: '#94a3b8', margin: '8px 0 0' }}>Resumen generado automáticamente con IA a partir de los datos oficiales de la Asamblea.</p>
+            </section>
+          )}
 
           <section style={{ background: 'white', borderRadius: 14, boxShadow: '0 2px 14px rgba(0,0,0,0.06)', padding: '18px' }}>
             <h2 style={{ fontFamily: 'var(--font-Lora), serif', fontSize: 15, fontWeight: 800, color: '#0f172a', margin: '0 0 12px' }}>Información del proyecto</h2>
