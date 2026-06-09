@@ -551,8 +551,20 @@
 }
 
 .wc-team-match-list strong {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   color: #101323;
   font-size: 15px;
+}
+
+.wc-team-match-list strong img {
+  width: 24px;
+  height: 17px;
+  flex: 0 0 auto;
+  border-radius: 3px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(16,24,40,.12);
 }
 
 .wc-team-match-list em {
@@ -589,6 +601,35 @@
 .wc-team-side-flag strong {
   color: #0000a2;
   font-size: 18px;
+}
+
+.wc-team-grid--compact {
+  grid-template-columns: 1fr;
+}
+
+.wc-faq-list {
+  display: grid;
+  gap: 10px;
+}
+
+.wc-faq-list article {
+  border-radius: 8px;
+  background: #f8f9fc;
+  padding: 14px;
+}
+
+.wc-faq-list h3 {
+  margin: 0 0 7px;
+  color: #101323;
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+.wc-faq-list p {
+  margin: 0;
+  color: #475467;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .wc-match-hero--center {

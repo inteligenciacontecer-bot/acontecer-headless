@@ -51,6 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!team) return { title: 'Selección Mundial 2026' };
 
   const url = `${SITE_URL}/mundial-2026/seleccion/${team.slug}`;
+  const image = `${url}/opengraph-image`;
   const title = `${team.name} en el Mundial 2026: grupo, partidos y plantilla`;
   const rankingText = team.fifaRanking ? ` ranking FIFA #${team.fifaRanking},` : ' ranking FIFA,';
   const description = `Perfil de ${team.name} en el Mundial 2026: grupo ${team.group}, próximos partidos, convocados,${rankingText} últimos resultados e historial mundialista.`;
@@ -74,13 +75,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       title,
       description,
-      images: [{ url: 'https://acontecer.co.cr/mundial-2026/opengraph-image', width: 1200, height: 630, alt: title }],
+      images: [{ url: image, width: 1200, height: 630, alt: title }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://acontecer.co.cr/mundial-2026/opengraph-image'],
+      images: [image],
     },
   };
 }
@@ -92,9 +93,27 @@ export default async function MundialTeamPage({ params }: Props) {
   const { team } = await getMundialTeamData(slug);
   if (!team) notFound();
 
+  const url = `${SITE_URL}/mundial-2026/seleccion/${team.slug}`;
+  const title = `${team.name} en el Mundial 2026: grupo, partidos y plantilla`;
+  const description = `Perfil de ${team.name} en el Mundial 2026: grupo ${team.group}, partidos, convocados, ranking FIFA e historial mundialista.`;
+  const faq = [
+    {
+      question: `¿En qué grupo está ${team.name} en el Mundial 2026?`,
+      answer: `${team.name} está en el Grupo ${team.group} del Mundial 2026.`,
+    },
+    {
+      question: `¿Cuándo juega ${team.name} en el Mundial 2026?`,
+      answer: `El calendario de ${team.name} incluye ${team.matches.length} partidos registrados en esta página con fecha, horario de Costa Rica, rival y sede.`,
+    },
+    {
+      question: `¿Dónde ver los convocados de ${team.name} para el Mundial 2026?`,
+      answer: `Acontecer.co.cr muestra la plantilla de ${team.name} por posición, con dorsales, clubes y fotos de jugadores cuando están disponibles.`,
+    },
+  ];
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'SportsTeam',
+    '@id': `${url}#team`,
     name: team.name,
     sport: 'Soccer',
     image: team.flag.url,
@@ -102,7 +121,7 @@ export default async function MundialTeamPage({ params }: Props) {
       '@type': 'SportsOrganization',
       name: 'FIFA World Cup 2026',
     },
-    url: `${SITE_URL}/mundial-2026/seleccion/${team.slug}`,
+    url,
     identifier: team.fifaCode || undefined,
     additionalProperty: team.fifaRanking ? [
       {
@@ -114,6 +133,48 @@ export default async function MundialTeamPage({ params }: Props) {
       },
     ] : undefined,
   };
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Portada', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Mundial 2026', item: `${SITE_URL}/mundial-2026` },
+      { '@type': 'ListItem', position: 3, name: `Grupo ${team.group}`, item: `${SITE_URL}/mundial-2026/grupo/${team.group.toLowerCase()}` },
+      { '@type': 'ListItem', position: 4, name: team.name, item: url },
+    ],
+  };
+  const webpageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': `${url}#webpage`,
+    url,
+    name: title,
+    description,
+    inLanguage: 'es-CR',
+    isPartOf: { '@type': 'WebSite', '@id': `${SITE_URL}/#website`, name: 'Acontecer.co.cr', url: SITE_URL },
+    publisher: { '@type': 'NewsMediaOrganization', '@id': `${SITE_URL}/#organization`, name: 'Acontecer.co.cr', url: SITE_URL },
+    mainEntity: { '@id': `${url}#team` },
+  };
+  const matchesSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `Partidos de ${team.name} en el Mundial 2026`,
+    itemListElement: team.matches.map((match, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: `${SITE_URL}/mundial-2026/partido/${match.slug}`,
+      name: `${match.home} vs ${match.away}`,
+    })),
+  };
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  };
   const rankingLabel = team.fifaRanking ? `#${team.fifaRanking}` : 'Por conectar';
   const rankingDate = formatFifaRankingDate(team.fifaRankingUpdatedAt);
   const rosterByPosition = Object.entries(ROSTER_POSITION_LABELS).map(([position, label]) => ({
@@ -124,7 +185,9 @@ export default async function MundialTeamPage({ params }: Props) {
 
   return (
     <main className="wc-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      {[schema, breadcrumbSchema, webpageSchema, matchesSchema, faqSchema].map((item, index) => (
+        <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
+      ))}
 
       <section className="wc-team-hero">
         <div className="wc-match-hero-inner">
@@ -153,6 +216,7 @@ export default async function MundialTeamPage({ params }: Props) {
           <a className="is-active" href="#partidos">Partidos</a>
           <a href="#convocados">Convocados</a>
           <a href="#historial">Historial</a>
+          <a href="#faq">Preguntas</a>
         </div>
       </nav>
 
@@ -266,6 +330,23 @@ export default async function MundialTeamPage({ params }: Props) {
                   <strong>Historial en mundiales</strong>
                   <p>Espacio para participaciones, mejores posiciones, goleadores históricos y registros relevantes.</p>
                 </div>
+              </div>
+            </section>
+
+            <section className="wc-match-module" id="faq">
+              <div className="wc-module-head">
+                <div>
+                  <p className="wc-kicker">SEO</p>
+                  <h2>Preguntas frecuentes sobre {team.name}</h2>
+                </div>
+              </div>
+              <div className="wc-faq-list">
+                {faq.map((item) => (
+                  <article key={item.question}>
+                    <h3>{item.question}</h3>
+                    <p>{item.answer}</p>
+                  </article>
+                ))}
               </div>
             </section>
           </div>
