@@ -347,7 +347,7 @@ export default async function DiputadoPerfil({ params }: { params: Promise<{ slu
   const rechazadas  = votaciones.filter((v: any) => v.resultado === 'RECHAZADO').length;
 
   const comisiones: string[] = d.comisiones
-    ? d.comisiones.split(/[,;|\n]/).map((c: string) => c.trim()).filter(Boolean)
+    ? d.comisiones.split(/[|\n]/).map((c: string) => c.trim()).filter(Boolean)
     : [];
 
   const redes = [
