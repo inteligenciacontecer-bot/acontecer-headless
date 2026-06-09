@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { PROVINCIAS, CANTONES, DISTRITOS } from '@/lib/clima';
 import { FUNCIONARIOS, funcionarioSlug } from '@/lib/gobierno';
-import { MUNDIAL_MATCHES, getMundialTeams } from '@/lib/mundial-2026';
+import { MUNDIAL_GROUPS, MUNDIAL_MATCHES, getMundialTeams } from '@/lib/mundial-2026';
 
 const API  = 'https://cms.acontecer.co.cr/wp-json/wp/v2';
 const BASE = 'https://acontecer.co.cr';
@@ -173,6 +173,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.66,
   }));
 
+  const mundialGroupPages: MetadataRoute.Sitemap = Object.keys(MUNDIAL_GROUPS).map((group) => ({
+    url: `${BASE}/mundial-2026/grupo/${group.toLowerCase()}`,
+    lastModified: new Date(),
+    changeFrequency: 'hourly' as const,
+    priority: 0.74,
+  }));
+
   // Para artículos: usar modified solo si es reciente (< 90 días).
   // Editar un artículo viejo (corregir typo, agregar backlink) actualiza `modified`
   // → sitemap muestra hoy como lastmod → Google lo re-rastrea y puede mostrar
@@ -211,5 +218,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Incluirlas consume crawl budget y hacen que site: muestre etiquetas en vez de artículos.
   // Las páginas de etiqueta tienen noindex en su propio page.tsx.
 
-  return [...staticPages, ...climaProvinciaPages, ...climaCantonPages, ...climaDistritoPages, ...gobiernoPages, ...categoryPages, ...mundialPages, ...mundialTeamPages, ...postPages, ...storyPages];
+  return [...staticPages, ...climaProvinciaPages, ...climaCantonPages, ...climaDistritoPages, ...gobiernoPages, ...categoryPages, ...mundialPages, ...mundialTeamPages, ...mundialGroupPages, ...postPages, ...storyPages];
 }

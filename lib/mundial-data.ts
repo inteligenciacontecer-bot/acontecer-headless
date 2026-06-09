@@ -171,6 +171,25 @@ export async function getMundialGroupsData() {
   };
 }
 
+export async function getMundialGroupData(groupSlugOrName: string) {
+  const groupName = groupSlugOrName.replace(/^grupo-?/i, '').toUpperCase();
+  const groupTeams = MUNDIAL_GROUPS[groupName];
+  const { matches, provider, source } = await getMundialMatchesData();
+  const standings = getMundialGroupStandings(matches).find((group) => group.group === groupName);
+
+  return {
+    provider,
+    source,
+    group: groupTeams
+      ? {
+          name: groupName,
+          teams: standings?.teams || [],
+          matches: matches.filter((match) => match.group === groupName),
+        }
+      : undefined,
+  };
+}
+
 export async function getMundialMatchCenterData(slugOrId: string) {
   const payload = await getLivePayload();
   const matches = patchMatches(MUNDIAL_MATCHES, payload);

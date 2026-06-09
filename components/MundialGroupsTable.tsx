@@ -72,9 +72,11 @@ export default function MundialGroupsTable({ initialGroups }: Props) {
             <header>
               <div>
                 <span>Grupo</span>
-                <strong>{group.group}</strong>
+                <Link href={`/mundial-2026/grupo/${group.group.toLowerCase()}`}>
+                  <strong>{group.group}</strong>
+                </Link>
               </div>
-              <small>Pts · DG · GF</small>
+              <small><Link href={`/mundial-2026/grupo/${group.group.toLowerCase()}`}>Ver grupo</Link> · Pts · DG · GF</small>
             </header>
 
             <div className="wc-standings-table" role="table" aria-label={`Tabla de posiciones del Grupo ${group.group}`}>
