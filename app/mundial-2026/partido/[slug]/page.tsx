@@ -6,12 +6,11 @@ import '../../mundial.css';
 import {
   MUNDIAL_MATCHES,
   formatCostaRicaDateTime,
-  getMundialMatch,
-  getMundialMatchCenter,
   getMundialTeamFlag,
   getMundialTeamProfile,
   getMundialTeamSlug,
 } from '@/lib/mundial-2026';
+import { getMundialMatchCenterData, getMundialMatchData, getMundialTeamData } from '@/lib/mundial-data';
 
 type Props = { params: Promise<{ slug: string }> };
 type Match = (typeof MUNDIAL_MATCHES)[number];
@@ -146,7 +145,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const match = getMundialMatch(slug);
+  const { match } = await getMundialMatchData(slug);
   if (!match) return { title: 'Partido Mundial 2026' };
 
   const title = getMatchTitle(match);
@@ -205,8 +204,8 @@ export const revalidate = 60;
 
 export default async function MundialPartidoPage({ params }: Props) {
   const { slug } = await params;
-  const match = getMundialMatch(slug);
-  if (!match) notFound();
+  const { match, center } = await getMundialMatchCenterData(slug);
+  if (!match || !center) notFound();
 
   const url = getMatchUrl(match.slug);
   const title = getMatchTitle(match);
@@ -216,14 +215,15 @@ export default async function MundialPartidoPage({ params }: Props) {
   const phaseLine = match.group ? `${match.phaseEs}, Grupo ${match.group}` : match.phaseEs;
   const homeFlag = getMundialTeamFlag(match.home);
   const awayFlag = getMundialTeamFlag(match.away);
-  const homeProfile = getMundialTeamProfile(match.home);
-  const awayProfile = getMundialTeamProfile(match.away);
+  const [{ team: homeProfile }, { team: awayProfile }] = await Promise.all([
+    getMundialTeamData(match.home),
+    getMundialTeamData(match.away),
+  ]);
   const homeRanking = homeProfile?.fifaRanking ? `Ranking FIFA #${homeProfile.fifaRanking}` : 'Ranking FIFA por conectar';
   const awayRanking = awayProfile?.fifaRanking ? `Ranking FIFA #${awayProfile.fifaRanking}` : 'Ranking FIFA por conectar';
   const statusLabel = getMatchStatusLabel(match);
   const homeScore = getScoreValue(match.homeScore);
   const awayScore = getScoreValue(match.awayScore);
-  const center = getMundialMatchCenter(match);
   const matchStats = center.statistics;
   const faq = [
     {

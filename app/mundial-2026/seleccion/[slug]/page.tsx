@@ -4,9 +4,9 @@ import { notFound } from 'next/navigation';
 import '../../mundial.css';
 import {
   formatCostaRicaDateTime,
-  getMundialTeamProfile,
   getMundialTeams,
 } from '@/lib/mundial-2026';
+import { getMundialTeamData } from '@/lib/mundial-data';
 import { MUNDIAL_ROSTER_SOURCE } from '@/lib/mundial-rosters';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -47,7 +47,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const team = getMundialTeamProfile(slug);
+  const { team } = await getMundialTeamData(slug);
   if (!team) return { title: 'Selección Mundial 2026' };
 
   const url = `${SITE_URL}/mundial-2026/seleccion/${team.slug}`;
@@ -89,7 +89,7 @@ export const revalidate = 300;
 
 export default async function MundialTeamPage({ params }: Props) {
   const { slug } = await params;
-  const team = getMundialTeamProfile(slug);
+  const { team } = await getMundialTeamData(slug);
   if (!team) notFound();
 
   const schema = {
