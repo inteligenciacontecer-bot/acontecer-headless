@@ -283,9 +283,9 @@ export default async function ExpedientesPage({
                               {e.comision.slice(0, 60)}
                             </span>
                           )}
-                          {e.fecha_agenda && (
+                          {(e.fecha_presentacion || e.fecha_agenda) && (
                             <span style={{ color: '#94a3b8', marginLeft: 'auto' }}>
-                              {new Date(e.fecha_agenda + 'T12:00:00').toLocaleDateString('es-CR', { day: 'numeric', month: 'short', year: 'numeric' })}
+                              {new Date((e.fecha_presentacion || e.fecha_agenda) + 'T12:00:00').toLocaleDateString('es-CR', { day: 'numeric', month: 'short', year: 'numeric' })}
                             </span>
                           )}
                         </div>
