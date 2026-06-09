@@ -255,9 +255,9 @@ export default async function ExpedientesPage({
 
                       {/* Contenido */}
                       <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a', lineHeight: 1.5, marginBottom: 6 }}>
+                        <Link href={asambleaUrl || '#'} style={{ fontSize: 14, fontWeight: 700, color: '#0f172a', lineHeight: 1.5, marginBottom: 6, textDecoration: 'none', display: 'block' }}>
                           {e.titulo?.slice(0, 200)}{(e.titulo?.length || 0) > 200 ? '…' : ''}
-                        </div>
+                        </Link>
                         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center', fontSize: 11 }}>
                           {e.estado && (
                             <span style={{
