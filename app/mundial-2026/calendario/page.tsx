@@ -4,11 +4,10 @@ import '../mundial.css';
 import {
   MUNDIAL_MATCHES,
   formatCostaRicaDateTime,
-  getMatchesByDate,
-  getMatchesByPhase,
   getMundialTeamFlag,
   getMundialTeamSlug,
 } from '@/lib/mundial-2026';
+import { getMundialCalendarData } from '@/lib/mundial-data';
 
 export const metadata: Metadata = {
   title: 'Calendario Mundial 2026: partidos, fechas y sedes',
@@ -58,9 +57,8 @@ function CalendarMatchCard({ match }: { match: (typeof MUNDIAL_MATCHES)[number] 
   );
 }
 
-export default function MundialCalendarioPage() {
-  const byDate = getMatchesByDate();
-  const byPhase = getMatchesByPhase();
+export default async function MundialCalendarioPage() {
+  const { byDate, byPhase } = await getMundialCalendarData();
 
   return (
     <main className="wc-page">

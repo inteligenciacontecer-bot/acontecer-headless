@@ -3,17 +3,12 @@ import Link from 'next/link';
 import MundialGroupsTable from '@/components/MundialGroupsTable';
 import './mundial.css';
 import {
-  MUNDIAL_GROUPS,
   MUNDIAL_MATCHES,
-  MUNDIAL_SOURCE,
   formatCostaRicaDateTime,
-  getMundialGroupStandings,
   getMundialTeamFlag,
   getMundialTeamSlug,
-  getMundialTeams,
-  getMatchesByDate,
-  getUpcomingMundialMatches,
 } from '@/lib/mundial-2026';
+import { getMundialHomeData } from '@/lib/mundial-data';
 
 export const metadata: Metadata = {
   title: 'Mundial 2026: calendario, partidos y resultados en vivo',
@@ -70,12 +65,8 @@ function MatchCard({ match }: { match: (typeof MUNDIAL_MATCHES)[number] }) {
   );
 }
 
-export default function Mundial2026Page() {
-  const upcoming = getUpcomingMundialMatches(6);
-  const dates = getMatchesByDate().slice(0, 6);
-  const groupCount = Object.keys(MUNDIAL_GROUPS).length;
-  const standings = getMundialGroupStandings();
-  const teams = getMundialTeams();
+export default async function Mundial2026Page() {
+  const { upcoming, dates, groupCount, standings, teams, matches, source, provider } = await getMundialHomeData();
 
   const schema = {
     '@context': 'https://schema.org',
@@ -84,7 +75,7 @@ export default function Mundial2026Page() {
     url: 'https://acontecer.co.cr/mundial-2026',
     inLanguage: 'es-CR',
     about: 'FIFA World Cup 2026',
-    hasPart: MUNDIAL_MATCHES.slice(0, 12).map((match) => ({
+    hasPart: matches.slice(0, 12).map((match) => ({
       '@type': 'SportsEvent',
       name: `${match.home} vs ${match.away}`,
       startDate: match.kickoffUtc || undefined,
@@ -115,7 +106,7 @@ export default function Mundial2026Page() {
             </div>
             <aside className="wc-hero-panel">
               <div className="wc-stat-grid">
-                <div className="wc-stat"><span>Partidos</span><strong>{MUNDIAL_MATCHES.length}</strong></div>
+                <div className="wc-stat"><span>Partidos</span><strong>{matches.length}</strong></div>
                 <div className="wc-stat"><span>Grupos</span><strong>{groupCount}</strong></div>
                 <div className="wc-stat"><span>Selecciones</span><strong>48</strong></div>
                 <div className="wc-stat"><span>Sedes</span><strong>16</strong></div>
@@ -157,7 +148,10 @@ export default function Mundial2026Page() {
               cambios, faltas, VAR, estadísticas, alineaciones, crónica e historial entre equipos.
             </p>
             <p className="wc-source">
-              Fuente base: <a href={MUNDIAL_SOURCE.url} target="_blank" rel="noopener noreferrer">FourFourTwo</a> y referencia oficial FIFA: <a href={MUNDIAL_SOURCE.officialUrl} target="_blank" rel="noopener noreferrer">calendario FIFA</a>.
+              Fuente base: <a href={source.url} target="_blank" rel="noopener noreferrer">FourFourTwo</a> y referencia oficial FIFA: <a href={source.officialUrl} target="_blank" rel="noopener noreferrer">calendario FIFA</a>.
+            </p>
+            <p className="wc-source">
+              Estado de datos: {provider.mode === 'external-live' ? `conectado a ${provider.name}` : 'base estática lista para API'}.
             </p>
           </aside>
         </section>

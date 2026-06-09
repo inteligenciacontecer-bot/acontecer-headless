@@ -37,14 +37,41 @@ function eventLabel(type: MundialEvent['type']) {
 }
 
 export default function MundialLivePanel({ match }: { match: MundialMatch }) {
+  const [liveMatch, setLiveMatch] = useState(match);
   const [now, setNow] = useState(() => new Date());
-  const clock = useMemo(() => getClock(match, now), [match, now]);
-  const events = match.events || [];
+  const clock = useMemo(() => getClock(liveMatch, now), [liveMatch, now]);
+  const events = liveMatch.events || [];
 
   useEffect(() => {
     const id = window.setInterval(() => setNow(new Date()), 1000);
     return () => window.clearInterval(id);
   }, []);
+
+  useEffect(() => {
+    setLiveMatch(match);
+  }, [match]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function refreshMatch() {
+      try {
+        const response = await fetch(`/api/mundial-2026/matches/${match.slug}`, { cache: 'no-store' });
+        if (!response.ok) return;
+        const data = await response.json();
+        if (!cancelled && data.match) setLiveMatch(data.match);
+      } catch {
+        // Keep the server-rendered shell if the live endpoint is temporarily unavailable.
+      }
+    }
+
+    refreshMatch();
+    const id = window.setInterval(refreshMatch, 30000);
+    return () => {
+      cancelled = true;
+      window.clearInterval(id);
+    };
+  }, [match.slug]);
 
   return (
     <section className="wc-live-panel" aria-label="Estado en vivo del partido">
@@ -59,11 +86,11 @@ export default function MundialLivePanel({ match }: { match: MundialMatch }) {
       <div className="wc-scoreboard">
         <div className="wc-score-team">
           <span>{match.home}</span>
-          <strong>{match.homeScore ?? 0}</strong>
+          <strong>{liveMatch.homeScore ?? 0}</strong>
         </div>
         <div className="wc-score-sep">vs</div>
         <div className="wc-score-team wc-score-team--right">
-          <strong>{match.awayScore ?? 0}</strong>
+          <strong>{liveMatch.awayScore ?? 0}</strong>
           <span>{match.away}</span>
         </div>
       </div>
