@@ -1,6 +1,7 @@
 ﻿'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { fotoDiputadoUrl } from '@/lib/diputado-foto';
 
 const API = 'https://cms.acontecer.co.cr/wp-json/acontecer/v1/asamblea';
@@ -456,15 +457,16 @@ export default function VotacionesClient({ votaciones }: { votaciones: any[] }) 
               onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 10, marginBottom: 4 }}>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  {v.expediente && (
-                    <span
-                      style={{ fontSize: 10, fontWeight: 700, color: '#0a73ce', background: '#eff6ff', padding: '2px 7px', borderRadius: 10, marginRight: 6, whiteSpace: 'nowrap' }}
+                <div style={{ flex: 1, minWidth: 0 }}>{v.expediente && (
+                    <Link
+                      href={`/asamblea/expedientes/${v.expediente}`}
+                      style={{ fontSize: 10, fontWeight: 700, color: '#0a73ce', background: '#eff6ff', padding: '2px 7px', borderRadius: 10, marginRight: 6, whiteSpace: 'nowrap', textDecoration: 'none', display: 'inline-block' }}
                       onClick={e => e.stopPropagation()}
+                      title="Ver expediente completo"
                     >
-                      Exp. {v.expediente}
-                    </span>
-                  )}
+                      Exp. {v.expediente} ↗
+                    </Link>
+                    )}
                   <span style={{ fontSize: 13, fontWeight: 600, color: '#111', lineHeight: 1.4 }}>
                     {v.titulo?.slice(0, 160)}
                   </span>
@@ -495,6 +497,20 @@ export default function VotacionesClient({ votaciones }: { votaciones: any[] }) 
                   >
                     Imagen
                   </a>
+                  {v.expediente && (
+                    <Link
+                      href={`/asamblea/expedientes/${v.expediente}`}
+                      style={{
+                        fontSize: 10, color: '#0a73ce', background: '#eff6ff',
+                        padding: '2px 7px', borderRadius: 6, whiteSpace: 'nowrap',
+                        textDecoration: 'none', border: '1px solid #bfdbfe',
+                      }}
+                      onClick={e => e.stopPropagation()}
+                      title="Conocer más sobre este expediente"
+                    >
+                      Ver expediente
+                    </Link>
+                  )}
                 </div>
               </div>
 
