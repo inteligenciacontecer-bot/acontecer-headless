@@ -2,6 +2,11 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { fotoDiputadoUrl } from '@/lib/diputado-foto';
 
+// Slug de comisión (igual algoritmo que el catálogo en el backend)
+function comisionSlug(s: string): string {
+  return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
 const API    = 'https://cms.acontecer.co.cr/wp-json/acontecer/v1/asamblea';
 const WP_API = 'https://cms.acontecer.co.cr/wp-json/wp/v2';
 
@@ -588,10 +593,10 @@ export default async function DiputadoPerfil({ params }: { params: Promise<{ slu
                 <SideCard title="Comisiones" icon={Icon.Building} accentColor={partido.bg}>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                     {comisiones.map((c, i) => (
-                      <div key={i} style={{ display: 'flex', gap: 8, fontSize: 12, color: '#334155', lineHeight: 1.45, padding: '4px 0', borderBottom: i < comisiones.length - 1 ? '1px solid #f8fafc' : 'none' }}>
+                      <Link key={i} href={`/asamblea/comisiones/${comisionSlug(c)}`} style={{ display: 'flex', gap: 8, fontSize: 12, color: '#334155', lineHeight: 1.45, padding: '5px 0', borderBottom: i < comisiones.length - 1 ? '1px solid #f8fafc' : 'none', textDecoration: 'none' }}>
                         <span style={{ color: partido.bg, fontWeight: 800, flexShrink: 0, marginTop: 2 }}>·</span>
-                        {c}
-                      </div>
+                        <span style={{ borderBottom: '1px dotted #cbd5e1' }}>{c}</span>
+                      </Link>
                     ))}
                   </div>
                 </SideCard>

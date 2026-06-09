@@ -43,7 +43,7 @@ interface Miembro {
   diputado_id: number; nombre_completo: string; slug: string;
   foto_url: string; fraccion: string; provincia: string; rol: string;
 }
-interface Comision { comision: string; tipo: string; miembros: Miembro[]; }
+interface Comision { comision: string; tipo: string; slug: string; miembros: Miembro[]; }
 
 async function getComisiones(): Promise<Comision[]> {
   try {
@@ -162,11 +162,12 @@ export default async function ComisionesPage() {
                 <div key={com.comision} style={{ background: 'white', borderRadius: 16, boxShadow: '0 2px 16px rgba(0,0,0,0.06)', border: '1px solid #f0f0f0', overflow: 'hidden' }}>
                   {/* Cabecera */}
                   <div style={{ padding: '14px 20px', borderBottom: '1px solid #f5f5f5', background: '#f8f9ff', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                    <Link href={com.slug ? `/asamblea/comisiones/${com.slug}` : '#'} style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', minWidth: 0 }}>
                       <div style={{ width: 3, height: 28, background: '#0000A2', borderRadius: 2, flexShrink: 0 }} />
-                      <div>
-                        <h2 style={{ fontFamily: 'var(--font-Lora), serif', fontSize: 15, fontWeight: 800, color: '#0000A2', margin: 0, lineHeight: 1.3 }}>
+                      <div style={{ minWidth: 0 }}>
+                        <h2 style={{ fontFamily: 'var(--font-Lora), serif', fontSize: 15, fontWeight: 800, color: '#0000A2', margin: 0, lineHeight: 1.3, display: 'flex', alignItems: 'center', gap: 6 }}>
                           {com.comision}
+                          <svg viewBox="0 0 24 24" fill="none" stroke="#0a73ce" strokeWidth={2.4} style={{ width: 14, height: 14, flexShrink: 0 }}><polyline points="9 18 15 12 9 6" /></svg>
                         </h2>
                         {com.tipo && (
                           <span style={{ fontSize: 10, fontWeight: 700, color: '#059669', background: '#dcfce7', padding: '1px 6px', borderRadius: 8 }}>
@@ -174,7 +175,7 @@ export default async function ComisionesPage() {
                           </span>
                         )}
                       </div>
-                    </div>
+                    </Link>
                     <span style={{ fontSize: 12, fontWeight: 700, color: '#64748b', background: '#f1f5f9', padding: '4px 10px', borderRadius: 20, flexShrink: 0 }}>
                       {com.miembros.length} {com.miembros.length === 1 ? 'miembro' : 'miembros'}
                     </span>
