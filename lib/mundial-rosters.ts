@@ -4,8 +4,12 @@ export type MundialRosterPlayer = {
   number: number;
   position: MundialRosterPosition;
   name: string;
+  fullName: string | null;
   club: string;
   photoUrl: string | null;
+  photoSource: string | null;
+  photoSourceUrl: string | null;
+  fotmobId: string | null;
   sourceUrl: string;
 };
 
@@ -13,7 +17,7 @@ export const MUNDIAL_ROSTER_SOURCE = {
   name: 'FIFA squad list published 2026-06-03 via World Cup Ranking mirror',
   url: 'https://worldcupranking.com/world-cup-2026/squads/',
   officialUrl: 'https://www.fifa.com/en/articles/fifa-world-cup-2026-squads-confirmed',
-  importedAt: '2026-06-08T21:59:02.516Z',
+  importedAt: '2026-06-09T05:32:56.125Z',
 };
 
 export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
@@ -23,7 +27,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "NEUER",
       "club": "FC Bayern München (GER)",
-      "photoUrl": null,
+      "fullName": "NEUER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/27299.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/27299",
+      "fotmobId": "27299",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -31,7 +39,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "RUDIGER",
       "club": "Real Madrid C. F. (ESP)",
-      "photoUrl": null,
+      "fullName": "RUEDIGER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/276738.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/276738",
+      "fotmobId": "276738",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -39,7 +51,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ANTON",
       "club": "Borussia Dortmund (GER)",
-      "photoUrl": null,
+      "fullName": "ANTON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/664970.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/664970",
+      "fotmobId": "664970",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -47,7 +63,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "TAH",
       "club": "FC Bayern München (GER)",
-      "photoUrl": null,
+      "fullName": "TAH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/469700.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/469700",
+      "fotmobId": "469700",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -55,7 +75,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "PAVLOVIC",
       "club": "FC Bayern München (GER)",
-      "photoUrl": null,
+      "fullName": "PAVLOVIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1473580.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1473580",
+      "fotmobId": "1473580",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -63,7 +87,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "KIMMICH",
       "club": "FC Bayern München (GER)",
-      "photoUrl": null,
+      "fullName": "KIMMICH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/460632.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/460632",
+      "fotmobId": "460632",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -71,7 +99,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "HAVERTZ",
       "club": "Arsenal FC (ENG)",
-      "photoUrl": null,
+      "fullName": "HAVERTZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/749736.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/749736",
+      "fotmobId": "749736",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -79,7 +111,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "GORETZKA",
       "club": "FC Bayern München (GER)",
-      "photoUrl": null,
+      "fullName": "GORETZKA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/343748.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/343748",
+      "fotmobId": "343748",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -87,7 +123,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "LEWELING",
       "club": "VfB Stuttgart (GER)",
-      "photoUrl": null,
+      "fullName": "LEWELING",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1074968.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1074968",
+      "fotmobId": "1074968",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -95,7 +135,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MUSIALA",
       "club": "FC Bayern München (GER)",
-      "photoUrl": null,
+      "fullName": "MUSIALA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1156141.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1156141",
+      "fotmobId": "1156141",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -103,7 +147,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "WOLTEMADE",
       "club": "Newcastle United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "WOLTEMADE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1106563.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1106563",
+      "fotmobId": "1106563",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -111,7 +159,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "BAUMANN",
       "club": "TSG Hoffenheim (GER)",
-      "photoUrl": null,
+      "fullName": "BAUMANN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/178778.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/178778",
+      "fotmobId": "178778",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -119,7 +171,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "GROß",
       "club": "Brighton & Hove Albion FC (ENG)",
-      "photoUrl": null,
+      "fullName": "GROSS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/167008.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/167008",
+      "fotmobId": "167008",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -127,7 +183,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BEIER",
       "club": "Borussia Dortmund (GER)",
-      "photoUrl": null,
+      "fullName": "BEIER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1047667.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1047667",
+      "fotmobId": "1047667",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -135,7 +195,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SCHLOTTERBECK",
       "club": "Borussia Dortmund (GER)",
-      "photoUrl": null,
+      "fullName": "SCHLOTTERBECK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1002058.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1002058",
+      "fotmobId": "1002058",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -143,7 +207,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "STILLER",
       "club": "VfB Stuttgart (GER)",
-      "photoUrl": null,
+      "fullName": "STILLER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1071186.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1071186",
+      "fotmobId": "1071186",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -151,7 +219,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "WIRTZ",
       "club": "Liverpool FC (ENG)",
-      "photoUrl": null,
+      "fullName": "WIRTZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1152455.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1152455",
+      "fotmobId": "1152455",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -159,7 +231,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BROWN",
       "club": "Eintracht Frankfurt (GER)",
-      "photoUrl": null,
+      "fullName": "BROWN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1395447.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1395447",
+      "fotmobId": "1395447",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -167,7 +243,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SANÉ",
       "club": "Galatasaray SK (TUR)",
-      "photoUrl": null,
+      "fullName": "SANE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/530859.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/530859",
+      "fotmobId": "530859",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -175,7 +255,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "AMIRI",
       "club": "1. FSV Mainz 05 (GER)",
-      "photoUrl": null,
+      "fullName": "AMIRI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/614449.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/614449",
+      "fotmobId": "614449",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -183,7 +267,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "NÜBEL",
       "club": "VfB Stuttgart (GER)",
-      "photoUrl": null,
+      "fullName": "NUEBEL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/554534.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/554534",
+      "fotmobId": "554534",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -191,7 +279,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "RAUM",
       "club": "RB Leipzig (GER)",
-      "photoUrl": null,
+      "fullName": "RAUM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/806669.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/806669",
+      "fotmobId": "806669",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -199,7 +291,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "NMECHA",
       "club": "Borussia Dortmund (GER)",
-      "photoUrl": null,
+      "fullName": "NMECHA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/966019.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/966019",
+      "fotmobId": "966019",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -207,7 +303,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "THIAW",
       "club": "Newcastle United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "THIAW",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1137407.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1137407",
+      "fotmobId": "1137407",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -215,7 +315,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KARL",
       "club": "FC Bayern München (GER)",
-      "photoUrl": null,
+      "fullName": "KARL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1737700.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1737700",
+      "fotmobId": "1737700",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     },
     {
@@ -223,7 +327,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "UNDAV",
       "club": "VfB Stuttgart (GER)",
-      "photoUrl": null,
+      "fullName": "UNDAV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/661519.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/661519",
+      "fotmobId": "661519",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/germany/"
     }
   ],
@@ -233,7 +341,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "ALAQIDI",
       "club": "Al Nassr FC (KSA)",
-      "photoUrl": null,
+      "fullName": "Nawaf Dhahi F",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1125083.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1125083",
+      "fotmobId": "1125083",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -241,7 +353,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MAJRASHI",
       "club": "Al Ahli FC (KSA)",
-      "photoUrl": null,
+      "fullName": "Ali Hassan M",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/910986.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/910986",
+      "fotmobId": "910986",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -249,7 +365,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "LAJAMI",
       "club": "Al Hilal SC (KSA)",
-      "photoUrl": null,
+      "fullName": "Ali Mohammed ALAJAMI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/640284.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/640284",
+      "fotmobId": "640284",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -257,7 +377,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ALAMRI",
       "club": "Al Nassr FC (KSA)",
-      "photoUrl": null,
+      "fullName": "Abdulelah Ali AALAMRI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/848600.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/848600",
+      "fotmobId": "848600",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -265,7 +389,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ALTAMBAKTI",
       "club": "Al Hilal SC (KSA)",
-      "photoUrl": null,
+      "fullName": "Hassan Mohammed OALTAMBAKTI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/848607.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/848607",
+      "fotmobId": "848607",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -273,7 +401,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "NASSER",
       "club": "Al Hilal SC (KSA)",
-      "photoUrl": null,
+      "fullName": "Nasser Essa S ALDAWSARI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/848612.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/848612",
+      "fotmobId": "848612",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -281,7 +413,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MUSAB",
       "club": "Al Qadsiah FC (KSA)",
-      "photoUrl": null,
+      "fullName": "Musab Fahad Z ALJUWAYR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1235341.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1235341",
+      "fotmobId": "1235341",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -289,7 +425,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AIMAN",
       "club": "Al Nassr FC (KSA)",
-      "photoUrl": null,
+      "fullName": "Aiman Yahya Y AHMED",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1238056.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1238056",
+      "fotmobId": "1238056",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -297,7 +437,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "FERAS",
       "club": "Al Ahli FC (KSA)",
-      "photoUrl": null,
+      "fullName": "Feras Tariq N ALBRIKAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/844226.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/844226",
+      "fotmobId": "844226",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -305,7 +449,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "SALEM",
       "club": "Al Hilal SC (KSA)",
-      "photoUrl": null,
+      "fullName": "Salem Mohammed SALDAWSARI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1325891.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1325891",
+      "fotmobId": "1325891",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -313,7 +461,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ALSHEHRI",
       "club": "Al Ittihad (KSA)",
-      "photoUrl": null,
+      "fullName": "SALEH ALSHEHRI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/384407.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/384407",
+      "fotmobId": "384407",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -321,7 +473,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SAUD",
       "club": "RC Lens (FRA)",
-      "photoUrl": null,
+      "fullName": "Saud Abdullah SABDULHAMID",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1002617.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1002617",
+      "fotmobId": "1002617",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -329,7 +485,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "NAWAF",
       "club": "Al Nassr FC (KSA)",
-      "photoUrl": null,
+      "fullName": "Nawaf Meshari MBU WASHL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1401228.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1401228",
+      "fotmobId": "1401228",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -337,7 +497,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "KADISH",
       "club": "Al Ittihad (KSA)",
-      "photoUrl": null,
+      "fullName": "Hassan Kadish YMAHBUB",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1865992.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1865992",
+      "fotmobId": "1865992",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -345,7 +509,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ALKHAIBARI",
       "club": "Al Nassr FC (KSA)",
-      "photoUrl": null,
+      "fullName": "Abdullah Mohammed HALKHAIBARI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/823457.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/823457",
+      "fotmobId": "823457",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -353,7 +521,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ZIYAD",
       "club": "Al Ahli FC (KSA)",
-      "photoUrl": null,
+      "fullName": "Ziyad Mubarak E ALJOHANI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1174962.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1174962",
+      "fotmobId": "1174962",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -361,7 +533,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "KHALID",
       "club": "Al Ettifaq FC (KSA)",
-      "photoUrl": null,
+      "fullName": "Khalid Essa M ALGHANNAM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1024928.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1024928",
+      "fotmobId": "1024928",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -369,7 +545,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ALHAJJI",
       "club": "Neom SC (KSA)",
+      "fullName": "Ala Mohsen A",
       "photoUrl": null,
+      "photoSource": null,
+      "photoSourceUrl": null,
+      "fotmobId": null,
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -377,7 +557,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ALHAMDDAN",
       "club": "Al Nassr FC (KSA)",
-      "photoUrl": null,
+      "fullName": "Abdullah Abdulrahman A",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/909198.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/909198",
+      "fotmobId": "909198",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -385,7 +569,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MANDASH",
       "club": "Al Hilal SC (KSA)",
-      "photoUrl": null,
+      "fullName": "Sultan Ahmed MMANDASH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/619824.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/619824",
+      "fotmobId": "619824",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -393,7 +581,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "ALOWAIS",
       "club": "Al Ula Saudi FC (KSA)",
-      "photoUrl": null,
+      "fullName": "Mohammed Khalil IALOWAIS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/535669.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/535669",
+      "fotmobId": "535669",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -401,7 +593,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "ALKASSAR",
       "club": "Al Qadsiah FC (KSA)",
-      "photoUrl": null,
+      "fullName": "Ahmed Ali H",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/544589.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/544589",
+      "fotmobId": "544589",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -409,7 +605,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KANNO",
       "club": "Al Hilal SC (KSA)",
-      "photoUrl": null,
+      "fullName": "Mohamed Ibrahim A",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/866373.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/866373",
+      "fotmobId": "866373",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -417,7 +617,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MOTEB",
       "club": "Al Hilal SC (KSA)",
-      "photoUrl": null,
+      "fullName": "Moteb Saad S ALHARBI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1138003.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1138003",
+      "fotmobId": "1138003",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -425,7 +629,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "JEHAD",
       "club": "Al Qadsiah FC (KSA)",
-      "photoUrl": null,
+      "fullName": "Jehad Abdullatif ATHIKRI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1232530.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1232530",
+      "fotmobId": "1232530",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     },
     {
@@ -433,7 +641,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MOHAMMED",
       "club": "Al Qadsiah FC (KSA)",
-      "photoUrl": null,
+      "fullName": "Mohammed Waheeb S ABU ALSHAMAT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1125074.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1125074",
+      "fotmobId": "1125074",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/saudi-arabia/"
     }
   ],
@@ -443,7 +655,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "MASTIL",
       "club": "FC Stade Nyonnais (SUI)",
-      "photoUrl": null,
+      "fullName": "MASTIL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1285492.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1285492",
+      "fotmobId": "1285492",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -451,7 +667,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MANDI",
       "club": "Lille OSC (FRA)",
-      "photoUrl": null,
+      "fullName": "MANDI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/282673.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/282673",
+      "fotmobId": "282673",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -459,7 +679,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ABADA",
       "club": "USM Alger (ALG)",
-      "photoUrl": null,
+      "fullName": "ABADA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1362385.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1362385",
+      "fotmobId": "1362385",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -467,7 +691,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "TOUGAI",
       "club": "Espérance De Tunisie (TUN)",
-      "photoUrl": null,
+      "fullName": "TOUGAI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1131925.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1131925",
+      "fotmobId": "1131925",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -475,7 +703,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BELAID",
       "club": "JS Kabylie (ALG)",
-      "photoUrl": null,
+      "fullName": "Zineddine BELAÏD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1118823.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1118823",
+      "fotmobId": "1118823",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -483,7 +715,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ZERROUKI",
       "club": "FC Twente (NED)",
-      "photoUrl": null,
+      "fullName": "ZERROUKI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1074967.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1074967",
+      "fotmobId": "1074967",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -491,7 +727,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MAHREZ",
       "club": "Al Ahli FC (KSA)",
-      "photoUrl": null,
+      "fullName": "MAHREZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/278343.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/278343",
+      "fotmobId": "278343",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -499,7 +739,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "AOUAR",
       "club": "Al Ittihad (KSA)",
-      "photoUrl": null,
+      "fullName": "AOUAR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/776299.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/776299",
+      "fotmobId": "776299",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -507,7 +751,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "GHOURI",
       "club": "Olympique Marseille (FRA)",
-      "photoUrl": null,
+      "fullName": "GOUIRI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/844437.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/844437",
+      "fotmobId": "844437",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -515,7 +763,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "CHAIBI",
       "club": "Eintracht Frankfurt (GER)",
-      "photoUrl": null,
+      "fullName": "CHAIBI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1345875.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1345875",
+      "fotmobId": "1345875",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -523,7 +775,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "HADJ MOUSSA",
       "club": "Feyenoord Rotterdam (NED)",
-      "photoUrl": null,
+      "fullName": "Anis HADJ MOUSSAHADJ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1576876.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1576876",
+      "fotmobId": "1576876",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -531,7 +787,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BENBOUALI",
       "club": "Györi ETO FC (HUN)",
-      "photoUrl": null,
+      "fullName": "BENBOUALI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1210929.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1210929",
+      "fotmobId": "1210929",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -539,7 +799,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HADJAM",
       "club": "BSC Young Boys (SUI)",
-      "photoUrl": null,
+      "fullName": "HADJAM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1178324.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1178324",
+      "fotmobId": "1178324",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -547,7 +811,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BOUDAOUI",
       "club": "OGC Nice (FRA)",
-      "photoUrl": null,
+      "fullName": "BOUDAOUI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1033099.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1033099",
+      "fotmobId": "1033099",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -555,7 +823,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "AIT NOURI",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Rayan AÏT-NOURIAÏT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/933845.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/933845",
+      "fotmobId": "933845",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -563,7 +835,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "BENBOT",
       "club": "USM Alger (ALG)",
-      "photoUrl": null,
+      "fullName": "BENBOT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1116034.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1116034",
+      "fotmobId": "1116034",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -571,7 +847,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BELGHALI",
       "club": "Hellas Verona FC (ITA)",
-      "photoUrl": null,
+      "fullName": "BELGHALI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1231029.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1231029",
+      "fotmobId": "1231029",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -579,7 +859,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AMOURA",
       "club": "VfL Wolfsburg (GER)",
-      "photoUrl": null,
+      "fullName": "AMOURA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1134206.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1134206",
+      "fotmobId": "1134206",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -587,7 +871,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BENTALEB",
       "club": "Lille OSC (FRA)",
-      "photoUrl": null,
+      "fullName": "BENTALEB",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/500520.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/500520",
+      "fotmobId": "500520",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -595,7 +883,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BOULBINA",
       "club": "Al Duhail SC (QAT)",
-      "photoUrl": null,
+      "fullName": "BOULBINA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1298669.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1298669",
+      "fotmobId": "1298669",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -603,7 +895,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BENSEBAINI",
       "club": "Borussia Dortmund (GER)",
-      "photoUrl": null,
+      "fullName": "BENSEBAINI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/559065.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/559065",
+      "fotmobId": "559065",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -611,7 +907,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MAZA",
       "club": "Bayer Leverkusen (GER)",
-      "photoUrl": null,
+      "fullName": "MAZA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1457626.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1457626",
+      "fotmobId": "1457626",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -619,7 +919,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "ZIDANE",
       "club": "Granada CF (ESP)",
-      "photoUrl": null,
+      "fullName": "ZIDANE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/770880.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/770880",
+      "fotmobId": "770880",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -627,7 +931,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "TITRAOUI",
       "club": "Sporting Charleroi (BEL)",
-      "photoUrl": null,
+      "fullName": "Yassine MEG",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1288907.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1288907",
+      "fotmobId": "1288907",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -635,7 +943,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "GHEDJEMIS",
       "club": "Frosinone (ITA)",
-      "photoUrl": null,
+      "fullName": "GHEDJEMIS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1523327.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1523327",
+      "fotmobId": "1523327",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     },
     {
@@ -643,7 +955,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "CHERGUI",
       "club": "Paris FC (FRA)",
-      "photoUrl": null,
+      "fullName": "CHERGUI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1039219.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1039219",
+      "fotmobId": "1039219",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/algeria/"
     }
   ],
@@ -653,7 +969,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "MUSSO",
       "club": "Atlético De Madrid (ESP)",
-      "photoUrl": null,
+      "fullName": "MUSSO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/389050.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/389050",
+      "fotmobId": "389050",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -661,7 +981,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BALERDI",
       "club": "Olympique Marseille (FRA)",
-      "photoUrl": null,
+      "fullName": "Leonardo Julián BALERDI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/958464.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/958464",
+      "fotmobId": "958464",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -669,7 +993,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "TAGLIAFICO",
       "club": "Olympique Lyonnais (FRA)",
-      "photoUrl": null,
+      "fullName": "TAGLIAFICO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/195750.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/195750",
+      "fotmobId": "195750",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -677,7 +1005,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MONTIEL",
       "club": "CA River Plate (ARG)",
-      "photoUrl": null,
+      "fullName": "MONTIEL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/687008.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/687008",
+      "fotmobId": "687008",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -685,7 +1017,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "PAREDES",
       "club": "CA Boca Juniors (ARG)",
-      "photoUrl": null,
+      "fullName": "PAREDES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/237606.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/237606",
+      "fotmobId": "237606",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -693,7 +1029,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MARTÍNEZ",
       "club": "Manchester United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "MARTINEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/847983.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/847983",
+      "fotmobId": "847983",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -701,7 +1041,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "DE PAUL",
       "club": "Inter Miami CF (USA)",
-      "photoUrl": null,
+      "fullName": "DE PAUL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/324578.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/324578",
+      "fotmobId": "324578",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -709,7 +1053,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BARCO",
       "club": "RC Strasbourg (FRA)",
-      "photoUrl": null,
+      "fullName": "BARCO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1272440.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1272440",
+      "fotmobId": "1272440",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -717,7 +1065,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "J. ALVAREZ",
       "club": "Atlético De Madrid (ESP)",
-      "photoUrl": null,
+      "fullName": "Julian ÁLVAREZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/974753.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/974753",
+      "fotmobId": "974753",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -725,7 +1077,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MESSI",
       "club": "Inter Miami CF (USA)",
-      "photoUrl": null,
+      "fullName": "MESSI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/30981.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/30981",
+      "fotmobId": "30981",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -733,7 +1089,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "LO CELSO",
       "club": "Real Betis (ESP)",
-      "photoUrl": null,
+      "fullName": "Giovani LO CELSOLO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/604126.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/604126",
+      "fotmobId": "604126",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -741,7 +1101,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "RULLI",
       "club": "Olympique Marseille (FRA)",
-      "photoUrl": null,
+      "fullName": "RULLI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/245555.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/245555",
+      "fotmobId": "245555",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -749,7 +1113,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ROMERO",
       "club": "Tottenham Hotspur FC (ENG)",
-      "photoUrl": null,
+      "fullName": "ROMERO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/789066.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/789066",
+      "fotmobId": "789066",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -757,7 +1125,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "PALACIOS",
       "club": "Bayer Leverkusen (GER)",
-      "photoUrl": null,
+      "fullName": "PALACIOS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/693599.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/693599",
+      "fotmobId": "693599",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -765,7 +1137,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "N. GONZÁLEZ",
       "club": "Atlético De Madrid (ESP)",
-      "photoUrl": null,
+      "fullName": "Nicolas Ivan GONZALEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/841672.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/841672",
+      "fotmobId": "841672",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -773,7 +1149,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ALMADA",
       "club": "Atlético De Madrid (ESP)",
-      "photoUrl": null,
+      "fullName": "ALMADA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/955271.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/955271",
+      "fotmobId": "955271",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -781,7 +1161,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "SIMEONE",
       "club": "Atlético De Madrid (ESP)",
-      "photoUrl": null,
+      "fullName": "SIMEONE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1226147.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1226147",
+      "fotmobId": "1226147",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -789,7 +1173,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "NICO PAZ",
       "club": "Como (ITA)",
-      "photoUrl": null,
+      "fullName": "Nicolas PAZ MARTÍNEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1347574.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1347574",
+      "fotmobId": "1347574",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -797,7 +1185,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "OTAMENDI",
       "club": "SL Ben\u0000ca (POR)",
-      "photoUrl": null,
+      "fullName": "OTAMENDI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/174321.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/174321",
+      "fotmobId": "174321",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -805,7 +1197,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MAC ALLISTER",
       "club": "Liverpool FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Alexis MAC ALLISTERMAC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/831489.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/831489",
+      "fotmobId": "831489",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -813,7 +1209,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "LOPEZ",
       "club": "SE Palmeiras (BRA)",
-      "photoUrl": null,
+      "fullName": "LOPEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1334767.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1334767",
+      "fotmobId": "1334767",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -821,7 +1221,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "L. MARTÍNEZ",
       "club": "FC Internazionale Milano (ITA)",
-      "photoUrl": null,
+      "fullName": "Lautaro Javier MARTÍNEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/690230.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/690230",
+      "fotmobId": "690230",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -829,7 +1233,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "E. MARTÍNEZ",
       "club": "Aston Villa FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Emiliano Damián Emiliano MARTÍNEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/268375.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/268375",
+      "fotmobId": "268375",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -837,7 +1245,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "E. FERNÁNDEZ",
       "club": "Chelsea FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Enzo Jeremías FERNÁNDEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1137705.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1137705",
+      "fotmobId": "1137705",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -845,7 +1257,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MEDINA",
       "club": "Olympique Marseille (FRA)",
-      "photoUrl": null,
+      "fullName": "MEDINA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/812652.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/812652",
+      "fotmobId": "812652",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     },
     {
@@ -853,7 +1269,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MOLINA",
       "club": "Atlético De Madrid (ESP)",
-      "photoUrl": null,
+      "fullName": "Nahuel MOLINA LUCERO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/726345.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/726345",
+      "fotmobId": "726345",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/argentina/"
     }
   ],
@@ -863,7 +1283,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "RYAN",
       "club": "Levante UD (ESP)",
-      "photoUrl": null,
+      "fullName": "RYAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/956683.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/956683",
+      "fotmobId": "956683",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -871,7 +1295,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DEGENEK",
       "club": "APOEL FC (CYP)",
-      "photoUrl": null,
+      "fullName": "DEGENEK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/416124.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/416124",
+      "fotmobId": "416124",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -879,7 +1307,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "CIRCATI",
       "club": "Parma (ITA)",
-      "photoUrl": null,
+      "fullName": "CIRCATI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1318686.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1318686",
+      "fotmobId": "1318686",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -887,7 +1319,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ITALIANO",
       "club": "Grazer AK (AUT)",
-      "photoUrl": null,
+      "fullName": "ITALIANO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/889093.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/889093",
+      "fotmobId": "889093",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -895,7 +1331,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BOS",
       "club": "Feyenoord Rotterdam (NED)",
-      "photoUrl": null,
+      "fullName": "BOS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1316930.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1316930",
+      "fotmobId": "1316930",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -903,7 +1343,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "GERIA",
       "club": "Albirex Niigata (JPN)",
-      "photoUrl": null,
+      "fullName": "GERIA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/418799.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/418799",
+      "fotmobId": "418799",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -911,7 +1355,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "LECKIE",
       "club": "Melbourne City FC (AUS)",
-      "photoUrl": null,
+      "fullName": "LECKIE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/185014.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/185014",
+      "fotmobId": "185014",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -919,7 +1367,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "METCALFE",
       "club": "FC St. Pauli (GER)",
-      "photoUrl": null,
+      "fullName": "METCALFE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/885870.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/885870",
+      "fotmobId": "885870",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -927,7 +1379,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "TOURE",
       "club": "Norwich City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Mohamed A",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1132069.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1132069",
+      "fotmobId": "1132069",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -935,7 +1391,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "HRUSTIC",
       "club": "SC Heracles Almelo (NED)",
-      "photoUrl": null,
+      "fullName": "HRUSTIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/675762.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/675762",
+      "fotmobId": "675762",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -943,7 +1403,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MABIL",
       "club": "CD Castellón (ESP)",
-      "photoUrl": null,
+      "fullName": "MABIL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/421328.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/421328",
+      "fotmobId": "421328",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -951,7 +1415,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "IZZO",
       "club": "Randers FC (DEN)",
-      "photoUrl": null,
+      "fullName": "IZZO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/302176.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/302176",
+      "fotmobId": "302176",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -959,7 +1427,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "O'NEILL",
       "club": "New York City FC (USA)",
-      "photoUrl": null,
+      "fullName": "ONEILL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/785377.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/785377",
+      "fotmobId": "785377",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -967,7 +1439,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "DEVLIN",
       "club": "Heart Of Midlothian FC (SCO)",
-      "photoUrl": null,
+      "fullName": "DEVLIN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/970544.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/970544",
+      "fotmobId": "970544",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -975,7 +1451,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "TREWIN",
       "club": "New York City FC (USA)",
-      "photoUrl": null,
+      "fullName": "TREWIN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1101030.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1101030",
+      "fotmobId": "1101030",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -983,7 +1463,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BEHICH",
       "club": "Melbourne City FC (AUS)",
-      "photoUrl": null,
+      "fullName": "BEHICH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/192735.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/192735",
+      "fotmobId": "192735",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -991,7 +1475,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "IRANKUNDA",
       "club": "Watford FC (ENG)",
-      "photoUrl": null,
+      "fullName": "IRANKUNDA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1327214.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1327214",
+      "fotmobId": "1327214",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -999,7 +1487,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "BEACH",
       "club": "Melbourne City FC (AUS)",
-      "photoUrl": null,
+      "fullName": "BEACH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1335765.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1335765",
+      "fotmobId": "1335765",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -1007,7 +1499,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SOUTTAR",
       "club": "Leicester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "SOUTTAR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/671518.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/671518",
+      "fotmobId": "671518",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -1015,7 +1511,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "VOLPATO",
       "club": "US Sassuolo (ITA)",
-      "photoUrl": null,
+      "fullName": "VOLPATO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1308909.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1308909",
+      "fotmobId": "1308909",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -1023,7 +1523,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BURGESS",
       "club": "Swansea City AFC (WAL)",
-      "photoUrl": null,
+      "fullName": "BURGESS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/564842.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/564842",
+      "fotmobId": "564842",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -1031,7 +1535,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "IRVINE",
       "club": "FC St. Pauli (GER)",
-      "photoUrl": null,
+      "fullName": "IRVINE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/369742.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/369742",
+      "fotmobId": "369742",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -1039,7 +1547,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "VELUPILLAY",
       "club": "Melbourne Victory FC (AUS)",
-      "photoUrl": null,
+      "fullName": "VELUPILLAY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1250885.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1250885",
+      "fotmobId": "1250885",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -1047,7 +1559,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "OKON-ENGSTLER",
       "club": "Sydney FC (AUS)",
-      "photoUrl": null,
+      "fullName": "OKON-ENGSTLER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1527363.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1527363",
+      "fotmobId": "1527363",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -1055,7 +1571,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HERRINGTON",
       "club": "Colorado Rapids (USA)",
-      "photoUrl": null,
+      "fullName": "HERRINGTON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1686118.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1686118",
+      "fotmobId": "1686118",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     },
     {
@@ -1063,7 +1583,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "YENGI",
       "club": "FC Machida Zelvia (JPN)",
-      "photoUrl": null,
+      "fullName": "YENGI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1220549.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1220549",
+      "fotmobId": "1220549",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/australia/"
     }
   ],
@@ -1073,7 +1597,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "SCHLAGER",
       "club": "FC Red Bull Salzburg (AUT)",
-      "photoUrl": null,
+      "fullName": "SCHLAGER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/450739.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/450739",
+      "fotmobId": "450739",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1081,7 +1609,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "AFFENGRUBER",
       "club": "Elche CF (ESP)",
-      "photoUrl": null,
+      "fullName": "AFFENGRUBER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1073980.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1073980",
+      "fotmobId": "1073980",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1089,7 +1621,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DANSO",
       "club": "Tottenham Hotspur FC (ENG)",
-      "photoUrl": null,
+      "fullName": "DANSO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/754126.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/754126",
+      "fotmobId": "754126",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1097,7 +1633,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "XAVER",
       "club": "RB Leipzig (GER)",
-      "photoUrl": null,
+      "fullName": "Xaver SCHLAGER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/620027.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/620027",
+      "fotmobId": "620027",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1105,7 +1645,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "POSCH",
       "club": "1. FSV Mainz 05 (GER)",
-      "photoUrl": null,
+      "fullName": "POSCH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/557325.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/557325",
+      "fotmobId": "557325",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1113,7 +1657,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SEIWALD",
       "club": "RB Leipzig (GER)",
-      "photoUrl": null,
+      "fullName": "SEIWALD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1024672.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1024672",
+      "fotmobId": "1024672",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1121,7 +1669,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ARNAUTOVIC",
       "club": "FK Crvena Zvezda (SRB)",
-      "photoUrl": null,
+      "fullName": "ARNAUTOVIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/110148.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/110148",
+      "fotmobId": "110148",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1129,7 +1681,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ALABA",
       "club": "Real Madrid C. F. (ESP)",
-      "photoUrl": null,
+      "fullName": "ALABA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/121633.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/121633",
+      "fotmobId": "121633",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1137,7 +1693,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SABITZER",
       "club": "Borussia Dortmund (GER)",
-      "photoUrl": null,
+      "fullName": "SABITZER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/215151.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/215151",
+      "fotmobId": "215151",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1145,7 +1705,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "GRILLITSCH",
       "club": "SC Braga (POR)",
-      "photoUrl": null,
+      "fullName": "GRILLITSCH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/617044.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/617044",
+      "fotmobId": "617044",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1153,7 +1717,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "GREGORITSCH",
       "club": "FC Augsburg (GER)",
-      "photoUrl": null,
+      "fullName": "GREGORITSCH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/198316.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/198316",
+      "fotmobId": "198316",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1161,7 +1729,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "WIEGELE",
       "club": "FC Viktoria Plze ň (CZE)",
-      "photoUrl": null,
+      "fullName": "WIEGELE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1514693.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1514693",
+      "fotmobId": "1514693",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1169,7 +1741,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "PENTZ",
       "club": "Brøndby IF (DEN)",
-      "photoUrl": null,
+      "fullName": "PENTZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/630672.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/630672",
+      "fotmobId": "630672",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1177,7 +1753,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "KALAJDZIC",
       "club": "LASK Linz (AUT)",
-      "photoUrl": null,
+      "fullName": "Sasa Sa š a KALAJDŽIĆ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/858198.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/858198",
+      "fotmobId": "858198",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1185,7 +1765,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "LIENHART",
       "club": "SC Freiburg (GER)",
-      "photoUrl": null,
+      "fullName": "LIENHART",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/643724.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/643724",
+      "fotmobId": "643724",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1193,7 +1777,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MWENE",
       "club": "1. FSV Mainz 05 (GER)",
-      "photoUrl": null,
+      "fullName": "MWENE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/423812.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/423812",
+      "fotmobId": "423812",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1201,7 +1789,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "CHUKWUEMEKA",
       "club": "Borussia Dortmund (GER)",
-      "photoUrl": null,
+      "fullName": "CHUKWUEMEKA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1089685.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1089685",
+      "fotmobId": "1089685",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1209,7 +1801,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SCHMID",
       "club": "SV Werder Bremen (GER)",
-      "photoUrl": null,
+      "fullName": "SCHMID",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/749488.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/749488",
+      "fotmobId": "749488",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1217,7 +1813,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BAUMGARTNER",
       "club": "RB Leipzig (GER)",
-      "photoUrl": null,
+      "fullName": "BAUMGARTNER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/747718.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/747718",
+      "fotmobId": "747718",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1225,7 +1825,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "LAIMER",
       "club": "FC Bayern München (GER)",
-      "photoUrl": null,
+      "fullName": "LAIMER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/526827.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/526827",
+      "fotmobId": "526827",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1233,7 +1837,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "WIMMER",
       "club": "VfL Wolfsburg (GER)",
-      "photoUrl": null,
+      "fullName": "WIMMER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1073498.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1073498",
+      "fotmobId": "1073498",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1241,7 +1849,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "PRASS",
       "club": "TSG Hoffenheim (GER)",
-      "photoUrl": null,
+      "fullName": "PRASS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1027194.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1027194",
+      "fotmobId": "1027194",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1249,7 +1861,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "FRIEDL",
       "club": "SV Werder Bremen (GER)",
-      "photoUrl": null,
+      "fullName": "FRIEDL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/767789.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/767789",
+      "fotmobId": "767789",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1257,7 +1873,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "WANNER",
       "club": "PSV Eindhoven (NED)",
-      "photoUrl": null,
+      "fullName": "WANNER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1327149.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1327149",
+      "fotmobId": "1327149",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1265,7 +1885,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SVOBODA",
       "club": "Venezia FC (ITA)",
-      "photoUrl": null,
+      "fullName": "SVOBODA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/951921.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/951921",
+      "fotmobId": "951921",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     },
     {
@@ -1273,7 +1897,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SCHÖPF",
       "club": "Wolfsberger AC (AUT)",
-      "photoUrl": null,
+      "fullName": "SCHOEPF",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/461357.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/461357",
+      "fotmobId": "461357",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/austria/"
     }
   ],
@@ -1283,7 +1911,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "COURTOIS",
       "club": "Real Madrid C. F. (ESP)",
-      "photoUrl": null,
+      "fullName": "Thibaut Nicolas MCOURTOIS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/170323.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/170323",
+      "fotmobId": "170323",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1291,7 +1923,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DEBAST",
       "club": "Sporting CP (POR)",
-      "photoUrl": null,
+      "fullName": "DEBAST",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1232172.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1232172",
+      "fotmobId": "1232172",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1299,7 +1935,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "THIATE",
       "club": "Eintracht Frankfurt (GER)",
-      "photoUrl": null,
+      "fullName": "Arthur Nicolas RTHEATE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1173250.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1173250",
+      "fotmobId": "1173250",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1307,7 +1947,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MECHELE",
       "club": "Club Brugge (BEL)",
-      "photoUrl": null,
+      "fullName": "MECHELE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/445873.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/445873",
+      "fotmobId": "445873",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1315,7 +1959,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DE CUYPER",
       "club": "Brighton & Hove Albion FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Maxim Peter M DE CUYPER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1134871.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1134871",
+      "fotmobId": "1134871",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1323,7 +1971,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "WITSEL",
       "club": "Girona FC (ESP)",
-      "photoUrl": null,
+      "fullName": "Axel Laurent A",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/39591.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/39591",
+      "fotmobId": "39591",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1331,7 +1983,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "DE BRUYNE",
       "club": "SSC Napoli (ITA)",
-      "photoUrl": null,
+      "fullName": "DE BRUYNE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/169200.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/169200",
+      "fotmobId": "169200",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1339,7 +1995,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "TIELEMANS",
       "club": "Aston Villa FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Youri Marion ATIELEMANS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/465960.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/465960",
+      "fotmobId": "465960",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1347,7 +2007,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "LUKAKU",
       "club": "SSC Napoli (ITA)",
-      "photoUrl": null,
+      "fullName": "Romelu LUKAKU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/181276.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/181276",
+      "fotmobId": "181276",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1355,7 +2019,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "TROSSARD",
       "club": "Arsenal FC (ENG)",
-      "photoUrl": null,
+      "fullName": "TROSSARD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/318615.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/318615",
+      "fotmobId": "318615",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1363,7 +2031,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "DOKU",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "DOKU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/942368.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/942368",
+      "fotmobId": "942368",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1371,7 +2043,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "LAMMENS",
       "club": "Manchester United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "LAMMENS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1178602.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1178602",
+      "fotmobId": "1178602",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1379,7 +2055,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "PENDERS",
       "club": "RC Strasbourg (FRA)",
-      "photoUrl": null,
+      "fullName": "PENDERS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1319972.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1319972",
+      "fotmobId": "1319972",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1387,7 +2067,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "LUKEBAKIO",
       "club": "SL Ben\u0000ca (POR)",
-      "photoUrl": null,
+      "fullName": "Dodi LUKEBAKIO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/688876.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/688876",
+      "fotmobId": "688876",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1395,7 +2079,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MEUNIER",
       "club": "Lille OSC (FRA)",
-      "photoUrl": null,
+      "fullName": "Thomas Andre A",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/277771.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/277771",
+      "fotmobId": "277771",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1403,7 +2091,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DE WINTER",
       "club": "AC Milan (ITA)",
-      "photoUrl": null,
+      "fullName": "DE WINTER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1200630.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1200630",
+      "fotmobId": "1200630",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1411,7 +2103,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "DE KETELAERE",
       "club": "Atalanta Bergamo (ITA)",
-      "photoUrl": null,
+      "fullName": "Charles Marc S DE KETELAERE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1095432.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1095432",
+      "fotmobId": "1095432",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1419,7 +2115,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SEYS",
       "club": "Club Brugge (BEL)",
-      "photoUrl": null,
+      "fullName": "SEYS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1489449.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1489449",
+      "fotmobId": "1489449",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1427,7 +2127,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MOREIRA",
       "club": "RC Strasbourg (FRA)",
-      "photoUrl": null,
+      "fullName": "Diego Manuel JDA SILVA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1342754.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1342754",
+      "fotmobId": "1342754",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1435,7 +2139,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "VANAKEN",
       "club": "Club Brugge (BEL)",
-      "photoUrl": null,
+      "fullName": "VANAKEN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/203666.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/203666",
+      "fotmobId": "203666",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1443,7 +2151,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "CASTAGNE",
       "club": "Fulham FC (ENG)",
-      "photoUrl": null,
+      "fullName": "CASTAGNE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/465750.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/465750",
+      "fotmobId": "465750",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1451,7 +2163,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SAELEMAEKERS",
       "club": "AC Milan (ITA)",
-      "photoUrl": null,
+      "fullName": "Alexis Jesse MSAELEMAEKERS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/921341.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/921341",
+      "fotmobId": "921341",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1459,7 +2175,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "RASKIN",
       "club": "Rangers FC (SCO)",
-      "photoUrl": null,
+      "fullName": "Nicolas Thierry Y",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/863869.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/863869",
+      "fotmobId": "863869",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1467,7 +2187,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ONANA",
       "club": "Aston Villa FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Amadou Ba ZMVOM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1185748.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1185748",
+      "fotmobId": "1185748",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1475,7 +2199,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "NGOY",
       "club": "Lille OSC (FRA)",
-      "photoUrl": null,
+      "fullName": "NGOY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1252070.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1252070",
+      "fotmobId": "1252070",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     },
     {
@@ -1483,7 +2211,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "FERNANDEZ-PARDO",
       "club": "Lille OSC (FRA)",
-      "photoUrl": null,
+      "fullName": "FERNANDEZ-PARDO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1444231.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1444231",
+      "fotmobId": "1444231",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/belgium/"
     }
   ],
@@ -1493,7 +2225,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "VASILJ",
       "club": "FC St. Pauli (GER)",
-      "photoUrl": null,
+      "fullName": "VASILJ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/466867.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/466867",
+      "fotmobId": "466867",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1501,7 +2237,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MUJAKIC",
       "club": "Gaziantep FK (TUR)",
-      "photoUrl": null,
+      "fullName": "Nihad MUJAKIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/857436.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/857436",
+      "fotmobId": "857436",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1509,7 +2249,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HADZIKADUNIC",
       "club": "UC Sampdoria (ITA)",
-      "photoUrl": null,
+      "fullName": "Dennis HADŽ IKADUNIĆHADŽ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/797797.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/797797",
+      "fotmobId": "797797",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1517,7 +2261,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MUHAREMOVIC",
       "club": "US Sassuolo (ITA)",
-      "photoUrl": null,
+      "fullName": "Tarik MUHAREMOVIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1250485.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1250485",
+      "fotmobId": "1250485",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1525,7 +2273,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "KOLASINAC",
       "club": "Atalanta Bergamo (ITA)",
-      "photoUrl": null,
+      "fullName": "KOLASINAC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/304345.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/304345",
+      "fotmobId": "304345",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1533,7 +2285,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "TAHIROVIC",
       "club": "Brøndby IF (DEN)",
-      "photoUrl": null,
+      "fullName": "Benjamin TAHIROVIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1415104.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1415104",
+      "fotmobId": "1415104",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1541,7 +2297,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DEDIC",
       "club": "SL Ben\u0000ca (POR)",
-      "photoUrl": null,
+      "fullName": "Amar DEDIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/958010.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/958010",
+      "fotmobId": "958010",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1549,7 +2309,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "GIGOVIC",
       "club": "BSC Young Boys (SUI)",
-      "photoUrl": null,
+      "fullName": "Armin GIGOVIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1057426.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1057426",
+      "fotmobId": "1057426",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1557,7 +2321,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BAZDAR",
       "club": "Jagiellonia Bia ł ystok (POL)",
-      "photoUrl": null,
+      "fullName": "BAZDAR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1284492.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1284492",
+      "fotmobId": "1284492",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1565,7 +2333,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "DEMIROVIC",
       "club": "VfB Stuttgart (GER)",
-      "photoUrl": null,
+      "fullName": "DEMIROVIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/840241.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/840241",
+      "fotmobId": "840241",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1573,7 +2345,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "DZEKO",
       "club": "FC Schalke 04 (GER)",
-      "photoUrl": null,
+      "fullName": "Edin DŽ EKODŽ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/15403.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/15403",
+      "fotmobId": "15403",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1581,7 +2357,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "JURKAS",
       "club": "FK Borac Banja Luka (BIH)",
-      "photoUrl": null,
+      "fullName": "JURKAS",
+      "photoUrl": "https://img.a.transfermarkt.technology/portrait/header/952692-1771005082.PNG?lm=1",
+      "photoSource": "Transfermarkt",
+      "photoSourceUrl": "https://www.transfermarkt.com/mladen-jurkas/profil/spieler/952692",
+      "fotmobId": null,
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1589,7 +2369,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BASIC",
       "club": "FC Astana (KAZ)",
-      "photoUrl": null,
+      "fullName": "BASIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1179875.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1179875",
+      "fotmobId": "1179875",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1597,7 +2381,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SUNJIC",
       "club": "Pafos FC (CYP)",
-      "photoUrl": null,
+      "fullName": "Ivan Š UNJIĆŠ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/541551.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/541551",
+      "fotmobId": "541551",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1605,7 +2393,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MEMIC",
       "club": "FC Viktoria Plze ň (CZE)",
-      "photoUrl": null,
+      "fullName": "MEMIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1300385.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1300385",
+      "fotmobId": "1300385",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1613,7 +2405,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "HADZIAHMETOVIC",
       "club": "Hull City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Amir HADŽ IAHMETOVIĆHADŽ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/639558.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/639558",
+      "fotmobId": "639558",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1621,7 +2417,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BURNIC",
       "club": "Karlsruher SC (GER)",
-      "photoUrl": null,
+      "fullName": "Dzenis Dž enis",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/660148.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/660148",
+      "fotmobId": "660148",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1629,7 +2429,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "KATIC",
       "club": "FC Schalke 04 (GER)",
-      "photoUrl": null,
+      "fullName": "Nikola KATIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/725655.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/725655",
+      "fotmobId": "725655",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1637,7 +2441,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ALAJBEGOVIC",
       "club": "FC Red Bull Salzburg (AUT)",
-      "photoUrl": null,
+      "fullName": "Kerim ALAJBEGOVIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1684401.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1684401",
+      "fotmobId": "1684401",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1645,7 +2453,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BAJRAKTAREVIC",
       "club": "PSV Eindhoven (NED)",
-      "photoUrl": null,
+      "fullName": "Esmir BAJRAKTAREVIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1346860.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1346860",
+      "fotmobId": "1346860",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1653,7 +2465,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "RADELJIC",
       "club": "HNK Rijeka (CRO)",
-      "photoUrl": null,
+      "fullName": "Stjepan RADELJIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/653982.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/653982",
+      "fotmobId": "653982",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1661,7 +2477,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "ZLOMISLIC",
       "club": "HNK Rijeka (CRO)",
-      "photoUrl": null,
+      "fullName": "Martin ZLOMISLIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/857661.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/857661",
+      "fotmobId": "857661",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1669,7 +2489,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "TABAKOVIC",
       "club": "Borussia Mönchengladbach (GER)",
-      "photoUrl": null,
+      "fullName": "Haris TABAKOVIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/388903.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/388903",
+      "fotmobId": "388903",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1677,7 +2501,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "CELIK",
       "club": "RC Lens (FRA)",
-      "photoUrl": null,
+      "fullName": "Nidal CELIKČ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1657810.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1657810",
+      "fotmobId": "1657810",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1685,7 +2513,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "LUKIC",
       "club": "Universitatea Cluj (ROU)",
-      "photoUrl": null,
+      "fullName": "Jovo LUKIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1174844.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1174844",
+      "fotmobId": "1174844",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     },
     {
@@ -1693,7 +2525,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MAHMIC",
       "club": "FC Slovan Liberec (CZE)",
-      "photoUrl": null,
+      "fullName": "MAHMIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1528815.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1528815",
+      "fotmobId": "1528815",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/bosnia-and-herzegovina/"
     }
   ],
@@ -1703,7 +2539,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "A. BECKER",
       "club": "Liverpool FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Álisson Ramsés BECKER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/319784.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/319784",
+      "fotmobId": "319784",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1711,7 +2551,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "WESLEY",
       "club": "AS Roma (ITA)",
-      "photoUrl": null,
+      "fullName": "Wesley VINÍCIUS FRANÇA LIMA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1320176.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1320176",
+      "fotmobId": "1320176",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1719,7 +2563,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "GABRIEL",
       "club": "Arsenal FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Gabriel DOS SANTOS MAGALHÃES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/795179.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/795179",
+      "fotmobId": "795179",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1727,7 +2575,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MARQUINHOS",
       "club": "Paris Saint-Germain (FRA)",
-      "photoUrl": null,
+      "fullName": "Marcos AOAS CORREA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/267365.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/267365",
+      "fotmobId": "267365",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1735,7 +2587,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "CASEMIRO",
       "club": "Manchester United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Carlos Henrique CASIMIRO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/208494.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/208494",
+      "fotmobId": "208494",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1743,7 +2599,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ALEX SANDRO",
       "club": "CR Flamengo (BRA)",
-      "photoUrl": null,
+      "fullName": "Alex Sandro LOBO SILVA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/157865.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/157865",
+      "fotmobId": "157865",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1751,7 +2611,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "VINI JR.",
       "club": "Real Madrid C. F. (ESP)",
-      "photoUrl": null,
+      "fullName": "Vinicius José PAIXÃO DE OLIVEIRA JÚNIOR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/846033.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/846033",
+      "fotmobId": "846033",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1759,7 +2623,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BRUNO G.",
       "club": "Newcastle United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Bruno GUIMARÃES RODRIGUEZ MOURA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/850354.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/850354",
+      "fotmobId": "850354",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1767,7 +2635,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "CUNHA",
       "club": "Manchester United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Matheus SANTOS CARNEIRO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/863098.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/863098",
+      "fotmobId": "863098",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1775,7 +2647,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "NEYMAR JR",
       "club": "Santos FC (BRA)",
-      "photoUrl": null,
+      "fullName": "Neymar DA SILVA SANTOS JÚNIOR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1691450.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1691450",
+      "fotmobId": "1691450",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1783,7 +2659,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "RAPHINHA",
       "club": "FC Barcelona (ESP)",
-      "photoUrl": null,
+      "fullName": "Raphael DIAS BELLOLI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/696679.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/696679",
+      "fotmobId": "696679",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1791,7 +2671,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "WEVERTON",
       "club": "Grêmio FBPA (BRA)",
-      "photoUrl": null,
+      "fullName": "Weverton PEREIRA DA SILVA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/267826.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/267826",
+      "fotmobId": "267826",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1799,7 +2683,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DANILO",
       "club": "CR Flamengo (BRA)",
-      "photoUrl": null,
+      "fullName": "Danilo Luiz DA SILVA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/208077.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/208077",
+      "fotmobId": "208077",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1807,7 +2695,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BREMER",
       "club": "Juventus FC (ITA)",
-      "photoUrl": null,
+      "fullName": "Gleison Bremer SILVA NASCIMENTO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/857269.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/857269",
+      "fotmobId": "857269",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1815,7 +2707,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "LEO PEREIRA",
       "club": "CR Flamengo (BRA)",
-      "photoUrl": null,
+      "fullName": "Leonardo PEREIRALEO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/523801.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/523801",
+      "fotmobId": "523801",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1823,7 +2719,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DOUGLAS SANTOS",
       "club": "FC Zenit St. Petersburg (RUS)",
-      "photoUrl": null,
+      "fullName": "Douglas DOS SANTOS JUSTINO DE MELO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/346000.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/346000",
+      "fotmobId": "346000",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1831,7 +2731,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "FABINHO",
       "club": "Al Ittihad (KSA)",
-      "photoUrl": null,
+      "fullName": "Fabio Henrique TAVARES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/359188.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/359188",
+      "fotmobId": "359188",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1839,7 +2743,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "DANILO S.",
       "club": "Botafogo (BRA)",
-      "photoUrl": null,
+      "fullName": "Danilo DOS SANTOS DE OLIVEIRA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1181700.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1181700",
+      "fotmobId": "1181700",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1847,7 +2755,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ENDRICK",
       "club": "Olympique Lyonnais (FRA)",
-      "photoUrl": null,
+      "fullName": "Endrick Felipe MOREIRA DE SOUSA PESSOA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1406729.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1406729",
+      "fotmobId": "1406729",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1855,7 +2767,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "L. PAQUETA",
       "club": "CR Flamengo (BRA)",
-      "photoUrl": null,
+      "fullName": "Lucas TOLENTINO COELHO DE LIMA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/766435.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/766435",
+      "fotmobId": "766435",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1863,7 +2779,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "L. HENRIQUE",
       "club": "FC Zenit St. Petersburg (RUS)",
-      "photoUrl": null,
+      "fullName": "Luiz Henrique André ROSA DA SILVA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1176214.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1176214",
+      "fotmobId": "1176214",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1871,7 +2791,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MARTINELLI",
       "club": "Arsenal FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Gabriel TEODORO MARTINELLI SILVA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1187836.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1187836",
+      "fotmobId": "1187836",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1879,7 +2803,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "EDERSON",
       "club": "Fenerbahçe SK (TUR)",
-      "photoUrl": null,
+      "fullName": "Ederson SANTANA DE MORAES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/363364.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/363364",
+      "fotmobId": "363364",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1887,7 +2815,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "IBANEZ",
       "club": "Al Ahli FC (KSA)",
-      "photoUrl": null,
+      "fullName": "Roger IBAÑEZ DA SILVA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/862538.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/862538",
+      "fotmobId": "862538",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1895,7 +2827,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "THIAGO",
       "club": "Brentford FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Igor Thiago NASCIMENTO RODRIGUES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1302005.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1302005",
+      "fotmobId": "1302005",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     },
     {
@@ -1903,7 +2839,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "RAYAN",
       "club": "AFC Bournemouth (ENG)",
-      "photoUrl": null,
+      "fullName": "Rayan Vitor SIMPLICIO ROCHA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1478295.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1478295",
+      "fotmobId": "1478295",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/brazil/"
     }
   ],
@@ -1913,7 +2853,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "VOZINHA",
       "club": "GD Chaves (POR)",
-      "photoUrl": null,
+      "fullName": "Josimar José ÉVORA DIAS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/422149.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/422149",
+      "fotmobId": "422149",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -1921,7 +2865,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "STOPIRA",
       "club": "SCU Torreense (POR)",
-      "photoUrl": null,
+      "fullName": "Ianique DOS SANTOS TAVARES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/164062.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/164062",
+      "fotmobId": "164062",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -1929,7 +2877,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BORGES",
       "club": "Al Bataeh Club (UAE)",
-      "photoUrl": null,
+      "fullName": "Edilson Alberto MONTEIRO SANCHES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/674209.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/674209",
+      "fotmobId": "674209",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -1937,7 +2889,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "LOPES",
       "club": "Shamrock Rovers FC (IRL)",
-      "photoUrl": null,
+      "fullName": "PICO LOPES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/230134.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/230134",
+      "fotmobId": "230134",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -1945,7 +2901,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "LOGAN",
       "club": "Villarreal CF (ESP)",
-      "photoUrl": null,
+      "fullName": "Logan Evans COSTA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/922877.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/922877",
+      "fotmobId": "922877",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -1953,7 +2913,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KEVIN L.",
       "club": "FC Krasnodar (RUS)",
-      "photoUrl": null,
+      "fullName": "Kevin Lenini GONÇALVES PEREIRA DE PINA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1139167.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1139167",
+      "fotmobId": "1139167",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -1961,7 +2925,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "JOVANE",
       "club": "CF Estrela Da Amadora (POR)",
-      "photoUrl": null,
+      "fullName": "Jovane Eduardo BORGES CABRAL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/785716.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/785716",
+      "fotmobId": "785716",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -1969,7 +2937,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "JOAO PAULO",
       "club": "FC FCSB (ROU)",
-      "photoUrl": null,
+      "fullName": "João Paulo MOREIRA FERNANDES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1241301.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1241301",
+      "fotmobId": "1241301",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -1977,7 +2949,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BENCHIMOL",
       "club": "FC Akron Tolyatti (RUS)",
-      "photoUrl": null,
+      "fullName": "Gilson BENCHIMOL TAVARES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1241302.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1241302",
+      "fotmobId": "1241302",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -1985,7 +2961,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MONTEIRO",
       "club": "PEC Zwolle (NED)",
-      "photoUrl": null,
+      "fullName": "Jamiro Gregory MONTEIRO ALVARENGA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/680905.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/680905",
+      "fotmobId": "680905",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -1993,7 +2973,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "RODRIGUES",
       "club": "Apollon Limassol (CYP)",
-      "photoUrl": null,
+      "fullName": "Garry MENDES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1524670.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1524670",
+      "fotmobId": "1524670",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -2001,7 +2985,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "MARCIO",
       "club": "PFC Montana (BUL)",
-      "photoUrl": null,
+      "fullName": "Márcio Salomão BRAZÃO DA ROSA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/865144.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/865144",
+      "fotmobId": "865144",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -2009,7 +2997,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "LOPES CABRAL",
       "club": "SL Ben\u0000ca (POR)",
-      "photoUrl": null,
+      "fullName": "Sidny LOPES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1441786.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1441786",
+      "fotmobId": "1441786",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -2017,7 +3009,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "D. DUARTE",
       "club": "PFC Ludogorets Razgrad (BUL)",
-      "photoUrl": null,
+      "fullName": "Deroy D'ENCARNAÇÃO DUARTE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/798069.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/798069",
+      "fotmobId": "798069",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -2025,7 +3021,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "DUARTE",
       "club": "Puskás Akadémia FC (HUN)",
-      "photoUrl": null,
+      "fullName": "Laros Michael D'ENCARNAÇÃO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/566425.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/566425",
+      "fotmobId": "566425",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -2033,7 +3033,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "Y. SEMEDO",
       "club": "SC Farense (POR)",
-      "photoUrl": null,
+      "fullName": "Jair SEMEDO MONTEIRO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1205410.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1205410",
+      "fotmobId": "1205410",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -2041,7 +3045,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SEMEDO",
       "club": "AC Omonia (CYP)",
-      "photoUrl": null,
+      "fullName": "Willy Johnson SEMEDO AFONSO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/470834.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/470834",
+      "fotmobId": "470834",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -2049,7 +3057,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ARCANJO",
       "club": "Vitória SC (POR)",
-      "photoUrl": null,
+      "fullName": "Telmo Emanuel GOMES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1165477.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1165477",
+      "fotmobId": "1165477",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -2057,7 +3069,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "LIVRAMENTO",
       "club": "Casa Pia AC (POR)",
-      "photoUrl": null,
+      "fullName": "Dailon ROCHA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1309634.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1309634",
+      "fotmobId": "1309634",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -2065,7 +3081,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "RYAN",
       "club": "I ğ dır FK (TUR)",
-      "photoUrl": null,
+      "fullName": "Ryan Isaac DA GRACA MENDES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/956683.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/956683",
+      "fotmobId": "956683",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -2073,7 +3093,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "DA COSTA",
       "club": "Ba ş ak ş ehir FK (TUR)",
-      "photoUrl": null,
+      "fullName": "Nuno Miguel DA COSTA JOIA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/671326.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/671326",
+      "fotmobId": "671326",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -2081,7 +3105,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MOREIRA",
       "club": "Columbus Crew (USA)",
-      "photoUrl": null,
+      "fullName": "STEVEN MOREIRA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/444000.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/444000",
+      "fotmobId": "444000",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -2089,7 +3117,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "DOS SANTOS",
       "club": "San Diego FC (USA)",
-      "photoUrl": null,
+      "fullName": "Carlos Joaquim ANTUNESDOS SANTOSDOS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1054027.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1054027",
+      "fotmobId": "1054027",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -2097,7 +3129,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "WAGNER P.",
       "club": "Trabzonspor (TUR)",
-      "photoUrl": null,
+      "fullName": "Wagner Fabricio CARDOSO DE PINA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1460591.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1460591",
+      "fotmobId": "1460591",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -2105,7 +3141,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "KELVIN",
       "club": "SJK (FIN)",
-      "photoUrl": null,
+      "fullName": "Kelvin SPENCER PIRES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/683473.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/683473",
+      "fotmobId": "683473",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     },
     {
@@ -2113,7 +3153,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "HÉLIO",
       "club": "Maccabi Tel-Aviv FC (ISR)",
-      "photoUrl": null,
+      "fullName": "Hélio Sandro OLIVEIRA ALVES VARELA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1524518.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1524518",
+      "fotmobId": "1524518",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/cape-verde/"
     }
   ],
@@ -2123,7 +3167,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "ST. CLAIR",
       "club": "Inter Miami CF (USA)",
-      "photoUrl": null,
+      "fullName": "ST. CLAIR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1026105.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1026105",
+      "fotmobId": "1026105",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2131,7 +3179,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "JOHNSTON",
       "club": "Celtic FC (SCO)",
-      "photoUrl": null,
+      "fullName": "JOHNSTON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1055426.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1055426",
+      "fotmobId": "1055426",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2139,7 +3191,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "JONES",
       "club": "Middlesbrough FC (ENG)",
-      "photoUrl": null,
+      "fullName": "JONES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/789598.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/789598",
+      "fotmobId": "789598",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2147,7 +3203,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DE FOUGEROLLES",
       "club": "FCV Dender EH (BEL)",
-      "photoUrl": null,
+      "fullName": "Luc ROLLET DE FOUGEROLLESDE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1399943.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1399943",
+      "fotmobId": "1399943",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2155,7 +3215,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "WATERMAN",
       "club": "Chicago Fire FC (USA)",
-      "photoUrl": null,
+      "fullName": "WATERMAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1100258.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1100258",
+      "fotmobId": "1100258",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2163,7 +3227,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "CHOINIÈRE",
       "club": "LAFC (USA)",
-      "photoUrl": null,
+      "fullName": "CHOINIERE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/943428.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/943428",
+      "fotmobId": "943428",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2171,7 +3239,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "EUSTAQUIO",
       "club": "LAFC (USA)",
-      "photoUrl": null,
+      "fullName": "Stephen ANTUNES EUSTÁQUIO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/816223.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/816223",
+      "fotmobId": "816223",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2179,7 +3251,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KONÉ",
       "club": "US Sassuolo (ITA)",
-      "photoUrl": null,
+      "fullName": "KONE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1288119.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1288119",
+      "fotmobId": "1288119",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2187,7 +3263,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "LARIN",
       "club": "Southampton FC (ENG)",
-      "photoUrl": null,
+      "fullName": "LARIN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/544312.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/544312",
+      "fotmobId": "544312",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2195,7 +3275,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "J. DAVID",
       "club": "Juventus FC (ITA)",
-      "photoUrl": null,
+      "fullName": "Jonathan Christian DAVID",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/939569.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/939569",
+      "fotmobId": "939569",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2203,7 +3287,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MILLAR",
       "club": "Hull City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "MILLAR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/932308.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/932308",
+      "fotmobId": "932308",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2211,7 +3299,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "OLUWASEYI",
       "club": "Villarreal CF (ESP)",
-      "photoUrl": null,
+      "fullName": "OLUWASEYI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1338740.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1338740",
+      "fotmobId": "1338740",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2219,7 +3311,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "CORNELIUS",
       "club": "Rangers FC (SCO)",
-      "photoUrl": null,
+      "fullName": "CORNELIUS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/847629.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/847629",
+      "fotmobId": "847629",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2227,7 +3323,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SHAFFELBURG",
       "club": "LAFC (USA)",
-      "photoUrl": null,
+      "fullName": "SHAFFELBURG",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1023943.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1023943",
+      "fotmobId": "1023943",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2235,7 +3335,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BOMBITO",
       "club": "OGC Nice (FRA)",
-      "photoUrl": null,
+      "fullName": "Moise Bombito LUMPUNGU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1440009.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1440009",
+      "fotmobId": "1440009",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2243,7 +3347,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "CREPEAU",
       "club": "Orlando City SC (USA)",
-      "photoUrl": null,
+      "fullName": "CREPEAU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/464919.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/464919",
+      "fotmobId": "464919",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2251,7 +3359,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BUCHANAN",
       "club": "Villarreal CF (ESP)",
-      "photoUrl": null,
+      "fullName": "BUCHANAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1026135.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1026135",
+      "fotmobId": "1026135",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2259,7 +3371,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "GOODMAN",
       "club": "Barnsley (ENG)",
-      "photoUrl": null,
+      "fullName": "GOODMAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1415372.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1415372",
+      "fotmobId": "1415372",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2267,7 +3383,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DAVIES",
       "club": "FC Bayern München (GER)",
-      "photoUrl": null,
+      "fullName": "DAVIES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/751202.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/751202",
+      "fotmobId": "751202",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2275,7 +3395,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AHMED",
       "club": "Norwich City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "AHMED",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/887139.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/887139",
+      "fotmobId": "887139",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2283,7 +3407,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "OSORIO",
       "club": "Toronto FC (CAN)",
-      "photoUrl": null,
+      "fullName": "OSORIO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/432605.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/432605",
+      "fotmobId": "432605",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2291,7 +3419,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "LARYEA",
       "club": "Toronto FC (CAN)",
-      "photoUrl": null,
+      "fullName": "LARYEA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/729506.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/729506",
+      "fotmobId": "729506",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2299,7 +3431,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SIGUR",
       "club": "HNK Hajduk Split (CRO)",
-      "photoUrl": null,
+      "fullName": "SIGUR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1494508.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1494508",
+      "fotmobId": "1494508",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2307,7 +3443,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "PROMISE",
       "club": "Royale Union Saint-Gilloise (BEL)",
-      "photoUrl": null,
+      "fullName": "Promise Oluwatobi Emmanuel DAVID",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1252132.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1252132",
+      "fotmobId": "1252132",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2315,7 +3455,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SALIBA",
       "club": "RSC Anderlecht (BEL)",
-      "photoUrl": null,
+      "fullName": "SALIBA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1216798.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1216798",
+      "fotmobId": "1216798",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     },
     {
@@ -2323,7 +3467,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MARCELO",
       "club": "Tigres UANL (MEX)",
-      "photoUrl": null,
+      "fullName": "Marcelo FLORES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/28467.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/28467",
+      "fotmobId": "28467",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/canada/"
     }
   ],
@@ -2333,7 +3481,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "KOVAR",
       "club": "PSV Eindhoven (NED)",
-      "photoUrl": null,
+      "fullName": "Matej Mat ě j",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1077903.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1077903",
+      "fotmobId": "1077903",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2341,7 +3493,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ZIMA",
       "club": "SK Slavia Praha (CZE)",
-      "photoUrl": null,
+      "fullName": "ZIMA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1085401.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1085401",
+      "fotmobId": "1085401",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2349,7 +3505,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HOLES",
       "club": "SK Slavia Praha (CZE)",
-      "photoUrl": null,
+      "fullName": "Tomas Tomá š",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/306168.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/306168",
+      "fotmobId": "306168",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2357,7 +3517,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HRANAC",
       "club": "TSG Hoffenheim (GER)",
-      "photoUrl": null,
+      "fullName": "HRANAC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1225995.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1225995",
+      "fotmobId": "1225995",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2365,7 +3529,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "COUFAL",
       "club": "TSG Hoffenheim (GER)",
-      "photoUrl": null,
+      "fullName": "COUFAL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/307317.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/307317",
+      "fotmobId": "307317",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2373,7 +3541,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "CHALOUPEK",
       "club": "SK Slavia Praha (CZE)",
-      "photoUrl": null,
+      "fullName": "StepanŠ t ě pán",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1288146.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1288146",
+      "fotmobId": "1288146",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2381,7 +3553,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "KREJCI",
       "club": "Wolverhampton Wanderers FC (ENG)",
-      "photoUrl": null,
+      "fullName": "KREJCI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/798029.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/798029",
+      "fotmobId": "798029",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2389,7 +3565,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "DARIDA",
       "club": "FC Hradec Králové (CZE)",
-      "photoUrl": null,
+      "fullName": "DARIDA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/196311.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/196311",
+      "fotmobId": "196311",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2397,7 +3577,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "HLOZEK",
       "club": "TSG Hoffenheim (GER)",
-      "photoUrl": null,
+      "fullName": "HLOZEK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/969870.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/969870",
+      "fotmobId": "969870",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2405,7 +3589,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "SCHICK",
       "club": "Bayer Leverkusen (GER)",
-      "photoUrl": null,
+      "fullName": "SCHICK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/540097.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/540097",
+      "fotmobId": "540097",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2413,7 +3601,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "KUCHTA",
       "club": "AC Sparta Praha (CZE)",
-      "photoUrl": null,
+      "fullName": "KUCHTA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/690332.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/690332",
+      "fotmobId": "690332",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2421,7 +3613,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "CERV",
       "club": "FC Viktoria Plze ň (CZE)",
-      "photoUrl": null,
+      "fullName": "Lukas Luká šČ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1096516.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1096516",
+      "fotmobId": "1096516",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2429,7 +3625,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "CHYTIL",
       "club": "SK Slavia Praha (CZE)",
-      "photoUrl": null,
+      "fullName": "CHYTIL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/988769.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/988769",
+      "fotmobId": "988769",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2437,7 +3637,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "JURASEK",
       "club": "SK Slavia Praha (CZE)",
-      "photoUrl": null,
+      "fullName": "JURASEK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1202883.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1202883",
+      "fotmobId": "1202883",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2445,7 +3649,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "SULC",
       "club": "Olympique Lyonnais (FRA)",
-      "photoUrl": null,
+      "fullName": "Pavel Š",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1037539.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1037539",
+      "fotmobId": "1037539",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2453,7 +3661,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "STANEK",
       "club": "SK Slavia Praha (CZE)",
-      "photoUrl": null,
+      "fullName": "Jindrich Jind ř ich",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/463967.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/463967",
+      "fotmobId": "463967",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2461,7 +3673,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "PROVOD",
       "club": "SK Slavia Praha (CZE)",
-      "photoUrl": null,
+      "fullName": "Lukas Luká š",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/791682.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/791682",
+      "fotmobId": "791682",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2469,7 +3685,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SADILEK",
       "club": "SK Slavia Praha (CZE)",
-      "photoUrl": null,
+      "fullName": "SADILEK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/806551.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/806551",
+      "fotmobId": "806551",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2477,7 +3697,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "CHORY",
       "club": "SK Slavia Praha (CZE)",
-      "photoUrl": null,
+      "fullName": "Tomas Tomá š",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/523217.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/523217",
+      "fotmobId": "523217",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2485,7 +3709,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ZELENY",
       "club": "AC Sparta Praha (CZE)",
-      "photoUrl": null,
+      "fullName": "ZELENY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/249063.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/249063",
+      "fotmobId": "249063",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2493,7 +3721,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DOUDERA",
       "club": "SK Slavia Praha (CZE)",
-      "photoUrl": null,
+      "fullName": "DOUDERA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1485746.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1485746",
+      "fotmobId": "1485746",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2501,7 +3733,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SOUCEK",
       "club": "West Ham United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Tomas Tomá š SOUČ EK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/524437.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/524437",
+      "fotmobId": "524437",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2509,7 +3745,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "HORNICEK",
       "club": "SC Braga (POR)",
-      "photoUrl": null,
+      "fullName": "Lukas Luká š HORNÍČ EK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1186978.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1186978",
+      "fotmobId": "1186978",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2517,7 +3757,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SOJKA",
       "club": "FC Viktoria Plze ň (CZE)",
-      "photoUrl": null,
+      "fullName": "SOJKA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1478281.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1478281",
+      "fotmobId": "1478281",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2525,7 +3769,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SOCHUREK",
       "club": "AC Sparta Praha (CZE)",
-      "photoUrl": null,
+      "fullName": "SOCHUREK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1764021.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1764021",
+      "fotmobId": "1764021",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     },
     {
@@ -2533,7 +3781,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "VISINSKY",
       "club": "FC Viktoria Plze ň (CZE)",
-      "photoUrl": null,
+      "fullName": "Denis VIŠ INSKÝVIŠ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1202885.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1202885",
+      "fotmobId": "1202885",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/czech-republic/"
     }
   ],
@@ -2543,7 +3795,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "OSPINA",
       "club": "Atlético Nacional (COL)",
-      "photoUrl": null,
+      "fullName": "David OSPINA RAMIREZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/50065.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/50065",
+      "fotmobId": "50065",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2551,7 +3807,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "D. MUÑOZ",
       "club": "Crystal Palace FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Daniel MUÑOZ MEJIA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/859282.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/859282",
+      "fotmobId": "859282",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2559,7 +3819,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "J. LUCUMI",
       "club": "Bologna FC (ITA)",
-      "photoUrl": null,
+      "fullName": "Jhon Janer LUCUMI BONILLA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/860913.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/860913",
+      "fotmobId": "860913",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2567,7 +3831,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ARIAS",
       "club": "CA Independiente (ARG)",
-      "photoUrl": null,
+      "fullName": "Santiago ARIAS NARANJO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/207642.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/207642",
+      "fotmobId": "207642",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2575,7 +3843,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "K. CASTAÑO",
       "club": "CA River Plate (ARG)",
-      "photoUrl": null,
+      "fullName": "Kevin Duvan CASTAÑOGIL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1434853.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1434853",
+      "fotmobId": "1434853",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2583,7 +3855,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "RICHARD RIOS",
       "club": "SL Ben\u0000ca (POR)",
-      "photoUrl": null,
+      "fullName": "Richard RÍOS MONTOYA RICHARD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1174630.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1174630",
+      "fotmobId": "1174630",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2591,7 +3867,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "LUIS DIAZ",
       "club": "FC Bayern München (GER)",
-      "photoUrl": null,
+      "fullName": "Luis Fernando DÍAZ MARULANDA LUIS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/860914.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/860914",
+      "fotmobId": "860914",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2599,7 +3879,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "CARRASCAL",
       "club": "CR Flamengo (BRA)",
-      "photoUrl": null,
+      "fullName": "Jorge Andres CARRASCAL GUARDO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/784834.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/784834",
+      "fotmobId": "784834",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2607,7 +3891,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "CORDOBA",
       "club": "FC Krasnodar (RUS)",
-      "photoUrl": null,
+      "fullName": "Jhon Andrés CÓRDOBA COPETE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/291425.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/291425",
+      "fotmobId": "291425",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2615,7 +3903,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "JAMES",
       "club": "Minnesota United FC (USA)",
-      "photoUrl": null,
+      "fullName": "James David RODRÍGUEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/164684.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/164684",
+      "fotmobId": "164684",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2623,7 +3915,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "J. ARIAS",
       "club": "SE Palmeiras (BRA)",
-      "photoUrl": null,
+      "fullName": "Jhon Adolfo ARIAS ANDRADE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1023030.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1023030",
+      "fotmobId": "1023030",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2631,7 +3927,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "C. VARGAS",
       "club": "Atlas FC (MEX)",
-      "photoUrl": null,
+      "fullName": "Camilo Andres VARGASGIL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1254394.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1254394",
+      "fotmobId": "1254394",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2639,7 +3939,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "Y. MINA",
       "club": "Cagliari (ITA)",
-      "photoUrl": null,
+      "fullName": "Yerry Fernando MINA GONZALEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/496042.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/496042",
+      "fotmobId": "496042",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2647,7 +3951,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "PUERTA",
       "club": "Racing Santander (ESP)",
-      "photoUrl": null,
+      "fullName": "Gustavo Adolfo PUERTA MOLANO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1331597.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1331597",
+      "fotmobId": "1331597",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2655,7 +3963,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "PORTILLA",
       "club": "Athletico Paranaense (BRA)",
-      "photoUrl": null,
+      "fullName": "Juan Camilo PORTILLA OROZCO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1281230.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1281230",
+      "fotmobId": "1281230",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2663,7 +3975,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "J. LERMA",
       "club": "Crystal Palace FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Jefferson Andrés LERMA SOLIS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/466672.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/466672",
+      "fotmobId": "466672",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2671,7 +3987,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "J. MOJICA",
       "club": "RCD Mallorca (ESP)",
-      "photoUrl": null,
+      "fullName": "Johan Andrés MOJICA PALACIO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/474673.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/474673",
+      "fotmobId": "474673",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2679,7 +3999,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "W. DITTA",
       "club": "CF Cruz Azul (MEX)",
-      "photoUrl": null,
+      "fullName": "Willer Emilio DITTA PEREZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/965205.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/965205",
+      "fotmobId": "965205",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2687,7 +4011,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "C. HERNANDEZ",
       "club": "Real Betis (ESP)",
-      "photoUrl": null,
+      "fullName": "Cucho Juan Camilo HERNANDEZ SUAREZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/852071.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/852071",
+      "fotmobId": "852071",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2695,7 +4023,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "QUINTERO",
       "club": "CA River Plate (ARG)",
-      "photoUrl": null,
+      "fullName": "Juan Fernando QUINTERO PANIAGUA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/207617.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/207617",
+      "fotmobId": "207617",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2703,7 +4035,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "CAMPAZ",
       "club": "CA Rosario Central (ARG)",
-      "photoUrl": null,
+      "fullName": "CAMPAZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/837870.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/837870",
+      "fotmobId": "837870",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2711,7 +4047,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MACHADO",
       "club": "FC Nantes (FRA)",
-      "photoUrl": null,
+      "fullName": "Deiver MACHADO MENA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/280693.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/280693",
+      "fotmobId": "280693",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2719,7 +4059,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SANCHEZ",
       "club": "Galatasaray SK (TUR)",
-      "photoUrl": null,
+      "fullName": "Davinson SÁNCHEZ MINA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/643533.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/643533",
+      "fotmobId": "643533",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2727,7 +4071,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "MONTERO",
       "club": "CA Vélez Sars\u0000eld (ARG)",
-      "photoUrl": null,
+      "fullName": "Alvaro David MONTERO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1474188.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1474188",
+      "fotmobId": "1474188",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2735,7 +4083,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "SUAREZ",
       "club": "Sporting CP (POR)",
-      "photoUrl": null,
+      "fullName": "Luis Javier SUÁREZ CHARRIS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/792303.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/792303",
+      "fotmobId": "792303",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     },
     {
@@ -2743,7 +4095,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "A. GOMEZ",
       "club": "CR Vasco Da Gama (BRA)",
-      "photoUrl": null,
+      "fullName": "Andres Carlos Andrés GÓMEZ HINESTROZA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1353421.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1353421",
+      "fotmobId": "1353421",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/colombia/"
     }
   ],
@@ -2753,7 +4109,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "SEUNGGYU",
       "club": "FC Tokyo (JPN)",
-      "photoUrl": null,
+      "fullName": "Seunggyu KIM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/167247.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/167247",
+      "fotmobId": "167247",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2761,7 +4121,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HANBEOM",
       "club": "FC Midtjylland (DEN)",
-      "photoUrl": null,
+      "fullName": "Hanbeom LEE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1232253.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1232253",
+      "fotmobId": "1232253",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2769,7 +4133,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "GIHYUK",
       "club": "Gangwon FC (KOR)",
-      "photoUrl": null,
+      "fullName": "Gihyuk LEE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1232264.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1232264",
+      "fotmobId": "1232264",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2777,7 +4145,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MINJAE",
       "club": "FC Bayern München (GER)",
-      "photoUrl": null,
+      "fullName": "Minjae KIM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/828159.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/828159",
+      "fotmobId": "828159",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2785,7 +4157,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "TAEHYEON",
       "club": "Kashima Antlers (JPN)",
-      "photoUrl": null,
+      "fullName": "Taehyeon KIM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1053477.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1053477",
+      "fotmobId": "1053477",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2793,7 +4169,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "INBEOM",
       "club": "Feyenoord Rotterdam (NED)",
-      "photoUrl": null,
+      "fullName": "Inbeom HWANG",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/623698.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/623698",
+      "fotmobId": "623698",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2801,7 +4181,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "HEUNGMIN",
       "club": "LAFC (USA)",
-      "photoUrl": null,
+      "fullName": "Heungmin Heung Min SON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/212867.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/212867",
+      "fotmobId": "212867",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2809,7 +4193,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SEUNGHO",
       "club": "Birmingham City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Seungho PAIK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/848102.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/848102",
+      "fotmobId": "848102",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2817,7 +4205,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "GUSEUNG",
       "club": "FC Midtjylland (DEN)",
-      "photoUrl": null,
+      "fullName": "Guesung CHO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1026781.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1026781",
+      "fotmobId": "1026781",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2825,7 +4217,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "JAESUNG",
       "club": "1. FSV Mainz 05 (GER)",
-      "photoUrl": null,
+      "fullName": "Jaesung Jae Sung LEE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/523749.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/523749",
+      "fotmobId": "523749",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2833,7 +4229,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "HEECHAN",
       "club": "Wolverhampton Wanderers FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Heechan Hee Chan HWANG",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/620026.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/620026",
+      "fotmobId": "620026",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2841,7 +4241,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "BUMKEUN",
       "club": "Jeonbuk Hyundai Motors FC (KOR)",
-      "photoUrl": null,
+      "fullName": "Bumkeun SONG",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/848068.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/848068",
+      "fotmobId": "848068",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2849,7 +4253,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "TAESEOK",
       "club": "FK Austria Wien (AUT)",
-      "photoUrl": null,
+      "fullName": "Taeseok LEE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1107251.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1107251",
+      "fotmobId": "1107251",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2857,7 +4265,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "WIJE",
       "club": "Jeonbuk Hyundai Motors FC (KOR)",
-      "photoUrl": null,
+      "fullName": "Wije CHO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1326507.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1326507",
+      "fotmobId": "1326507",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2865,7 +4277,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MOONHWAN",
       "club": "Daejeon Hana Citizen FC (KOR)",
-      "photoUrl": null,
+      "fullName": "Moonhwan KIM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/828273.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/828273",
+      "fotmobId": "828273",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2873,7 +4289,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "JINSEOB",
       "club": "Zhejiang FC (CHN)",
-      "photoUrl": null,
+      "fullName": "Jinseob PARK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/925647.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/925647",
+      "fotmobId": "925647",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2881,15 +4301,23 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "JUNHO",
       "club": "Stoke City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Junho BAE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/432188.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/432188",
+      "fotmobId": "432188",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
       "number": 18,
       "position": "FW",
       "name": "HYEONGYU",
-      "club": "Be ş ikta ş  JK (TUR)",
-      "photoUrl": null,
+      "club": "Be ş ikta ş JK (TUR)",
+      "fullName": "Hyeongyu OH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1044299.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1044299",
+      "fotmobId": "1044299",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2897,7 +4325,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KANGIN",
       "club": "Paris Saint-Germain (FRA)",
-      "photoUrl": null,
+      "fullName": "Kangin LEE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/940976.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/940976",
+      "fotmobId": "940976",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2905,7 +4337,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "HYUNJUN",
       "club": "Celtic FC (SCO)",
-      "photoUrl": null,
+      "fullName": "Hyunjun YANG",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1232560.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1232560",
+      "fotmobId": "1232560",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2913,7 +4349,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "HYEONWOO",
       "club": "Ulsan HD (KOR)",
-      "photoUrl": null,
+      "fullName": "Hyeonwoo JO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/433265.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/433265",
+      "fotmobId": "433265",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2921,7 +4361,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "YOUNGWOO",
       "club": "FK Crvena Zvezda (SRB)",
-      "photoUrl": null,
+      "fullName": "Youngwoo SEOL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1132818.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1132818",
+      "fotmobId": "1132818",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2929,7 +4373,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "JENS",
       "club": "Borussia Mönchengladbach (GER)",
-      "photoUrl": null,
+      "fullName": "Jens CASTROP",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1185902.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1185902",
+      "fotmobId": "1185902",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2937,7 +4385,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "JINGYU",
       "club": "Jeonbuk Hyundai Motors FC (KOR)",
-      "photoUrl": null,
+      "fullName": "Jingyu KIM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/622980.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/622980",
+      "fotmobId": "622980",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2945,7 +4397,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "JISUNG",
       "club": "Swansea City AFC (WAL)",
-      "photoUrl": null,
+      "fullName": "Jisung EOM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1107283.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1107283",
+      "fotmobId": "1107283",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     },
     {
@@ -2953,7 +4409,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "DONGGYEONG",
       "club": "Ulsan HD (KOR)",
-      "photoUrl": null,
+      "fullName": "Donggyeong LEE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/954131.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/954131",
+      "fotmobId": "954131",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-korea/"
     }
   ],
@@ -2963,7 +4423,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "Y. FOFANA",
       "club": "Çaykur Rizespor (TUR)",
-      "photoUrl": null,
+      "fullName": "Yahia FOFANA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/873566.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/873566",
+      "fotmobId": "873566",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -2971,7 +4435,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "O. DIOMANDE",
       "club": "Sporting CP (POR)",
-      "photoUrl": null,
+      "fullName": "Ousmane DIOMANDE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1425182.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1425182",
+      "fotmobId": "1425182",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -2979,7 +4447,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "G. KONAN",
       "club": "Gil Vicente FC (POR)",
-      "photoUrl": null,
+      "fullName": "Ghislain N'clomande Ghislain KONAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/740997.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/740997",
+      "fotmobId": "740997",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -2987,7 +4459,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SERI",
       "club": "NK Maribor (SVN)",
-      "photoUrl": null,
+      "fullName": "SERI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/470539.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/470539",
+      "fotmobId": "470539",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -2995,7 +4471,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SINGO",
       "club": "Galatasaray SK (TUR)",
-      "photoUrl": null,
+      "fullName": "SINGO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1027472.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1027472",
+      "fotmobId": "1027472",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3003,7 +4483,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "FOFANA",
       "club": "FC Porto (POR)",
-      "photoUrl": null,
+      "fullName": "FOFANA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/602211.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/602211",
+      "fotmobId": "602211",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3011,7 +4495,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "KOSSOUNOU",
       "club": "Atalanta Bergamo (ITA)",
-      "photoUrl": null,
+      "fullName": "KOSSOUNOU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1014496.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1014496",
+      "fotmobId": "1014496",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3019,7 +4507,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KESSIE",
       "club": "Al Ahli FC (KSA)",
-      "photoUrl": null,
+      "fullName": "KESSIE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/579747.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/579747",
+      "fotmobId": "579747",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3027,7 +4519,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BONNY",
       "club": "FC Internazionale Milano (ITA)",
-      "photoUrl": null,
+      "fullName": "BONNY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1199383.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1199383",
+      "fotmobId": "1199383",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3035,7 +4531,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ADINGRA",
       "club": "AS Monaco (FRA)",
-      "photoUrl": null,
+      "fullName": "ADINGRA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1227012.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1227012",
+      "fotmobId": "1227012",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3043,7 +4543,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "YAN DIOMANDE",
       "club": "RB Leipzig (GER)",
-      "photoUrl": null,
+      "fullName": "Yan DIOMANDEYAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1735453.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1735453",
+      "fotmobId": "1735453",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3051,7 +4555,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "WAHI",
       "club": "OGC Nice (FRA)",
-      "photoUrl": null,
+      "fullName": "WAHI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1213430.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1213430",
+      "fotmobId": "1213430",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3059,7 +4567,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "OPERI",
       "club": "Ba ş ak ş ehir FK (TUR)",
-      "photoUrl": null,
+      "fullName": "OPERI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/802462.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/802462",
+      "fotmobId": "802462",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3067,7 +4579,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "DIAKITE",
       "club": "Cercle Brugge (BEL)",
-      "photoUrl": null,
+      "fullName": "DIAKITE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1328540.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1328540",
+      "fotmobId": "1328540",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3075,7 +4591,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AMAD",
       "club": "Manchester United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Amad DIALLO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1070052.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1070052",
+      "fotmobId": "1070052",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3083,7 +4603,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "KONE",
       "club": "Sporting Charleroi (BEL)",
-      "photoUrl": null,
+      "fullName": "KONE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1016132.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1016132",
+      "fotmobId": "1016132",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3091,7 +4615,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "G. DOUE",
       "club": "RC Strasbourg (FRA)",
-      "photoUrl": null,
+      "fullName": "Guela Maho-Lewis DOUE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1395704.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1395704",
+      "fotmobId": "1395704",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3099,7 +4627,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SANGARE",
       "club": "Nottingham Forest FC (ENG)",
-      "photoUrl": null,
+      "fullName": "SANGARE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/795371.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/795371",
+      "fotmobId": "795371",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3107,15 +4639,23 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "PEPE",
       "club": "Villarreal CF (ESP)",
-      "photoUrl": null,
+      "fullName": "PEPE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/850356.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/850356",
+      "fotmobId": "850356",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
       "number": 20,
       "position": "DF",
       "name": "AGBADOU",
-      "club": "Be ş ikta ş  JK (TUR)",
-      "photoUrl": null,
+      "club": "Be ş ikta ş JK (TUR)",
+      "fullName": "AGBADOU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1114979.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1114979",
+      "fotmobId": "1114979",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3123,7 +4663,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "NDICKA",
       "club": "AS Roma (ITA)",
-      "photoUrl": null,
+      "fullName": "NDICKA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1108024.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1108024",
+      "fotmobId": "1108024",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3131,7 +4675,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "GUESSAND",
       "club": "Crystal Palace FC (ENG)",
-      "photoUrl": null,
+      "fullName": "GUESSAND",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1087966.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1087966",
+      "fotmobId": "1087966",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3139,7 +4687,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "LAFONT",
       "club": "Panathinaikos FC (GRE)",
-      "photoUrl": null,
+      "fullName": "LAFONT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/698273.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/698273",
+      "fotmobId": "698273",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3147,7 +4699,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "TOURE",
       "club": "TSG Hoffenheim (GER)",
-      "photoUrl": null,
+      "fullName": "TOURE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1624586.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1624586",
+      "fotmobId": "1624586",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3155,7 +4711,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "GUIAGON",
       "club": "Sporting Charleroi (BEL)",
-      "photoUrl": null,
+      "fullName": "GUIAGON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1186770.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1186770",
+      "fotmobId": "1186770",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     },
     {
@@ -3163,7 +4723,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "INAO",
       "club": "Trabzonspor (TUR)",
-      "photoUrl": null,
+      "fullName": "Christ Inao Christ Ravynel Inao OULAI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1666494.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1666494",
+      "fotmobId": "1666494",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ivory-coast/"
     }
   ],
@@ -3173,7 +4737,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "LIVAKOVIC",
       "club": "GNK Dinamo Zagreb (CRO)",
-      "photoUrl": null,
+      "fullName": "LIVAKOVIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/383971.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/383971",
+      "fotmobId": "383971",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3181,7 +4749,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "STANISIC",
       "club": "FC Bayern München (GER)",
-      "photoUrl": null,
+      "fullName": "STANISIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/950824.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/950824",
+      "fotmobId": "950824",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3189,7 +4761,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "PONGRACIC",
       "club": "ACF Fiorentina (ITA)",
-      "photoUrl": null,
+      "fullName": "PONGRACIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/831474.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/831474",
+      "fotmobId": "831474",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3197,7 +4773,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "GVARDIOL",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Josko Jo š ko",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1070712.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1070712",
+      "fotmobId": "1070712",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3205,7 +4785,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "CALETA-CAR",
       "club": "Real Sociedad (ESP)",
-      "photoUrl": null,
+      "fullName": "Duje Ć ALETA-CARĆ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/557799.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/557799",
+      "fotmobId": "557799",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3213,7 +4797,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SUTALO",
       "club": "AFC Ajax (NED)",
-      "photoUrl": null,
+      "fullName": "Josip Š UTALOŠ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1186228.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1186228",
+      "fotmobId": "1186228",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3221,7 +4809,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MORO",
       "club": "Bologna FC (ITA)",
-      "photoUrl": null,
+      "fullName": "MORO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/641595.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/641595",
+      "fotmobId": "641595",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3229,7 +4821,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KOVACIC",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "KOVACIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/239219.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/239219",
+      "fotmobId": "239219",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3237,7 +4833,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "KRAMARIC",
       "club": "TSG Hoffenheim (GER)",
-      "photoUrl": null,
+      "fullName": "KRAMARIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/173461.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/173461",
+      "fotmobId": "173461",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3245,7 +4845,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MODRIC",
       "club": "AC Milan (ITA)",
-      "photoUrl": null,
+      "fullName": "MODRIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/31097.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/31097",
+      "fotmobId": "31097",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3253,7 +4857,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BUDIMIR",
       "club": "CA Osasuna (ESP)",
-      "photoUrl": null,
+      "fullName": "BUDIMIR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/251269.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/251269",
+      "fotmobId": "251269",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3261,7 +4869,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "PANDUR",
       "club": "Hull City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "PANDUR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1077684.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1077684",
+      "fotmobId": "1077684",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3269,7 +4881,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "VLASIC",
       "club": "Torino FC (ITA)",
-      "photoUrl": null,
+      "fullName": "VLASIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/557677.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/557677",
+      "fotmobId": "557677",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3277,7 +4893,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "PERISIC",
       "club": "PSV Eindhoven (NED)",
-      "photoUrl": null,
+      "fullName": "PERISIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/163670.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/163670",
+      "fotmobId": "163670",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3285,7 +4905,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "PASALIC",
       "club": "Atalanta Bergamo (ITA)",
-      "photoUrl": null,
+      "fullName": "PASALIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/446266.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/446266",
+      "fotmobId": "446266",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3293,7 +4917,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BATURINA",
       "club": "Como (ITA)",
-      "photoUrl": null,
+      "fullName": "BATURINA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1215064.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1215064",
+      "fotmobId": "1215064",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3301,7 +4929,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "P. SUCIC",
       "club": "FC Internazionale Milano (ITA)",
-      "photoUrl": null,
+      "fullName": "Petar SUČIĆ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1382000.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1382000",
+      "fotmobId": "1382000",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3309,7 +4941,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "JAKIC",
       "club": "FC Augsburg (GER)",
-      "photoUrl": null,
+      "fullName": "JAKIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/643448.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/643448",
+      "fotmobId": "643448",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3317,7 +4953,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "FRUK",
       "club": "HNK Rijeka (CRO)",
-      "photoUrl": null,
+      "fullName": "FRUK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1300358.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1300358",
+      "fotmobId": "1300358",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3325,7 +4965,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MATANOVIC",
       "club": "SC Freiburg (GER)",
-      "photoUrl": null,
+      "fullName": "MATANOVIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1210893.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1210893",
+      "fotmobId": "1210893",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3333,7 +4977,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SUCIC",
       "club": "Real Sociedad (ESP)",
-      "photoUrl": null,
+      "fullName": "SUCIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/959597.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/959597",
+      "fotmobId": "959597",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3341,7 +4989,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "VUSKOVIC",
       "club": "Hamburger SV (GER)",
-      "photoUrl": null,
+      "fullName": "VUSKOVIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1413996.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1413996",
+      "fotmobId": "1413996",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3349,7 +5001,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "KOTARSKI",
       "club": "FC København (DEN)",
-      "photoUrl": null,
+      "fullName": "KOTARSKI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/873557.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/873557",
+      "fotmobId": "873557",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3357,7 +5013,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "M. PASALIC",
       "club": "Orlando City SC (USA)",
-      "photoUrl": null,
+      "fullName": "Marco PAŠ ALIĆ M. PAŠ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1199714.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1199714",
+      "fotmobId": "1199714",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3365,7 +5025,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ERLIC",
       "club": "FC Midtjylland (DEN)",
-      "photoUrl": null,
+      "fullName": "ERLIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/616170.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/616170",
+      "fotmobId": "616170",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     },
     {
@@ -3373,7 +5037,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MUSA",
       "club": "FC Dallas (USA)",
-      "photoUrl": null,
+      "fullName": "MUSA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/709796.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/709796",
+      "fotmobId": "709796",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/croatia/"
     }
   ],
@@ -3383,7 +5051,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "ROOM",
       "club": "Miami FC (USA)",
-      "photoUrl": null,
+      "fullName": "ROOM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/150242.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/150242",
+      "fotmobId": "150242",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3391,7 +5063,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SAMBO",
       "club": "Sparta Rotterdam (NED)",
-      "photoUrl": null,
+      "fullName": "SAMBO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1125997.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1125997",
+      "fotmobId": "1125997",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3399,7 +5075,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "GAARI",
       "club": "Abha Club (KSA)",
-      "photoUrl": null,
+      "fullName": "GAARI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/708738.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/708738",
+      "fotmobId": "708738",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3407,7 +5087,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "VAN EIJMA",
       "club": "RKC Waalwijk (NED)",
-      "photoUrl": null,
+      "fullName": "Roshon Felix Romar Jordan VAN EIJMAVAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/924844.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/924844",
+      "fotmobId": "924844",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3415,7 +5099,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "FLORANUS",
       "club": "PEC Zwolle (NED)",
-      "photoUrl": null,
+      "fullName": "FLORANUS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/671327.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/671327",
+      "fotmobId": "671327",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3423,7 +5111,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ROEMERATOE",
       "club": "RKC Waalwijk (NED)",
-      "photoUrl": null,
+      "fullName": "ROEMERATOE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/938524.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/938524",
+      "fotmobId": "938524",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3431,7 +5123,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "J. BACUNA",
       "club": "FC Volendam (NED)",
-      "photoUrl": null,
+      "fullName": "Juninho Gracielo BACUNA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/614574.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/614574",
+      "fotmobId": "614574",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3439,7 +5135,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "COMENENCIA",
       "club": "FC Zürich (SUI)",
-      "photoUrl": null,
+      "fullName": "COMENENCIA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1243246.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1243246",
+      "fotmobId": "1243246",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3447,7 +5147,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "LOCADIA",
       "club": "Miami FC (USA)",
-      "photoUrl": null,
+      "fullName": "LOCADIA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/289441.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/289441",
+      "fotmobId": "289441",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3455,7 +5159,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "L. BACUNA",
       "club": "I ğ dır FK (TUR)",
-      "photoUrl": null,
+      "fullName": "Leandro Jones Johan BACUNA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/183500.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/183500",
+      "fotmobId": "183500",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3463,7 +5171,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ANTONISSE",
       "club": "AE Ki\u0000sia FC (GRE)",
-      "photoUrl": null,
+      "fullName": "ANTONISSE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1210947.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1210947",
+      "fotmobId": "1210947",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3471,7 +5183,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "HANSEN",
       "club": "Middlesbrough FC (ENG)",
-      "photoUrl": null,
+      "fullName": "HANSEN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1050160.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1050160",
+      "fotmobId": "1050160",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3479,7 +5195,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "NOSLIN",
       "club": "SC Telstar (NED)",
-      "photoUrl": null,
+      "fullName": "NOSLIN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1439121.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1439121",
+      "fotmobId": "1439121",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3487,7 +5207,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "GORRE",
       "club": "Maccabi Haifa FC (ISR)",
-      "photoUrl": null,
+      "fullName": "GORRE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/643232.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/643232",
+      "fotmobId": "643232",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3495,7 +5219,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MARTHA",
       "club": "Rotherham United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "MARTHA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/951044.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/951044",
+      "fotmobId": "951044",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3503,7 +5231,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MARGARITHA",
       "club": "SK Beveren (BEL)",
-      "photoUrl": null,
+      "fullName": "MARGARITHA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1180784.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1180784",
+      "fotmobId": "1180784",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3511,7 +5243,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "KUWAS",
       "club": "FC Volendam (NED)",
-      "photoUrl": null,
+      "fullName": "KUWAS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/352358.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/352358",
+      "fotmobId": "352358",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3519,7 +5255,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "OBISPO",
       "club": "PSV Eindhoven (NED)",
-      "photoUrl": null,
+      "fullName": "OBISPO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/794244.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/794244",
+      "fotmobId": "794244",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3527,7 +5267,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "KASTANEER",
       "club": "Terengganu FC (MAS)",
-      "photoUrl": null,
+      "fullName": "KASTANEER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/380942.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/380942",
+      "fotmobId": "380942",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3535,7 +5279,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BRENET",
       "club": "Kayserispor (TUR)",
-      "photoUrl": null,
+      "fullName": "BRENET",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/389845.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/389845",
+      "fotmobId": "389845",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3543,7 +5291,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "CHONG",
       "club": "She\u0000eld United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "CHONG",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/751066.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/751066",
+      "fotmobId": "751066",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3551,7 +5303,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "FELIDA",
       "club": "FC Den Bosch (NED)",
-      "photoUrl": null,
+      "fullName": "FELIDA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/875845.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/875845",
+      "fotmobId": "875845",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3559,7 +5315,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BAZOER",
       "club": "Konyaspor (TUR)",
-      "photoUrl": null,
+      "fullName": "BAZOER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/467479.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/467479",
+      "fotmobId": "467479",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3567,7 +5327,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "FONVILLE",
       "club": "NEC Nijmegen (NED)",
-      "photoUrl": null,
+      "fullName": "FONVILLE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1335315.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1335315",
+      "fotmobId": "1335315",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3575,7 +5339,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "BODAK",
       "club": "SC Telstar (NED)",
-      "photoUrl": null,
+      "fullName": "BODAK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1240833.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1240833",
+      "fotmobId": "1240833",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     },
     {
@@ -3583,7 +5351,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "DOORNBUSCH",
       "club": "VVV Venlo (NED)",
-      "photoUrl": null,
+      "fullName": "DOORNBUSCH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/873856.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/873856",
+      "fotmobId": "873856",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/curacao/"
     }
   ],
@@ -3593,7 +5365,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "GALINDEZ",
       "club": "CA Huracán (ARG)",
-      "photoUrl": null,
+      "fullName": "Hernan Ismael GALÍNDEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/146801.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/146801",
+      "fotmobId": "146801",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3601,7 +5377,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "TORRES",
       "club": "SC Internacional (BRA)",
-      "photoUrl": null,
+      "fullName": "Felix Eduardo TORRES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/825641.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/825641",
+      "fotmobId": "825641",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3609,7 +5389,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HINCAPIE",
       "club": "Arsenal FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Piero Martin HINCAPIÉ REYNA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1137667.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1137667",
+      "fotmobId": "1137667",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3617,7 +5401,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ORDOÑEZ",
       "club": "Club Brugge (BEL)",
-      "photoUrl": null,
+      "fullName": "Joel Leandro ORDÓÑEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1354085.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1354085",
+      "fotmobId": "1354085",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3625,7 +5413,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ALCIVAR",
       "club": "Independiente Del Valle (ECU)",
-      "photoUrl": null,
+      "fullName": "Jordy Jose ALCÍVAR MACÍAS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/950396.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/950396",
+      "fotmobId": "950396",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3633,7 +5425,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "PACHO",
       "club": "Paris Saint-Germain (FRA)",
-      "photoUrl": null,
+      "fullName": "Willian Joel PACHO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1137670.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1137670",
+      "fotmobId": "1137670",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3641,7 +5437,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ESTUPIÑAN",
       "club": "AC Milan (ITA)",
-      "photoUrl": null,
+      "fullName": "Pervis Josue ESTUPIÑÁN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/688278.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/688278",
+      "fotmobId": "688278",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3649,7 +5449,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "A. VALENCIA",
       "club": "Royal Antwerp FC (BEL)",
-      "photoUrl": null,
+      "fullName": "Anthony Lenin VALENCIA BAJAÑA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1353364.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1353364",
+      "fotmobId": "1353364",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3657,7 +5461,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "YEBOAH ZAMORA",
       "club": "Venezia FC (ITA)",
-      "photoUrl": null,
+      "fullName": "John YEBOAH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/845368.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/845368",
+      "fotmobId": "845368",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3665,7 +5473,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "PAEZ",
       "club": "CA River Plate (ARG)",
-      "photoUrl": null,
+      "fullName": "Kendry Ray Kendry PAEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1443464.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1443464",
+      "fotmobId": "1443464",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3673,7 +5485,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "RODRIGUEZ",
       "club": "Royale Union Saint-Gilloise (BEL)",
-      "photoUrl": null,
+      "fullName": "Kevin Jose RODRÍGUEZ CORTEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/164684.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/164684",
+      "fotmobId": "164684",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3681,7 +5497,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "RAMIREZ",
       "club": "AE Ki\u0000sia FC (GRE)",
-      "photoUrl": null,
+      "fullName": "Moises Wellington Moisés RAMÍREZ PRECIADO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1607568.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1607568",
+      "fotmobId": "1607568",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3689,7 +5509,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "E. VALENCIA",
       "club": "CF Pachuca (MEX)",
-      "photoUrl": null,
+      "fullName": "Enner Remberto VALENCIA LASTRA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/195927.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/195927",
+      "fotmobId": "195927",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3697,7 +5521,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MINDA",
       "club": "Atlético Mineiro (BRA)",
-      "photoUrl": null,
+      "fullName": "Alan Steve MINDA GARCIA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1274400.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1274400",
+      "fotmobId": "1274400",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3705,7 +5533,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "VITE",
       "club": "Pumas UNAM (MEX)",
-      "photoUrl": null,
+      "fullName": "Pedro Jeampierre VITEUCA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1108611.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1108611",
+      "fotmobId": "1108611",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3713,7 +5545,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "J. CAICEDO",
       "club": "CA Huracán (ARG)",
-      "photoUrl": null,
+      "fullName": "Jordy Josue CAICEDO MEDINA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/766159.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/766159",
+      "fotmobId": "766159",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3721,7 +5557,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "PRECIADO",
       "club": "Atlético Mineiro (BRA)",
-      "photoUrl": null,
+      "fullName": "Angelo Smit PRECIADO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/848593.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/848593",
+      "fotmobId": "848593",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3729,7 +5569,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "CASTILLO",
       "club": "FC Midtjylland (DEN)",
-      "photoUrl": null,
+      "fullName": "Denil Daniel CASTILLO PRECIADO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1477417.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1477417",
+      "fotmobId": "1477417",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3737,7 +5581,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "PLATA",
       "club": "CR Flamengo (BRA)",
-      "photoUrl": null,
+      "fullName": "Gonzalo Jordy PLATA JIMENEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/980311.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/980311",
+      "fotmobId": "980311",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3745,7 +5593,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ANGULO",
       "club": "Sunderland AFC (ENG)",
-      "photoUrl": null,
+      "fullName": "Nilson David ANGULO RAMIREZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1287010.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1287010",
+      "fotmobId": "1287010",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3753,7 +5605,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "FRANCO",
       "club": "Atlético Mineiro (BRA)",
-      "photoUrl": null,
+      "fullName": "Alan Steven FRANCO PALMA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/832171.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/832171",
+      "fotmobId": "832171",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3761,7 +5617,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "VALLE",
       "club": "LDU Quito (ECU)",
-      "photoUrl": null,
+      "fullName": "Gonzalo Roberto VALLE BUSTAMANTE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1614051.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1614051",
+      "fotmobId": "1614051",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3769,7 +5629,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "M. CAICEDO",
       "club": "Chelsea FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Moises Isaac CAICEDO COROZO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1137668.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1137668",
+      "fotmobId": "1137668",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3777,7 +5641,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AREVALO",
       "club": "VfB Stuttgart (GER)",
-      "photoUrl": null,
+      "fullName": "Jeremy Alberto AREVALO MERA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1418122.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1418122",
+      "fotmobId": "1418122",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3785,7 +5653,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "POROZO",
       "club": "Club Tijuana (MEX)",
-      "photoUrl": null,
+      "fullName": "Jackson Gabriel POROZO VERNAZA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1032039.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1032039",
+      "fotmobId": "1032039",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     },
     {
@@ -3793,7 +5665,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MEDINA",
       "club": "KRC Genk (BEL)",
-      "photoUrl": null,
+      "fullName": "Yaimar Abel MEDINA ORTIZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1391753.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1391753",
+      "fotmobId": "1391753",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ecuador/"
     }
   ],
@@ -3803,7 +5679,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "M. ELSHENAWY",
       "club": "Al Ahly FC (EGY)",
-      "photoUrl": null,
+      "fullName": "Mohamed Elsayed Mohamed ELSHENAWY GOMAA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/546550.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/546550",
+      "fotmobId": "546550",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3811,7 +5691,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "YASSER",
       "club": "Al Ahly FC (EGY)",
-      "photoUrl": null,
+      "fullName": "Yasser Ahmed Ibrahim ELHANAFY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/533403.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/533403",
+      "fotmobId": "533403",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3819,7 +5703,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "M. HANY",
       "club": "Al Ahly FC (EGY)",
-      "photoUrl": null,
+      "fullName": "Mohamed Hany Gamal ELDEMERDASH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/660213.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/660213",
+      "fotmobId": "660213",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3827,7 +5715,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HOSSAM",
       "club": "Zamalek SC (EGY)",
-      "photoUrl": null,
+      "fullName": "HOSSAM ABDELMAGUID",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1384425.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1384425",
+      "fotmobId": "1384425",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3835,7 +5727,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "R. RABIAA",
       "club": "Al Ain FC (UAE)",
-      "photoUrl": null,
+      "fullName": "Ramy Hisham Abdelaziz Moustafa RABIA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/505872.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/505872",
+      "fotmobId": "505872",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3843,7 +5739,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "M. ABDELMONEIM",
       "club": "OGC Nice (FRA)",
-      "photoUrl": null,
+      "fullName": "Mohamed Abdelmoneim Elsayed M AHMED",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1179331.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1179331",
+      "fotmobId": "1179331",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3851,7 +5751,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "M. TREZEGUET",
       "club": "Al Ahly FC (EGY)",
-      "photoUrl": null,
+      "fullName": "Mahmoud Ahmed Ibrahim HASSAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/513492.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/513492",
+      "fotmobId": "513492",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3859,7 +5763,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "E. ASHOUR",
       "club": "Al Ahly FC (EGY)",
-      "photoUrl": null,
+      "fullName": "Emam Ashour Metwaly ABDELGHANY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/979376.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/979376",
+      "fotmobId": "979376",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3867,7 +5775,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ABDELKARIM",
       "club": "FC Barcelona (ESP)",
-      "photoUrl": null,
+      "fullName": "Hamza Mohamed Abdelkarim ESELIM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1708842.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1708842",
+      "fotmobId": "1708842",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3875,7 +5787,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "M. SALAH",
       "club": "Liverpool FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Mohamed Salah Hamed Mahrous GHALY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/292462.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/292462",
+      "fotmobId": "292462",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3883,7 +5799,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ZICO",
       "club": "Pyramids FC (EGY)",
-      "photoUrl": null,
+      "fullName": "Mostafa Mohamed Zaky ABDELRAOUF",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1180299.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1180299",
+      "fotmobId": "1180299",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3891,7 +5811,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "H. HASSAN",
       "club": "Real Oviedo (ESP)",
-      "photoUrl": null,
+      "fullName": "Haissem Yousry Fouad A HASSAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/971787.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/971787",
+      "fotmobId": "971787",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3899,7 +5823,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "A. FATOUH",
       "club": "Zamalek SC (EGY)",
-      "photoUrl": null,
+      "fullName": "Ahmed Mohamed Aboelfetouh MOHAMED",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/849334.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/849334",
+      "fotmobId": "849334",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3907,7 +5835,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "H. FATHY",
       "club": "Al Wakrah SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Hamdy Fathy Abdelhalim ABDELFATTAH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1022128.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1022128",
+      "fotmobId": "1022128",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3915,7 +5847,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "K. HAFEZ",
       "club": "Pyramids FC (EGY)",
-      "photoUrl": null,
+      "fullName": "Karim Hafez Ramadan SEIFELDIN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/560416.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/560416",
+      "fotmobId": "560416",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3923,7 +5859,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "M. SOLIMAN",
       "club": "Zamalek SC (EGY)",
-      "photoUrl": null,
+      "fullName": "Mahdy Mohamed Soliman IBRAHIM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/653688.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/653688",
+      "fotmobId": "653688",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3931,7 +5871,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "M. LASHIN",
       "club": "Pyramids FC (EGY)",
-      "photoUrl": null,
+      "fullName": "Mohanad Mostafa Ahmed ALASHIN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/906944.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/906944",
+      "fotmobId": "906944",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3939,7 +5883,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "DONGA",
       "club": "Al Najmah SC (KSA)",
-      "photoUrl": null,
+      "fullName": "Nabil Emad Aly Elmahdy ALY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1001335.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1001335",
+      "fotmobId": "1001335",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3947,7 +5895,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "M. ATTIA",
       "club": "Al Ahly FC (EGY)",
-      "photoUrl": null,
+      "fullName": "Marawan Attia Fahim GHALLAB",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1554110.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1554110",
+      "fotmobId": "1554110",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3955,7 +5907,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "I. ADEL",
       "club": "FC Nordsjælland (DEN)",
-      "photoUrl": null,
+      "fullName": "Ibrahim Adel Aly Mohamed HASSAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1272436.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1272436",
+      "fotmobId": "1272436",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3963,7 +5919,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "M. SABER",
       "club": "ZED FC (EGY)",
-      "photoUrl": null,
+      "fullName": "Mahmoud Saber Abdelmohsen HABDELMOHSEN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1291391.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1291391",
+      "fotmobId": "1291391",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3971,7 +5931,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MARMOUSH",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "OMAR MARMOUSH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/839204.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/839204",
+      "fotmobId": "839204",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3979,7 +5943,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "SHOUBIR",
       "club": "Al Ahly FC (EGY)",
-      "photoUrl": null,
+      "fullName": "MOSTAFA SHOUBIR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1228546.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1228546",
+      "fotmobId": "1228546",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3987,7 +5955,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "T. ALAA",
       "club": "ZED FC (EGY)",
-      "photoUrl": null,
+      "fullName": "Tarek Alaa Abdelghaffar Abdel ELGEBALY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1173774.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1173774",
+      "fotmobId": "1173774",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -3995,7 +5967,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ZIZO",
       "club": "Al Ahly FC (EGY)",
-      "photoUrl": null,
+      "fullName": "Ahmed Mostafa Mohamed SAYED",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/532766.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/532766",
+      "fotmobId": "532766",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     },
     {
@@ -4003,7 +5979,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "M. ALAA",
       "club": "El Gouna FC (EGY)",
-      "photoUrl": null,
+      "fullName": "Mohamed Alaaeldin Soliman MAHMED",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1689371.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1689371",
+      "fotmobId": "1689371",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/egypt/"
     }
   ],
@@ -4013,7 +5993,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "GUNN",
       "club": "Nottingham Forest FC (ENG)",
-      "photoUrl": null,
+      "fullName": "GUNN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/760746.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/760746",
+      "fotmobId": "760746",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4021,7 +6005,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HICKEY",
       "club": "Brentford FC (ENG)",
-      "photoUrl": null,
+      "fullName": "HICKEY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1002039.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1002039",
+      "fotmobId": "1002039",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4029,7 +6017,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ROBERTSON",
       "club": "Liverpool FC (ENG)",
-      "photoUrl": null,
+      "fullName": "ROBERTSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/357880.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/357880",
+      "fotmobId": "357880",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4037,7 +6029,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MCTOMINAY",
       "club": "SSC Napoli (ITA)",
-      "photoUrl": null,
+      "fullName": "Mc TOMINAY Scott Francis",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/843099.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/843099",
+      "fotmobId": "843099",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4045,7 +6041,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HANLEY",
       "club": "Hibernian FC (SCO)",
-      "photoUrl": null,
+      "fullName": "HANLEY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/202180.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/202180",
+      "fotmobId": "202180",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4053,7 +6053,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "TIERNEY",
       "club": "Celtic FC (SCO)",
-      "photoUrl": null,
+      "fullName": "TIERNEY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/582499.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/582499",
+      "fotmobId": "582499",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4061,7 +6065,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MCGINN",
       "club": "Aston Villa FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Mc GINN John",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/356406.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/356406",
+      "fotmobId": "356406",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4069,7 +6077,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "FLETCHER",
       "club": "Manchester United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "FLETCHER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1676985.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1676985",
+      "fotmobId": "1676985",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4077,7 +6089,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "DYKES",
       "club": "Charlton Athletic FC (ENG)",
-      "photoUrl": null,
+      "fullName": "DYKES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/768635.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/768635",
+      "fotmobId": "768635",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4085,7 +6101,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ADAMS",
       "club": "Torino FC (ITA)",
-      "photoUrl": null,
+      "fullName": "ADAMS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/599353.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/599353",
+      "fotmobId": "599353",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4093,7 +6113,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "CHRISTIE",
       "club": "AFC Bournemouth (ENG)",
-      "photoUrl": null,
+      "fullName": "CHRISTIE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/439369.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/439369",
+      "fotmobId": "439369",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4101,7 +6125,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "KELLY",
       "club": "Rangers FC (SCO)",
-      "photoUrl": null,
+      "fullName": "KELLY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/445522.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/445522",
+      "fotmobId": "445522",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4109,7 +6137,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HENDRY",
       "club": "Al Ettifaq FC (KSA)",
-      "photoUrl": null,
+      "fullName": "HENDRY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/640642.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/640642",
+      "fotmobId": "640642",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4117,7 +6149,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "STEWART",
       "club": "Southampton FC (ENG)",
-      "photoUrl": null,
+      "fullName": "STEWART",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/776159.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/776159",
+      "fotmobId": "776159",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4125,7 +6161,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SOUTTAR",
       "club": "Rangers FC (SCO)",
-      "photoUrl": null,
+      "fullName": "SOUTTAR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/419207.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/419207",
+      "fotmobId": "419207",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4133,7 +6173,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HYAM",
       "club": "Wrexham AFC (WAL)",
-      "photoUrl": null,
+      "fullName": "HYAM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/694558.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/694558",
+      "fotmobId": "694558",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4141,7 +6185,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "GANNON DOAK",
       "club": "AFC Bournemouth (ENG)",
-      "photoUrl": null,
+      "fullName": "Ben Gannon DOAK GANNON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1324871.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1324871",
+      "fotmobId": "1324871",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4149,7 +6197,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "HIRST",
       "club": "Ipswich Town FC (ENG)",
-      "photoUrl": null,
+      "fullName": "HIRST",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/750033.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/750033",
+      "fotmobId": "750033",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4157,7 +6209,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "FERGUSON",
       "club": "Bologna FC (ITA)",
-      "photoUrl": null,
+      "fullName": "FERGUSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/888921.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/888921",
+      "fotmobId": "888921",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4165,7 +6221,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "SHANKLAND",
       "club": "Heart Of Midlothian FC (SCO)",
-      "photoUrl": null,
+      "fullName": "SHANKLAND",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/317544.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/317544",
+      "fotmobId": "317544",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4173,7 +6233,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "GORDON",
       "club": "Heart Of Midlothian FC (SCO)",
-      "photoUrl": null,
+      "fullName": "GORDON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/32562.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/32562",
+      "fotmobId": "32562",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4181,7 +6245,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "PATTERSON",
       "club": "Everton FC (ENG)",
-      "photoUrl": null,
+      "fullName": "PATTERSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1112684.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1112684",
+      "fotmobId": "1112684",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4189,7 +6257,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MCLEAN",
       "club": "Norwich City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Mc LEAN Kenny Kenneth",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/190851.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/190851",
+      "fotmobId": "190851",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4197,7 +6269,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "RALSTON",
       "club": "Celtic FC (SCO)",
-      "photoUrl": null,
+      "fullName": "RALSTON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/668422.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/668422",
+      "fotmobId": "668422",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4205,7 +6281,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "CURTIS",
       "club": "Kilmarnock FC (SCO)",
-      "photoUrl": null,
+      "fullName": "CURTIS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/933768.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/933768",
+      "fotmobId": "933768",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     },
     {
@@ -4213,7 +6293,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MCKENNA",
       "club": "GNK Dinamo Zagreb (CRO)",
-      "photoUrl": null,
+      "fullName": "Mc KENNA Scott Fraser",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/551805.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/551805",
+      "fotmobId": "551805",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/scotland/"
     }
   ],
@@ -4223,7 +6307,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "RAYA",
       "club": "Arsenal FC (ENG)",
-      "photoUrl": null,
+      "fullName": "David RAYA MARTÍN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/562727.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/562727",
+      "fotmobId": "562727",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4231,7 +6319,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MARC PUBILL",
       "club": "Atlético De Madrid (ESP)",
-      "photoUrl": null,
+      "fullName": "Marc PUBILL PAGES MARC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1323897.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1323897",
+      "fotmobId": "1323897",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4239,7 +6331,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "GRIMALDO",
       "club": "Bayer Leverkusen (GER)",
-      "photoUrl": null,
+      "fullName": "Alex Alejandro GRIMALDO GARCÍA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/288406.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/288406",
+      "fotmobId": "288406",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4247,7 +6343,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ERIC",
       "club": "FC Barcelona (ESP)",
-      "photoUrl": null,
+      "fullName": "Eric GARCÍA MARTRET",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/940573.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/940573",
+      "fotmobId": "940573",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4255,7 +6355,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "M. LLORENTE",
       "club": "Atlético De Madrid (ESP)",
-      "photoUrl": null,
+      "fullName": "Marcos LLORENTE MORENO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/602563.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/602563",
+      "fotmobId": "602563",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4263,7 +6367,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MERINO",
       "club": "Arsenal FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Mikel MERINO ZAZÓN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/574645.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/574645",
+      "fotmobId": "574645",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4271,7 +6379,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "FERRAN",
       "club": "FC Barcelona (ESP)",
-      "photoUrl": null,
+      "fullName": "Ferran TORRES GARCÍA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/881771.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/881771",
+      "fotmobId": "881771",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4279,7 +6391,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "FABIÁN",
       "club": "Paris Saint-Germain (FRA)",
-      "photoUrl": null,
+      "fullName": "Fabian RUIZ PEÑA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/605654.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/605654",
+      "fotmobId": "605654",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4287,7 +6403,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "GAVI",
       "club": "FC Barcelona (ESP)",
-      "photoUrl": null,
+      "fullName": "Pablo PAEZ GAVIRA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1279040.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1279040",
+      "fotmobId": "1279040",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4295,7 +6415,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "OLMO",
       "club": "FC Barcelona (ESP)",
-      "photoUrl": null,
+      "fullName": "Daniel OLMO CARVAJAL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/614834.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/614834",
+      "fotmobId": "614834",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4303,7 +6427,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "JEREMY",
       "club": "Crystal Palace FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Yeremy Jesús PINO SANTOS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/942368.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/942368",
+      "fotmobId": "942368",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4311,7 +6439,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "PEDRO PORRO",
       "club": "Tottenham Hotspur FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Pedro Antonio PORRO SAUCEDA PEDRO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/941573.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/941573",
+      "fotmobId": "941573",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4319,7 +6451,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "JOAN GARCÍA",
       "club": "FC Barcelona (ESP)",
-      "photoUrl": null,
+      "fullName": "Joan GARCIA PONS JOAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1167220.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1167220",
+      "fotmobId": "1167220",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4327,7 +6463,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "LAPORTE",
       "club": "Athletic Club (ESP)",
-      "photoUrl": null,
+      "fullName": "Aymeric LAPORTE FEVRE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/411617.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/411617",
+      "fotmobId": "411617",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4335,7 +6475,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ALEX B.",
       "club": "Atlético De Madrid (ESP)",
-      "photoUrl": null,
+      "fullName": "Alex Alejandro BAENA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/942372.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/942372",
+      "fotmobId": "942372",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4343,7 +6487,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "RODRIGO",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Rodrigo HERNÁNDEZ CASCANTE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1419969.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1419969",
+      "fotmobId": "1419969",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4351,7 +6499,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "WILLIAMS JR",
       "club": "Athletic Club (ESP)",
-      "photoUrl": null,
+      "fullName": "Nico Nicholas WILLIAMS ARTHUER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/807783.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/807783",
+      "fotmobId": "807783",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4359,7 +6511,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ZUBIMENDI",
       "club": "Arsenal FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Martin ZUBIMENDI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1031325.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1031325",
+      "fotmobId": "1031325",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4367,7 +6523,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "LAMINE YAMAL",
       "club": "FC Barcelona (ESP)",
-      "photoUrl": null,
+      "fullName": "Lamine Yamal NASRAOUI EBANA LAMINE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1467236.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1467236",
+      "fotmobId": "1467236",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4375,7 +6535,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "PEDRI",
       "club": "FC Barcelona (ESP)",
-      "photoUrl": null,
+      "fullName": "Pedro GONZÁLEZ LÓPEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1083323.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1083323",
+      "fotmobId": "1083323",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4383,7 +6547,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "OYARZABAL",
       "club": "Real Sociedad (ESP)",
-      "photoUrl": null,
+      "fullName": "Mikel OYARZABAL UGARTE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/678234.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/678234",
+      "fotmobId": "678234",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4391,7 +6559,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "CUBARSI",
       "club": "FC Barcelona (ESP)",
-      "photoUrl": null,
+      "fullName": "Pau CUBARSII PAREDES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1532137.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1532137",
+      "fotmobId": "1532137",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4399,7 +6571,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "UNAI SIMÓN",
       "club": "Athletic Club (ESP)",
-      "photoUrl": null,
+      "fullName": "Unai SIMÓN MENDIBIL UNAI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/660625.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/660625",
+      "fotmobId": "660625",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4407,7 +6583,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "CUCURELLA",
       "club": "Chelsea FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Marc CUCURELLA SASETA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/873289.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/873289",
+      "fotmobId": "873289",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4415,7 +6595,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "VICTOR M.V.",
       "club": "CA Osasuna (ESP)",
-      "photoUrl": null,
+      "fullName": "Victor MUÑOZ VILLANUEVA VICTOR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1425696.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1425696",
+      "fotmobId": "1425696",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     },
     {
@@ -4423,7 +6607,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "B. IGLESIAS",
       "club": "RC Celta Vigo (ESP)",
-      "photoUrl": null,
+      "fullName": "Borja IGLESIAS QUINTÁS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/609505.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/609505",
+      "fotmobId": "609505",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/spain/"
     }
   ],
@@ -4433,7 +6621,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "TURNER",
       "club": "New England Revolution (USA)",
-      "photoUrl": null,
+      "fullName": "TURNER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/729988.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/729988",
+      "fotmobId": "729988",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4441,7 +6633,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DEST",
       "club": "PSV Eindhoven (NED)",
-      "photoUrl": null,
+      "fullName": "DEST",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/892816.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/892816",
+      "fotmobId": "892816",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4449,7 +6645,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "RICHARDS",
       "club": "Crystal Palace FC (ENG)",
-      "photoUrl": null,
+      "fullName": "RICHARDS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/950829.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/950829",
+      "fotmobId": "950829",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4457,7 +6657,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ADAMS",
       "club": "AFC Bournemouth (ENG)",
-      "photoUrl": null,
+      "fullName": "ADAMS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/729769.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/729769",
+      "fotmobId": "729769",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4465,7 +6669,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "A. ROBINSON",
       "club": "Fulham FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Antonee ROBINSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/662428.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/662428",
+      "fotmobId": "662428",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4473,7 +6681,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "TRUSTY",
       "club": "Celtic FC (SCO)",
-      "photoUrl": null,
+      "fullName": "TRUSTY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/688271.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/688271",
+      "fotmobId": "688271",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4481,7 +6693,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "REYNA",
       "club": "Borussia Mönchengladbach (GER)",
-      "photoUrl": null,
+      "fullName": "REYNA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1071179.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1071179",
+      "fotmobId": "1071179",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4489,7 +6705,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MCKENNIE",
       "club": "Juventus FC (ITA)",
-      "photoUrl": null,
+      "fullName": "Mc KENNIE Weston James Earl MC KENNIE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/848266.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/848266",
+      "fotmobId": "848266",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4497,7 +6717,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "PEPI",
       "club": "PSV Eindhoven (NED)",
-      "photoUrl": null,
+      "fullName": "PEPI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1036401.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1036401",
+      "fotmobId": "1036401",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4505,7 +6729,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "PULISIC",
       "club": "AC Milan (ITA)",
-      "photoUrl": null,
+      "fullName": "PULISIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/688295.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/688295",
+      "fotmobId": "688295",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4513,7 +6741,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AARONSON",
       "club": "Leeds United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "AARONSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/952322.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/952322",
+      "fotmobId": "952322",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4521,7 +6753,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "M. ROBINSON",
       "club": "FC Cincinnatti (USA)",
-      "photoUrl": null,
+      "fullName": "Miles Gordon ROBINSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1124866.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1124866",
+      "fotmobId": "1124866",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4529,7 +6765,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "REAM",
       "club": "Charlotte FC (USA)",
-      "photoUrl": null,
+      "fullName": "REAM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/198444.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/198444",
+      "fotmobId": "198444",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4537,7 +6777,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BERHALTER",
       "club": "Vancouver Whitecaps FC (CAN)",
-      "photoUrl": null,
+      "fullName": "BERHALTER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1136096.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1136096",
+      "fotmobId": "1136096",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4545,7 +6789,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ROLDAN",
       "club": "Seattle Sounders FC (USA)",
-      "photoUrl": null,
+      "fullName": "ROLDAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/924391.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/924391",
+      "fotmobId": "924391",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4553,7 +6801,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "FREEMAN",
       "club": "Villarreal CF (ESP)",
-      "photoUrl": null,
+      "fullName": "FREEMAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1338696.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1338696",
+      "fotmobId": "1338696",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4561,7 +6813,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "TILLMAN",
       "club": "Bayer Leverkusen (GER)",
-      "photoUrl": null,
+      "fullName": "TILLMAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1126058.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1126058",
+      "fotmobId": "1126058",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4569,7 +6825,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ARFSTEN",
       "club": "Columbus Crew (USA)",
-      "photoUrl": null,
+      "fullName": "ARFSTEN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1348329.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1348329",
+      "fotmobId": "1348329",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4577,7 +6837,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "WRIGHT",
       "club": "Coventry City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "WRIGHT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/848268.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/848268",
+      "fotmobId": "848268",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4585,7 +6849,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BALOGUN",
       "club": "AS Monaco (FRA)",
-      "photoUrl": null,
+      "fullName": "BALOGUN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/982677.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/982677",
+      "fotmobId": "982677",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4593,7 +6861,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "WEAH",
       "club": "Olympique Marseille (FRA)",
-      "photoUrl": null,
+      "fullName": "WEAH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/889536.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/889536",
+      "fotmobId": "889536",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4601,7 +6873,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MCKENZIE",
       "club": "Toulouse FC (FRA)",
-      "photoUrl": null,
+      "fullName": "Mc KENZIE Mark Alexander",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/924485.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/924485",
+      "fotmobId": "924485",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4609,7 +6885,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SCALLY",
       "club": "Borussia Mönchengladbach (GER)",
-      "photoUrl": null,
+      "fullName": "SCALLY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/959696.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/959696",
+      "fotmobId": "959696",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4617,7 +6897,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "FREESE",
       "club": "New York City FC (USA)",
-      "photoUrl": null,
+      "fullName": "FREESE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1026065.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1026065",
+      "fotmobId": "1026065",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4625,7 +6909,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "BRADY",
       "club": "Chicago Fire FC (USA)",
-      "photoUrl": null,
+      "fullName": "BRADY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1245998.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1245998",
+      "fotmobId": "1245998",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     },
     {
@@ -4633,7 +6921,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ZENDEJAS",
       "club": "Club América (MEX)",
-      "photoUrl": null,
+      "fullName": "Alex Alejandro ZENDEJAS SAAVEDRA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/621882.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/621882",
+      "fotmobId": "621882",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/united-states/"
     }
   ],
@@ -4643,7 +6935,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "SAMBA",
       "club": "Stade Rennais FC (FRA)",
-      "photoUrl": null,
+      "fullName": "SAMBA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1860819.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1860819",
+      "fotmobId": "1860819",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4651,7 +6947,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "GUSTO",
       "club": "Chelsea FC (ENG)",
-      "photoUrl": null,
+      "fullName": "GUSTO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1197250.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1197250",
+      "fotmobId": "1197250",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4659,7 +6959,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DIGNE",
       "club": "Aston Villa FC (ENG)",
-      "photoUrl": null,
+      "fullName": "DIGNE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/210111.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/210111",
+      "fotmobId": "210111",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4667,7 +6971,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "UPAMECANO",
       "club": "FC Bayern München (GER)",
-      "photoUrl": null,
+      "fullName": "UPAMECANO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/658554.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/658554",
+      "fotmobId": "658554",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4675,7 +6983,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "KOUNDE",
       "club": "FC Barcelona (ESP)",
-      "photoUrl": null,
+      "fullName": "KOUNDE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/705450.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/705450",
+      "fotmobId": "705450",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4683,7 +6995,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KONE",
       "club": "AS Roma (ITA)",
-      "photoUrl": null,
+      "fullName": "KONE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1016132.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1016132",
+      "fotmobId": "1016132",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4691,7 +7007,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "DEMBELE",
       "club": "Paris Saint-Germain (FRA)",
-      "photoUrl": null,
+      "fullName": "DEMBELE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/692984.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/692984",
+      "fotmobId": "692984",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4699,7 +7019,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "TCHOUAMENI",
       "club": "Real Madrid C. F. (ESP)",
-      "photoUrl": null,
+      "fullName": "TCHOUAMENI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/914458.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/914458",
+      "fotmobId": "914458",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4707,7 +7031,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "THURAM",
       "club": "FC Internazionale Milano (ITA)",
-      "photoUrl": null,
+      "fullName": "THURAM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/484838.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/484838",
+      "fotmobId": "484838",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4715,7 +7043,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MBAPPE",
       "club": "Real Madrid C. F. (ESP)",
-      "photoUrl": null,
+      "fullName": "Kylian MBAPPE LOTTIN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/701154.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/701154",
+      "fotmobId": "701154",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4723,7 +7055,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "OLISE",
       "club": "FC Bayern München (GER)",
-      "photoUrl": null,
+      "fullName": "OLISE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1029063.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1029063",
+      "fotmobId": "1029063",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4731,7 +7067,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BARCOLA",
       "club": "Paris Saint-Germain (FRA)",
-      "photoUrl": null,
+      "fullName": "Bradley Jean-Manuel Essolisa ABARCOLA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1297165.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1297165",
+      "fotmobId": "1297165",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4739,7 +7079,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KANTE",
       "club": "Fenerbahçe SK (TUR)",
-      "photoUrl": null,
+      "fullName": "KANTE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/319300.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/319300",
+      "fotmobId": "319300",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4747,7 +7091,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "RABIOT",
       "club": "AC Milan (ITA)",
-      "photoUrl": null,
+      "fullName": "RABIOT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/352879.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/352879",
+      "fotmobId": "352879",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4755,7 +7103,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "KONATE",
       "club": "Liverpool FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Ibrahima KONATÉ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/820140.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/820140",
+      "fotmobId": "820140",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4763,7 +7115,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "MAIGNAN",
       "club": "AC Milan (ITA)",
-      "photoUrl": null,
+      "fullName": "MAIGNAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/466439.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/466439",
+      "fotmobId": "466439",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4771,7 +7127,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SALIBA",
       "club": "Arsenal FC (ENG)",
-      "photoUrl": null,
+      "fullName": "SALIBA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/955406.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/955406",
+      "fotmobId": "955406",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4779,7 +7139,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ZAIRE EMERY",
       "club": "Paris Saint-Germain (FRA)",
-      "photoUrl": null,
+      "fullName": "Warren Marie Jean-Pierre ZAÏRE-EMERY ZAIRE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1367615.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1367615",
+      "fotmobId": "1367615",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4787,7 +7151,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "T. HERNANDEZ",
       "club": "Al Hilal SC (KSA)",
-      "photoUrl": null,
+      "fullName": "Theo Bernard François HERNANDEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/724371.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/724371",
+      "fotmobId": "724371",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4795,7 +7163,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "DOUE",
       "club": "Paris Saint-Germain (FRA)",
-      "photoUrl": null,
+      "fullName": "DOUE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1339208.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1339208",
+      "fotmobId": "1339208",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4803,7 +7175,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "L. HERNANDEZ",
       "club": "Paris Saint-Germain (FRA)",
-      "photoUrl": null,
+      "fullName": "Lucas Francois Bernard HERNANDEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/504606.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/504606",
+      "fotmobId": "504606",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4811,7 +7187,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MATETA",
       "club": "Crystal Palace FC (ENG)",
-      "photoUrl": null,
+      "fullName": "MATETA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/706297.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/706297",
+      "fotmobId": "706297",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4819,7 +7199,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "RISSER",
       "club": "RC Lens (FRA)",
-      "photoUrl": null,
+      "fullName": "RISSER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1390336.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1390336",
+      "fotmobId": "1390336",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4827,7 +7211,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "CHERKI",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "CHERKI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1104053.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1104053",
+      "fotmobId": "1104053",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4835,7 +7223,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "AKLIOUCHE",
       "club": "AS Monaco (FRA)",
-      "photoUrl": null,
+      "fullName": "AKLIOUCHE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1305618.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1305618",
+      "fotmobId": "1305618",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     },
     {
@@ -4843,7 +7235,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "LACROIX",
       "club": "Crystal Palace FC (ENG)",
-      "photoUrl": null,
+      "fullName": "LACROIX",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/950485.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/950485",
+      "fotmobId": "950485",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/france/"
     }
   ],
@@ -4853,7 +7249,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "ZIGI",
       "club": "FC St. Gallen (SUI)",
-      "photoUrl": null,
+      "fullName": "ZIGI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/961414.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/961414",
+      "fotmobId": "961414",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -4861,7 +7261,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SEIDU",
       "club": "Stade Rennais FC (FRA)",
-      "photoUrl": null,
+      "fullName": "SEIDU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1177779.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1177779",
+      "fotmobId": "1177779",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -4869,7 +7273,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "CALEB",
       "club": "FC Nordsjælland (DEN)",
-      "photoUrl": null,
+      "fullName": "Caleb Marfo YIRENKYI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1615927.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1615927",
+      "fotmobId": "1615927",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -4877,7 +7285,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ADJETEY",
       "club": "VfL Wolfsburg (GER)",
-      "photoUrl": null,
+      "fullName": "ADJETEY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1432344.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1432344",
+      "fotmobId": "1432344",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -4885,7 +7297,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "THOMAS",
       "club": "Villarreal CF (ESP)",
-      "photoUrl": null,
+      "fullName": "Thomas Teye PARTEY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/434325.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/434325",
+      "fotmobId": "434325",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -4893,7 +7309,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SULEMAN",
       "club": "Rayo Vallecano (ESP)",
-      "photoUrl": null,
+      "fullName": "MUMIN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1130691.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1130691",
+      "fotmobId": "1130691",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -4901,7 +7321,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "FATAWU",
       "club": "Leicester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Fatawu Abdul Fatawu ISSAHAKU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1265626.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1265626",
+      "fotmobId": "1265626",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -4909,7 +7333,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SIBO",
       "club": "Real Oviedo (ESP)",
-      "photoUrl": null,
+      "fullName": "SIBO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/948745.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/948745",
+      "fotmobId": "948745",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -4917,7 +7345,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AYEW",
       "club": "Leicester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "AYEW",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/154280.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/154280",
+      "fotmobId": "154280",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -4925,7 +7357,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ASANTE",
       "club": "Coventry City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Brandon Solomon Brandon Michael Clarke THOMAS-ASANTE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1285713.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1285713",
+      "fotmobId": "1285713",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -4933,7 +7369,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SEMENYO",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "SEMENYO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/933576.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/933576",
+      "fotmobId": "933576",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -4941,7 +7381,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "ANANG",
       "club": "St Patrick's Athletic FC (IRL)",
-      "photoUrl": null,
+      "fullName": "ANANG",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/963812.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/963812",
+      "fotmobId": "963812",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -4949,7 +7393,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BAAH",
       "club": "Al Qadsiah FC (KSA)",
-      "photoUrl": null,
+      "fullName": "BAAH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1452385.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1452385",
+      "fotmobId": "1452385",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -4957,7 +7405,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MENSAH",
       "club": "AJ Auxerre (FRA)",
-      "photoUrl": null,
+      "fullName": "MENSAH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/771630.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/771630",
+      "fotmobId": "771630",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -4965,7 +7417,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "OWUSU",
       "club": "AJ Auxerre (FRA)",
-      "photoUrl": null,
+      "fullName": "OWUSU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/883823.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/883823",
+      "fotmobId": "883823",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -4973,7 +7429,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "ASARE",
       "club": "Hearts Of Oak SC (GHA)",
-      "photoUrl": null,
+      "fullName": "ASARE",
+      "photoUrl": "https://img.a.transfermarkt.technology/portrait/header/837368-1745692250.jpg?lm=1",
+      "photoSource": "Transfermarkt",
+      "photoSourceUrl": "https://www.transfermarkt.com/benjamin-asare/profil/spieler/837368",
+      "fotmobId": null,
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -4981,7 +7441,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BABA",
       "club": "PAOK Saloniki (GRE)",
-      "photoUrl": null,
+      "fullName": "RAHMAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/324910.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/324910",
+      "fotmobId": "324910",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -4989,7 +7453,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "OPOKU",
       "club": "Ba ş ak ş ehir FK (TUR)",
-      "photoUrl": null,
+      "fullName": "OPOKU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/873227.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/873227",
+      "fotmobId": "873227",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -4997,7 +7465,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "WILLIAMS",
       "club": "Athletic Club (ESP)",
-      "photoUrl": null,
+      "fullName": "Inaki WILLIAMS ARTHUER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1202110.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1202110",
+      "fotmobId": "1202110",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -5005,7 +7477,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BOAKYE",
       "club": "AS Saint-Etienne (FRA)",
-      "photoUrl": null,
+      "fullName": "BOAKYE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1211610.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1211610",
+      "fotmobId": "1211610",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -5013,7 +7489,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "PEPRAH",
       "club": "OGC Nice (FRA)",
-      "photoUrl": null,
+      "fullName": "Kojo Peprah Kojo Peprah OPPONG",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1429607.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1429607",
+      "fotmobId": "1429607",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -5021,7 +7501,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "KAMALDEEN",
       "club": "Atalanta Bergamo (ITA)",
-      "photoUrl": null,
+      "fullName": "Kamaldeen Kamal Deen SULEMANA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1130691.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1130691",
+      "fotmobId": "1130691",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -5029,7 +7513,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "LUCKASSEN",
       "club": "Pafos FC (CYP)",
-      "photoUrl": null,
+      "fullName": "LUCKASSEN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/562801.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/562801",
+      "fotmobId": "562801",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -5037,7 +7525,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "NUAMAH",
       "club": "Olympique Lyonnais (FRA)",
-      "photoUrl": null,
+      "fullName": "Ernest Nuamah APPIAH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1338390.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1338390",
+      "fotmobId": "1338390",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -5045,7 +7537,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ADU",
       "club": "FC Viktoria Plze ň (CZE)",
-      "photoUrl": null,
+      "fullName": "ADU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1220633.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1220633",
+      "fotmobId": "1220633",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     },
     {
@@ -5053,7 +7549,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SENEYA",
       "club": "AJ Auxerre (FRA)",
-      "photoUrl": null,
+      "fullName": "Marvin Elom SENAYA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1201760.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1201760",
+      "fotmobId": "1201760",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/ghana/"
     }
   ],
@@ -5063,7 +7563,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "PLACIDE",
       "club": "SC Bastia (FRA)",
-      "photoUrl": null,
+      "fullName": "PLACIDE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/103468.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/103468",
+      "fotmobId": "103468",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5071,7 +7575,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ARCUS",
       "club": "Angers SCO (FRA)",
-      "photoUrl": null,
+      "fullName": "ARCUS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/634110.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/634110",
+      "fotmobId": "634110",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5079,7 +7587,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "THERMONCY",
       "club": "BSC Young Boys (SUI)",
-      "photoUrl": null,
+      "fullName": "THERMONCY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1807873.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1807873",
+      "fotmobId": "1807873",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5087,7 +7599,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ADE",
       "club": "LDU Quito (ECU)",
-      "photoUrl": null,
+      "fullName": "ADE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/959594.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/959594",
+      "fotmobId": "959594",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5095,7 +7611,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DELCROIX",
       "club": "FC Lugano (SUI)",
-      "photoUrl": null,
+      "fullName": "Hannes Piterson DDELCROIX",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/822716.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/822716",
+      "fotmobId": "822716",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5103,7 +7623,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SAINTE",
       "club": "El Paso Locomotive FC (USA)",
-      "photoUrl": null,
+      "fullName": "SAINTE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/880618.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/880618",
+      "fotmobId": "880618",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5111,7 +7635,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ETIENNE JR",
       "club": "Toronto FC (CAN)",
-      "photoUrl": null,
+      "fullName": "Derrick Burckley ETIENNE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1227521.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1227521",
+      "fotmobId": "1227521",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5119,7 +7647,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "EXPERIENCE",
       "club": "AS Nancy (FRA)",
-      "photoUrl": null,
+      "fullName": "EXPERIENCE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1181438.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1181438",
+      "fotmobId": "1181438",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5127,7 +7659,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "NAZON",
       "club": "Esteghlal Tehran FC (IRN)",
-      "photoUrl": null,
+      "fullName": "NAZON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/525445.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/525445",
+      "fotmobId": "525445",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5135,7 +7671,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BELLEGARDE",
       "club": "Wolverhampton Wanderers FC (ENG)",
-      "photoUrl": null,
+      "fullName": "BELLEGARDE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/769166.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/769166",
+      "fotmobId": "769166",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5143,7 +7683,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "DEEDSON",
       "club": "FC Dallas (USA)",
-      "photoUrl": null,
+      "fullName": "DEEDSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1079194.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1079194",
+      "fotmobId": "1079194",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5151,7 +7695,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "A. PIERRE",
       "club": "FC Sochaux-Montbéliard (FRA)",
-      "photoUrl": null,
+      "fullName": "Alexandre Jr PIERRE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1131217.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1131217",
+      "fotmobId": "1131217",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5159,7 +7707,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "LACROIX",
       "club": "Colorado Springs Switchbacks FC (USA)",
-      "photoUrl": null,
+      "fullName": "LACROIX",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/649744.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/649744",
+      "fotmobId": "649744",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5167,7 +7719,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "L. PIERRE",
       "club": "FC Vizela (POR)",
-      "photoUrl": null,
+      "fullName": "Leverton PIERRE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/899318.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/899318",
+      "fotmobId": "899318",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5175,7 +7731,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "PROVIDENCE",
       "club": "Almere City FC (NED)",
-      "photoUrl": null,
+      "fullName": "PROVIDENCE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1200016.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1200016",
+      "fotmobId": "1200016",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5183,7 +7743,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "JOSEPH",
       "club": "Ferencvárosi TC (HUN)",
-      "photoUrl": null,
+      "fullName": "JOSEPH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/568571.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/568571",
+      "fotmobId": "568571",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5191,7 +7755,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "JEAN JACQUES",
       "club": "Philadelphia Union (USA)",
-      "photoUrl": null,
+      "fullName": "Danley JEAN JACQUESJEAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1329461.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1329461",
+      "fotmobId": "1329461",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5199,7 +7767,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ISIDOR",
       "club": "Sunderland AFC (ENG)",
-      "photoUrl": null,
+      "fullName": "ISIDOR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/887703.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/887703",
+      "fotmobId": "887703",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5207,7 +7779,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "FORTUNE",
       "club": "FC Vizela (POR)",
-      "photoUrl": null,
+      "fullName": "FORTUNE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/759569.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/759569",
+      "fotmobId": "759569",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5215,7 +7791,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "PIERROT",
       "club": "Çaykur Rizespor (TUR)",
-      "photoUrl": null,
+      "fullName": "PIERROT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/833641.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/833641",
+      "fotmobId": "833641",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5223,7 +7803,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "CASIMIR",
       "club": "AJ Auxerre (FRA)",
-      "photoUrl": null,
+      "fullName": "CASIMIR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1199382.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1199382",
+      "fotmobId": "1199382",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5231,7 +7815,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DUVERNE",
       "club": "KAA Gent (BEL)",
-      "photoUrl": null,
+      "fullName": "DUVERNE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/769168.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/769168",
+      "fotmobId": "769168",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5239,7 +7827,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "DUVERGER",
       "club": "FC Cosmos Koblenz (GER)",
-      "photoUrl": null,
+      "fullName": "DUVERGER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/899023.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/899023",
+      "fotmobId": "899023",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5247,7 +7839,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "PAUGIN",
       "club": "SV Zulte Waregem (BEL)",
-      "photoUrl": null,
+      "fullName": "Wilguens Raphael Polynice PAUGAIN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1394254.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1394254",
+      "fotmobId": "1394254",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5255,7 +7851,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SIMON",
       "club": "FC Tatran Pre š ov (SVK)",
-      "photoUrl": null,
+      "fullName": "SIMON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/467486.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/467486",
+      "fotmobId": "467486",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     },
     {
@@ -5263,7 +7863,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "W. PIERRE",
       "club": "Violette AC (HAI)",
-      "photoUrl": null,
+      "fullName": "Woodensky Olivier Woodensky PIERRE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1131217.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1131217",
+      "fotmobId": "1131217",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/haiti/"
     }
   ],
@@ -5273,7 +7877,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "PICKFORD",
       "club": "Everton FC (ENG)",
-      "photoUrl": null,
+      "fullName": "PICKFORD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/303919.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/303919",
+      "fotmobId": "303919",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5281,7 +7889,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "KONSA",
       "club": "Aston Villa FC (ENG)",
-      "photoUrl": null,
+      "fullName": "KONSA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/710159.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/710159",
+      "fotmobId": "710159",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5289,7 +7901,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "O'REILLY",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "OREILLY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1300526.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1300526",
+      "fotmobId": "1300526",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5297,7 +7913,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "RICE",
       "club": "Arsenal FC (ENG)",
-      "photoUrl": null,
+      "fullName": "RICE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/654096.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/654096",
+      "fotmobId": "654096",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5305,7 +7925,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "STONES",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "STONES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/263653.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/263653",
+      "fotmobId": "263653",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5313,7 +7937,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "GUEHI",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "GUEHI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/844425.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/844425",
+      "fotmobId": "844425",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5321,7 +7949,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "SAKA",
       "club": "Arsenal FC (ENG)",
-      "photoUrl": null,
+      "fullName": "SAKA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/961995.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/961995",
+      "fotmobId": "961995",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5329,7 +7961,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ANDERSON",
       "club": "Nottingham Forest FC (ENG)",
-      "photoUrl": null,
+      "fullName": "ANDERSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1089691.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1089691",
+      "fotmobId": "1089691",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5337,7 +7973,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "KANE",
       "club": "FC Bayern München (GER)",
-      "photoUrl": null,
+      "fullName": "KANE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/194165.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/194165",
+      "fotmobId": "194165",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5345,7 +7985,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BELLINGHAM",
       "club": "Real Madrid C. F. (ESP)",
-      "photoUrl": null,
+      "fullName": "BELLINGHAM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1077894.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1077894",
+      "fotmobId": "1077894",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5353,7 +7997,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "RASHFORD",
       "club": "FC Barcelona (ESP)",
-      "photoUrl": null,
+      "fullName": "RASHFORD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/696365.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/696365",
+      "fotmobId": "696365",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5361,7 +8009,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "LIVRAMENTO",
       "club": "Newcastle United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "LIVRAMENTO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1107910.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1107910",
+      "fotmobId": "1107910",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5369,7 +8021,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "D. HENDERSON",
       "club": "Crystal Palace FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Dean Bradley HENDERSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/719330.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/719330",
+      "fotmobId": "719330",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5377,7 +8033,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "J. HENDERSON",
       "club": "Brentford FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Jordan Brian HENDERSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/156008.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/156008",
+      "fotmobId": "156008",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5385,7 +8045,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BURN",
       "club": "Newcastle United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "BURN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/188058.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/188058",
+      "fotmobId": "188058",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5393,7 +8057,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MAINOO",
       "club": "Manchester United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "MAINOO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1292810.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1292810",
+      "fotmobId": "1292810",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5401,7 +8069,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ROGERS",
       "club": "Aston Villa FC (ENG)",
-      "photoUrl": null,
+      "fullName": "ROGERS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/883080.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/883080",
+      "fotmobId": "883080",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5409,7 +8081,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "GORDON",
       "club": "Newcastle United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "GORDON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/906937.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/906937",
+      "fotmobId": "906937",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5417,7 +8093,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "WATKINS",
       "club": "Aston Villa FC (ENG)",
-      "photoUrl": null,
+      "fullName": "WATKINS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/540088.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/540088",
+      "fotmobId": "540088",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5425,7 +8105,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MADUEKE",
       "club": "Arsenal FC (ENG)",
-      "photoUrl": null,
+      "fullName": "MADUEKE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1084981.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1084981",
+      "fotmobId": "1084981",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5433,7 +8117,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "EZE",
       "club": "Arsenal FC (ENG)",
-      "photoUrl": null,
+      "fullName": "EZE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/818975.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/818975",
+      "fotmobId": "818975",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5441,7 +8129,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "TONEY",
       "club": "Al Ahli FC (KSA)",
-      "photoUrl": null,
+      "fullName": "TONEY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/408987.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/408987",
+      "fotmobId": "408987",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5449,7 +8141,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "TRAFFORD",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "TRAFFORD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1187213.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1187213",
+      "fotmobId": "1187213",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5457,7 +8153,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "JAMES",
       "club": "Chelsea FC (ENG)",
-      "photoUrl": null,
+      "fullName": "JAMES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/807729.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/807729",
+      "fotmobId": "807729",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5465,7 +8165,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SPENCE",
       "club": "Tottenham Hotspur FC (ENG)",
-      "photoUrl": null,
+      "fullName": "SPENCE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/894803.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/894803",
+      "fotmobId": "894803",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     },
     {
@@ -5473,7 +8177,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "QUANSAH",
       "club": "Bayer Leverkusen (GER)",
-      "photoUrl": null,
+      "fullName": "QUANSAH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1107620.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1107620",
+      "fotmobId": "1107620",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/england/"
     }
   ],
@@ -5483,7 +8191,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "FAHAD",
       "club": "Al Talaba SC (IRQ)",
-      "photoUrl": null,
+      "fullName": "Fahad Talib Raheem",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/848614.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/848614",
+      "fotmobId": "848614",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5491,15 +8203,23 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "REBIN",
       "club": "Port FC (THA)",
-      "photoUrl": null,
+      "fullName": "Rebin Ghareeb Solaka ADHAMAT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/502481.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/502481",
+      "fotmobId": "502481",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
       "number": 3,
       "position": "DF",
       "name": "HUSSEIN",
-      "club": "Pogo ń  Szczecin (POL)",
-      "photoUrl": null,
+      "club": "Pogo ń Szczecin (POL)",
+      "fullName": "Hussein Haydar Hussein ALI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/613097.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/613097",
+      "fotmobId": "613097",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5507,7 +8227,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ZAID T.",
       "club": "Pakhtakor Tashkent FK (UZB)",
-      "photoUrl": null,
+      "fullName": "Zaid Tahseen Abd Zaid HANTOOSH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1420369.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1420369",
+      "fotmobId": "1420369",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5515,7 +8239,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "AKAM",
       "club": "Al Zawra'a SC (IRQ)",
-      "photoUrl": null,
+      "fullName": "Akam Hashim Rahman",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1606279.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1606279",
+      "fotmobId": "1606279",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5523,7 +8251,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MUNAF",
       "club": "Al Shorta SC (IRQ)",
-      "photoUrl": null,
+      "fullName": "Munaf Younus Hashim AL-TEKREETI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1253420.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1253420",
+      "fotmobId": "1253420",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5531,7 +8263,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "YOUSSEF",
       "club": "AEK Larnaca FC (CYP)",
-      "photoUrl": null,
+      "fullName": "Youssef Wali Faeq AMYN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1235623.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1235623",
+      "fotmobId": "1235623",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5539,7 +8275,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "IBRAHIM",
       "club": "Al Dhafra SCC (UAE)",
-      "photoUrl": null,
+      "fullName": "Ibrahim Bayesh Kamil AL-KAABAWI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1215410.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1215410",
+      "fotmobId": "1215410",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5547,7 +8287,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AL-HAMADI",
       "club": "Luton Town FC (ENG)",
-      "photoUrl": null,
+      "fullName": "ALI ALHAMADI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1113688.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1113688",
+      "fotmobId": "1113688",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5555,7 +8299,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MOHANAD",
       "club": "Dibba FC (UAE)",
-      "photoUrl": null,
+      "fullName": "Mohanad Ali Kadhim AL-SHAMMARI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/926484.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/926484",
+      "fotmobId": "926484",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5563,7 +8311,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AHMED Q.",
       "club": "Nashville SC (USA)",
-      "photoUrl": null,
+      "fullName": "Ahmed Ihab Ahmed",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1224691.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1224691",
+      "fotmobId": "1224691",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5571,7 +8323,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "JALAL",
       "club": "Al Zawra'a SC (IRQ)",
-      "photoUrl": null,
+      "fullName": "Jalal Hasan Hachim",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1256489.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1256489",
+      "fotmobId": "1256489",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5579,7 +8335,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ALI Y.",
       "club": "Al Talaba SC (IRQ)",
-      "photoUrl": null,
+      "fullName": "Ali Yousif Hashim NAJATEEALI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1132572.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1132572",
+      "fotmobId": "1132572",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5587,7 +8347,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "Z. IQBAL",
       "club": "FC Utrecht (NED)",
-      "photoUrl": null,
+      "fullName": "Zidane Aamar Iqbal",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1138592.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1138592",
+      "fotmobId": "1138592",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5595,7 +8359,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "AHMED",
       "club": "Al Shorta SC (IRQ)",
-      "photoUrl": null,
+      "fullName": "Ahmed Yahya Mhmood AL-HAJJAJ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/887139.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/887139",
+      "fotmobId": "887139",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5603,7 +8371,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "AL-AMMARI",
       "club": "KS Cracovia (POL)",
-      "photoUrl": null,
+      "fullName": "AMIR ALAMMARI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/858340.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/858340",
+      "fotmobId": "858340",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5611,7 +8383,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ALI J.",
       "club": "Al Najmah SC (KSA)",
-      "photoUrl": null,
+      "fullName": "Ali Jasim Elaibi AL-TAMEEMIALI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1478238.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1478238",
+      "fotmobId": "1478238",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5619,7 +8395,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AYMEN",
       "club": "Al Karma SC (IRQ)",
-      "photoUrl": null,
+      "fullName": "Aymen Hussein Ghadhban",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1553362.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1553362",
+      "fotmobId": "1553362",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5627,7 +8407,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "K. YAKOB",
       "club": "Aarhus GF (DEN)",
-      "photoUrl": null,
+      "fullName": "Kevin Enkido Yakob William",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/941579.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/941579",
+      "fotmobId": "941579",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5635,7 +8419,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "AIMAR",
       "club": "Sarpsborg 08 FF (NOR)",
-      "photoUrl": null,
+      "fullName": "Aimar Hazar Anwar SHER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1793871.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1793871",
+      "fotmobId": "1793871",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5643,7 +8431,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MARKO",
       "club": "Venezia FC (ITA)",
-      "photoUrl": null,
+      "fullName": "Marko Jabbar Hussein",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1209597.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1209597",
+      "fotmobId": "1209597",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5651,7 +8443,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "AHMED B.",
       "club": "Al Shorta SC (IRQ)",
-      "photoUrl": null,
+      "fullName": "Ahmed Basil Fadhil AL-FADHLI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/866401.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/866401",
+      "fotmobId": "866401",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5659,7 +8455,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DOSKI",
       "club": "FC Viktoria Plze ň (CZE)",
-      "photoUrl": null,
+      "fullName": "Merchas Ghazi Salih",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1199113.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1199113",
+      "fotmobId": "1199113",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5667,7 +8467,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ZAID I.",
       "club": "Al Talaba SC (IRQ)",
-      "photoUrl": null,
+      "fullName": "Zaid Ismael Khaleel AL-DULAIMI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1717550.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1717550",
+      "fotmobId": "1717550",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5675,7 +8479,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MUSTAFA",
       "club": "Al Shorta SC (IRQ)",
-      "photoUrl": null,
+      "fullName": "Mustafa Saadoon Abbood AL KORJI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1554123.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1554123",
+      "fotmobId": "1554123",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     },
     {
@@ -5683,7 +8491,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "FRANS",
       "club": "Persib Bandung (IDN)",
-      "photoUrl": null,
+      "fullName": "Frans Dhia Jirjis HADDAD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/320139.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/320139",
+      "fotmobId": "320139",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iraq/"
     }
   ],
@@ -5693,7 +8505,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "BEIRANVAND",
       "club": "Tractor Sazi Tabriz FC (IRN)",
-      "photoUrl": null,
+      "fullName": "Alireza Ali Reza SAFARBEIRANVAND",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/505313.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/505313",
+      "fotmobId": "505313",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5701,7 +8517,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SALEH",
       "club": "Esteghlal Tehran FC (IRN)",
-      "photoUrl": null,
+      "fullName": "Saleh HARDANI KHERAD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1221526.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1221526",
+      "fotmobId": "1221526",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5709,7 +8529,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "E. HAJISAFI",
       "club": "Sepahan SC (IRN)",
-      "photoUrl": null,
+      "fullName": "Ehsan HAJI SAFI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/117222.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/117222",
+      "fotmobId": "117222",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5717,7 +8541,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SHOJA",
       "club": "Tractor Sazi Tabriz FC (IRN)",
-      "photoUrl": null,
+      "fullName": "Shojae KHALILZADEH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/511397.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/511397",
+      "fotmobId": "511397",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5725,7 +8553,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "M. MOHAMMADI",
       "club": "Persepolis FC (IRN)",
-      "photoUrl": null,
+      "fullName": "Milad MOHAMMADIKESHMARZI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/630459.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/630459",
+      "fotmobId": "630459",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5733,7 +8565,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "S. EZATOLAHI",
       "club": "Shabab Al Ahli Club (UAE)",
-      "photoUrl": null,
+      "fullName": "Saeid EZATOLAHI AFAGH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/505281.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/505281",
+      "fotmobId": "505281",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5741,7 +8577,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "A. JAHANBAKHSH",
       "club": "FCV Dender EH (BEL)",
-      "photoUrl": null,
+      "fullName": "Alireza JAHANBAKHSH JIRANDEH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/466890.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/466890",
+      "fotmobId": "466890",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5749,7 +8589,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "M. MOHEBI",
       "club": "FC Rostov (RUS)",
-      "photoUrl": null,
+      "fullName": "Mohammad MOHEBBI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1073012.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1073012",
+      "fotmobId": "1073012",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5757,7 +8601,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "TAREMI",
       "club": "Olympiacos FC (GRE)",
-      "photoUrl": null,
+      "fullName": "TAREMI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/619506.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/619506",
+      "fotmobId": "619506",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5765,7 +8613,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MEHDI GHAYEDI",
       "club": "Al Nasr SC (UAE)",
-      "photoUrl": null,
+      "fullName": "Mehdi GHAYEDI MEHDI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/848314.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/848314",
+      "fotmobId": "848314",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5773,7 +8625,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "A. ALIPOUR",
       "club": "Persepolis FC (IRN)",
-      "photoUrl": null,
+      "fullName": "Ali ALIPOURGHARA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/505960.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/505960",
+      "fotmobId": "505960",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5781,7 +8637,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "PAYAM",
       "club": "Persepolis FC (IRN)",
-      "photoUrl": null,
+      "fullName": "Seyedpayam NIAZMAND",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/872590.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/872590",
+      "fotmobId": "872590",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5789,7 +8649,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "KANANI",
       "club": "Persepolis FC (IRN)",
-      "photoUrl": null,
+      "fullName": "Mohammadhossein KANANI ZADEGAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/500637.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/500637",
+      "fotmobId": "500637",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5797,7 +8661,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "GHODDOOS",
       "club": "Al Ittihad Kalba SCC (UAE)",
-      "photoUrl": null,
+      "fullName": "Saman Seyed Saman GHODDOOS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/532220.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/532220",
+      "fotmobId": "532220",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5805,7 +8673,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ROOZBEH",
       "club": "Esteghlal Tehran FC (IRN)",
-      "photoUrl": null,
+      "fullName": "Roozbeh CHESHMI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/505385.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/505385",
+      "fotmobId": "505385",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5813,7 +8685,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "M. TORABI",
       "club": "Tractor Sazi Tabriz FC (IRN)",
-      "photoUrl": null,
+      "fullName": "Mehdi Mahdi TORABI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/621519.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/621519",
+      "fotmobId": "621519",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5821,7 +8697,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ARYA",
       "club": "Sepahan SC (IRN)",
-      "photoUrl": null,
+      "fullName": "Arya YOUSEFI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1350138.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1350138",
+      "fotmobId": "1350138",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5829,7 +8709,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AMIRHOSSEIN",
       "club": "Tractor Sazi Tabriz FC (IRN)",
-      "photoUrl": null,
+      "fullName": "Amirhossein HOSSEINZADEHTAZEHGHESHLAGH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1031319.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1031319",
+      "fotmobId": "1031319",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5837,7 +8721,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ALI",
       "club": "Foolad Khuzestan FC (IRN)",
-      "photoUrl": null,
+      "fullName": "NEMATI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/319784.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/319784",
+      "fotmobId": "319784",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5845,7 +8733,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "SHAHRIYAR",
       "club": "Al Ittihad Kalba SCC (UAE)",
-      "photoUrl": null,
+      "fullName": "Shahriyar MOGHANLOO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/641121.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/641121",
+      "fotmobId": "641121",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5853,7 +8745,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MOHAMMAD",
       "club": "Al Wahda SC (UAE)",
-      "photoUrl": null,
+      "fullName": "Mohammad GHORBANI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1583232.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1583232",
+      "fotmobId": "1583232",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5861,7 +8757,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "HOSSEINI",
       "club": "Sepahan SC (IRN)",
-      "photoUrl": null,
+      "fullName": "HOSSEINI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/431418.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/431418",
+      "fotmobId": "431418",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5869,7 +8769,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "RAMIN",
       "club": "Foolad Khuzestan FC (IRN)",
-      "photoUrl": null,
+      "fullName": "Ramin REZAEIANSEMESKANDI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/505959.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/505959",
+      "fotmobId": "505959",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5877,7 +8781,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "DARGAHI",
       "club": "Standard Liège (BEL)",
-      "photoUrl": null,
+      "fullName": "Dennis Dargahi",
+      "photoUrl": "https://img.a.transfermarkt.technology/portrait/header/249303-1666292999.jpg?lm=1",
+      "photoSource": "Transfermarkt",
+      "photoSourceUrl": "https://www.transfermarkt.com/dennis-eckert-ayensa/profil/spieler/249303",
+      "fotmobId": null,
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5885,7 +8793,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DANIAL",
       "club": "Malavan Anzali FC (IRN)",
-      "photoUrl": null,
+      "fullName": "Danial IRI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1729681.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1729681",
+      "fotmobId": "1729681",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     },
     {
@@ -5893,7 +8805,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "RAZAGH",
       "club": "Esteghlal Tehran FC (IRN)",
-      "photoUrl": null,
+      "fullName": "Amirmohammad RAZAGHINIA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1583232.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1583232",
+      "fotmobId": "1583232",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/iran/"
     }
   ],
@@ -5903,7 +8819,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "SUZUKI",
       "club": "Parma (ITA)",
-      "photoUrl": null,
+      "fullName": "SUZUKI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1053679.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1053679",
+      "fotmobId": "1053679",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -5911,7 +8831,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SUGAWARA",
       "club": "SV Werder Bremen (GER)",
-      "photoUrl": null,
+      "fullName": "SUGAWARA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/924610.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/924610",
+      "fotmobId": "924610",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -5919,7 +8843,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "TANIGUCHI",
       "club": "Sint-Truiden VV (BEL)",
-      "photoUrl": null,
+      "fullName": "TANIGUCHI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1337314.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1337314",
+      "fotmobId": "1337314",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -5927,7 +8855,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ITAKURA",
       "club": "AFC Ajax (NED)",
-      "photoUrl": null,
+      "fullName": "ITAKURA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/620917.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/620917",
+      "fotmobId": "620917",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -5935,7 +8867,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "NAGATOMO",
       "club": "FC Tokyo (JPN)",
-      "photoUrl": null,
+      "fullName": "NAGATOMO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/98254.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/98254",
+      "fotmobId": "98254",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -5943,7 +8879,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ENDO",
       "club": "Liverpool FC (ENG)",
-      "photoUrl": null,
+      "fullName": "ENDO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/202643.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/202643",
+      "fotmobId": "202643",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -5951,7 +8891,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "TANAKA",
       "club": "Leeds United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "TANAKA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/935728.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/935728",
+      "fotmobId": "935728",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -5959,7 +8903,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KUBO",
       "club": "Real Sociedad (ESP)",
-      "photoUrl": null,
+      "fullName": "KUBO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/848289.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/848289",
+      "fotmobId": "848289",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -5967,7 +8915,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "GOTO",
       "club": "Sint-Truiden VV (BEL)",
-      "photoUrl": null,
+      "fullName": "GOTO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1436730.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1436730",
+      "fotmobId": "1436730",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -5975,7 +8927,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "DOAN",
       "club": "Eintracht Frankfurt (GER)",
-      "photoUrl": null,
+      "fullName": "DOAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/629805.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/629805",
+      "fotmobId": "629805",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -5983,7 +8939,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "DAIZEN",
       "club": "Celtic FC (SCO)",
-      "photoUrl": null,
+      "fullName": "Daizen MAEDA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/728765.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/728765",
+      "fotmobId": "728765",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -5991,7 +8951,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "OSAKO",
       "club": "Sanfrecce Hiroshima (JPN)",
-      "photoUrl": null,
+      "fullName": "OSAKO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/922808.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/922808",
+      "fotmobId": "922808",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -5999,7 +8963,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "NAKAMURA",
       "club": "Stade Reims (FRA)",
-      "photoUrl": null,
+      "fullName": "NAKAMURA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/887704.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/887704",
+      "fotmobId": "887704",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -6007,7 +8975,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ITO",
       "club": "KRC Genk (BEL)",
-      "photoUrl": null,
+      "fullName": "ITO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/604044.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/604044",
+      "fotmobId": "604044",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -6015,7 +8987,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KAMADA",
       "club": "Crystal Palace FC (ENG)",
-      "photoUrl": null,
+      "fullName": "KAMADA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/621515.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/621515",
+      "fotmobId": "621515",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -6023,7 +8999,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "WATANABE",
       "club": "Feyenoord Rotterdam (NED)",
-      "photoUrl": null,
+      "fullName": "WATANABE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1023887.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1023887",
+      "fotmobId": "1023887",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -6031,7 +9011,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "Y. SUZUKI",
       "club": "SC Freiburg (GER)",
-      "photoUrl": null,
+      "fullName": "Yuito SUZUKI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1134467.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1134467",
+      "fotmobId": "1134467",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -6039,7 +9023,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AYASE",
       "club": "Feyenoord Rotterdam (NED)",
-      "photoUrl": null,
+      "fullName": "Ayase UEDA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/942393.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/942393",
+      "fotmobId": "942393",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -6047,7 +9035,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "OGAWA",
       "club": "NEC Nijmegen (NED)",
-      "photoUrl": null,
+      "fullName": "OGAWA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/727837.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/727837",
+      "fotmobId": "727837",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -6055,7 +9047,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SEKO",
       "club": "Le Havre AC (FRA)",
-      "photoUrl": null,
+      "fullName": "SEKO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/857120.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/857120",
+      "fotmobId": "857120",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -6063,7 +9059,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "H. ITO",
       "club": "FC Bayern München (GER)",
-      "photoUrl": null,
+      "fullName": "Hiroki ITO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/851626.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/851626",
+      "fotmobId": "851626",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -6071,7 +9071,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "TOMIYASU",
       "club": "AFC Ajax (NED)",
-      "photoUrl": null,
+      "fullName": "TOMIYASU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/664444.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/664444",
+      "fotmobId": "664444",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -6079,7 +9083,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "HAYAKAWA",
       "club": "Kashima Antlers (JPN)",
-      "photoUrl": null,
+      "fullName": "HAYAKAWA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1232143.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1232143",
+      "fotmobId": "1232143",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -6087,7 +9095,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SANO",
       "club": "1. FSV Mainz 05 (GER)",
-      "photoUrl": null,
+      "fullName": "SANO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1033111.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1033111",
+      "fotmobId": "1033111",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -6095,7 +9107,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "J. SUZUKI",
       "club": "FC København (DEN)",
-      "photoUrl": null,
+      "fullName": "Junnosuke SUZUKI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1337765.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1337765",
+      "fotmobId": "1337765",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     },
     {
@@ -6103,7 +9119,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "SHIOGAI",
       "club": "VfL Wolfsburg (GER)",
-      "photoUrl": null,
+      "fullName": "SHIOGAI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1611223.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1611223",
+      "fotmobId": "1611223",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/japan/"
     }
   ],
@@ -6113,7 +9133,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "YAZEED",
       "club": "Al Hussein SC (JOR)",
-      "photoUrl": null,
+      "fullName": "Yazeed Mo'ien Hasan ABULAILA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/734654.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/734654",
+      "fotmobId": "734654",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6121,7 +9145,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ABU HASHEESH",
       "club": "Al Karma SC (IRQ)",
-      "photoUrl": null,
+      "fullName": "Mohammad Ali Hasan ABUHASHEESHABU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/883701.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/883701",
+      "fotmobId": "883701",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6129,7 +9157,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "NASIB",
       "club": "Al Zawra'a SC (IRQ)",
-      "photoUrl": null,
+      "fullName": "ABDALLAH NASIB",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1312681.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1312681",
+      "fotmobId": "1312681",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6137,7 +9169,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ABU DHAB",
       "club": "Al Faisaly SC (JOR)",
-      "photoUrl": null,
+      "fullName": "Husam Ali Mohammad ABUDAHABABU",
+      "photoUrl": "https://www.thesportsdb.com/images/media/player/thumb/2vt9dz1780556093.jpg",
+      "photoSource": "TheSportsDB",
+      "photoSourceUrl": "https://www.thesportsdb.com/player/34436183-husam-abu-dahab",
+      "fotmobId": null,
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6145,7 +9181,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ALARAB",
       "club": "FC Seoul (KOR)",
-      "photoUrl": null,
+      "fullName": "YAZAN ALARAB",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/852168.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/852168",
+      "fotmobId": "852168",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6153,7 +9193,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "JAMOUS",
       "club": "Al Zawra'a SC (IRQ)",
-      "photoUrl": null,
+      "fullName": "AMER JAMOUS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1213678.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1213678",
+      "fotmobId": "1213678",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6161,7 +9205,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ABU ZRAIQ",
       "club": "Raja Casablanca (MAR)",
-      "photoUrl": null,
+      "fullName": "Mohammad Faisal Yousef ABU ZRAIQABU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1059129.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1059129",
+      "fotmobId": "1059129",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6169,7 +9217,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ALRAWABDEH",
       "club": "Selangor FC (MAS)",
-      "photoUrl": null,
+      "fullName": "Noor Al-Deen Mahmoud Ali AL RAWABDEH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1036253.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1036253",
+      "fotmobId": "1036253",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6177,7 +9229,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "OLWAN",
       "club": "Al Sailiya SC (QAT)",
-      "photoUrl": null,
+      "fullName": "ALI OLWAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1028896.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1028896",
+      "fotmobId": "1028896",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6185,7 +9241,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ALTAMARI",
       "club": "Stade Rennais FC (FRA)",
-      "photoUrl": null,
+      "fullName": "Mousa Mohammad Mousa SULEIMAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/813055.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/813055",
+      "fotmobId": "813055",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6193,7 +9253,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ODEH",
       "club": "Pyramids FC (EGY)",
-      "photoUrl": null,
+      "fullName": "Odeh Burhan Shehadeh FAKHOURY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1823348.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1823348",
+      "fotmobId": "1823348",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6201,7 +9265,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "BANI ATEYAH",
       "club": "Al Faisaly SC (JOR)",
-      "photoUrl": null,
+      "fullName": "Noureddin Zaid Khaleel BANI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1554110.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1554110",
+      "fotmobId": "1554110",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6209,7 +9277,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ALMARDI",
       "club": "Al Hussein SC (JOR)",
-      "photoUrl": null,
+      "fullName": "MAHMOUD ALMARDI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/674520.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/674520",
+      "fotmobId": "674520",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6217,7 +9289,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "RAJAEI",
       "club": "Al Hussein SC (JOR)",
-      "photoUrl": null,
+      "fullName": "Raja'ei Ayed Fadel HASAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/546203.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/546203",
+      "fotmobId": "546203",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6225,7 +9301,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SADEH",
       "club": "Al Karma SC (IRQ)",
-      "photoUrl": null,
+      "fullName": "IBRAHIM SADEH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1235064.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1235064",
+      "fotmobId": "1235064",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6233,7 +9313,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ABULNADI",
       "club": "Selangor FC (MAS)",
-      "photoUrl": null,
+      "fullName": "Mohammad Majed Jamil ABUALNADIABU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1033300.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1033300",
+      "fotmobId": "1033300",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6241,7 +9325,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SALEM",
       "club": "Al Hussein SC (JOR)",
-      "photoUrl": null,
+      "fullName": "Saleem Amer Saleem OBAID",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1325891.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1325891",
+      "fotmobId": "1325891",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6249,7 +9337,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "SABRA",
       "club": "NK Lokomotiva Zagreb (CRO)",
-      "photoUrl": null,
+      "fullName": "IBRAHIM SABRA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1642791.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1642791",
+      "fotmobId": "1642791",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6257,7 +9349,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SAEED",
       "club": "Al Hussein SC (JOR)",
-      "photoUrl": null,
+      "fullName": "Sa'ed Ahmad Salameh ALROSAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1286969.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1286969",
+      "fotmobId": "1286969",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6265,7 +9361,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ABU TAHA",
       "club": "Al-Quwa Al-Jawiya (IRQ)",
-      "photoUrl": null,
+      "fullName": "Mohannad Mahmoud Saleh ABU TAHAABU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1247001.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1247001",
+      "fotmobId": "1247001",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6273,7 +9373,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "NIZAR",
       "club": "Qatar SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Nizar Mahmoud Ahmed AL-RASHDAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1195369.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1195369",
+      "fotmobId": "1195369",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6281,7 +9385,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "ALFAKHORI",
       "club": "Al Wahdat SC (JOR)",
-      "photoUrl": null,
+      "fullName": "ABDALLAH ALFAKHORI",
+      "photoUrl": "https://img.a.transfermarkt.technology/portrait/header/658805-1698756465.png?lm=1",
+      "photoSource": "Transfermarkt",
+      "photoSourceUrl": "https://www.transfermarkt.com/abdallah-al-fakhouri/profil/spieler/658805",
+      "fotmobId": null,
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6289,7 +9397,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "EHSAN",
       "club": "Al Hussein SC (JOR)",
-      "photoUrl": null,
+      "fullName": "Ehsan Manel Farhan HADDAD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1057479.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1057479",
+      "fotmobId": "1057479",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6297,7 +9409,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AZAIZEH",
       "club": "Al Shabab FC (KSA)",
-      "photoUrl": null,
+      "fullName": "ALI AZAIZEH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1642793.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1642793",
+      "fotmobId": "1642793",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6305,7 +9421,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ALDAOUD",
       "club": "Al Wahdat SC (JOR)",
+      "fullName": "MOHAMMAD ALDAOUD",
       "photoUrl": null,
+      "photoSource": null,
+      "photoSourceUrl": null,
+      "fotmobId": null,
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     },
     {
@@ -6313,7 +9433,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BADAWI",
       "club": "Al Faisaly SC (JOR)",
-      "photoUrl": null,
+      "fullName": "ANAS BADAWI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1991034.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1991034",
+      "fotmobId": "1991034",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/jordan/"
     }
   ],
@@ -6323,7 +9447,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "BONO",
       "club": "Al Hilal SC (KSA)",
-      "photoUrl": null,
+      "fullName": "Yassine BOUNOU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/340020.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/340020",
+      "fotmobId": "340020",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6331,7 +9459,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HAKIMI",
       "club": "Paris Saint-Germain (FRA)",
-      "photoUrl": null,
+      "fullName": "Achraf HAKIMI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/770881.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/770881",
+      "fotmobId": "770881",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6339,7 +9471,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MAZRAOUI",
       "club": "Manchester United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "MAZRAOUI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/775539.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/775539",
+      "fotmobId": "775539",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6347,7 +9483,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "AMRABAT",
       "club": "Real Betis (ESP)",
-      "photoUrl": null,
+      "fullName": "AMRABAT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/593116.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/593116",
+      "fotmobId": "593116",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6355,7 +9495,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "AGUERD",
       "club": "Olympique Marseille (FRA)",
-      "photoUrl": null,
+      "fullName": "AGUERD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/617310.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/617310",
+      "fotmobId": "617310",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6363,7 +9507,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BOUADDI",
       "club": "Lille OSC (FRA)",
-      "photoUrl": null,
+      "fullName": "BOUADDI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1561552.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1561552",
+      "fotmobId": "1561552",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6371,7 +9519,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "TALBI",
       "club": "Sunderland AFC (ENG)",
-      "photoUrl": null,
+      "fullName": "TALBI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1368654.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1368654",
+      "fotmobId": "1368654",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6379,7 +9531,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "OUAHI",
       "club": "Girona FC (ESP)",
-      "photoUrl": null,
+      "fullName": "OUNAHI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/801165.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/801165",
+      "fotmobId": "801165",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6387,7 +9543,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "RAHIMI",
       "club": "Al Ain FC (UAE)",
-      "photoUrl": null,
+      "fullName": "RAHIMI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/988749.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/988749",
+      "fotmobId": "988749",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6395,7 +9555,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BRAHIM",
       "club": "Real Madrid C. F. (ESP)",
-      "photoUrl": null,
+      "fullName": "Brahim ABDELKADER DÍAZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/750027.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/750027",
+      "fotmobId": "750027",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6403,7 +9567,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SAIBARI",
       "club": "PSV Eindhoven (NED)",
-      "photoUrl": null,
+      "fullName": "SAIBARI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1180288.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1180288",
+      "fotmobId": "1180288",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6411,7 +9579,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "EL KAJOUI",
       "club": "RS Berkane (MAR)",
-      "photoUrl": null,
+      "fullName": "EL KAJOUI",
+      "photoUrl": "https://img.a.transfermarkt.technology/portrait/header/97925-1685533226.JPG?lm=1",
+      "photoSource": "Transfermarkt",
+      "photoSourceUrl": "https://www.transfermarkt.com/munir-el-kajoui/profil/spieler/97925",
+      "fotmobId": null,
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6419,7 +9591,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "EL OUAHDI",
       "club": "KRC Genk (BEL)",
-      "photoUrl": null,
+      "fullName": "EL OUAHDI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1287871.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1287871",
+      "fotmobId": "1287871",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6427,7 +9603,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ISSA",
       "club": "Fulham FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Issa Laye Lucas Jean DIOP",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/696443.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/696443",
+      "fotmobId": "696443",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6435,7 +9615,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "EL MOURABET",
       "club": "RC Strasbourg (FRA)",
-      "photoUrl": null,
+      "fullName": "EL MOURABET",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1598170.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1598170",
+      "fotmobId": "1598170",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6443,7 +9627,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "YASSINE",
       "club": "RC Strasbourg (FRA)",
-      "photoUrl": null,
+      "fullName": "YASSINE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1603755.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1603755",
+      "fotmobId": "1603755",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6451,7 +9639,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "EZZALZOULI",
       "club": "Real Betis (ESP)",
-      "photoUrl": null,
+      "fullName": "EZZALZOULI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1209399.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1209399",
+      "fotmobId": "1209399",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6459,7 +9651,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "RIAD",
       "club": "Crystal Palace FC (ENG)",
-      "photoUrl": null,
+      "fullName": "RIAD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1187506.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1187506",
+      "fotmobId": "1187506",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6467,7 +9663,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BELAMMARI",
       "club": "Al Ahly FC (EGY)",
-      "photoUrl": null,
+      "fullName": "BELAMMARI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/909908.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/909908",
+      "fotmobId": "909908",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6475,7 +9675,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "EL KAABI",
       "club": "Olympiacos FC (GRE)",
-      "photoUrl": null,
+      "fullName": "EL KAABI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/884382.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/884382",
+      "fotmobId": "884382",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6483,7 +9687,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AMAIMOUNI",
       "club": "Eintracht Frankfurt (GER)",
-      "photoUrl": null,
+      "fullName": "AMAIMOUNI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1680173.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1680173",
+      "fotmobId": "1680173",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6491,7 +9699,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "TAGNAOUTI",
       "club": "ASFAR (MAR)",
-      "photoUrl": null,
+      "fullName": "TAGNAOUTI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/885288.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/885288",
+      "fotmobId": "885288",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6499,7 +9711,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "EL KHANNOUSS",
       "club": "VfB Stuttgart (GER)",
-      "photoUrl": null,
+      "fullName": "EL KHANNOUSS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1340895.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1340895",
+      "fotmobId": "1340895",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6507,7 +9723,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "EL AYNAOUI",
       "club": "AS Roma (ITA)",
-      "photoUrl": null,
+      "fullName": "EL AYNAOUI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1274060.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1274060",
+      "fotmobId": "1274060",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6515,7 +9735,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HALHAL",
       "club": "KV Mechelen (BEL)",
-      "photoUrl": null,
+      "fullName": "HALHAL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1298186.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1298186",
+      "fotmobId": "1298186",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     },
     {
@@ -6523,7 +9747,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SALAH-EDDINE",
       "club": "PSV Eindhoven (NED)",
-      "photoUrl": null,
+      "fullName": "Anass SALAH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1050838.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1050838",
+      "fotmobId": "1050838",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/morocco/"
     }
   ],
@@ -6533,7 +9761,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "R. RANGEL",
       "club": "CD Guadalajara (MEX)",
-      "photoUrl": null,
+      "fullName": "Raul José Raúl RANGEL AGUILAR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1227878.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1227878",
+      "fotmobId": "1227878",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6541,7 +9773,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "J. SÁNCHEZ",
       "club": "PAOK Saloniki (GRE)",
-      "photoUrl": null,
+      "fullName": "Jorge Eduardo SÁNCHEZ RAMOS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1820601.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1820601",
+      "fotmobId": "1820601",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6549,7 +9785,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "C. MONTES",
       "club": "FC Lokomotiv Moscow (RUS)",
-      "photoUrl": null,
+      "fullName": "Cesar Jasib MONTES CASTRO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/664644.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/664644",
+      "fotmobId": "664644",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6557,7 +9797,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "E. ÁLVAREZ",
       "club": "Fenerbahçe SK (TUR)",
-      "photoUrl": null,
+      "fullName": "Edson Omar ÁLVAREZ VELÁZQUEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/783505.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/783505",
+      "fotmobId": "783505",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6565,7 +9809,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "J. VÁSQUEZ",
       "club": "Genoa CFC (ITA)",
-      "photoUrl": null,
+      "fullName": "Johan Felipe VÁSQUEZ IBARRA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/914103.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/914103",
+      "fotmobId": "914103",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6573,7 +9821,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "E. LIRA",
       "club": "CF Cruz Azul (MEX)",
-      "photoUrl": null,
+      "fullName": "Erik Antonio LIRA MÉNDEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/971628.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/971628",
+      "fotmobId": "971628",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6581,7 +9833,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "L. ROMO",
       "club": "CD Guadalajara (MEX)",
-      "photoUrl": null,
+      "fullName": "Luis Francisco ROMO BARRÓN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/116243.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/116243",
+      "fotmobId": "116243",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6589,7 +9845,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "FIDALGO",
       "club": "Real Betis (ESP)",
-      "photoUrl": null,
+      "fullName": "Alvaro FIDALGO FERNÁNDEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/895954.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/895954",
+      "fotmobId": "895954",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6597,7 +9857,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "RAÚL",
       "club": "Fulham FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Raul Alonso JIMÉNEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/292313.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/292313",
+      "fotmobId": "292313",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6605,7 +9869,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "A. VEGA",
       "club": "Deportivo Toluca FC (MEX)",
-      "photoUrl": null,
+      "fullName": "Alexis Ernesto Alexis VEGA ROJAS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/728365.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/728365",
+      "fotmobId": "728365",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6613,7 +9881,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "S. GIMÉNEZ",
       "club": "AC Milan (ITA)",
-      "photoUrl": null,
+      "fullName": "Santiago Tomás GIMENEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/954092.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/954092",
+      "fotmobId": "954092",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6621,7 +9893,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "C. ACEVEDO",
       "club": "Club Santos Laguna (MEX)",
-      "photoUrl": null,
+      "fullName": "Carlos ACEVEDO LÓPEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/751164.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/751164",
+      "fotmobId": "751164",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6629,7 +9905,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "G. OCHOA",
       "club": "AEL Limassol (CYP)",
-      "photoUrl": null,
+      "fullName": "Guillermo Francisco Guillermo OCHOA MAGAÑA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/31047.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/31047",
+      "fotmobId": "31047",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6637,7 +9917,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "A. GONZÁLEZ",
       "club": "CD Guadalajara (MEX)",
-      "photoUrl": null,
+      "fullName": "Armando GONZÁLEZ ALBA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1456983.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1456983",
+      "fotmobId": "1456983",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6645,7 +9929,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "I. REYES",
       "club": "Club América (MEX)",
-      "photoUrl": null,
+      "fullName": "Israel REYES ROMERO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1074586.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1074586",
+      "fotmobId": "1074586",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6653,7 +9941,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "J. QUIÑONES",
       "club": "Al Qadsiah FC (KSA)",
-      "photoUrl": null,
+      "fullName": "Julian Andrés QUIÑONES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/720560.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/720560",
+      "fotmobId": "720560",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6661,7 +9953,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ORBELÍN",
       "club": "AEK Athens (GRE)",
-      "photoUrl": null,
+      "fullName": "Orbelin PINEDA ALVARADO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/559986.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/559986",
+      "fotmobId": "559986",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6669,7 +9965,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "O. VARGAS",
       "club": "Atlético De Madrid (ESP)",
-      "photoUrl": null,
+      "fullName": "Obed Goméz VARGAS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1254394.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1254394",
+      "fotmobId": "1254394",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6677,7 +9977,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "G. MORA",
       "club": "Club Tijuana (MEX)",
-      "photoUrl": null,
+      "fullName": "Gilberto Rafael MORA ZAMBRANO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1670377.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1670377",
+      "fotmobId": "1670377",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6685,7 +9989,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "M. CHÁVEZ",
       "club": "AZ Alkmaar (NED)",
-      "photoUrl": null,
+      "fullName": "Mateo CHÁVEZ GARCÍA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1432212.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1432212",
+      "fotmobId": "1432212",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6693,7 +10001,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "C. HUERTA",
       "club": "RSC Anderlecht (BEL)",
-      "photoUrl": null,
+      "fullName": "Cesar Saúl HUERTA VALERA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/977404.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/977404",
+      "fotmobId": "977404",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6701,7 +10013,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "G. MARTÍNEZ",
       "club": "Pumas UNAM (MEX)",
-      "photoUrl": null,
+      "fullName": "Guillermo MARTÍNEZ AYALA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/847983.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/847983",
+      "fotmobId": "847983",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6709,7 +10025,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "J. GALLARDO",
       "club": "Deportivo Toluca FC (MEX)",
-      "photoUrl": null,
+      "fullName": "Jesus Daniel GALLARDO VASCONCELOS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/597976.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/597976",
+      "fotmobId": "597976",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6717,7 +10037,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "L. CHÁVEZ",
       "club": "FC Dynamo Moscow (RUS)",
-      "photoUrl": null,
+      "fullName": "Luis Gerardo CHÁVEZ MAGALLÓN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/527616.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/527616",
+      "fotmobId": "527616",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6725,7 +10049,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "R. ALVARADO",
       "club": "CD Guadalajara (MEX)",
-      "photoUrl": null,
+      "fullName": "Roberto Carlos ALVARADO HERNÁNDEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/720737.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/720737",
+      "fotmobId": "720737",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     },
     {
@@ -6733,7 +10061,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "B. GUTIÉRREZ",
       "club": "CD Guadalajara (MEX)",
-      "photoUrl": null,
+      "fullName": "Brian GUTIÉRREZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1170238.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1170238",
+      "fotmobId": "1170238",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/mexico/"
     }
   ],
@@ -6743,7 +10075,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "NYLAND",
       "club": "Sevilla FC (ESP)",
-      "photoUrl": null,
+      "fullName": "NYLAND",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/73409.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/73409",
+      "fotmobId": "73409",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6751,7 +10087,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "THORSBY",
       "club": "US Cremonese (ITA)",
-      "photoUrl": null,
+      "fullName": "THORSBY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/439148.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/439148",
+      "fotmobId": "439148",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6759,7 +10099,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "VASSBAKK AJER",
       "club": "Brentford FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Kristoffer Vassbakk Köpp AJER VASSBAKK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/552718.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/552718",
+      "fotmobId": "552718",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6767,7 +10111,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ØSTIGÅRD",
       "club": "Genoa CFC (ITA)",
-      "photoUrl": null,
+      "fullName": "OSTIGARD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/740944.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/740944",
+      "fotmobId": "740944",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6775,7 +10123,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MØLLER WOLFE",
       "club": "Wolverhampton Wanderers FC (ENG)",
-      "photoUrl": null,
+      "fullName": "David Møller WOLFE MØLLER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1049679.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1049679",
+      "fotmobId": "1049679",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6783,7 +10135,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BERG",
       "club": "FK Bodø/Glimt (NOR)",
-      "photoUrl": null,
+      "fullName": "BERG",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/530635.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/530635",
+      "fotmobId": "530635",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6791,7 +10147,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "SØRLOTH",
       "club": "Atlético De Madrid (ESP)",
-      "photoUrl": null,
+      "fullName": "SORLOTH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/440330.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/440330",
+      "fotmobId": "440330",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6799,7 +10159,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BERGE",
       "club": "Fulham FC (ENG)",
-      "photoUrl": null,
+      "fullName": "BERGE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/540963.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/540963",
+      "fotmobId": "540963",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6807,7 +10171,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BRAUT HAALAND",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Erling Braut HAALAND BRAUT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/737066.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/737066",
+      "fotmobId": "737066",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6815,7 +10183,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ØDEGAARD",
       "club": "Arsenal FC (ENG)",
-      "photoUrl": null,
+      "fullName": "ODEGAARD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/534670.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/534670",
+      "fotmobId": "534670",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6823,7 +10195,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "STRAND LARSEN",
       "club": "Crystal Palace FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Jorgen Jørgen Strand LARSEN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/821100.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/821100",
+      "fotmobId": "821100",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6831,7 +10207,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "TANGVIK",
       "club": "Hamburger SV (GER)",
-      "photoUrl": null,
+      "fullName": "TANGVIK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1145714.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1145714",
+      "fotmobId": "1145714",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6839,7 +10219,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "SELVIK",
       "club": "Watford FC (ENG)",
-      "photoUrl": null,
+      "fullName": "SELVIK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/631757.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/631757",
+      "fotmobId": "631757",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6847,7 +10231,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "AURSNES",
       "club": "SL Ben\u0000ca (POR)",
-      "photoUrl": null,
+      "fullName": "AURSNES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/310768.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/310768",
+      "fotmobId": "310768",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6855,7 +10243,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BJØRKAN",
       "club": "FK Bodø/Glimt (NOR)",
-      "photoUrl": null,
+      "fullName": "BJORKAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/630228.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/630228",
+      "fotmobId": "630228",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6863,7 +10255,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HOLMGREN",
       "club": "Torino FC (ITA)",
-      "photoUrl": null,
+      "fullName": "HOLMGREN PEDERSEN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/935622.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/935622",
+      "fotmobId": "935622",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6871,7 +10267,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HEGGEM",
       "club": "Bologna FC (ITA)",
-      "photoUrl": null,
+      "fullName": "HEGGEM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/935550.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/935550",
+      "fotmobId": "935550",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6879,7 +10279,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "THORSTVEDT",
       "club": "US Sassuolo (ITA)",
-      "photoUrl": null,
+      "fullName": "THORSTVEDT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/921921.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/921921",
+      "fotmobId": "921921",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6887,7 +10291,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "AASGAARD",
       "club": "Rangers FC (SCO)",
-      "photoUrl": null,
+      "fullName": "AASGAARD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1184468.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1184468",
+      "fotmobId": "1184468",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6895,7 +10303,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "NUSA",
       "club": "RB Leipzig (GER)",
-      "photoUrl": null,
+      "fullName": "NUSA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1248482.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1248482",
+      "fotmobId": "1248482",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6903,7 +10315,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SCHJELDERUP",
       "club": "SL Ben\u0000ca (POR)",
-      "photoUrl": null,
+      "fullName": "SCHJELDERUP",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1228558.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1228558",
+      "fotmobId": "1228558",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6911,7 +10327,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BOBB",
       "club": "Fulham FC (ENG)",
-      "photoUrl": null,
+      "fullName": "BOBB",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1113790.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1113790",
+      "fotmobId": "1113790",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6919,7 +10339,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "HAUGE",
       "club": "FK Bodø/Glimt (NOR)",
-      "photoUrl": null,
+      "fullName": "HAUGE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/741397.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/741397",
+      "fotmobId": "741397",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6927,7 +10351,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "LANGÅS",
       "club": "Derby County FC (ENG)",
-      "photoUrl": null,
+      "fullName": "LANGAS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1127585.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1127585",
+      "fotmobId": "1127585",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6935,7 +10363,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "FALCHENER",
       "club": "Viking Stavanger (NOR)",
-      "photoUrl": null,
+      "fullName": "FALCHENER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1110550.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1110550",
+      "fotmobId": "1110550",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     },
     {
@@ -6943,7 +10375,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "RYERSON",
       "club": "Borussia Dortmund (GER)",
-      "photoUrl": null,
+      "fullName": "RYERSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/659272.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/659272",
+      "fotmobId": "659272",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/norway/"
     }
   ],
@@ -6953,7 +10389,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "CROCOMBE",
       "club": "Millwall FC (ENG)",
-      "photoUrl": null,
+      "fullName": "CROCOMBE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/315201.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/315201",
+      "fotmobId": "315201",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -6961,7 +10401,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "PAYNE",
       "club": "Wellington Phoenix FC (NZL)",
-      "photoUrl": null,
+      "fullName": "PAYNE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/324305.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/324305",
+      "fotmobId": "324305",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -6969,7 +10413,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DE VRIES",
       "club": "Auckland FC (NZL)",
-      "photoUrl": null,
+      "fullName": "DE VRIES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/825593.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/825593",
+      "fotmobId": "825593",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -6977,7 +10425,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BINDON",
       "club": "She\u0000eld United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "BINDON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1524716.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1524716",
+      "fotmobId": "1524716",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -6985,7 +10437,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BOXALL",
       "club": "Minnesota United FC (USA)",
-      "photoUrl": null,
+      "fullName": "BOXALL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/128949.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/128949",
+      "fotmobId": "128949",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -6993,7 +10449,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BELL",
       "club": "Viking Stavanger (NOR)",
-      "photoUrl": null,
+      "fullName": "BELL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1077894.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1077894",
+      "fotmobId": "1077894",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7001,7 +10461,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "GARBETT",
       "club": "Peterborough United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "GARBETT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1108605.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1108605",
+      "fotmobId": "1108605",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7009,7 +10473,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "STAMENIC",
       "club": "Swansea City AFC (WAL)",
-      "photoUrl": null,
+      "fullName": "STAMENIC",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1209597.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1209597",
+      "fotmobId": "1209597",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7017,7 +10485,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "WOOD",
       "club": "Nottingham Forest FC (ENG)",
-      "photoUrl": null,
+      "fullName": "WOOD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/169719.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/169719",
+      "fotmobId": "169719",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7025,7 +10497,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SINGH",
       "club": "Wellington Phoenix FC (NZL)",
-      "photoUrl": null,
+      "fullName": "SINGH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1348062.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1348062",
+      "fotmobId": "1348062",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7033,7 +10509,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "JUST",
       "club": "Motherwell FC (SCO)",
-      "photoUrl": null,
+      "fullName": "JUST",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1336751.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1336751",
+      "fotmobId": "1336751",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7041,7 +10521,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "PAULSEN",
       "club": "Lechia Gda ń sk (POL)",
-      "photoUrl": null,
+      "fullName": "PAULSEN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1272118.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1272118",
+      "fotmobId": "1272118",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7049,7 +10533,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "CACACE",
       "club": "Wrexham AFC (WAL)",
-      "photoUrl": null,
+      "fullName": "CACACE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/919671.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/919671",
+      "fotmobId": "919671",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7057,7 +10545,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "RUFER",
       "club": "Wellington Phoenix FC (NZL)",
-      "photoUrl": null,
+      "fullName": "RUFER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/519240.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/519240",
+      "fotmobId": "519240",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7065,7 +10557,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "PIJNAKER",
       "club": "Auckland FC (NZL)",
-      "photoUrl": null,
+      "fullName": "PIJNAKER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1053731.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1053731",
+      "fotmobId": "1053731",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7073,7 +10569,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SURMAN",
       "club": "Portland Timbers (USA)",
-      "photoUrl": null,
+      "fullName": "SURMAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1325761.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1325761",
+      "fotmobId": "1325761",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7081,7 +10581,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BARBAROUSES",
       "club": "WS Wanderers FC (AUS)",
-      "photoUrl": null,
+      "fullName": "BARBAROUSES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/96488.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/96488",
+      "fotmobId": "96488",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7089,7 +10593,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "WAINE",
       "club": "Port Vale FC (ENG)",
-      "photoUrl": null,
+      "fullName": "WAINE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1034995.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1034995",
+      "fotmobId": "1034995",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7097,7 +10605,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "OLD",
       "club": "AS Saint-Etienne (FRA)",
-      "photoUrl": null,
+      "fullName": "OLD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1257745.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1257745",
+      "fotmobId": "1257745",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7105,7 +10617,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MCCOWATT",
       "club": "Silkeborg IF (DEN)",
-      "photoUrl": null,
+      "fullName": "Mc COWATT Callum William",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/848352.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/848352",
+      "fotmobId": "848352",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7113,7 +10629,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "RANDALL",
       "club": "Auckland FC (NZL)",
-      "photoUrl": null,
+      "fullName": "RANDALL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1460327.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1460327",
+      "fotmobId": "1460327",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7121,7 +10641,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "WOUD",
       "club": "Auckland FC (NZL)",
-      "photoUrl": null,
+      "fullName": "WOUD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/848317.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/848317",
+      "fotmobId": "848317",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7129,7 +10653,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "THOMAS",
       "club": "PEC Zwolle (NED)",
-      "photoUrl": null,
+      "fullName": "THOMAS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/116772.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/116772",
+      "fotmobId": "116772",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7137,7 +10665,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ELLIOT",
       "club": "Auckland FC (NZL)",
-      "photoUrl": null,
+      "fullName": "ELLIOT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/963964.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/963964",
+      "fotmobId": "963964",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7145,7 +10677,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BAYLISS",
       "club": "Newcastle United Jets FC (AUS)",
-      "photoUrl": null,
+      "fullName": "BAYLISS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1565865.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1565865",
+      "fotmobId": "1565865",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     },
     {
@@ -7153,7 +10689,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SMITH",
       "club": "Braintree Town FC (ENG)",
-      "photoUrl": null,
+      "fullName": "SMITH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/889534.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/889534",
+      "fotmobId": "889534",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/new-zealand/"
     }
   ],
@@ -7163,7 +10703,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "VERBRUGGEN",
       "club": "Brighton & Hove Albion FC (ENG)",
-      "photoUrl": null,
+      "fullName": "VERBRUGGEN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1131987.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1131987",
+      "fotmobId": "1131987",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7171,7 +10715,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "J. TIMBER",
       "club": "Arsenal FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Jurrien David Norman TIMBER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/942381.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/942381",
+      "fotmobId": "942381",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7179,7 +10727,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "DE ROON",
       "club": "Atalanta Bergamo (ITA)",
-      "photoUrl": null,
+      "fullName": "DE ROON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/198559.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/198559",
+      "fotmobId": "198559",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7187,7 +10739,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "VIRGIL",
       "club": "Liverpool FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Virgil VAN DIJK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/209405.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/209405",
+      "fotmobId": "209405",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7195,7 +10751,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "AKÉ",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "AKE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/417068.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/417068",
+      "fotmobId": "417068",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7203,7 +10763,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "VAN HECKE",
       "club": "Brighton & Hove Albion FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Jan Paul Jan-Paul VAN HECKEVAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/974618.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/974618",
+      "fotmobId": "974618",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7211,7 +10775,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KLUIVERT",
       "club": "AFC Bournemouth (ENG)",
-      "photoUrl": null,
+      "fullName": "KLUIVERT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/794253.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/794253",
+      "fotmobId": "794253",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7219,7 +10787,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "GRAVENBERCH",
       "club": "Liverpool FC (ENG)",
-      "photoUrl": null,
+      "fullName": "GRAVENBERCH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/956683.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/956683",
+      "fotmobId": "956683",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7227,7 +10799,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "WEGHORST",
       "club": "AFC Ajax (NED)",
-      "photoUrl": null,
+      "fullName": "WEGHORST",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/351999.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/351999",
+      "fotmobId": "351999",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7235,7 +10811,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MEMPHIS",
       "club": "SC Corinthians (BRA)",
-      "photoUrl": null,
+      "fullName": "Memphis DEPAY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/303824.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/303824",
+      "fotmobId": "303824",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7243,7 +10823,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "GAKPO",
       "club": "Liverpool FC (ENG)",
-      "photoUrl": null,
+      "fullName": "GAKPO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/806552.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/806552",
+      "fotmobId": "806552",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7251,7 +10835,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "WIEFFER",
       "club": "Brighton & Hove Albion FC (ENG)",
-      "photoUrl": null,
+      "fullName": "WIEFFER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/970243.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/970243",
+      "fotmobId": "970243",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7259,7 +10847,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "ROEFS",
       "club": "Sunderland AFC (ENG)",
-      "photoUrl": null,
+      "fullName": "ROEFS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1125720.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1125720",
+      "fotmobId": "1125720",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7267,7 +10859,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "REIJNDERS",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "REIJNDERS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/868344.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/868344",
+      "fotmobId": "868344",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7275,7 +10871,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "VAN DE VEN",
       "club": "Tottenham Hotspur FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Micky VAN DE VENVAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1097466.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1097466",
+      "fotmobId": "1097466",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7283,7 +10883,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "TIL",
       "club": "PSV Eindhoven (NED)",
-      "photoUrl": null,
+      "fullName": "TIL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/774947.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/774947",
+      "fotmobId": "774947",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7291,7 +10895,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "LANG",
       "club": "Galatasaray SK (TUR)",
-      "photoUrl": null,
+      "fullName": "LANG",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/837341.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/837341",
+      "fotmobId": "837341",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7299,7 +10907,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MALEN",
       "club": "AS Roma (ITA)",
-      "photoUrl": null,
+      "fullName": "MALEN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/660301.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/660301",
+      "fotmobId": "660301",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7307,7 +10919,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BROBBEY",
       "club": "Sunderland AFC (ENG)",
-      "photoUrl": null,
+      "fullName": "BROBBEY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/940446.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/940446",
+      "fotmobId": "940446",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7315,7 +10931,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KOOPMEINERS",
       "club": "Juventus FC (ITA)",
-      "photoUrl": null,
+      "fullName": "KOOPMEINERS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/866516.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/866516",
+      "fotmobId": "866516",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7323,7 +10943,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "F. DE JONG",
       "club": "FC Barcelona (ESP)",
-      "photoUrl": null,
+      "fullName": "Frenkie DE JONG",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/638622.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/638622",
+      "fotmobId": "638622",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7331,7 +10955,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DUMFRIES",
       "club": "FC Internazionale Milano (ITA)",
-      "photoUrl": null,
+      "fullName": "DUMFRIES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/593118.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/593118",
+      "fotmobId": "593118",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7339,7 +10967,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "FLEKKEN",
       "club": "Bayer Leverkusen (GER)",
-      "photoUrl": null,
+      "fullName": "FLEKKEN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/330643.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/330643",
+      "fotmobId": "330643",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7347,7 +10979,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "SUMMERVILLE",
       "club": "West Ham United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "SUMMERVILLE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/941213.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/941213",
+      "fotmobId": "941213",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7355,7 +10991,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HATO",
       "club": "Chelsea FC (ENG)",
-      "photoUrl": null,
+      "fullName": "HATO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1413846.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1413846",
+      "fotmobId": "1413846",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     },
     {
@@ -7363,7 +11003,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "Q. TIMBER",
       "club": "Olympique Marseille (FRA)",
-      "photoUrl": null,
+      "fullName": "Quinten Ryan Crispito TIMBER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/970563.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/970563",
+      "fotmobId": "970563",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/netherlands/"
     }
   ],
@@ -7373,7 +11017,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "MEJÍA",
       "club": "Club Nacional (URU)",
-      "photoUrl": null,
+      "fullName": "Luis Ricardo MEJÍA CAJAR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/206088.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/206088",
+      "fotmobId": "206088",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7381,7 +11029,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BLACKMAN",
       "club": "Š K Slovan Bratislava (SVK)",
-      "photoUrl": null,
+      "fullName": "Cesar Rodolfo BLACKMAN CAMARENA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/888966.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/888966",
+      "fotmobId": "888966",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7389,7 +11041,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "CORDOBA",
       "club": "Norwich City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Jose Angel CÓRDOBA CHAMBERS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1223132.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1223132",
+      "fotmobId": "1223132",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7397,7 +11053,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "F. ESCOBAR",
       "club": "Deportivo Saprissa (CRC)",
-      "photoUrl": null,
+      "fullName": "Fidel ESCOBAR MENDIETA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/643638.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/643638",
+      "fotmobId": "643638",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7405,7 +11065,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "FARIÑA",
       "club": "FC Pari Nizhny Novgorod (RUS)",
-      "photoUrl": null,
+      "fullName": "Edgardo Issac FARIÑA WYNTER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1454648.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1454648",
+      "fotmobId": "1454648",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7413,7 +11077,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MARTÍNEZ",
       "club": "Hapoel Kiryat Shmona FC (ISR)",
-      "photoUrl": null,
+      "fullName": "MARTINEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/847983.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/847983",
+      "fotmobId": "847983",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7421,7 +11089,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "J.L. RODRÍGUEZ",
       "club": "FC Juárez (MEX)",
-      "photoUrl": null,
+      "fullName": "Jose Luis José Luis RODRÍGUEZ FRANCISJ.L.",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/115591.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/115591",
+      "fotmobId": "115591",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7429,7 +11101,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "CARRASQUILLA",
       "club": "Pumas UNAM (MEX)",
-      "photoUrl": null,
+      "fullName": "Adalberto Eliecer CARRASQUILLA ALCAZAR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/643682.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/643682",
+      "fotmobId": "643682",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7437,7 +11113,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "T. RODRÍGUEZ",
       "club": "Deportivo Saprissa (CRC)",
-      "photoUrl": null,
+      "fullName": "Tomas Abdiel RODRIGUEZ MENA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/115591.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/115591",
+      "fotmobId": "115591",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7445,7 +11125,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ISMAEL",
       "club": "Club León (MEX)",
-      "photoUrl": null,
+      "fullName": "Ismael DÍAZ DE LEON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/289226.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/289226",
+      "fotmobId": "289226",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7453,7 +11137,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BÁRCENAS",
       "club": "Mazatlán FC (MEX)",
-      "photoUrl": null,
+      "fullName": "Edgar Yoel Édgar Yoel BÁRCENAS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/526710.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/526710",
+      "fotmobId": "526710",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7461,7 +11149,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "SAMUDIO",
       "club": "CD Marathón (HON)",
-      "photoUrl": null,
+      "fullName": "Cesar Jair SAMUDIO MURILLO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1330683.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1330683",
+      "fotmobId": "1330683",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7469,7 +11161,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "RAMOS",
       "club": "Puerto Cabello CF (VEN)",
-      "photoUrl": null,
+      "fullName": "Jiovany Javier RAMOS DIAZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/940087.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/940087",
+      "fotmobId": "940087",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7477,7 +11173,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HARVEY",
       "club": "Minnesota United FC (USA)",
-      "photoUrl": null,
+      "fullName": "Carlos Miguel HARVEY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1017520.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1017520",
+      "fotmobId": "1017520",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7485,7 +11185,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DAVIS",
       "club": "CD Plaza Amador (PAN)",
-      "photoUrl": null,
+      "fullName": "Eric Javier DAVIS GRAJALES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/980381.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/980381",
+      "fotmobId": "980381",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7493,7 +11197,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ANDRADE",
       "club": "LASK Linz (AUT)",
-      "photoUrl": null,
+      "fullName": "Andres Alberto ANDRADE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/688449.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/688449",
+      "fotmobId": "688449",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7501,7 +11209,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "FAJARDO",
       "club": "CD Universidad Católica (ECU)",
-      "photoUrl": null,
+      "fullName": "Jose FAJARDO NELSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/940334.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/940334",
+      "fotmobId": "940334",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7509,7 +11221,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "WATERMAN",
       "club": "CD Universidad De Concepción (CHI)",
-      "photoUrl": null,
+      "fullName": "Cecilio Alfonso WATERMAN RUIZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/312159.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/312159",
+      "fotmobId": "312159",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7517,7 +11233,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "QUINTERO",
       "club": "CD Plaza Amador (PAN)",
-      "photoUrl": null,
+      "fullName": "Alberto Abdiel QUINTERO MEDINA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/207617.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/207617",
+      "fotmobId": "207617",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7525,7 +11245,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "GODOY",
       "club": "San Diego FC (USA)",
-      "photoUrl": null,
+      "fullName": "Anibal Casis GODOY LEMUS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/308131.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/308131",
+      "fotmobId": "308131",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7533,7 +11257,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "YANIS",
       "club": "CD Cobresal (CHI)",
-      "photoUrl": null,
+      "fullName": "Cesar Augusto YANIS VELASCO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1580220.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1580220",
+      "fotmobId": "1580220",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7541,15 +11269,23 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "MOSQUERA",
       "club": "Al Fayha FC (KSA)",
-      "photoUrl": null,
+      "fullName": "MOSQUERA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1298907.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1298907",
+      "fotmobId": "1298907",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
       "number": 23,
       "position": "DF",
       "name": "A. MURILLO",
-      "club": "Be ş ikta ş  JK (TUR)",
-      "photoUrl": null,
+      "club": "Be ş ikta ş JK (TUR)",
+      "fullName": "Amir Michael Amir MURILLO BERMUDEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1458711.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1458711",
+      "fotmobId": "1458711",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7557,7 +11293,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "LONDONO",
       "club": "CD Universidad Católica (ECU)",
-      "photoUrl": null,
+      "fullName": "Azarias Emmanuel LONDOÑO GONZALEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1404414.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1404414",
+      "fotmobId": "1404414",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7565,7 +11305,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MILLER",
       "club": "Turan Tovuz (AZE)",
-      "photoUrl": null,
+      "fullName": "Roderick Alonso MILLER MOLINA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1399969.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1399969",
+      "fotmobId": "1399969",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     },
     {
@@ -7573,7 +11317,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "GUTIÉRREZ",
       "club": "Deportivo La Guaira (VEN)",
-      "photoUrl": null,
+      "fullName": "Jorge Abdiel GUTIERREZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/942379.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/942379",
+      "fotmobId": "942379",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/panama/"
     }
   ],
@@ -7583,7 +11331,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "FERNANDEZ",
       "club": "Cerro Porteño (PAR)",
-      "photoUrl": null,
+      "fullName": "Gatito Roberto Junior FERNANDEZ TORRES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1137705.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1137705",
+      "fotmobId": "1137705",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7591,7 +11343,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "VELÁZQUEZ",
       "club": "Cerro Porteño (PAR)",
-      "photoUrl": null,
+      "fullName": "Gustavo Víctor Gustavo VELÁZQUEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/497352.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/497352",
+      "fotmobId": "497352",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7599,7 +11355,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ALDERETE",
       "club": "Sunderland AFC (ENG)",
-      "photoUrl": null,
+      "fullName": "Omar Federico ALDERETE FERNÁNDEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/751998.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/751998",
+      "fotmobId": "751998",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7607,7 +11367,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "CÁCERES",
       "club": "FC Dynamo Moscow (RUS)",
-      "photoUrl": null,
+      "fullName": "CACERES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/318866.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/318866",
+      "fotmobId": "318866",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7615,7 +11379,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BALBUENA",
       "club": "Grêmio FBPA (BRA)",
-      "photoUrl": null,
+      "fullName": "Fabian Cornelio BALBUENA GONZÁLEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/307438.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/307438",
+      "fotmobId": "307438",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7623,7 +11391,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ALONSO",
       "club": "Atlético Mineiro (BRA)",
-      "photoUrl": null,
+      "fullName": "Junior Osmar Ignacio ALONSO MUJICA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/466214.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/466214",
+      "fotmobId": "466214",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7631,7 +11403,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SOSA",
       "club": "SE Palmeiras (BRA)",
-      "photoUrl": null,
+      "fullName": "Ramon SOSA ACOSTA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1132960.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1132960",
+      "fotmobId": "1132960",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7639,7 +11415,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "D. GOMEZ",
       "club": "Brighton & Hove Albion FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Diego Alexander GOMEZ AMARILLA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1354561.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1354561",
+      "fotmobId": "1354561",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7647,7 +11427,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "SANABRIA",
       "club": "US Cremonese (ITA)",
-      "photoUrl": null,
+      "fullName": "Antonio Arnaldo Antonio SANABRIA AYALA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/474448.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/474448",
+      "fotmobId": "474448",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7655,7 +11439,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "M. ALMIRÓN",
       "club": "Atlanta United FC (USA)",
-      "photoUrl": null,
+      "fullName": "Miguel Angel ALMIRÓN REJALA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/442277.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/442277",
+      "fotmobId": "442277",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7663,7 +11451,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MAURICIO",
       "club": "SE Palmeiras (BRA)",
-      "photoUrl": null,
+      "fullName": "Mauricio MAGALHÃES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1059490.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1059490",
+      "fotmobId": "1059490",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7671,7 +11463,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "O. GILL",
       "club": "CA San Lorenzo (ARG)",
-      "photoUrl": null,
+      "fullName": "Orlando Daniel GILL NOLDIN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1683391.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1683391",
+      "fotmobId": "1683391",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7679,7 +11475,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "CANALE",
       "club": "CA Lanús (ARG)",
-      "photoUrl": null,
+      "fullName": "Jose Maria CANALE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/860890.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/860890",
+      "fotmobId": "860890",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7687,7 +11487,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "CUBAS",
       "club": "Vancouver Whitecaps FC (CAN)",
-      "photoUrl": null,
+      "fullName": "CUBAS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/529625.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/529625",
+      "fotmobId": "529625",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7695,7 +11499,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "G. GOMEZ",
       "club": "SE Palmeiras (BRA)",
-      "photoUrl": null,
+      "fullName": "Gustavo Raul GÓMEZ PORTILLO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/274392.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/274392",
+      "fotmobId": "274392",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7703,7 +11511,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BOBADILLA",
       "club": "São Paulo FC (BRA)",
-      "photoUrl": null,
+      "fullName": "Damian Josue BOBADILLA BENITEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1252913.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1252913",
+      "fotmobId": "1252913",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7711,7 +11523,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "R. GAMARRA",
       "club": "Al Ain FC (UAE)",
-      "photoUrl": null,
+      "fullName": "Alejandro Sebastian ROMERO GAMARRA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1081845.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1081845",
+      "fotmobId": "1081845",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7719,7 +11535,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ARCE",
       "club": "CS Independiente Rivadavia (ARG)",
-      "photoUrl": null,
+      "fullName": "Alex Adrian ARCE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1320444.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1320444",
+      "fotmobId": "1320444",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7727,7 +11547,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ENCISO",
       "club": "RC Strasbourg (FRA)",
-      "photoUrl": null,
+      "fullName": "Julio Cesar ENCISO ESPINOLA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1073742.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1073742",
+      "fotmobId": "1073742",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7735,7 +11559,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "OJEDA",
       "club": "Orlando City SC (USA)",
-      "photoUrl": null,
+      "fullName": "Braian Oscar OJEDA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/20521.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/20521",
+      "fotmobId": "20521",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7743,7 +11571,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AVALOS",
       "club": "CA Independiente (ARG)",
-      "photoUrl": null,
+      "fullName": "Gabriel AVALOS STUMPFS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/425711.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/425711",
+      "fotmobId": "425711",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7751,7 +11583,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "OLIVEIRA",
       "club": "Club Olimpia (PAR)",
-      "photoUrl": null,
+      "fullName": "Gaston Hernán OLVEIRA ECHEVERRIA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/193927.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/193927",
+      "fotmobId": "193927",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7759,7 +11595,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "GALARZA",
       "club": "Atlanta United FC (USA)",
-      "photoUrl": null,
+      "fullName": "Matias GALARZA FONDA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1241957.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1241957",
+      "fotmobId": "1241957",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7767,7 +11607,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "CABALLERO",
       "club": "Portsmouth FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Gustavo Ruben CABALLERO GONZALEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1347933.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1347933",
+      "fotmobId": "1347933",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7775,7 +11619,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "PITTA",
       "club": "Red Bull Bragantino (BRA)",
-      "photoUrl": null,
+      "fullName": "Isidro Miguel PITTA SALDIVAR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1033279.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1033279",
+      "fotmobId": "1033279",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     },
     {
@@ -7783,7 +11631,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MAIDANA",
       "club": "CA Talleres (ARG)",
-      "photoUrl": null,
+      "fullName": "Alexandro MAIDANA MENDIETA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1736527.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1736527",
+      "fotmobId": "1736527",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/paraguay/"
     }
   ],
@@ -7793,7 +11645,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "DIOGO COSTA",
       "club": "FC Porto (POR)",
-      "photoUrl": null,
+      "fullName": "Diogo MEIRELES DA COSTA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/795630.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/795630",
+      "fotmobId": "795630",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7801,7 +11657,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "N. SEMEDO",
       "club": "Fenerbahçe SK (TUR)",
-      "photoUrl": null,
+      "fullName": "Nélson CABRAL SEMEDO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/470834.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/470834",
+      "fotmobId": "470834",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7809,7 +11669,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "RÚBEN DIAS",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Rúben DOS SANTOS GATO ALVES DIAS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/614006.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/614006",
+      "fotmobId": "614006",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7817,7 +11681,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "TOMAS A.",
       "club": "SL Ben\u0000ca (POR)",
-      "photoUrl": null,
+      "fullName": "Tomás LEMOS ARAÚJO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1187283.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1187283",
+      "fotmobId": "1187283",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7825,7 +11693,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DALOT",
       "club": "Manchester United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "José Diogo DALOT TEIXEIRA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/751550.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/751550",
+      "fotmobId": "751550",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7833,7 +11705,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MATHEUS N.",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Matheus Luiz NUNES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/955529.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/955529",
+      "fotmobId": "955529",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7841,7 +11717,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "RONALDO",
       "club": "Al Nassr FC (KSA)",
-      "photoUrl": null,
+      "fullName": "Cristiano Ronaldo DOS SANTOS AVEIRO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/690362.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/690362",
+      "fotmobId": "690362",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7849,7 +11729,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "B. FERNANDES",
       "club": "Manchester United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Bruno Miguel BORGES FERNANDES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/422685.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/422685",
+      "fotmobId": "422685",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7857,7 +11741,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "G. RAMOS",
       "club": "Paris Saint-Germain (FRA)",
-      "photoUrl": null,
+      "fullName": "Gonçalo MATIAS RAMOS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/940087.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/940087",
+      "fotmobId": "940087",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7865,7 +11753,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BERNARDO",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Bernardo MOTA VEIGA DE CARVALHOE SILVA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/637716.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/637716",
+      "fotmobId": "637716",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7873,7 +11765,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "JOÃO FÉLIX",
       "club": "Al Nassr FC (KSA)",
-      "photoUrl": null,
+      "fullName": "João FÉLIX SEQUEIRA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/794427.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/794427",
+      "fotmobId": "794427",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7881,7 +11777,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "JOSÉ SÁ",
       "club": "Wolverhampton Wanderers FC (ENG)",
-      "photoUrl": null,
+      "fullName": "José Pedro MALHEIRO DESÁ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/416175.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/416175",
+      "fotmobId": "416175",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7889,7 +11789,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "RENATO VEIGA",
       "club": "Villarreal CF (ESP)",
-      "photoUrl": null,
+      "fullName": "Renato DA PALMA VEIGA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1343750.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1343750",
+      "fotmobId": "1343750",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7897,7 +11801,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "G. INÁCIO",
       "club": "Sporting CP (POR)",
-      "photoUrl": null,
+      "fullName": "Gonçalo BERNARDO INÁCIO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1165710.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1165710",
+      "fotmobId": "1165710",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7905,7 +11813,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "JOÃO NEVES",
       "club": "Paris Saint-Germain (FRA)",
-      "photoUrl": null,
+      "fullName": "João Pedro GONÇALVES NEVES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1342757.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1342757",
+      "fotmobId": "1342757",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7913,7 +11825,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "TRINCÃO",
       "club": "Sporting CP (POR)",
-      "photoUrl": null,
+      "fullName": "Francisco António MACHADO MOTA DE CASTRO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/732282.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/732282",
+      "fotmobId": "732282",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7921,7 +11837,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "RAFA LEÃO",
       "club": "AC Milan (ITA)",
-      "photoUrl": null,
+      "fullName": "Rafael Alexandre DA CONCEIÇÃO LEÃO RAFA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/848844.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/848844",
+      "fotmobId": "848844",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7929,7 +11849,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "NETO",
       "club": "Chelsea FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Pedro LOMBA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/176186.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/176186",
+      "fotmobId": "176186",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7937,7 +11861,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "G. GUEDES",
       "club": "Real Sociedad (ESP)",
-      "photoUrl": null,
+      "fullName": "Gonçalo Manuel GANCHINHO GUEDES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/536455.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/536455",
+      "fotmobId": "536455",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7945,7 +11873,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "JOÃO CANCELO",
       "club": "FC Barcelona (ESP)",
-      "photoUrl": null,
+      "fullName": "João Pedro CAVACO CANCELO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/361757.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/361757",
+      "fotmobId": "361757",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7953,7 +11885,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "R. NEVES",
       "club": "Al Hilal SC (KSA)",
-      "photoUrl": null,
+      "fullName": "Rúben Diogo DA SILVA NEVES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/534684.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/534684",
+      "fotmobId": "534684",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7961,7 +11897,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "RUI SILVA",
       "club": "Sporting CP (POR)",
-      "photoUrl": null,
+      "fullName": "Rui Tiago DANTAS DA SILVARUI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/361717.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/361717",
+      "fotmobId": "361717",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7969,7 +11909,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "VITINHA",
       "club": "Paris Saint-Germain (FRA)",
-      "photoUrl": null,
+      "fullName": "Vitor MACHADO FERREIRA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1061249.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1061249",
+      "fotmobId": "1061249",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7977,7 +11921,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SAMU",
       "club": "RCD Mallorca (ESP)",
-      "photoUrl": null,
+      "fullName": "Samuel DE ALMEIDA COSTA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/941656.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/941656",
+      "fotmobId": "941656",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7985,7 +11933,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "N. MENDES",
       "club": "Paris Saint-Germain (FRA)",
-      "photoUrl": null,
+      "fullName": "Nuno Alexandre TAVARES MENDES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1158945.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1158945",
+      "fotmobId": "1158945",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     },
     {
@@ -7993,7 +11945,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "F. CONCEIÇÃO",
       "club": "Juventus FC (ITA)",
-      "photoUrl": null,
+      "fullName": "Francisco FERNANDES DA CONCEIÇÃO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1185336.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1185336",
+      "fotmobId": "1185336",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/portugal/"
     }
   ],
@@ -8003,7 +11959,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "ABUNADA",
       "club": "Al Rayyan SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Mahmoud Ibrahim M",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1213141.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1213141",
+      "fotmobId": "1213141",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8011,7 +11971,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "PEDRO",
       "club": "Al Sadd SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Pedro Miguel DD CORREIA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/150250.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/150250",
+      "fotmobId": "150250",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8019,7 +11983,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "L. MENDES",
       "club": "Al Wakrah SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Lucas Michel MENDES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/149583.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/149583",
+      "fotmobId": "149583",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8027,7 +11995,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "GUEYE",
       "club": "Al Arabi SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Gueye SEYDINAISSALAYE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/844544.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/844544",
+      "fotmobId": "844544",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8035,7 +12007,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "JASSEM",
       "club": "Al Rayyan SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Jassem Gaber EABDULSALLAM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1195865.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1195865",
+      "fotmobId": "1195865",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8043,7 +12019,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "A. AZIZ",
       "club": "Al Rayyan SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Abdelaziz Hatim AMOHAMED",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1797492.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1797492",
+      "fotmobId": "1797492",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8051,7 +12031,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ALAEDDIN",
       "club": "Al Rayyan SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Ahmed Alaaeldin B MABDELMOTAAL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1121521.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1121521",
+      "fotmobId": "1121521",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8059,7 +12043,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "EDMILSON JR.",
       "club": "Al Duhail SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Edmilson Junior PDASILVA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/365245.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/365245",
+      "fotmobId": "365245",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8067,7 +12055,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MUNTARI",
       "club": "Al Gharafa SC (QAT)",
-      "photoUrl": null,
+      "fullName": "MOHAMMED MUNTARI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/431151.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/431151",
+      "fotmobId": "431151",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8075,7 +12067,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ALHAYDOS",
       "club": "Al Sadd SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Hasan Khalid HALHAYDOS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/117539.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/117539",
+      "fotmobId": "117539",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8083,7 +12079,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AFIF",
       "club": "Al Sadd SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Akram Hassan AY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/613792.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/613792",
+      "fotmobId": "613792",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8091,7 +12091,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KARIM",
       "club": "Al Duhail SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Karim BOUDIAF",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/26166.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/26166",
+      "fotmobId": "26166",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8099,7 +12103,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "AYOUB",
       "club": "Al Gharafa SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Ayoub Mohamed ALOUI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1656600.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1656600",
+      "fotmobId": "1656600",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8107,7 +12115,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HOMAM",
       "club": "Cultural Leonesa (ESP)",
-      "photoUrl": null,
+      "fullName": "Homam Elamin M AHMED",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/937414.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/937414",
+      "fotmobId": "937414",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8115,7 +12127,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "YUSUF",
       "club": "Al Wakrah SC (QAT)",
-      "photoUrl": null,
+      "fullName": "YUSUF ABDURISAG",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1561568.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1561568",
+      "fotmobId": "1561568",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8123,7 +12139,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "KHOUKHI",
       "club": "Al Sadd SC (QAT)",
-      "photoUrl": null,
+      "fullName": "BOUALEM KHOUKHI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/308921.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/308921",
+      "fotmobId": "308921",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8131,7 +12151,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "A. ALGANEHI",
       "club": "Al Gharafa SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Ahmed Mohamed H KALGANEHI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1210913.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1210913",
+      "fotmobId": "1210913",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8139,7 +12163,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SULTAN",
       "club": "Al Duhail SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Sultan Hussain M HAL-BRAKE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/722259.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/722259",
+      "fotmobId": "722259",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8147,7 +12175,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ALMOEZ",
       "club": "Al Duhail SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Almoez Ali Zainelabdeen MABDULLA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/644017.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/644017",
+      "fotmobId": "644017",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8155,7 +12187,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "A. FATHY",
       "club": "Al Arabi SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Ahmed Fathy M ABDOULLA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/898424.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/898424",
+      "fotmobId": "898424",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8163,7 +12199,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "SALAH",
       "club": "Al Duhail SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Salah Zakaria M MHASSAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/826686.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/826686",
+      "fotmobId": "826686",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8171,7 +12211,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "BARSHAM",
       "club": "Al Sadd SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Meshaal Aissa MBARSHAM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/922387.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/922387",
+      "fotmobId": "922387",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8179,7 +12223,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MADIBO",
       "club": "Al Wakrah SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Assim Omer A",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/615414.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/615414",
+      "fotmobId": "615414",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8187,7 +12235,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "TAHSIN",
       "club": "Al Duhail SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Tahsin Mohammad JAMSHID",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1648351.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1648351",
+      "fotmobId": "1648351",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8195,7 +12247,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ALHASHMI",
       "club": "Al Arabi SC (QAT)",
-      "photoUrl": null,
+      "fullName": "Alhashmi Alhussein AMOHIALDIN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1642780.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1642780",
+      "fotmobId": "1642780",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     },
     {
@@ -8203,7 +12259,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MANAI",
       "club": "Al Shamal SC (QAT)",
-      "photoUrl": null,
+      "fullName": "MOHAMED MANAI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1572674.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1572674",
+      "fotmobId": "1572674",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/qatar/"
     }
   ],
@@ -8213,7 +12273,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "MPASI",
       "club": "Le Havre AC (FRA)",
-      "photoUrl": null,
+      "fullName": "MPASI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/912286.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/912286",
+      "fotmobId": "912286",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8221,7 +12285,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "WAN BISSAKA",
       "club": "West Ham United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Aaron Wan BISSAKAWAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/760320.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/760320",
+      "fotmobId": "760320",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8229,7 +12297,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "KAPUADI",
       "club": "Widzew Ł ód ź (POL)",
-      "photoUrl": null,
+      "fullName": "KAPUADI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1132814.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1132814",
+      "fotmobId": "1132814",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8237,7 +12309,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "TUANZEBE",
       "club": "Burnley FC (ENG)",
-      "photoUrl": null,
+      "fullName": "TUANZEBE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/690149.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/690149",
+      "fotmobId": "690149",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8245,7 +12321,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BATUBINSIKA",
       "club": "AEL FC (GRE)",
-      "photoUrl": null,
+      "fullName": "BATUBINSIKA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/751762.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/751762",
+      "fotmobId": "751762",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8253,7 +12333,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MUKAU",
       "club": "Lille OSC (FRA)",
-      "photoUrl": null,
+      "fullName": "MUKAU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1428153.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1428153",
+      "fotmobId": "1428153",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8261,7 +12345,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MBUKU",
       "club": "Montpellier HSC (FRA)",
-      "photoUrl": null,
+      "fullName": "MBUKU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1049799.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1049799",
+      "fotmobId": "1049799",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8269,7 +12357,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MOUTOUSSAMY",
       "club": "Atromitos FC (GRE)",
-      "photoUrl": null,
+      "fullName": "MOUTOUSSAMY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/866108.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/866108",
+      "fotmobId": "866108",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8277,7 +12369,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "CIPENGA",
       "club": "CD Castellón (ESP)",
-      "photoUrl": null,
+      "fullName": "CIPENGA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1302121.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1302121",
+      "fotmobId": "1302121",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8285,7 +12381,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BONGONDA",
       "club": "FC Spartak Moscow (RUS)",
-      "photoUrl": null,
+      "fullName": "BONGONDA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/466132.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/466132",
+      "fotmobId": "466132",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8293,7 +12393,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "KAKUTA",
       "club": "AEL FC (GRE)",
-      "photoUrl": null,
+      "fullName": "KAKUTA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/163205.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/163205",
+      "fotmobId": "163205",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8301,7 +12405,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "J. KAYEMBE",
       "club": "KRC Genk (BEL)",
-      "photoUrl": null,
+      "fullName": "Joris KAYEMBE-DITU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/500932.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/500932",
+      "fotmobId": "500932",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8309,7 +12417,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ELIA",
       "club": "Alanyaspor (TUR)",
-      "photoUrl": null,
+      "fullName": "ELIA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1305787.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1305787",
+      "fotmobId": "1305787",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8317,7 +12429,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SADIKI",
       "club": "Sunderland AFC (ENG)",
-      "photoUrl": null,
+      "fullName": "SADIKI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1359649.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1359649",
+      "fotmobId": "1359649",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8325,7 +12441,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "TSHIBOLA",
       "club": "Kilmarnock FC (SCO)",
-      "photoUrl": null,
+      "fullName": "Aaron Tshibola AARON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/490122.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/490122",
+      "fotmobId": "490122",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8333,7 +12453,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "FAYULU",
       "club": "FC Noah (ARM)",
-      "photoUrl": null,
+      "fullName": "FAYULU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/976996.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/976996",
+      "fotmobId": "976996",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8341,7 +12465,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BAKAMBU",
       "club": "Real Betis (ESP)",
-      "photoUrl": null,
+      "fullName": "BAKAMBU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/201939.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/201939",
+      "fotmobId": "201939",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8349,7 +12477,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "PICKEL",
       "club": "RCD Espanyol (ESP)",
-      "photoUrl": null,
+      "fullName": "PICKEL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/743720.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/743720",
+      "fotmobId": "743720",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8357,7 +12489,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MAYELE",
       "club": "Pyramids FC (EGY)",
-      "photoUrl": null,
+      "fullName": "Fiston Mayele Fiston KALALA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1116042.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1116042",
+      "fotmobId": "1116042",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8365,7 +12501,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "WISSA",
       "club": "Newcastle United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "WISSA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/666857.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/666857",
+      "fotmobId": "666857",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8373,7 +12513,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "EPOLO",
       "club": "Standard Liège (BEL)",
-      "photoUrl": null,
+      "fullName": "EPOLO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1257080.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1257080",
+      "fotmobId": "1257080",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8381,7 +12525,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MBEMBA",
       "club": "Lille OSC (FRA)",
-      "photoUrl": null,
+      "fullName": "MBEMBA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/277761.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/277761",
+      "fotmobId": "277761",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8389,7 +12537,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BANZA",
       "club": "Al Jazira (UAE)",
-      "photoUrl": null,
+      "fullName": "BANZA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/851625.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/851625",
+      "fotmobId": "851625",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8397,7 +12549,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "G. KALULU",
       "club": "Aris Limassol FC (CYP)",
-      "photoUrl": null,
+      "fullName": "Gedeon Tchingoma Kyatengwa KALULU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1022309.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1022309",
+      "fotmobId": "1022309",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8405,7 +12561,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KAYEMBE",
       "club": "Watford FC (ENG)",
-      "photoUrl": null,
+      "fullName": "KAYEMBE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/909803.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/909803",
+      "fotmobId": "909803",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     },
     {
@@ -8413,7 +12573,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MASUAKU",
       "club": "RC Lens (FRA)",
-      "photoUrl": null,
+      "fullName": "Arthur Fuka MASUAKU KAWELA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/418137.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/418137",
+      "fotmobId": "418137",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/dr-congo/"
     }
   ],
@@ -8423,7 +12587,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "Y. DIOUF",
       "club": "OGC Nice (FRA)",
-      "photoUrl": null,
+      "fullName": "Yehvann Djibril Victor DIOUF",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/766574.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/766574",
+      "fotmobId": "766574",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8431,7 +12599,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SARR",
       "club": "Chelsea FC (ENG)",
-      "photoUrl": null,
+      "fullName": "SARR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1426170.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1426170",
+      "fotmobId": "1426170",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8439,7 +12611,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "KOULIBALY",
       "club": "Al Hilal SC (KSA)",
-      "photoUrl": null,
+      "fullName": "KOULIBALY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/210428.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/210428",
+      "fotmobId": "210428",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8447,7 +12623,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SECK",
       "club": "Maccabi Haifa FC (ISR)",
-      "photoUrl": null,
+      "fullName": "SECK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/588626.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/588626",
+      "fotmobId": "588626",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8455,7 +12635,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "GANA",
       "club": "Everton FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Idrissa Gana Idrissa Gana GUEYE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/179410.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/179410",
+      "fotmobId": "179410",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8463,7 +12647,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "P.I. CISS",
       "club": "Rayo Vallecano (ESP)",
-      "photoUrl": null,
+      "fullName": "Pathe Ismaila Pathe CISS P.",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/872396.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/872396",
+      "fotmobId": "872396",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8471,7 +12659,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "DIAO",
       "club": "Como (ITA)",
-      "photoUrl": null,
+      "fullName": "DIAO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1434889.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1434889",
+      "fotmobId": "1434889",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8479,7 +12671,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "LAMINE",
       "club": "AS Monaco (FRA)",
-      "photoUrl": null,
+      "fullName": "Lamine CAMARA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1436305.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1436305",
+      "fotmobId": "1436305",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8487,7 +12683,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "B. DIENG",
       "club": "FC Lorient (FRA)",
-      "photoUrl": null,
+      "fullName": "Bamba Cheikh Ahmadou Bamba Mbacke DIENG",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1230848.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1230848",
+      "fotmobId": "1230848",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8495,7 +12695,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MANÉ",
       "club": "Al Nassr FC (KSA)",
-      "photoUrl": null,
+      "fullName": "MANE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/303339.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/303339",
+      "fotmobId": "303339",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8503,7 +12707,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "JACKSON",
       "club": "FC Bayern München (GER)",
-      "photoUrl": null,
+      "fullName": "JACKSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1197347.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1197347",
+      "fotmobId": "1197347",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8511,7 +12719,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "CHERIF",
       "club": "Samsunspor (TUR)",
-      "photoUrl": null,
+      "fullName": "Cherif Pape Cherif NDIAYE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/819972.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/819972",
+      "fotmobId": "819972",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8519,7 +12731,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "NDIAYE",
       "club": "Everton FC (ENG)",
-      "photoUrl": null,
+      "fullName": "NDIAYE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/965764.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/965764",
+      "fotmobId": "965764",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8527,7 +12743,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "JAKOBS",
       "club": "Galatasaray SK (TUR)",
-      "photoUrl": null,
+      "fullName": "JAKOBS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/906945.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/906945",
+      "fotmobId": "906945",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8535,7 +12755,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "KRÉPIN",
       "club": "AS Monaco (FRA)",
-      "photoUrl": null,
+      "fullName": "Krepin DIATTA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/837061.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/837061",
+      "fotmobId": "837061",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8543,7 +12767,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "MENDY",
       "club": "Al Ahli FC (KSA)",
-      "photoUrl": null,
+      "fullName": "MENDY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/623537.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/623537",
+      "fotmobId": "623537",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8551,7 +12779,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "P.M. SARR",
       "club": "Tottenham Hotspur FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Pape Matar Pape Matar SARR P.",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1107280.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1107280",
+      "fotmobId": "1107280",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8559,7 +12791,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "SARR",
       "club": "Crystal Palace FC (ENG)",
-      "photoUrl": null,
+      "fullName": "SARR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/771294.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/771294",
+      "fotmobId": "771294",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8567,7 +12803,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "NIAKHATE",
       "club": "Olympique Lyonnais (FRA)",
-      "photoUrl": null,
+      "fullName": "Moussa NIAKHATÉ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/592102.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/592102",
+      "fotmobId": "592102",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8575,7 +12815,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MBAYE",
       "club": "Paris Saint-Germain (FRA)",
-      "photoUrl": null,
+      "fullName": "MBAYE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1593857.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1593857",
+      "fotmobId": "1593857",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8583,7 +12827,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "H. DIARRA",
       "club": "Sunderland AFC (ENG)",
-      "photoUrl": null,
+      "fullName": "Habib Mouhamadou Habib Mbacke DIARRA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1285866.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1285866",
+      "fotmobId": "1285866",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8591,7 +12839,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BARA",
       "club": "FC Bayern München (GER)",
-      "photoUrl": null,
+      "fullName": "Bara Sapoko Bara Sapoko NDIAYE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1798782.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1798782",
+      "fotmobId": "1798782",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8599,7 +12851,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "DIAW",
       "club": "Le Havre AC (FRA)",
-      "photoUrl": null,
+      "fullName": "DIAW",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/668307.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/668307",
+      "fotmobId": "668307",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8607,7 +12863,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "A. MENDY",
       "club": "OGC Nice (FRA)",
-      "photoUrl": null,
+      "fullName": "Antoine Alpha MENDY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1254147.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1254147",
+      "fotmobId": "1254147",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8615,7 +12875,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DIOUF",
       "club": "West Ham United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "DIOUF",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1451265.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1451265",
+      "fotmobId": "1451265",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     },
     {
@@ -8623,7 +12887,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "GUEYE",
       "club": "Villarreal CF (ESP)",
-      "photoUrl": null,
+      "fullName": "GUEYE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/844544.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/844544",
+      "fotmobId": "844544",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/senegal/"
     }
   ],
@@ -8633,7 +12901,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "WILLIAMS",
       "club": "Mamelodi Sundowns FC (RSA)",
-      "photoUrl": null,
+      "fullName": "WILLIAMS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/253991.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/253991",
+      "fotmobId": "253991",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8641,7 +12913,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MATULUDI",
       "club": "Polokwane City FC (RSA)",
-      "photoUrl": null,
+      "fullName": "MATULUDI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1579341.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1579341",
+      "fotmobId": "1579341",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8649,7 +12925,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "NDAMANE",
       "club": "Mamelodi Sundowns FC (RSA)",
-      "photoUrl": null,
+      "fullName": "NDAMANE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1680696.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1680696",
+      "fotmobId": "1680696",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8657,7 +12937,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MOKOENA",
       "club": "Mamelodi Sundowns FC (RSA)",
-      "photoUrl": null,
+      "fullName": "MOKOENA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/848361.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/848361",
+      "fotmobId": "848361",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8665,7 +12949,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MBATHA",
       "club": "Orlando Pirates FC (RSA)",
-      "photoUrl": null,
+      "fullName": "MBATHA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1124424.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1124424",
+      "fotmobId": "1124424",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8673,7 +12961,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MODIBA",
       "club": "Mamelodi Sundowns FC (RSA)",
-      "photoUrl": null,
+      "fullName": "MODIBA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/616179.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/616179",
+      "fotmobId": "616179",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8681,7 +12973,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "APPOLLIS",
       "club": "Orlando Pirates FC (RSA)",
-      "photoUrl": null,
+      "fullName": "APPOLLIS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1054166.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1054166",
+      "fotmobId": "1054166",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8689,7 +12985,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MOREMI",
       "club": "Orlando Pirates FC (RSA)",
-      "photoUrl": null,
+      "fullName": "MOREMI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1289611.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1289611",
+      "fotmobId": "1289611",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8697,7 +12997,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "FOSTER",
       "club": "Burnley FC (ENG)",
-      "photoUrl": null,
+      "fullName": "FOSTER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/881500.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/881500",
+      "fotmobId": "881500",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8705,7 +13009,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MOFOKENG",
       "club": "Orlando Pirates FC (RSA)",
-      "photoUrl": null,
+      "fullName": "MOFOKENG",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1471333.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1471333",
+      "fotmobId": "1471333",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8713,7 +13021,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ZWANE",
       "club": "Mamelodi Sundowns FC (RSA)",
-      "photoUrl": null,
+      "fullName": "ZWANE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/303609.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/303609",
+      "fotmobId": "303609",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8721,7 +13033,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MASEKO",
       "club": "AEL Limassol (CYP)",
-      "photoUrl": null,
+      "fullName": "MASEKO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1394951.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1394951",
+      "fotmobId": "1394951",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8729,7 +13045,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SITHOLE",
       "club": "CD Tondela (POR)",
-      "photoUrl": null,
+      "fullName": "SITHOLE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1107735.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1107735",
+      "fotmobId": "1107735",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8737,7 +13057,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MBOKAZI",
       "club": "Chicago Fire FC (USA)",
-      "photoUrl": null,
+      "fullName": "MBOKAZI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1719066.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1719066",
+      "fotmobId": "1719066",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8745,7 +13069,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "RAYNERS",
       "club": "Mamelodi Sundowns FC (RSA)",
-      "photoUrl": null,
+      "fullName": "RAYNERS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1076668.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1076668",
+      "fotmobId": "1076668",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8753,7 +13081,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "CHAINE",
       "club": "Orlando Pirates FC (RSA)",
-      "photoUrl": null,
+      "fullName": "CHAINE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/787099.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/787099",
+      "fotmobId": "787099",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8761,7 +13093,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MAKGOPA",
       "club": "Orlando Pirates FC (RSA)",
-      "photoUrl": null,
+      "fullName": "Evidence Sekotori Evidence MAKGOPA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1137059.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1137059",
+      "fotmobId": "1137059",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8769,7 +13105,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "KABINI",
       "club": "Molde FK (NOR)",
-      "photoUrl": null,
+      "fullName": "KABINI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1680659.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1680659",
+      "fotmobId": "1680659",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8777,7 +13117,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SIBISI",
       "club": "Orlando Pirates FC (RSA)",
-      "photoUrl": null,
+      "fullName": "SIBISI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/716819.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/716819",
+      "fotmobId": "716819",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8785,7 +13129,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MUDAU",
       "club": "Mamelodi Sundowns FC (RSA)",
-      "photoUrl": null,
+      "fullName": "MUDAU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/940010.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/940010",
+      "fotmobId": "940010",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8793,7 +13141,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "OKON",
       "club": "Hannover 96 (GER)",
-      "photoUrl": null,
+      "fullName": "OKON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1600334.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1600334",
+      "fotmobId": "1600334",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8801,7 +13153,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "GOSS",
       "club": "Siwelele FC (RSA)",
-      "photoUrl": null,
+      "fullName": "GOSS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/428006.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/428006",
+      "fotmobId": "428006",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8809,7 +13165,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ADAMS",
       "club": "Mamelodi Sundowns FC (RSA)",
-      "photoUrl": null,
+      "fullName": "ADAMS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1178629.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1178629",
+      "fotmobId": "1178629",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8817,7 +13177,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MAKHANYA",
       "club": "Philadelphia Union (USA)",
-      "photoUrl": null,
+      "fullName": "MAKHANYA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1469826.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1469826",
+      "fotmobId": "1469826",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8825,7 +13189,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "SEBELEBELE",
       "club": "Orlando Pirates FC (RSA)",
-      "photoUrl": null,
+      "fullName": "SEBELEBELE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1451566.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1451566",
+      "fotmobId": "1451566",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     },
     {
@@ -8833,7 +13201,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "CROSS",
       "club": "Kaizer Chiefs FC (RSA)",
-      "photoUrl": null,
+      "fullName": "CROSS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1202481.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1202481",
+      "fotmobId": "1202481",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/south-africa/"
     }
   ],
@@ -8843,7 +13215,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "ZETTERSTRÖM",
       "club": "Derby County FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Jacob Mikael WIDELL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1014602.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1014602",
+      "fotmobId": "1014602",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8851,7 +13227,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "LAGERBIELKE",
       "club": "SC Braga (POR)",
-      "photoUrl": null,
+      "fullName": "LAGERBIELKE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/919848.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/919848",
+      "fotmobId": "919848",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8859,7 +13239,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "LINDELÖF",
       "club": "Aston Villa FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Victor Jörgen NILSSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/258269.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/258269",
+      "fotmobId": "258269",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8867,7 +13251,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "HIEN",
       "club": "Atalanta Bergamo (ITA)",
-      "photoUrl": null,
+      "fullName": "HIEN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/939780.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/939780",
+      "fotmobId": "939780",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8875,7 +13263,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "GUDMUNDSSON",
       "club": "Leeds United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "GUDMUNDSSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/744494.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/744494",
+      "fotmobId": "744494",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8883,7 +13275,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "H. JOHANSSON",
       "club": "FC Dallas (USA)",
-      "photoUrl": null,
+      "fullName": "Herman Nils JOHANSSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/946703.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/946703",
+      "fotmobId": "946703",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8891,7 +13287,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BERGVALL",
       "club": "Tottenham Hotspur FC (ENG)",
-      "photoUrl": null,
+      "fullName": "BERGVALL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1386775.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1386775",
+      "fotmobId": "1386775",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8899,7 +13299,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SVENSSON",
       "club": "Borussia Dortmund (GER)",
-      "photoUrl": null,
+      "fullName": "SVENSSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1209228.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1209228",
+      "fotmobId": "1209228",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8907,7 +13311,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ISAK",
       "club": "Liverpool FC (ENG)",
-      "photoUrl": null,
+      "fullName": "ISAK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/690107.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/690107",
+      "fotmobId": "690107",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8915,7 +13323,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "NYGREN",
       "club": "Celtic FC (SCO)",
-      "photoUrl": null,
+      "fullName": "NYGREN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/931605.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/931605",
+      "fotmobId": "931605",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8923,7 +13335,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ELANGA",
       "club": "Newcastle United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "ELANGA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1050166.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1050166",
+      "fotmobId": "1050166",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8931,7 +13347,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "V. JOHANSSON",
       "club": "Stoke City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Viktor Tobias Viktor JOHANSSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/546252.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/546252",
+      "fotmobId": "546252",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8939,7 +13359,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SEMA",
       "club": "Pafos FC (CYP)",
-      "photoUrl": null,
+      "fullName": "SEMA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/520670.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/520670",
+      "fotmobId": "520670",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8947,7 +13371,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "EKDAL",
       "club": "Burnley FC (ENG)",
-      "photoUrl": null,
+      "fullName": "EKDAL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/831044.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/831044",
+      "fotmobId": "831044",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8955,7 +13383,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "STARFELT",
       "club": "RC Celta Vigo (ESP)",
-      "photoUrl": null,
+      "fullName": "STARFELT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/497662.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/497662",
+      "fotmobId": "497662",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8963,7 +13395,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KARLSTRÖM",
       "club": "Udinese (ITA)",
-      "photoUrl": null,
+      "fullName": "KARLSTROM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/322003.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/322003",
+      "fotmobId": "322003",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8971,7 +13407,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "GYÖKERES",
       "club": "Arsenal FC (ENG)",
-      "photoUrl": null,
+      "fullName": "GYOKERES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/664500.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/664500",
+      "fotmobId": "664500",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8979,7 +13419,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "AYARI",
       "club": "Brighton & Hove Albion FC (ENG)",
-      "photoUrl": null,
+      "fullName": "AYARI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1168311.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1168311",
+      "fotmobId": "1168311",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8987,7 +13431,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SVANBERG",
       "club": "VfL Wolfsburg (GER)",
-      "photoUrl": null,
+      "fullName": "SVANBERG",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/647900.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/647900",
+      "fotmobId": "647900",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -8995,7 +13443,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SMITH",
       "club": "FC St. Pauli (GER)",
-      "photoUrl": null,
+      "fullName": "SMITH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/160447.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/160447",
+      "fotmobId": "160447",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -9003,7 +13455,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BERNHARDSSON",
       "club": "Holstein Kiel (GER)",
-      "photoUrl": null,
+      "fullName": "BERNHARDSSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1014688.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1014688",
+      "fotmobId": "1014688",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -9011,7 +13467,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ZENELI",
       "club": "Royale Union Saint-Gilloise (BEL)",
-      "photoUrl": null,
+      "fullName": "ZENELI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1338361.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1338361",
+      "fotmobId": "1338361",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -9019,7 +13479,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "NORDFELDT",
       "club": "AIK Stockholm (SWE)",
-      "photoUrl": null,
+      "fullName": "NORDFELDT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/73462.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/73462",
+      "fotmobId": "73462",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -9027,7 +13491,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "STROUD",
       "club": "Mjällby AIF (SWE)",
-      "photoUrl": null,
+      "fullName": "STROUD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1272349.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1272349",
+      "fotmobId": "1272349",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -9035,7 +13503,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "NILSSON",
       "club": "Club Brugge (BEL)",
-      "photoUrl": null,
+      "fullName": "NILSSON",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/118241.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/118241",
+      "fotmobId": "118241",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     },
     {
@@ -9043,7 +13515,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ALI",
       "club": "Malmö FF (SWE)",
-      "photoUrl": null,
+      "fullName": "ALI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/319784.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/319784",
+      "fotmobId": "319784",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/sweden/"
     }
   ],
@@ -9053,7 +13529,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "KOBEL",
       "club": "Borussia Dortmund (GER)",
-      "photoUrl": null,
+      "fullName": "KOBEL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/764018.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/764018",
+      "fotmobId": "764018",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9061,7 +13541,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MUHEIM",
       "club": "Hamburger SV (GER)",
-      "photoUrl": null,
+      "fullName": "MUHEIM",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/759817.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/759817",
+      "fotmobId": "759817",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9069,7 +13553,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "WIDMER",
       "club": "1. FSV Mainz 05 (GER)",
-      "photoUrl": null,
+      "fullName": "WIDMER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/275034.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/275034",
+      "fotmobId": "275034",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9077,7 +13565,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ELVEDI",
       "club": "Borussia Mönchengladbach (GER)",
-      "photoUrl": null,
+      "fullName": "ELVEDI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/517346.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/517346",
+      "fotmobId": "517346",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9085,7 +13577,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "AKANJI",
       "club": "FC Internazionale Milano (ITA)",
-      "photoUrl": null,
+      "fullName": "AKANJI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/521318.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/521318",
+      "fotmobId": "521318",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9093,7 +13589,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ZAKARIA",
       "club": "AS Monaco (FRA)",
-      "photoUrl": null,
+      "fullName": "Denis Lemi ZAKARIA LAKO LADO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/598355.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/598355",
+      "fotmobId": "598355",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9101,7 +13601,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "EMBOLO",
       "club": "Stade Rennais FC (FRA)",
-      "photoUrl": null,
+      "fullName": "EMBOLO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/527103.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/527103",
+      "fotmobId": "527103",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9109,7 +13613,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "FREULER",
       "club": "Bologna FC (ITA)",
-      "photoUrl": null,
+      "fullName": "FREULER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/201704.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/201704",
+      "fotmobId": "201704",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9117,7 +13625,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MANZAMBI",
       "club": "SC Freiburg (GER)",
-      "photoUrl": null,
+      "fullName": "MANZAMBI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1520063.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1520063",
+      "fotmobId": "1520063",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9125,7 +13637,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "XHAKA",
       "club": "Sunderland AFC (ENG)",
-      "photoUrl": null,
+      "fullName": "XHAKA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/207236.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/207236",
+      "fotmobId": "207236",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9133,7 +13649,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "NDOYE",
       "club": "Nottingham Forest FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Dan NDOYE",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1022649.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1022649",
+      "fotmobId": "1022649",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9141,7 +13661,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "MVOGO",
       "club": "FC Lorient (FRA)",
-      "photoUrl": null,
+      "fullName": "Yvon Landry MVOGO NGANOMA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/274787.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/274787",
+      "fotmobId": "274787",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9149,7 +13673,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "RODRÍGUEZ",
       "club": "Real Betis (ESP)",
-      "photoUrl": null,
+      "fullName": "Ricardo Ivan RODRIGUEZ ARAYA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/115591.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/115591",
+      "fotmobId": "115591",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9157,7 +13685,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "JASHARI",
       "club": "AC Milan (ITA)",
-      "photoUrl": null,
+      "fullName": "JASHARI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1163219.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1163219",
+      "fotmobId": "1163219",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9165,7 +13697,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SOW",
       "club": "Sevilla FC (ESP)",
-      "photoUrl": null,
+      "fullName": "SOW",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/707970.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/707970",
+      "fotmobId": "707970",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9173,7 +13709,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "FASSNACHT",
       "club": "BSC Young Boys (SUI)",
-      "photoUrl": null,
+      "fullName": "FASSNACHT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/618774.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/618774",
+      "fotmobId": "618774",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9181,7 +13721,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "VARGAS",
       "club": "Sevilla FC (ESP)",
-      "photoUrl": null,
+      "fullName": "Ruben Estephan VARGAS MARITNEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/860752.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/860752",
+      "fotmobId": "860752",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9189,7 +13733,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "COMERT",
       "club": "Valencia CF (ESP)",
-      "photoUrl": null,
+      "fullName": "COEMERT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/705484.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/705484",
+      "fotmobId": "705484",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9197,7 +13745,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "OKAFOR",
       "club": "Leeds United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "OKAFOR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/915797.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/915797",
+      "fotmobId": "915797",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9205,7 +13757,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "AEBISCHER",
       "club": "Pisa SC (ITA)",
-      "photoUrl": null,
+      "fullName": "AEBISCHER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/792756.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/792756",
+      "fotmobId": "792756",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9213,7 +13769,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "KELLER",
       "club": "BSC Young Boys (SUI)",
-      "photoUrl": null,
+      "fullName": "KELLER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1107298.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1107298",
+      "fotmobId": "1107298",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9221,7 +13781,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "RIEDER",
       "club": "FC Augsburg (GER)",
-      "photoUrl": null,
+      "fullName": "RIEDER",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1161211.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1161211",
+      "fotmobId": "1161211",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9229,7 +13793,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AMDOUNI",
       "club": "Burnley FC (ENG)",
-      "photoUrl": null,
+      "fullName": "AMDOUNI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1067168.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1067168",
+      "fotmobId": "1067168",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9237,7 +13805,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "AMENDA",
       "club": "Eintracht Frankfurt (GER)",
-      "photoUrl": null,
+      "fullName": "AMENDA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1257648.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1257648",
+      "fotmobId": "1257648",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9245,7 +13817,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "JAQUEZ",
       "club": "VfB Stuttgart (GER)",
-      "photoUrl": null,
+      "fullName": "JAQUEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1270002.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1270002",
+      "fotmobId": "1270002",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     },
     {
@@ -9253,7 +13829,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ITTEN",
       "club": "Fortuna Düsseldorf (GER)",
-      "photoUrl": null,
+      "fullName": "ITTEN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/726956.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/726956",
+      "fotmobId": "726956",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/switzerland/"
     }
   ],
@@ -9263,7 +13843,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "CHAMAKH",
       "club": "Club Africain (TUN)",
-      "photoUrl": null,
+      "fullName": "CHAMAKH",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1718458.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1718458",
+      "fotmobId": "1718458",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9271,7 +13855,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ABDI",
       "club": "OGC Nice (FRA)",
-      "photoUrl": null,
+      "fullName": "Ali ELABDI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/566187.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/566187",
+      "fotmobId": "566187",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9279,7 +13867,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "TALBI",
       "club": "FC Lorient (FRA)",
-      "photoUrl": null,
+      "fullName": "TALBI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/846392.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/846392",
+      "fotmobId": "846392",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9287,7 +13879,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "REKIK",
       "club": "NK Maribor (SVN)",
-      "photoUrl": null,
+      "fullName": "REKIK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1160097.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1160097",
+      "fotmobId": "1160097",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9295,7 +13891,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "AROUS",
       "club": "Kasımpa ş a SK (TUR)",
-      "photoUrl": null,
+      "fullName": "AROUS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1797902.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1797902",
+      "fotmobId": "1797902",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9303,7 +13903,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BRONN",
       "club": "Servette FC (SUI)",
-      "photoUrl": null,
+      "fullName": "BRONN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/771686.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/771686",
+      "fotmobId": "771686",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9311,7 +13915,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ACHOURI",
       "club": "FC København (DEN)",
-      "photoUrl": null,
+      "fullName": "ACHOURI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1015128.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1015128",
+      "fotmobId": "1015128",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9319,7 +13927,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "SAAD",
       "club": "Hannover 96 (GER)",
-      "photoUrl": null,
+      "fullName": "SAAD",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1221925.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1221925",
+      "fotmobId": "1221925",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9327,7 +13939,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "MASTOURI",
       "club": "FC Dynamo Makhachkala (RUS)",
-      "photoUrl": null,
+      "fullName": "MASTOURI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1311408.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1311408",
+      "fotmobId": "1311408",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9335,7 +13951,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MEJBRI",
       "club": "Burnley FC (ENG)",
-      "photoUrl": null,
+      "fullName": "MEJBRI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1113785.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1113785",
+      "fotmobId": "1113785",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9343,7 +13963,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "GHARBI",
       "club": "FC Augsburg (GER)",
-      "photoUrl": null,
+      "fullName": "GHARBI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1244924.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1244924",
+      "fotmobId": "1244924",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9351,7 +13975,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BEN OUANES",
       "club": "Kasımpa ş a SK (TUR)",
-      "photoUrl": null,
+      "fullName": "Mortadha Ahmed Mortadha BEN OUANESBEN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/712132.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/712132",
+      "fotmobId": "712132",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9359,7 +13987,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KHEDIRA",
       "club": "1. FC Union Berlin (GER)",
-      "photoUrl": null,
+      "fullName": "KHEDIRA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/304348.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/304348",
+      "fotmobId": "304348",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9367,7 +13999,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "AYARI",
       "club": "Paris Saint-Germain (FRA)",
-      "photoUrl": null,
+      "fullName": "AYARI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1715492.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1715492",
+      "fotmobId": "1715492",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9375,7 +14011,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "BELHADJ MAHMOUD",
       "club": "FC Lugano (SUI)",
-      "photoUrl": null,
+      "fullName": "Mohamed BELHADJ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1301434.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1301434",
+      "fotmobId": "1301434",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9383,7 +14023,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "DAHMEN",
       "club": "CS Sfaxien (TUN)",
-      "photoUrl": null,
+      "fullName": "DAHMEN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/982855.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/982855",
+      "fotmobId": "982855",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9391,7 +14035,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SKHIRI",
       "club": "Eintracht Frankfurt (GER)",
-      "photoUrl": null,
+      "fullName": "SKHIRI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/574642.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/574642",
+      "fotmobId": "574642",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9399,7 +14047,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ELLOUMI",
       "club": "Vancouver Whitecaps FC (CAN)",
-      "photoUrl": null,
+      "fullName": "ELLOUMI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1685596.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1685596",
+      "fotmobId": "1685596",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9407,7 +14059,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "CHAOUAT",
       "club": "Club Africain (TUN)",
-      "photoUrl": null,
+      "fullName": "CHAOUAT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/845336.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/845336",
+      "fotmobId": "845336",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9415,7 +14071,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "VALERY",
       "club": "BSC Young Boys (SUI)",
-      "photoUrl": null,
+      "fullName": "VALERY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/789596.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/789596",
+      "fotmobId": "789596",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9423,7 +14083,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "BEN HMIDA",
       "club": "Espérance De Tunisie (TUN)",
-      "photoUrl": null,
+      "fullName": "Mohamed Amine Mohamed Amine BEN HMIDABEN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1610092.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1610092",
+      "fotmobId": "1610092",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9431,7 +14095,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "BEN HSAN",
       "club": "Étoile Du Sahel (TUN)",
-      "photoUrl": null,
+      "fullName": "Sabri BEN HSANBEN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/543363.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/543363",
+      "fotmobId": "543363",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9439,7 +14107,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "NEFFATI",
       "club": "IFK Norrköping FK (SWE)",
-      "photoUrl": null,
+      "fullName": "NEFFATI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1413151.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1413151",
+      "fotmobId": "1413151",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9447,7 +14119,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "CHIKHAOUI",
       "club": "US Monastir (TUN)",
-      "photoUrl": null,
+      "fullName": "CHIKHAOUI",
+      "photoUrl": "https://www.thesportsdb.com/images/media/player/render/izgk0j1779187437.png",
+      "photoSource": "TheSportsDB",
+      "photoSourceUrl": "https://www.thesportsdb.com/player/34435784-raed-chikhaoui",
+      "fotmobId": null,
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9455,7 +14131,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SLIMANE",
       "club": "Norwich City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Anis BEN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1055316.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1055316",
+      "fotmobId": "1055316",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     },
     {
@@ -9463,7 +14143,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "TOUNEKTI",
       "club": "Celtic FC (SCO)",
-      "photoUrl": null,
+      "fullName": "TOUNEKTI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/921919.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/921919",
+      "fotmobId": "921919",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/tunisia/"
     }
   ],
@@ -9473,7 +14157,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "MERT",
       "club": "Fenerbahçe SK (TUR)",
-      "photoUrl": null,
+      "fullName": "Mert Fehmi Mert GÜNOK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/904098.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/904098",
+      "fotmobId": "904098",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9481,7 +14169,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ZEKI ÇELIK",
       "club": "AS Roma (ITA)",
-      "photoUrl": null,
+      "fullName": "CELIK",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/867225.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/867225",
+      "fotmobId": "867225",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9489,7 +14181,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "DEMIRAL",
       "club": "Al Ahli FC (KSA)",
-      "photoUrl": null,
+      "fullName": "DEMIRAL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/823078.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/823078",
+      "fotmobId": "823078",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9497,7 +14193,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ÇAĞLAR",
       "club": "Fenerbahçe SK (TUR)",
-      "photoUrl": null,
+      "fullName": "CaglarÇa ğ lar",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/602261.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/602261",
+      "fotmobId": "602261",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9505,15 +14205,23 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "OZCAN",
       "club": "Borussia Dortmund (GER)",
-      "photoUrl": null,
+      "fullName": "OZCAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/738064.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/738064",
+      "fotmobId": "738064",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
       "number": 6,
       "position": "MF",
       "name": "ORKUN KÖKÇÜ",
-      "club": "Be ş ikta ş  JK (TUR)",
-      "photoUrl": null,
+      "club": "Be ş ikta ş JK (TUR)",
+      "fullName": "Orkun KÖKÇÜ ORKUN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/935409.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/935409",
+      "fotmobId": "935409",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9521,7 +14229,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AKTÜRKOĞLU",
       "club": "Fenerbahçe SK (TUR)",
-      "photoUrl": null,
+      "fullName": "AKTURKOGLU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1117570.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1117570",
+      "fotmobId": "1117570",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9529,7 +14241,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "ARDA GÜLER",
       "club": "Real Madrid C. F. (ESP)",
-      "photoUrl": null,
+      "fullName": "Arda GÜLER ARDA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1253890.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1253890",
+      "fotmobId": "1253890",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9537,7 +14253,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "DENIZ GÜL",
       "club": "FC Porto (POR)",
-      "photoUrl": null,
+      "fullName": "GUL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1406300.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1406300",
+      "fotmobId": "1406300",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9545,7 +14265,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ÇALHANOĞLU",
       "club": "FC Internazionale Milano (ITA)",
-      "photoUrl": null,
+      "fullName": "CALHANOGLU",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/304733.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/304733",
+      "fotmobId": "304733",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9553,7 +14277,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "YILDIZ",
       "club": "Juventus FC (ITA)",
-      "photoUrl": null,
+      "fullName": "YILDIZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1412132.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1412132",
+      "fotmobId": "1412132",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9561,7 +14289,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "ALTAY",
       "club": "Manchester United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Altay BAYINDIR",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/866967.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/866967",
+      "fotmobId": "866967",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9569,7 +14301,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "EREN ELMALI",
       "club": "Galatasaray SK (TUR)",
-      "photoUrl": null,
+      "fullName": "Eren Evren Eren ELMALI EREN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1041660.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1041660",
+      "fotmobId": "1041660",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9577,7 +14313,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ABDÜLKERIM",
       "club": "Galatasaray SK (TUR)",
-      "photoUrl": null,
+      "fullName": "Abdulkerim Abdülker İ m BARDAKCI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/291399.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/291399",
+      "fotmobId": "291399",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9585,7 +14325,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "OZAN KABAK",
       "club": "TSG Hoffenheim (GER)",
-      "photoUrl": null,
+      "fullName": "Ozan Muhammed KABAK OZAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/845990.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/845990",
+      "fotmobId": "845990",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9593,7 +14337,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ISMAIL",
       "club": "Fenerbahçe SK (TUR)",
-      "photoUrl": null,
+      "fullName": "Ismailİ sma İ l",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1183589.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1183589",
+      "fotmobId": "1183589",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9601,7 +14349,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "KAHVECI",
       "club": "Kasımpa ş a SK (TUR)",
-      "photoUrl": null,
+      "fullName": "Irfan Can İ rfan",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/316544.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/316544",
+      "fotmobId": "316544",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9609,7 +14361,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "MERT MULDUR",
       "club": "Fenerbahçe SK (TUR)",
-      "photoUrl": null,
+      "fullName": "Mert MÜLDÜR MERT",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/904098.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/904098",
+      "fotmobId": "904098",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9617,7 +14373,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "YUNUS",
       "club": "Galatasaray SK (TUR)",
-      "photoUrl": null,
+      "fullName": "Yunus AKGÜN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/845991.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/845991",
+      "fotmobId": "845991",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9625,7 +14385,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "F. KADIOĞLU",
       "club": "Brighton & Hove Albion FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Ferdi Erenay KADIOĞ LU F.",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/774448.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/774448",
+      "fotmobId": "774448",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9633,7 +14397,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "BARIŞ",
       "club": "Galatasaray SK (TUR)",
-      "photoUrl": null,
+      "fullName": "Baris Alper Barı ş Alper YILMAZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/890232.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/890232",
+      "fotmobId": "890232",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9641,7 +14409,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KAAN",
       "club": "Galatasaray SK (TUR)",
-      "photoUrl": null,
+      "fullName": "Kaan AYHAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/441164.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/441164",
+      "fotmobId": "441164",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9649,7 +14421,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "UGURCAN",
       "club": "Galatasaray SK (TUR)",
-      "photoUrl": null,
+      "fullName": "Ugurcan Uğ urcan ÇAKIRUĞ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/603669.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/603669",
+      "fotmobId": "603669",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9657,7 +14433,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "OGUZ",
       "club": "Fenerbahçe SK (TUR)",
-      "photoUrl": null,
+      "fullName": "Oguz Oğ uz",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1092015.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1092015",
+      "fotmobId": "1092015",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9665,7 +14445,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SAMET AKAYDIN",
       "club": "Çaykur Rizespor (TUR)",
-      "photoUrl": null,
+      "fullName": "Samet AKAYDIN SAMET",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/424380.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/424380",
+      "fotmobId": "424380",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     },
     {
@@ -9673,7 +14457,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "CAN UZUN",
       "club": "Eintracht Frankfurt (GER)",
-      "photoUrl": null,
+      "fullName": "Can Yılmaz UZUNCAN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1367924.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1367924",
+      "fotmobId": "1367924",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/turkey/"
     }
   ],
@@ -9683,7 +14471,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "S. ROCHET",
       "club": "SC Internacional (BRA)",
-      "photoUrl": null,
+      "fullName": "Sergio Ramón ROCHET ALVAREZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/553476.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/553476",
+      "fotmobId": "553476",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9691,7 +14483,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "J.M. GIMÉNEZ",
       "club": "Atlético De Madrid (ESP)",
-      "photoUrl": null,
+      "fullName": "Jose Maria José María GIMÉNEZ DE VARGAS J.M.",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/474589.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/474589",
+      "fotmobId": "474589",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9699,7 +14495,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "S. CÁCERES",
       "club": "Club América (MEX)",
-      "photoUrl": null,
+      "fullName": "Sebastian Enzo CÁCERES RAMOS",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1020026.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1020026",
+      "fotmobId": "1020026",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9707,7 +14507,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "R. ARAUJO",
       "club": "FC Barcelona (ESP)",
-      "photoUrl": null,
+      "fullName": "Ronald Federico ARAÚJO DA SILVA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/921253.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/921253",
+      "fotmobId": "921253",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9715,7 +14519,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "M. UGARTE",
       "club": "Manchester United FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Manuel UGARTE RIBEIRO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1035614.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1035614",
+      "fotmobId": "1035614",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9723,7 +14531,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "R. BENTANCUR",
       "club": "Tottenham Hotspur FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Rodrigo BENTANCUR COLMÁN",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/620618.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/620618",
+      "fotmobId": "620618",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9731,7 +14543,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "N. DE LA CRUZ",
       "club": "CR Flamengo (BRA)",
-      "photoUrl": null,
+      "fullName": "Nicolas Diego Nicolás DE LA CRUZ ARCOSA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/751198.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/751198",
+      "fotmobId": "751198",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9739,7 +14555,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "F. VALVERDE",
       "club": "Real Madrid C. F. (ESP)",
-      "photoUrl": null,
+      "fullName": "Federico Santiago VALVERDE DIPETTA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/743533.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/743533",
+      "fotmobId": "743533",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9747,7 +14567,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "D. NÚÑEZ",
       "club": "Al Hilal SC (KSA)",
-      "photoUrl": null,
+      "fullName": "Darwin Gabriel NUÑEZ RIBEIRO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/950561.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/950561",
+      "fotmobId": "950561",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9755,7 +14579,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "G. DE ARRASCAETA",
       "club": "CR Flamengo (BRA)",
-      "photoUrl": null,
+      "fullName": "Giorgian Daniel DE ARRASCAETA BENEDETTI",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/438647.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/438647",
+      "fotmobId": "438647",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9763,7 +14591,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "F. PELLISTRI",
       "club": "Panathinaikos FC (GRE)",
-      "photoUrl": null,
+      "fullName": "Facundo PELLISTRI REBOLLO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1073402.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1073402",
+      "fotmobId": "1073402",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9771,7 +14603,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "S. MELE",
       "club": "CF Monterrey (MEX)",
-      "photoUrl": null,
+      "fullName": "Santiago Andres MELE CASTAÑERO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/848027.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/848027",
+      "fotmobId": "848027",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9779,7 +14615,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "G. VARELA",
       "club": "CR Flamengo (BRA)",
-      "photoUrl": null,
+      "fullName": "Guillermo VARELA OLIVERA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/465614.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/465614",
+      "fotmobId": "465614",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9787,7 +14627,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "A. CANOBBIO",
       "club": "Fluminense FC (BRA)",
-      "photoUrl": null,
+      "fullName": "Agustin CANOBBIO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/840212.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/840212",
+      "fotmobId": "840212",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9795,7 +14639,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "E. MARTÍNEZ",
       "club": "SE Palmeiras (BRA)",
-      "photoUrl": null,
+      "fullName": "Emiliano MARTÍNEZ TORANZA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/268375.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/268375",
+      "fotmobId": "268375",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9803,7 +14651,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "M. OLIVERA",
       "club": "SSC Napoli (ITA)",
-      "photoUrl": null,
+      "fullName": "Mathias OLIVERA MIRAMONTES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/729093.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/729093",
+      "fotmobId": "729093",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9811,7 +14663,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "M. VIÑA",
       "club": "CA River Plate (ARG)",
-      "photoUrl": null,
+      "fullName": "Matias Nicolas VIÑA SUSPERREGUY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/840184.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/840184",
+      "fotmobId": "840184",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9819,7 +14675,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "B. RODRÍGUEZ",
       "club": "Club América (MEX)",
-      "photoUrl": null,
+      "fullName": "Brian Paul Brian RODRÍGUEZ BRAVO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/115591.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/115591",
+      "fotmobId": "115591",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9827,7 +14687,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "R. AGUIRRE",
       "club": "Tigres UANL (MEX)",
-      "photoUrl": null,
+      "fullName": "Rodrigo Sebastian AGUIRRE SOTO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/401095.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/401095",
+      "fotmobId": "401095",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9835,7 +14699,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "M. ARAUJO",
       "club": "Sporting CP (POR)",
-      "photoUrl": null,
+      "fullName": "Maximiliano Javier ARAÚJO VILCHES",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1031656.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1031656",
+      "fotmobId": "1031656",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9843,7 +14711,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "F. VIÑAS",
       "club": "Real Oviedo (ESP)",
-      "photoUrl": null,
+      "fullName": "Federico Sebastian VIÑAS BARBOZA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1032811.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1032811",
+      "fotmobId": "1032811",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9851,7 +14723,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "J. PIQUEREZ",
       "club": "SE Palmeiras (BRA)",
-      "photoUrl": null,
+      "fullName": "Joaquin PIQUEREZ MOREIRA",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/861661.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/861661",
+      "fotmobId": "861661",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9859,7 +14735,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "F. MUSLERA",
       "club": "Estudiantes LP (ARG)",
-      "photoUrl": null,
+      "fullName": "Fernando Nestor Fernando MUSLERA MICOL",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/56829.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/56829",
+      "fotmobId": "56829",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9867,7 +14747,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "S. BUENO",
       "club": "Wolverhampton Wanderers FC (ENG)",
-      "photoUrl": null,
+      "fullName": "Santiago Ignacio BUENO SCIUTTO",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/848034.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/848034",
+      "fotmobId": "848034",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9875,7 +14759,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "J.M. SANABRIA",
       "club": "Real Salt Lake (USA)",
-      "photoUrl": null,
+      "fullName": "Juan Manuel Juan Manuel SANABRIA MAGOLÉ J.",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1053963.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1053963",
+      "fotmobId": "1053963",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     },
     {
@@ -9883,7 +14771,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "R. ZALAZAR",
       "club": "SC Braga (POR)",
-      "photoUrl": null,
+      "fullName": "Rodrigo Radrigo ZALAZAR MARTINEZ",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1070776.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1070776",
+      "fotmobId": "1070776",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uruguay/"
     }
   ],
@@ -9893,7 +14785,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "YUSUPOV",
       "club": "PFC Navbahor Namangan (UZB)",
-      "photoUrl": null,
+      "fullName": "YUSUPOV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/619700.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/619700",
+      "fotmobId": "619700",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -9901,7 +14797,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "KHUSANOV",
       "club": "Manchester City FC (ENG)",
-      "photoUrl": null,
+      "fullName": "KHUSANOV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1362998.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1362998",
+      "fotmobId": "1362998",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -9909,7 +14809,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ALIJONOV",
       "club": "Pakhtakor Tashkent FK (UZB)",
-      "photoUrl": null,
+      "fullName": "ALIJONOV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1612134.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1612134",
+      "fotmobId": "1612134",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -9917,7 +14821,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "SAYFIEV",
       "club": "FK Neftchi Farg'ona (UZB)",
-      "photoUrl": null,
+      "fullName": "SAYFIEV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/589585.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/589585",
+      "fotmobId": "589585",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -9925,7 +14833,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ASHURMATOV",
       "club": "Esteghlal Tehran FC (IRN)",
-      "photoUrl": null,
+      "fullName": "ASHURMATOV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/643624.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/643624",
+      "fotmobId": "643624",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -9933,7 +14845,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MOZGOVOY",
       "club": "Pakhtakor Tashkent FK (UZB)",
-      "photoUrl": null,
+      "fullName": "MOZGOVOY",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/929168.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/929168",
+      "fotmobId": "929168",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -9941,7 +14857,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "SHUKUROV",
       "club": "Baniyas Club (UAE)",
-      "photoUrl": null,
+      "fullName": "SHUKUROV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/624405.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/624405",
+      "fotmobId": "624405",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -9949,7 +14869,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ISKANDEROV",
       "club": "FK Neftchi Farg'ona (UZB)",
-      "photoUrl": null,
+      "fullName": "ISKANDEROV",
+      "photoUrl": "https://img.a.transfermarkt.technology/portrait/header/260857-1745331701.png?lm=1",
+      "photoSource": "Transfermarkt",
+      "photoSourceUrl": "https://www.transfermarkt.com/jamshid-iskanderov/profil/spieler/260857",
+      "fotmobId": null,
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -9957,7 +14881,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "XAMROBEKOV",
       "club": "Tractor Sazi Tabriz FC (IRN)",
-      "photoUrl": null,
+      "fullName": "XAMROBEKOV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/619697.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/619697",
+      "fotmobId": "619697",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -9965,7 +14893,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "MASHARIPOV",
       "club": "Esteghlal Tehran FC (IRN)",
-      "photoUrl": null,
+      "fullName": "MASHARIPOV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/533382.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/533382",
+      "fotmobId": "533382",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -9973,7 +14905,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "URUNOV",
       "club": "Persepolis FC (IRN)",
-      "photoUrl": null,
+      "fullName": "URUNOV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1057486.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1057486",
+      "fotmobId": "1057486",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -9981,7 +14917,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "NEMATOV",
       "club": "Nasaf Qarshi FC (UZB)",
-      "photoUrl": null,
+      "fullName": "NEMATOV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1259187.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1259187",
+      "fotmobId": "1259187",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -9989,7 +14929,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "NASRULLAEV",
       "club": "Pakhtakor Tashkent FK (UZB)",
-      "photoUrl": null,
+      "fullName": "NASRULLAEV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1258316.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1258316",
+      "fotmobId": "1258316",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -9997,7 +14941,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "SHOMURODOV",
       "club": "Ba ş ak ş ehir FK (TUR)",
-      "photoUrl": null,
+      "fullName": "SHOMURODOV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/619513.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/619513",
+      "fotmobId": "619513",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -10005,7 +14953,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ESHMURODOV",
       "club": "Nasaf Qarshi FC (UZB)",
-      "photoUrl": null,
+      "fullName": "ESHMURODOV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/922298.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/922298",
+      "fotmobId": "922298",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -10013,7 +14965,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "GK",
       "name": "ERGASHEV",
       "club": "FK Neftchi Farg'ona (UZB)",
-      "photoUrl": null,
+      "fullName": "ERGASHEV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/643639.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/643639",
+      "fotmobId": "643639",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -10021,7 +14977,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "KHAMDAMOV",
       "club": "Pakhtakor Tashkent FK (UZB)",
-      "photoUrl": null,
+      "fullName": "KHAMDAMOV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/619508.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/619508",
+      "fotmobId": "619508",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -10029,7 +14989,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ABDULLAEV",
       "club": "Dibba FC (UAE)",
-      "photoUrl": null,
+      "fullName": "ABDULLAEV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1294120.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1294120",
+      "fotmobId": "1294120",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -10037,7 +15001,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "GANIEV",
       "club": "Al Bataeh Club (UAE)",
-      "photoUrl": null,
+      "fullName": "GANIEV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/629823.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/629823",
+      "fotmobId": "629823",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -10045,7 +15013,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "AMONOV",
       "club": "FK Dinamo Samarkand (UZB)",
-      "photoUrl": null,
+      "fullName": "AMONOV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/933051.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/933051",
+      "fotmobId": "933051",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -10053,7 +15025,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "FW",
       "name": "SERGEEV",
       "club": "Persepolis FC (IRN)",
-      "photoUrl": null,
+      "fullName": "SERGEEV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/251915.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/251915",
+      "fotmobId": "251915",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -10061,7 +15037,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "FAYZULLAEV",
       "club": "Ba ş ak ş ehir FK (TUR)",
-      "photoUrl": null,
+      "fullName": "FAYZULLAEV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1249993.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1249993",
+      "fotmobId": "1249993",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -10069,7 +15049,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "MF",
       "name": "ESANOV",
       "club": "FK Buxoro (UZB)",
-      "photoUrl": null,
+      "fullName": "ESANOV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1477517.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1477517",
+      "fotmobId": "1477517",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -10077,7 +15061,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "KARIMOV",
       "club": "Surkhon FK (UZB)",
-      "photoUrl": null,
+      "fullName": "KARIMOV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1898281.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1898281",
+      "fotmobId": "1898281",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -10085,7 +15073,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "ULMASALIYEV",
       "club": "OKMK FK (UZB)",
-      "photoUrl": null,
+      "fullName": "ULMASALIYEV",
+      "photoUrl": "https://img.a.transfermarkt.technology/portrait/header/538764-1726298244.png?lm=1",
+      "photoSource": "Transfermarkt",
+      "photoSourceUrl": "https://www.transfermarkt.com/avazbek-ulmasaliev/profil/spieler/538764",
+      "fotmobId": null,
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     },
     {
@@ -10093,7 +15085,11 @@ export const MUNDIAL_TEAM_ROSTERS: Record<string, MundialRosterPlayer[]> = {
       "position": "DF",
       "name": "UROZOV",
       "club": "FK Dinamo Samarkand (UZB)",
-      "photoUrl": null,
+      "fullName": "UROZOV",
+      "photoUrl": "https://images.fotmob.com/image_resources/playerimages/1477513.png",
+      "photoSource": "FotMob",
+      "photoSourceUrl": "https://www.fotmob.com/players/1477513",
+      "fotmobId": "1477513",
       "sourceUrl": "https://worldcupranking.com/world-cup-2026/squads/uzbekistan/"
     }
   ]
