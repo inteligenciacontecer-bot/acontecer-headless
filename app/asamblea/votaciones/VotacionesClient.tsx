@@ -302,6 +302,22 @@ function MapaModal({ votacionId, onClose }: { votacionId: number; onClose: () =>
                 {data.votacion.resultado}
               </span>
             )}
+            <a
+              href={`/asamblea/votaciones/${votacionId}/imagen`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: '#0000A2',
+                color: 'white',
+                padding: '5px 12px',
+                borderRadius: 20,
+                fontSize: 11,
+                fontWeight: 800,
+                textDecoration: 'none',
+              }}
+            >
+              Imagen 1000×1000
+            </a>
           </div>
         )}
 
@@ -461,6 +477,24 @@ export default function VotacionesClient({ votaciones }: { votaciones: any[] }) 
                   }}>
                     Ver mapa
                   </span>
+                  <a
+                    href={`/asamblea/votaciones/${v.id}/imagen`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      fontSize: 10,
+                      color: '#fff',
+                      background: '#0000A2',
+                      padding: '2px 7px',
+                      borderRadius: 6,
+                      whiteSpace: 'nowrap',
+                      textDecoration: 'none',
+                      fontWeight: 800,
+                    }}
+                    onClick={e => e.stopPropagation()}
+                  >
+                    Imagen
+                  </a>
                 </div>
               </div>
 
