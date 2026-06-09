@@ -34,8 +34,8 @@ export async function generateMetadata({ params }: { params: Promise<{ numero: s
     title: titulo,
     description: desc,
     alternates: { canonical: url },
-    openGraph: { type: 'article', url, title: `Expediente ${numero} — ${t.slice(0, 70)}`, description: desc, siteName: 'Acontecer.co.cr' },
-    twitter: { card: 'summary_large_image', title: `Expediente ${numero}`, description: desc },
+    openGraph: { type: 'article', url, title: `Expediente ${numero} — ${t.slice(0, 70)}`, description: desc, siteName: 'Acontecer.co.cr', images: [{ url: 'https://acontecer.co.cr/asamblea/opengraph-image', width: 1200, height: 630, alt: 'Monitor Legislativo — Acontecer.co.cr' }] },
+    twitter: { card: 'summary_large_image', title: `Expediente ${numero}`, description: desc, images: ['https://acontecer.co.cr/asamblea/opengraph-image'] },
   };
 }
 
@@ -87,11 +87,23 @@ export default async function ExpedientePage({ params }: { params: Promise<{ num
       <div style={{ background: '#f1f5f9', minHeight: '50vh' }}>
         <div style={{ maxWidth: 880, margin: '0 auto', padding: '20px 16px 56px', display: 'flex', flexDirection: 'column', gap: 14 }}>
 
+          {/* Imagen destacada genérica del Monitor (temporal) */}
+          <img src="/asamblea/opengraph-image" alt="Monitor Legislativo — Acontecer.co.cr"
+            style={{ width: '100%', height: 'auto', aspectRatio: '1200 / 630', objectFit: 'cover', borderRadius: 16, boxShadow: '0 4px 18px rgba(0,0,0,0.10)', display: 'block', marginTop: -42, position: 'relative', zIndex: 2, border: '3px solid #fff' }} />
+
           {e.explicacion && (
-            <section style={{ background: 'white', borderRadius: 14, boxShadow: '0 2px 14px rgba(0,0,0,0.06)', padding: '18px', borderLeft: '4px solid #0a73ce' }}>
-              <h2 style={{ fontFamily: 'var(--font-Lora), serif', fontSize: 15, fontWeight: 800, color: '#0f172a', margin: '0 0 8px' }}>¿De qué trata?</h2>
-              <p style={{ fontSize: 14.5, lineHeight: 1.7, color: '#334155', margin: 0 }}>{e.explicacion}</p>
-              <p style={{ fontSize: 10.5, color: '#94a3b8', margin: '8px 0 0' }}>Resumen generado automáticamente con IA a partir de los datos oficiales de la Asamblea.</p>
+            <section style={{ background: 'linear-gradient(135deg, #eef4ff 0%, #f8fbff 100%)', borderRadius: 16, boxShadow: '0 2px 16px rgba(10,115,206,0.10)', border: '1px solid #dbeafe', padding: '22px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 12 }}>
+                <div style={{ width: 34, height: 34, borderRadius: 9, background: 'linear-gradient(135deg,#0000A2,#0a73ce)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" style={{ width: 18, height: 18 }}><circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" /></svg>
+                </div>
+                <h2 style={{ fontFamily: 'var(--font-Lora), serif', fontSize: 17, fontWeight: 800, color: '#0000A2', margin: 0 }}>¿De qué trata?</h2>
+              </div>
+              <p style={{ fontSize: 15.5, lineHeight: 1.75, color: '#1e293b', margin: 0 }}>{e.explicacion}</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 14, paddingTop: 12, borderTop: '1px solid #dbeafe' }}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth={1.8} style={{ width: 12, height: 12, flexShrink: 0 }}><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z" /><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4.5" /></svg>
+                <span style={{ fontSize: 10.5, color: '#94a3b8' }}>Resumen generado con IA a partir de los datos oficiales de la Asamblea Legislativa.</span>
+              </div>
             </section>
           )}
 
