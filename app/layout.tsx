@@ -147,6 +147,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://cdn.webpushr.com" />
         <link rel="dns-prefetch" href="https://analytics.webpushr.com" />
+        <link rel="dns-prefetch" href="https://www.clarity.ms" />
         {/* APIs de datos en vivo (clima + tipo cambio) — preconnect ahorra ~950ms LCP mobile */}
         <link rel="preconnect" href="https://api.open-meteo.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://tipodecambio.paginasweb.cr" />
@@ -229,6 +230,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {`
             gtag('js', new Date());
             gtag('config', '${GA_ID}', { page_path: window.location.pathname });
+          `}
+        </Script>
+        {/* Microsoft Clarity — mapas de calor y grabaciones de sesión */}
+        <Script id="clarity-init" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "x586fz391j");
           `}
         </Script>
         <CookieBanner />
