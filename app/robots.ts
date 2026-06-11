@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
         // /_next/static/ permitido: CSS/JS/fuentes que Googlebot necesita para RENDERIZAR
         // la página (un Allow más específico gana sobre el Disallow: /_next/ de abajo).
         // Sin esto, Google ve el HTML sin estilos → peor evaluación móvil/page-experience.
-        allow: ['/', '/wp-content/uploads/', '/_next/static/'],
+        allow: ['/', '/api/diputado-foto', '/wp-content/uploads/', '/_next/static/'],
         disallow: [
           '/api/',
           '/wp-admin/',
@@ -30,6 +30,7 @@ export default function robots(): MetadataRoute.Robots {
           '/wp-content/themes/',
           '/index.php',
           '/opengraph-image',
+          '/*/opengraph-image',
           '/*?fbclid=',
           '/*?amp=',
           '/inicio/',
@@ -66,6 +67,9 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'Googlebot-News',   allow: '/' },
       // Image bots: explícitos
       { userAgent: 'Googlebot-Image',  allow: ['/', '/wp-content/uploads/'] },
+      // Bingbot: sección explícita — sin esto hereda las reglas de * con múltiples Disallow.
+      // Allow: / sin Disallow adicional = acceso total a artículos, igual que Googlebot-News.
+      { userAgent: 'Bingbot',          allow: '/' },
       { userAgent: 'Bingbot-Image',    allow: ['/', '/wp-content/uploads/'] },
     ],
     sitemap: [
