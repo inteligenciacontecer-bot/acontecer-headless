@@ -45,7 +45,9 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // sitemap.xml principal: mantener fresco para cambios SEO y perfiles evergreen
+        // sitemap.xml: s-maxage=300 coincide con revalidate=300 del sitemap.ts (ISR).
+        // Cloudflare no puede cachear más que lo que Next.js regenera → máx 10 min stale.
+        // Reducido de s-maxage=1800 porque Bing Webmaster Tools veía contenido con 90 min de antigüedad.
         source: '/sitemap.xml',
         headers: [
           { key: 'Cache-Control', value: 'public, s-maxage=300, stale-while-revalidate=600' },
