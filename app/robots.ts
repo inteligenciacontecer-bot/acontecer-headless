@@ -67,9 +67,11 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'Googlebot-News',   allow: '/' },
       // Image bots: explícitos
       { userAgent: 'Googlebot-Image',  allow: ['/', '/wp-content/uploads/'] },
-      // Bingbot: sección explícita — sin esto hereda las reglas de * con múltiples Disallow.
-      // Allow: / sin Disallow adicional = acceso total a artículos, igual que Googlebot-News.
+      // Bing: cobertura completa — crawler principal, legacy MSN, preview y imagen.
+      // Sin sección propia heredan las reglas de * con 30+ Disallow innecesarios para Bing.
       { userAgent: 'Bingbot',          allow: '/' },
+      { userAgent: 'msnbot',           allow: '/' },
+      { userAgent: 'BingPreview',      allow: '/' },
       { userAgent: 'Bingbot-Image',    allow: ['/', '/wp-content/uploads/'] },
     ],
     sitemap: [
