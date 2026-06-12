@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Pauta Publicitaria',
   description: 'Llegue a miles de lectores costarricenses con su pauta publicitaria en Acontecer.co.cr. Formatos digitales, boletines y redes sociales.',
   alternates: { canonical: 'https://acontecer.co.cr/pauta' },
-  openGraph: { url: 'https://acontecer.co.cr/pauta' },
+  openGraph: { url: 'https://acontecer.co.cr/pauta', images: [{ url: 'https://acontecer.co.cr/wp-content/uploads/2026/06/PAUTA-PUBLICITARIA.webp', alt: 'Pauta publicitaria Acontecer.co.cr — Medios digitales CR' }] },
 };
 
 export default function PautaPage() {

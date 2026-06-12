@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Quiénes Somos',
   description: 'Acontecer.co.cr es el medio digital independiente de Costa Rica. Conoce nuestra misión, equipo y compromiso con el periodismo de calidad.',
   alternates: { canonical: 'https://acontecer.co.cr/nosotros' },
-  openGraph: { url: 'https://acontecer.co.cr/nosotros' },
+  openGraph: { url: 'https://acontecer.co.cr/nosotros', images: [{ url: 'https://acontecer.co.cr/wp-content/uploads/2026/06/QUIENES-SOMOS.webp', alt: 'Quiénes somos — Acontecer.co.cr medio digital Costa Rica' }] },
 };
 
 export default function NosotrosPage() {

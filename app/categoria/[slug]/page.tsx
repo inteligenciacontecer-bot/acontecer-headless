@@ -164,6 +164,15 @@ const SEO_LABELS: Record<string, string> = {
   tecnologia: 'Tecnología', opinion: 'Opinión',
 };
 
+const CATEGORY_OG_IMAGES: Record<string, { url: string; alt: string }> = {
+  deportes:       { url: 'https://acontecer.co.cr/wp-content/uploads/2026/06/DEPORTES-COSTA-RICA.webp',          alt: 'Deportes Costa Rica — Acontecer.co.cr' },
+  economia:       { url: 'https://acontecer.co.cr/wp-content/uploads/2026/06/ECONOMIA-COSTA-RICA-PORTADA.webp',  alt: 'Economía Costa Rica — Acontecer.co.cr' },
+  entretenimiento:{ url: 'https://acontecer.co.cr/wp-content/uploads/2026/06/ENTRETENIMIENTO-PORTADA.webp',       alt: 'Entretenimiento Costa Rica — Acontecer.co.cr' },
+  internacionales:{ url: 'https://acontecer.co.cr/wp-content/uploads/2026/06/NOTICIAS-INTERNACIONALES.webp',      alt: 'Noticias internacionales — Acontecer.co.cr' },
+  opinion:        { url: 'https://acontecer.co.cr/wp-content/uploads/2026/06/OPINION-PORTADA.webp',               alt: 'Opinión Costa Rica — Acontecer.co.cr' },
+  tecnologia:     { url: 'https://acontecer.co.cr/wp-content/uploads/2026/06/TECNOLOGIA-PORTADA.webp',            alt: 'Tecnología Costa Rica — Acontecer.co.cr' },
+};
+
 export async function generateMetadata(
   { params, searchParams }: {
     params:       Promise<{ slug: string }>;
@@ -200,7 +209,10 @@ export async function generateMetadata(
     // ⚠️ CRÍTICO Google News: páginas de sección/categoría NO son artículos.
     // Sin este meta, Googlebot-News las puede confundir con noticias → Content Mismatch.
     other: { 'Googlebot-News': 'noindex, nofollow' },
-    openGraph: { title, description: desc, url: canonicalUrl, type: 'website' },
+    openGraph: {
+      title, description: desc, url: canonicalUrl, type: 'website',
+      ...(CATEGORY_OG_IMAGES[slug] ? { images: [CATEGORY_OG_IMAGES[slug]] } : {}),
+    },
   };
 }
 

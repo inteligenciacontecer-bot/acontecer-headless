@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Acontecer Studio · Agencia de Comunicación',
   description: 'Agencia de comunicación estratégica, asesoría política y media tech respaldada por la redacción de Acontecer.co.cr.',
   alternates: { canonical: 'https://acontecer.co.cr/agencia' },
-  openGraph: { url: 'https://acontecer.co.cr/agencia', title: 'Acontecer Studio · Agencia de Comunicación' },
+  openGraph: { url: 'https://acontecer.co.cr/agencia', title: 'Acontecer Studio · Agencia de Comunicación', images: [{ url: 'https://acontecer.co.cr/wp-content/uploads/2026/06/AGENCIA-PUBLICIDAD.webp', alt: 'Agencia de publicidad digital Acontecer Costa Rica' }] },
 };
 
 export default function AgenciaPage() {

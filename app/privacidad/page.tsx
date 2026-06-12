@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Política de Privacidad',
   description: 'Política de privacidad y tratamiento de datos personales de Acontecer.co.cr.',
   alternates: { canonical: 'https://acontecer.co.cr/privacidad' },
-  openGraph: { url: 'https://acontecer.co.cr/privacidad' },
+  openGraph: { url: 'https://acontecer.co.cr/privacidad', images: [{ url: 'https://acontecer.co.cr/wp-content/uploads/2026/06/POLITICA-DE-PRIVACIDAD-PORTADA.webp', alt: 'Política de privacidad Acontecer.co.cr' }] },
 };
 
 export default function PrivacidadPage() {

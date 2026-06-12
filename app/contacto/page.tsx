@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Contacto',
   description: 'Contáctenos para consultas, colaboraciones, columnas de opinión o pauta publicitaria. Redacción Acontecer.co.cr.',
   alternates: { canonical: 'https://acontecer.co.cr/contacto' },
-  openGraph: { url: 'https://acontecer.co.cr/contacto' },
+  openGraph: { url: 'https://acontecer.co.cr/contacto', images: [{ url: 'https://acontecer.co.cr/wp-content/uploads/2026/06/CONTACTENOS-PORTADA.webp', alt: 'Contacto Acontecer.co.cr' }] },
 };
 
 export default function ContactoPage() {

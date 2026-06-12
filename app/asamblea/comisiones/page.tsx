@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Comisiones Legislativas — Asamblea de Costa Rica',
   description: 'Composición de las comisiones permanentes y especiales de la Asamblea Legislativa de Costa Rica: presidencia, secretaría y diputados miembros de cada comisión.',
   alternates: { canonical: 'https://acontecer.co.cr/asamblea/comisiones' },
-  openGraph: { url: 'https://acontecer.co.cr/asamblea/comisiones' },
+  openGraph: { url: 'https://acontecer.co.cr/asamblea/comisiones', images: [{ url: 'https://acontecer.co.cr/wp-content/uploads/2026/06/COMISIONES-LEGISLATIVAS-portada.webp', alt: 'Comisiones legislativas Asamblea de Costa Rica' }] },
 };
 
 export const revalidate = 3600;

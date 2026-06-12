@@ -1,4 +1,12 @@
-﻿import Link from 'next/link';
+﻿import type { Metadata } from 'next';
+import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'En Vivo — Asamblea Legislativa de Costa Rica',
+  description: 'Transmisiones en directo de la Asamblea Legislativa de Costa Rica. Sesiones plenarias, comisiones y actos oficiales en vivo.',
+  alternates: { canonical: 'https://acontecer.co.cr/asamblea/en-vivo' },
+  openGraph: { url: 'https://acontecer.co.cr/asamblea/en-vivo', images: [{ url: 'https://acontecer.co.cr/wp-content/uploads/2026/06/ENVIVO-PORTADA.webp', alt: 'Acontecer En Vivo — Transmisiones en directo Costa Rica' }] },
+};
 
 const API = 'https://cms.acontecer.co.cr/wp-json/acontecer/v1/asamblea';
 const YOUTUBE_CHANNEL = 'https://www.youtube.com/@AsambleaCRC';

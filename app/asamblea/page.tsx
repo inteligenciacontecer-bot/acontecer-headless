@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Monitor Legislativo — Asamblea de Costa Rica',
   description: 'Seguimiento en tiempo real de proyectos de ley, votaciones y diputados de la Asamblea Legislativa de Costa Rica.',
   alternates: { canonical: 'https://acontecer.co.cr/asamblea' },
-  openGraph: { url: 'https://acontecer.co.cr/asamblea' },
+  openGraph: { url: 'https://acontecer.co.cr/asamblea', images: [{ url: 'https://acontecer.co.cr/wp-content/uploads/2026/06/MONITOR-LEGISLATIVO-PORTADA.webp', alt: 'Monitor Legislativo Asamblea Costa Rica — Acontecer' }] },
 };
 
 const API = 'https://cms.acontecer.co.cr/wp-json/acontecer/v1/asamblea';
