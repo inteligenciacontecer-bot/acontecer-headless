@@ -2,13 +2,6 @@
 import type { Metadata } from 'next';
 import VotacionesClient from './VotacionesClient';
 
-export const metadata: Metadata = {
-  title: 'Votaciones del Plenario — Asamblea Legislativa de Costa Rica',
-  description: 'Registro de todas las votaciones del Plenario de la Asamblea Legislativa de Costa Rica. Resultados, diputados y proyectos de ley.',
-  alternates: { canonical: 'https://acontecer.co.cr/asamblea/votaciones' },
-  openGraph: { url: 'https://acontecer.co.cr/asamblea/votaciones', images: [{ url: 'https://acontecer.co.cr/wp-content/uploads/2026/06/VOTACIONES-DEL-PLENARIO.webp', alt: 'Votaciones del Plenario Asamblea Legislativa Costa Rica' }] },
-};
-
 const API = 'https://cms.acontecer.co.cr/wp-json/acontecer/v1/asamblea';
 
 async function getVotaciones() {

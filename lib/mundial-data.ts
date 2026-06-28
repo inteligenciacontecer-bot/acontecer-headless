@@ -15,6 +15,14 @@ import {
 type MundialLiveMatchPatch = Partial<Pick<MundialMatch, 'status' | 'homeScore' | 'awayScore' | 'events' | 'kickoffUtc'>> & {
   id?: string;
   slug?: string;
+  matchNumber?: number | string;
+  home?: string;
+  away?: string;
+  homeRaw?: string;
+  awayRaw?: string;
+  venue?: string;
+  dateLabel?: string;
+  sourceNote?: string;
 };
 
 type MundialLivePayload = {
@@ -87,20 +95,28 @@ async function getLivePayload(): Promise<MundialLivePayload | null> {
 }
 
 function patchMatches(matches: MundialMatch[], payload: MundialLivePayload | null): MundialMatch[] {
-  if (!payload?.matches?.length) return matches;
+  if (!payload?.matches?.length) return resolveKnockoutPlaceholders(matches);
 
   const patches = new Map<string, MundialLiveMatchPatch>();
   for (const patch of payload.matches) {
     if (patch.id) patches.set(patch.id, patch);
     if (patch.slug) patches.set(patch.slug, patch);
+    if (patch.matchNumber != null) patches.set(String(patch.matchNumber), patch);
   }
 
-  return matches.map((match) => {
-    const patch = patches.get(match.id) || patches.get(match.slug);
+  const patchedMatches = matches.map((match) => {
+    const patch = patches.get(match.id) || patches.get(match.slug) || patches.get(String(match.matchNumber));
     if (!patch) return match;
 
     return {
       ...match,
+      home: patch.home ?? match.home,
+      away: patch.away ?? match.away,
+      homeRaw: patch.homeRaw ?? patch.home ?? match.homeRaw,
+      awayRaw: patch.awayRaw ?? patch.away ?? match.awayRaw,
+      venue: patch.venue ?? match.venue,
+      dateLabel: patch.dateLabel ?? match.dateLabel,
+      sourceNote: patch.sourceNote ?? match.sourceNote,
       status: patch.status ?? match.status,
       homeScore: patch.homeScore ?? match.homeScore,
       awayScore: patch.awayScore ?? match.awayScore,
@@ -108,6 +124,60 @@ function patchMatches(matches: MundialMatch[], payload: MundialLivePayload | nul
       kickoffUtc: patch.kickoffUtc ?? match.kickoffUtc,
     };
   });
+
+  return resolveKnockoutPlaceholders(patchedMatches);
+}
+
+function resolveKnockoutPlaceholders(matches: MundialMatch[]): MundialMatch[] {
+  const standingsByGroup = new Map(getMundialGroupStandings(matches).map((group) => [group.group, group.teams]));
+  const matchesByNumber = new Map(matches.map((match) => [match.matchNumber, match]));
+
+  return matches.map((match) => ({
+    ...match,
+    home: resolveQualifiedTeam(match.home, standingsByGroup, matchesByNumber) || match.home,
+    away: resolveQualifiedTeam(match.away, standingsByGroup, matchesByNumber) || match.away,
+    homeRaw: resolveQualifiedTeam(match.homeRaw, standingsByGroup, matchesByNumber) || match.homeRaw,
+    awayRaw: resolveQualifiedTeam(match.awayRaw, standingsByGroup, matchesByNumber) || match.awayRaw,
+  }));
+}
+
+function resolveQualifiedTeam(
+  label: string,
+  standingsByGroup: Map<string, ReturnType<typeof getMundialGroupStandings>[number]['teams']>,
+  matchesByNumber: Map<number, MundialMatch>,
+): string | null {
+  const normalized = label.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+  const groupMatch = normalized.match(/^(ganador|winner)\s+(?:grupo|group)\s+([a-l])$/i);
+  if (groupMatch) {
+    const standings = standingsByGroup.get(groupMatch[2].toUpperCase());
+    if (!isGroupComplete(standings)) return null;
+    return standings?.[0]?.team || null;
+  }
+
+  const runnerUpMatch = normalized.match(/^(segundo|runner-up|runner up)\s+(?:grupo|group)\s+([a-l])$/i);
+  if (runnerUpMatch) {
+    const standings = standingsByGroup.get(runnerUpMatch[2].toUpperCase());
+    if (!isGroupComplete(standings)) return null;
+    return standings?.[1]?.team || null;
+  }
+
+  const previousMatch = normalized.match(/^(ganador|winner|perdedor|loser)\s+partido\s+(\d{1,3})$/i)
+    || normalized.match(/^(winner|loser)\s+match\s+(\d{1,3})$/i);
+  if (previousMatch) {
+    const mode = previousMatch[1];
+    const previous = matchesByNumber.get(Number(previousMatch[2]));
+    if (!previous || previous.status !== 'finished' || previous.homeScore == null || previous.awayScore == null || previous.homeScore === previous.awayScore) return null;
+    const homeWon = previous.homeScore > previous.awayScore;
+    const wantsWinner = mode === 'ganador' || mode === 'winner';
+    return wantsWinner === homeWon ? previous.home : previous.away;
+  }
+
+  return null;
+}
+
+function isGroupComplete(standings?: ReturnType<typeof getMundialGroupStandings>[number]['teams']): boolean {
+  return Boolean(standings?.length === 4 && standings.every((team) => team.played >= 3));
 }
 
 function mergeCenter(center: MundialMatchCenter, payload: MundialLivePayload | null, match: MundialMatch): MundialMatchCenter {
