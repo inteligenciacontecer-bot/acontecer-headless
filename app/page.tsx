@@ -1,7 +1,32 @@
+import type { Metadata } from 'next';
 import './portada.css';
 import HeroCarousel from '@/components/HeroCarousel';
+import MundialHomePromoBanner from '@/components/MundialHomePromoBanner';
+import MundialHomeUpdates from '@/components/MundialHomeUpdates';
 import YoutubeEmbed from '@/components/YoutubeEmbed';
 import { getFocalPoint } from '@/lib/focalPoint';
+import { getMundialMatchesData } from '@/lib/mundial-data';
+
+export const metadata: Metadata = {
+  title: 'Acontecer.co.cr - Noticias de Costa Rica hoy y última hora',
+  description: 'El medio digital independiente de Costa Rica. Noticias de última hora sobre politica, economia, deportes, salud y mas, con informacion clara y oportuna.',
+  alternates: {
+    canonical: 'https://acontecer.co.cr',
+    languages: {
+      'es-CR': 'https://acontecer.co.cr',
+      'en': 'https://acontecer.co.cr/en',
+      'x-default': 'https://acontecer.co.cr',
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'es_CR',
+    url: 'https://acontecer.co.cr',
+    siteName: 'Acontecer.co.cr',
+    title: 'Acontecer.co.cr - Noticias de Costa Rica hoy y última hora',
+    description: 'El medio digital independiente de Costa Rica con noticias de última hora sobre politica, economia, deportes, salud y mas.',
+  },
+};
 
 // SEO: reescribir URLs del CMS a relativas (next.config rewrite)
 const cmsToLocal = (u?: string | null) => u ? u.replace(/^https?:\/\/cms\.acontecer\.co\.cr\//i, 'https://acontecer.co.cr/') : u;
@@ -110,7 +135,7 @@ const SUBNAV = [
 ];
 
 export default async function Home() {
-  const [posts, categories, deportes, economia, opinion, clima, tipoCambio] = await Promise.all([
+  const [posts, categories, deportes, economia, opinion, clima, tipoCambio, mundialData] = await Promise.all([
     getPosts(18),
     getCategories(),
     getPostsByCategory('deportes', 5),
@@ -118,6 +143,7 @@ export default async function Home() {
     getPostsByCategory('opinion', 3),
     getClima(),
     getTipoCambio(),
+    getMundialMatchesData(),
   ]);
 
   // Hero: first 5 posts
@@ -171,11 +197,11 @@ export default async function Home() {
   return (
     <>
       {/* ── HERO CAROUSEL ───────────────────────────────────────────────── */}
-      {/* Preload del primer slide: el browser lo descarga con maxima prioridad
-          antes de que HeroCarousel hidrate y asigne el backgroundImage. */}
-      {heroSlides[0]?.imgUrl && (
-        <link rel="preload" as="image" href={heroSlides[0].imgUrl} fetchPriority="high" />
-      )}
+      {/* Preload del primer slide: manejado automáticamente por <Image priority> en HeroCarousel */}
+      <MundialHomePromoBanner
+        initialMatches={mundialData.matches}
+        refreshSeconds={mundialData.provider.refreshSeconds}
+      />
       <HeroCarousel slides={heroSlides} />
 
       {/* ── MOSAIC ──────────────────────────────────────────────────────── */}
@@ -343,6 +369,11 @@ export default async function Home() {
 
         {/* ── SIDEBAR ─────────────────────────────────────────────────── */}
         <aside className="p-body-aside">
+          <MundialHomeUpdates
+            initialMatches={mundialData.matches}
+            refreshSeconds={mundialData.provider.refreshSeconds}
+          />
+
           {/* Clima — enlaza a la página general de clima */}
           <a href="/clima" className="p-widget p-cambio-link" aria-label="Ver el clima en Costa Rica: pronóstico por hora y por provincia">
             <div className="p-widget-eyebrow">Hoy en San José</div>

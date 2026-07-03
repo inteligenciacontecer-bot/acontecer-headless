@@ -8,6 +8,31 @@ const BASE = 'https://acontecer.co.cr';
 
 export const revalidate = 300;
 
+// ── lastmod estable para páginas evergreen (fix de señal SEO) ──────────────
+// Antes estas páginas usaban `new Date()`, así que CADA regeneración del sitio
+// marcaba miles de URLs como "modificadas ahora". Para Google era ruido: URLs
+// que "cambian" a diario sin que sea cierto → mala señal de crawl.
+//
+// Ahora la lastmod es una FECHA FIJA que solo se sube a mano cuando el
+// contenido realmente cambia. Determinista: VPS y repo generan el mismo XML,
+// así que un deploy no vuelve a disparar el ruido.
+//
+// ⚠️ Bumpear estas fechas SOLO cuando se edite el contenido correspondiente.
+const CONTENIDO_LASTMOD = new Date('2026-06-30T12:00:00-06:00'); // páginas institucionales
+const GOBIERNO_LASTMOD  = new Date('2026-06-11T12:00:00-06:00'); // directorio del Ejecutivo
+
+// Para páginas VIVAS (clima, mundial, home, categorías…) trunca la fecha a la
+// granularidad de su changeFrequency. Una página `daily` solo "cambia" a
+// medianoche; una `hourly` solo al inicio de cada hora. Dentro del período,
+// todas las regeneraciones producen el MISMO lastmod → sin ruido de "todo
+// modificado ahora", pero honesto para contenido que sí se actualiza.
+function lastmodVivo(freq: 'hourly' | 'daily', now: Date = new Date()): Date {
+  const d = new Date(now);
+  d.setMinutes(0, 0, 0);            // recorta minutos/segundos/ms → inicio de hora
+  if (freq === 'daily') d.setHours(0);  // → medianoche
+  return d;
+}
+
 
 // Filtra slugs corruptos que ensucian el sitemap (URLs de WP rotas con fbclid,
 // __trashed, etc.) — afectan presupuesto de rastreo y dan errores en Semrush.
@@ -94,32 +119,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   categories.forEach((c: any) => { catMap[c.id] = c.slug; });
 
   const staticPages: MetadataRoute.Sitemap = [
-    { url: BASE,                   lastModified: new Date(), changeFrequency: 'hourly',  priority: 1   },
-    { url: `${BASE}/nosotros`,     lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
-    { url: `${BASE}/contacto`,     lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
-    { url: `${BASE}/pauta`,        lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
-    { url: `${BASE}/agencia`,      lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
-    { url: `${BASE}/servicios`,      lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${BASE}/tipo-de-cambio`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.7 },
-    { url: `${BASE}/clima`,          lastModified: new Date(), changeFrequency: 'daily', priority: 0.7 },
-    { url: `${BASE}/precio-combustibles`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
-    { url: `${BASE}/resultados-loteria`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.7 },
-    { url: `${BASE}/feriados-costa-rica`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.6 },
-    { url: `${BASE}/restriccion-vehicular`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.7 },
-    { url: `${BASE}/gobierno`,       lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${BASE}/politicas`,    lastModified: new Date(), changeFrequency: 'monthly', priority: 0.3 },
-    { url: `${BASE}/privacidad`,   lastModified: new Date(), changeFrequency: 'monthly', priority: 0.3 },
-    { url: `${BASE}/enlaces`,      lastModified: new Date(), changeFrequency: 'daily',   priority: 0.6 },
-    { url: `${BASE}/asamblea`,     lastModified: new Date(), changeFrequency: 'hourly',  priority: 0.8 },
-    { url: `${BASE}/asamblea/actas`, lastModified: new Date(), changeFrequency: 'daily',  priority: 0.6 },
-    { url: `${BASE}/mundial-2026`, lastModified: new Date(), changeFrequency: 'hourly',  priority: 0.85 },
-    { url: `${BASE}/mundial-2026/calendario`, lastModified: new Date(), changeFrequency: 'hourly', priority: 0.8 },
+    // Home y hubs vivos: lastmod truncado a la hora (no cambia en cada regen).
+    { url: BASE,                   lastModified: lastmodVivo('hourly'), changeFrequency: 'hourly',  priority: 1   },
+    // Institucionales/legales: fecha fija (solo cambia al editar contenido).
+    { url: `${BASE}/nosotros`,     lastModified: CONTENIDO_LASTMOD, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${BASE}/contacto`,     lastModified: CONTENIDO_LASTMOD, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${BASE}/pauta`,        lastModified: CONTENIDO_LASTMOD, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${BASE}/agencia`,      lastModified: CONTENIDO_LASTMOD, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${BASE}/servicios`,      lastModified: CONTENIDO_LASTMOD, changeFrequency: 'monthly', priority: 0.6 },
+    // Datos que se actualizan a diario: lastmod truncado al día.
+    { url: `${BASE}/tipo-de-cambio`, lastModified: lastmodVivo('daily'), changeFrequency: 'daily', priority: 0.7 },
+    { url: `${BASE}/clima`,          lastModified: lastmodVivo('daily'), changeFrequency: 'daily', priority: 0.7 },
+    { url: `${BASE}/precio-combustibles`, lastModified: lastmodVivo('daily'), changeFrequency: 'weekly', priority: 0.7 },
+    { url: `${BASE}/resultados-loteria`, lastModified: lastmodVivo('daily'), changeFrequency: 'daily', priority: 0.7 },
+    { url: `${BASE}/feriados-costa-rica`, lastModified: CONTENIDO_LASTMOD, changeFrequency: 'weekly', priority: 0.6 },
+    { url: `${BASE}/restriccion-vehicular`, lastModified: lastmodVivo('daily'), changeFrequency: 'daily', priority: 0.7 },
+    { url: `${BASE}/gobierno`,       lastModified: GOBIERNO_LASTMOD, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE}/politicas`,    lastModified: CONTENIDO_LASTMOD, changeFrequency: 'monthly', priority: 0.3 },
+    { url: `${BASE}/privacidad`,   lastModified: CONTENIDO_LASTMOD, changeFrequency: 'monthly', priority: 0.3 },
+    { url: `${BASE}/enlaces`,      lastModified: lastmodVivo('daily'), changeFrequency: 'daily',   priority: 0.6 },
+    { url: `${BASE}/asamblea`,     lastModified: lastmodVivo('hourly'), changeFrequency: 'hourly',  priority: 0.8 },
+    { url: `${BASE}/asamblea/actas`, lastModified: lastmodVivo('daily'), changeFrequency: 'daily',  priority: 0.6 },
+    { url: `${BASE}/mundial-2026`, lastModified: lastmodVivo('hourly'), changeFrequency: 'hourly',  priority: 0.85 },
+    { url: `${BASE}/mundial-2026/calendario`, lastModified: lastmodVivo('hourly'), changeFrequency: 'hourly', priority: 0.8 },
   ];
 
-  // Clima por provincia — 7 páginas estáticas (evergreen, alto valor SEO local)
+  // Clima por provincia — dato diario: lastmod truncado al día (no por regen)
   const climaProvinciaPages: MetadataRoute.Sitemap = PROVINCIAS.map((p) => ({
     url: `${BASE}/clima/${p.slug}`,
-    lastModified: new Date(),
+    lastModified: lastmodVivo('daily'),
     changeFrequency: 'daily' as const,
     priority: 0.6,
   }));
@@ -128,7 +156,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const climaCantonPages: MetadataRoute.Sitemap = Object.entries(CANTONES).flatMap(
     ([provSlug, cantones]) => cantones.map((c) => ({
       url: `${BASE}/clima/${provSlug}/${c.slug}`,
-      lastModified: new Date(),
+      lastModified: lastmodVivo('daily'),
       changeFrequency: 'daily' as const,
       priority: 0.55,
     })),
@@ -137,45 +165,46 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Clima por distrito/localidad turística (SEO: "clima tamarindo", "clima jaco"…)
   const climaDistritoPages: MetadataRoute.Sitemap = DISTRITOS.map((d) => ({
     url: `${BASE}/clima/${d.provincia}/${d.canton}/${d.slug}`,
-    lastModified: new Date(),
+    lastModified: lastmodVivo('daily'),
     changeFrequency: 'daily' as const,
     priority: 0.55,
   }));
 
-  // Perfiles del Poder Ejecutivo (SEO: "ministro X Costa Rica", gabinete…)
+  // Perfiles del Poder Ejecutivo — evergreen: fecha fija del directorio.
   const gobiernoPages: MetadataRoute.Sitemap = FUNCIONARIOS.map((f) => ({
     url: `${BASE}/gobierno/${funcionarioSlug(f)}`,
-    lastModified: new Date(),
+    lastModified: GOBIERNO_LASTMOD,
     changeFrequency: 'weekly' as const,
     priority: 0.6,
   }));
 
+  // Categorías — listas de noticias: lastmod truncado a la hora.
   const categoryPages: MetadataRoute.Sitemap = categories
     .filter((c: any) => c.slug !== 'uncategorized')
     .map((c: any) => ({
       url: `${BASE}/categoria/${c.slug}`,
-      lastModified: new Date(),
+      lastModified: lastmodVivo('hourly'),
       changeFrequency: 'hourly' as const,
       priority: 0.8,
     }));
 
   const mundialPages: MetadataRoute.Sitemap = MUNDIAL_MATCHES.map((match) => ({
     url: `${BASE}/mundial-2026/partido/${match.slug}`,
-    lastModified: new Date(),
+    lastModified: lastmodVivo('hourly'),
     changeFrequency: 'hourly' as const,
     priority: match.matchNumber <= 72 ? 0.72 : 0.68,
   }));
 
   const mundialTeamPages: MetadataRoute.Sitemap = getMundialTeams().map((team) => ({
     url: `${BASE}/mundial-2026/seleccion/${team.slug}`,
-    lastModified: new Date(),
+    lastModified: lastmodVivo('daily'),
     changeFrequency: 'daily' as const,
     priority: 0.66,
   }));
 
   const mundialGroupPages: MetadataRoute.Sitemap = Object.keys(MUNDIAL_GROUPS).map((group) => ({
     url: `${BASE}/mundial-2026/grupo/${group.toLowerCase()}`,
-    lastModified: new Date(),
+    lastModified: lastmodVivo('hourly'),
     changeFrequency: 'hourly' as const,
     priority: 0.74,
   }));

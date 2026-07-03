@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Ticker from "@/components/Ticker";
 import ConditionalTicker from "@/components/ConditionalTicker";
 import CookieBanner from "@/components/CookieBanner";
+import SiteChrome from "@/components/SiteChrome";
 
 const GA_ID = 'G-GFS4JMZGLP';
 
@@ -28,10 +29,10 @@ const lora = LoraFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://acontecer.co.cr"),
   title: {
-    default: "Acontecer.co.cr - Noticias de Costa Rica",
+    default: "Acontecer.co.cr - Noticias de Costa Rica hoy y última hora",
     template: "%s | Acontecer.co.cr",
   },
-  description: "El medio digital independiente de Costa Rica. Noticias de política, economía, deportes, salud y más, con información clara y oportuna.",
+  description: "El medio digital independiente de Costa Rica. Noticias de última hora sobre política, economía, deportes, salud y más, con información clara y oportuna.",
   keywords: ["noticias Costa Rica", "acontecer", "periodismo Costa Rica", "noticias ticas", "política Costa Rica"],
   authors: [{ name: "Redacción Acontecer", url: "https://acontecer.co.cr" }],
   creator: "Acontecer.co.cr",
@@ -42,20 +43,24 @@ export const metadata: Metadata = {
     locale: "es_CR",
     url: "https://acontecer.co.cr",
     siteName: "Acontecer.co.cr",
-    title: "Acontecer.co.cr - Noticias de Costa Rica",
-    description: "El medio digital independiente de Costa Rica. Noticias de política, economía, deportes, salud y más.",
+    title: "Acontecer.co.cr - Noticias de Costa Rica hoy y última hora",
+    description: "El medio digital independiente de Costa Rica. Noticias de última hora sobre política, economía, deportes, salud y más.",
     // La imagen OG se genera dinámicamente desde app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
     site: "@acontecercocr",
     creator: "@acontecercocr",
-    title: "Acontecer.co.cr - Noticias de Costa Rica",
+    title: "Acontecer.co.cr - Noticias de Costa Rica hoy y última hora",
     description: "El medio digital independiente de Costa Rica.",
   },
   alternates: {
     canonical: "https://acontecer.co.cr",
-    languages: { 'es-CR': 'https://acontecer.co.cr' },
+    languages: {
+      'es-CR': 'https://acontecer.co.cr',
+      'en': 'https://acontecer.co.cr/en',
+      'x-default': 'https://acontecer.co.cr',
+    },
   },
 };
 
@@ -147,7 +152,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://cdn.webpushr.com" />
         <link rel="dns-prefetch" href="https://analytics.webpushr.com" />
-        <link rel="dns-prefetch" href="https://www.clarity.ms" />
         {/* APIs de datos en vivo (clima + tipo cambio) — preconnect ahorra ~950ms LCP mobile */}
         <link rel="preconnect" href="https://api.open-meteo.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://tipodecambio.paginasweb.cr" />
@@ -174,6 +178,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="msapplication-config" content="none" />
         {/* RSS autodiscovery — requerido por Apple News y agregadores */}
         <link rel="alternate" type="application/rss+xml" title="Acontecer.co.cr — Feed RSS" href="https://acontecer.co.cr/feed" />
+        <link rel="alternate" type="application/rss+xml" title="Acontecer.co.cr — RSS 2.0" href="https://acontecer.co.cr/rss.xml" />
+        <link rel="alternate" type="application/rss+xml" title="Acontecer.co.cr — Feed limpio para monitores" href="https://acontecer.co.cr/monitor-feed.xml" />
         {/* OpenSearch — permite agregar Acontecer como motor de búsqueda del browser */}
         <link rel="search" type="application/opensearchdescription+xml" title="Acontecer.co.cr" href="/opensearch.xml" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(schemaOrganization)}} />
@@ -182,10 +188,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {/* A11y: skip-link para usuarios de teclado / lectores de pantalla */}
         <a href="#main-content" className="skip-link">Saltar al contenido principal</a>
-        <Header />
-        <Ticker />
-        <div id="main-content" tabIndex={-1} style={{outline: 'none'}}>{children}</div>
-        <Footer />
+        <SiteChrome
+          header={<Header />}
+          ticker={<Ticker />}
+          footer={<Footer />}
+          banner={<CookieBanner />}
+        >
+          <div id="main-content" tabIndex={-1} style={{outline: 'none'}}>{children}</div>
+        </SiteChrome>
         {/* Google Analytics 4 + Consent Mode v2
             Orden correcto según docs de Google:
             1. dataLayer + gtag() → 2. consent default → 3. cargar gtag.js → 4. config */}
@@ -232,17 +242,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', '${GA_ID}', { page_path: window.location.pathname });
           `}
         </Script>
-        {/* Microsoft Clarity — mapas de calor y grabaciones de sesión */}
-        <Script id="clarity-init" strategy="afterInteractive">
-          {`
-            (function(c,l,a,r,i,t,y){
-              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "x586fz391j");
-          `}
-        </Script>
-        <CookieBanner />
 
         {/* ── Webpushr Push Notifications ────────────────────────────────────
             strategy="lazyOnload": carga solo cuando el navegador está idle

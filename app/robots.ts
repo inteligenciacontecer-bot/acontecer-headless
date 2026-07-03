@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
         // /_next/static/ permitido: CSS/JS/fuentes que Googlebot necesita para RENDERIZAR
         // la página (un Allow más específico gana sobre el Disallow: /_next/ de abajo).
         // Sin esto, Google ve el HTML sin estilos → peor evaluación móvil/page-experience.
-        allow: ['/', '/api/diputado-foto', '/wp-content/uploads/', '/_next/static/'],
+        allow: ['/', '/api/diputado-foto', '/wp-content/uploads/', '/_next/static/', '/_next/image'],
         disallow: [
           '/api/',
           '/wp-admin/',
@@ -22,9 +22,6 @@ export default function robots(): MetadataRoute.Robots {
           '/*?paged=',
           '/*?p=',
           '/*?s=',
-          '/feed/',
-          '/*/feed',
-          '/*/feed/',
           '/_next/',
           '/wp-content/plugins/',
           '/wp-content/themes/',
